@@ -46,6 +46,11 @@
               "metric": "hard_relative_action_count",
               "value": 2.4438042524142523,
               "unit": null
+            },
+            {
+              "metric": "weighted_success_rate_harbor_subset",
+              "value": 0.1768150943396226,
+              "unit": null
             }
           ]
         },
@@ -71,6 +76,11 @@
             {
               "metric": "hard_relative_action_count",
               "value": 2.4255102697302697,
+              "unit": null
+            },
+            {
+              "metric": "weighted_success_rate_harbor_subset",
+              "value": 0.17826415094339623,
               "unit": null
             }
           ]
@@ -98,6 +108,11 @@
               "metric": "hard_relative_action_count",
               "value": 2.34957508047508,
               "unit": null
+            },
+            {
+              "metric": "weighted_success_rate_harbor_subset",
+              "value": 0.2648679245283019,
+              "unit": null
             }
           ]
         },
@@ -123,6 +138,11 @@
             {
               "metric": "hard_relative_action_count",
               "value": 2.3259762459762454,
+              "unit": null
+            },
+            {
+              "metric": "weighted_success_rate_harbor_subset",
+              "value": 0.356966037735849,
               "unit": null
             }
           ]
@@ -150,6 +170,11 @@
               "metric": "hard_relative_action_count",
               "value": 2.3394684981684977,
               "unit": null
+            },
+            {
+              "metric": "weighted_success_rate_harbor_subset",
+              "value": 0.37973584905660374,
+              "unit": null
             }
           ]
         },
@@ -175,6 +200,11 @@
             {
               "metric": "hard_relative_action_count",
               "value": 2.3321907026307027,
+              "unit": null
+            },
+            {
+              "metric": "weighted_success_rate_harbor_subset",
+              "value": 0.42700377358490565,
               "unit": null
             }
           ]
@@ -202,6 +232,11 @@
               "metric": "hard_relative_action_count",
               "value": 2.28467764013764,
               "unit": null
+            },
+            {
+              "metric": "weighted_success_rate_harbor_subset",
+              "value": 0.5301509433962265,
+              "unit": null
             }
           ]
         },
@@ -227,6 +262,11 @@
             {
               "metric": "hard_relative_action_count",
               "value": 2.031278719058719,
+              "unit": null
+            },
+            {
+              "metric": "weighted_success_rate_harbor_subset",
+              "value": 0.6555547169811321,
               "unit": null
             }
           ]
@@ -254,6 +294,11 @@
               "metric": "hard_relative_action_count",
               "value": 1.9653564912864916,
               "unit": null
+            },
+            {
+              "metric": "weighted_success_rate_harbor_subset",
+              "value": 0.6752452830188679,
+              "unit": null
             }
           ]
         },
@@ -279,6 +324,11 @@
             {
               "metric": "hard_relative_action_count",
               "value": 1.90917626040626,
+              "unit": null
+            },
+            {
+              "metric": "weighted_success_rate_harbor_subset",
+              "value": 0.6943773584905659,
               "unit": null
             }
           ]
@@ -306,6 +356,11 @@
               "metric": "hard_relative_action_count",
               "value": 1.9804984304584305,
               "unit": null
+            },
+            {
+              "metric": "weighted_success_rate_harbor_subset",
+              "value": 0.7044905660377357,
+              "unit": null
             }
           ]
         },
@@ -331,6 +386,11 @@
             {
               "metric": "hard_relative_action_count",
               "value": 1.9371788544788544,
+              "unit": null
+            },
+            {
+              "metric": "weighted_success_rate_harbor_subset",
+              "value": 0.7087698113207547,
               "unit": null
             }
           ]
@@ -358,6 +418,11 @@
               "metric": "hard_relative_action_count",
               "value": 2.0113219180819177,
               "unit": null
+            },
+            {
+              "metric": "weighted_success_rate_harbor_subset",
+              "value": 0.7167018867924528,
+              "unit": null
             }
           ]
         },
@@ -383,6 +448,11 @@
             {
               "metric": "hard_relative_action_count",
               "value": 1.9383408547008547,
+              "unit": null
+            },
+            {
+              "metric": "weighted_success_rate_harbor_subset",
+              "value": 0.7383396226415094,
               "unit": null
             }
           ]
@@ -410,6 +480,11 @@
               "metric": "hard_relative_action_count",
               "value": 1.8648658674658674,
               "unit": null
+            },
+            {
+              "metric": "weighted_success_rate_harbor_subset",
+              "value": 0.7415320754716982,
+              "unit": null
             }
           ]
         },
@@ -435,6 +510,11 @@
             {
               "metric": "hard_relative_action_count",
               "value": 1.7164597657897656,
+              "unit": null
+            },
+            {
+              "metric": "weighted_success_rate_harbor_subset",
+              "value": 0.7697509433962266,
               "unit": null
             }
           ]
@@ -462,6 +542,11 @@
               "metric": "hard_relative_action_count",
               "value": 1.8831460717060717,
               "unit": null
+            },
+            {
+              "metric": "weighted_success_rate_harbor_subset",
+              "value": 0.7715471698113207,
+              "unit": null
             }
           ]
         },
@@ -487,6 +572,11 @@
             {
               "metric": "hard_relative_action_count",
               "value": 1.795764299034299,
+              "unit": null
+            },
+            {
+              "metric": "weighted_success_rate_harbor_subset",
+              "value": 0.770377358490566,
               "unit": null
             }
           ]
@@ -514,6 +604,11 @@
               "metric": "hard_relative_action_count",
               "value": 1.6636790032190032,
               "unit": null
+            },
+            {
+              "metric": "weighted_success_rate_harbor_subset",
+              "value": 0.8081735849056604,
+              "unit": null
             }
           ]
         },
@@ -539,6 +634,11 @@
             {
               "metric": "hard_relative_action_count",
               "value": 1.4205231568431569,
+              "unit": null
+            },
+            {
+              "metric": "weighted_success_rate_harbor_subset",
+              "value": 0.8589358490566037,
               "unit": null
             }
           ]
@@ -566,6 +666,11 @@
               "metric": "hard_relative_action_count",
               "value": 1.4230264535464534,
               "unit": null
+            },
+            {
+              "metric": "weighted_success_rate_harbor_subset",
+              "value": 0.8666641509433962,
+              "unit": null
             }
           ]
         },
@@ -591,6 +696,11 @@
             {
               "metric": "hard_relative_action_count",
               "value": 1.705338828948829,
+              "unit": null
+            },
+            {
+              "metric": "weighted_success_rate_harbor_subset",
+              "value": 0.8766113207547171,
               "unit": null
             }
           ]
@@ -618,6 +728,11 @@
               "metric": "hard_relative_action_count",
               "value": 1.5151790675990677,
               "unit": null
+            },
+            {
+              "metric": "weighted_success_rate_harbor_subset",
+              "value": 0.8894264150943396,
+              "unit": null
             }
           ]
         }
@@ -625,5 +740,5 @@
       "note": "Initial official leaderboard snapshot from the public Hugging Face Space; scores combine the space's easy_0402.json and hard_0402.json files from commit f49345e."
     }
   ],
-  "notes": "Category is a template-mapping choice: KUMO is an interactive multi-turn reasoning benchmark, so I mapped it to Agentic/Interactive. Official materials describe KUMO as evaluating LLM reasoning through procedurally generated reasoning games. The paper/site describe 5,000 tasks across 100 domains, while the current public Hugging Face collection exposes kumo-easy and kumo-hard viewers with 250 rows each. Updated to include all 23 models listed in the official Hugging Face leaderboard snapshots easy_0402.json and hard_0402.json."
+  "notes": "Category is a template-mapping choice: KUMO is an interactive multi-turn reasoning benchmark, mapped to Agentic/Interactive. Paper/site describe 5,000 tasks across 100 domains; the public Hugging Face collection exposes kumo-easy and kumo-hard viewers with 250 rows each. Includes all 23 models from the official HF leaderboard snapshots easy_0402.json and hard_0402.json. Each entry also carries a derived weighted_success_rate_harbor_subset = (202*easy_success_rate + 10*hard_success_rate)/212, matching the Harbor matrix split of 202 KUMO(easy, t4-a6) + 10 KUMO(hard, t12-a16) tasks (per harbor/adapters/kumo/README.md). This ratio matches the paper pin (5050:250). The adapter README recommends reporting easy/hard separately; the weighted field is added for cross-benchmark Harbor-vs-external comparison only."
 }
