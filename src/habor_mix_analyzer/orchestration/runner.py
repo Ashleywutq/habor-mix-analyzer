@@ -3,6 +3,7 @@ from __future__ import annotations
 import argparse
 import json
 
+import numpy as np
 import pandas as pd
 
 from ..core import (
@@ -27,13 +28,18 @@ from ..preprocessing.svd_imputation import (
     write_benchmark_aggregate_outputs,
     write_matrix_outputs,
 )
-from ..reporting.key_analysis_report import write_key_analysis_reports
+from ..reporting.key_analysis_report import copy_paper_figures, write_appendix_model_agent, write_key_analysis_reports, write_paper_stats
 from ..studies.benchmark_predictability import (
     pca_for_cols,
     predictability_for_cols,
 )
 from ..studies.benchmark_similarity import (
     benchmark_similarity_clusters,
+    domain_correlation_decomposition,
+    domain_correlation_summary,
+    effective_dimensionality,
+    full_pca_explained_variance,
+    greedy_benchmark_selection,
     pairwise_correlations,
 )
 from ..studies.coverage_filtering import benchmark_filter_table
@@ -44,8 +50,9 @@ from ..studies.leaderboards import (
 )
 from ..studies.model_agent_roles import (
     adjusted_group_effects,
-    benchmark_model_agent_role_by_benchmark,
-    filtered_variance_decomposition,
+    benchmark_headroom_by_domain,
+    within_family_model_vs_agent,
+    within_family_summary,
 )
 from ..studies.provenance import analysis_data_provenance, imputation_diagnostics_summary
 from ..studies.task_alignment import task_aggregate_alignment
@@ -55,11 +62,16 @@ from ..studies.terminus_comparison import summarize_agent_lift, terminus_delta_b
 from ..visualization.benchmark_plots import (
     save_agent_lift_heatmap,
     save_benchmark_cluster_heatmap,
-    save_benchmark_role_plot,
+    save_benchmark_headroom_plot,
+    save_benchmark_headroom_summary_plot,
     save_benchmark_uniqueness_plot,
+    save_domain_grouped_heatmap,
+    save_effective_dimensionality_plot,
+    save_greedy_selection_plot,
     save_key_effect_plot,
     save_terminus_delta_by_model_plot,
-    save_key_variance_plot,
+    save_within_family_detail_plot,
+    save_within_family_summary_plot,
 )
 from ..visualization.leaderboard_plots import (
     benchmark_mini_leaderboard_tables_and_figures,
@@ -67,6 +79,7 @@ from ..visualization.leaderboard_plots import (
 )
 from ..visualization.task_plots import (
     save_harbormix_selection_plot,
+    save_per_benchmark_task_correlation_heatmaps,
     save_representative_task_plot,
     save_task_alignment_plot,
     save_task_composition_plot,
@@ -100,11 +113,16 @@ KEY_ANALYSIS_TABLES = [
     "benchmark_scores_long",
     "benchmark_model_adjusted_effects",
     "benchmark_agent_adjusted_effects",
-    "benchmark_variance_decomposition_filtered",
-    "benchmark_model_agent_role_by_benchmark",
+    "benchmark_within_family_model_vs_agent",
+    "benchmark_within_family_summary",
+    "benchmark_headroom_by_domain",
     "benchmark_similarity_clusters",
     "benchmark_correlation_clustered",
     "benchmark_redundancy_pairs_filtered",
+    "benchmark_domain_enriched_pairs",
+    "benchmark_domain_correlation_summary",
+    "benchmark_effective_dimensionality",
+    "benchmark_greedy_selection",
     "benchmark_uniqueness_filtered",
     "benchmark_agent_lift_vs_terminus",
     "terminus_delta_by_model",
@@ -281,13 +299,22 @@ def build_study_tables(
     agent_effects = adjusted_group_effects(
         long_df[long_df["benchmark"].isin(included_benchmarks)].copy(), "agent", ["model", "benchmark"]
     )
-    variance_filtered = filtered_variance_decomposition(long_df, included_benchmarks)
     log("studies: estimating benchmark predictability and similarity")
     corr_filtered, corr_pairs_filtered = pairwise_correlations(benchmark_result.normalized, included_benchmarks)
     uniqueness = predictability_for_cols(benchmark_result.normalized, included_benchmarks)
-    benchmark_role = benchmark_model_agent_role_by_benchmark(long_df, included_benchmarks)
+    family_detail = within_family_model_vs_agent(raw_benchmark, included_benchmarks)
+    family_summary = within_family_summary(family_detail)
+    headroom = benchmark_headroom_by_domain(raw_benchmark, included_benchmarks)
     benchmark_clusters, benchmark_corr_ordered, _benchmark_cluster_order = benchmark_similarity_clusters(corr_filtered)
     pca_loadings, pca_agent_model_scores, pca_explained = pca_for_cols(benchmark_result.normalized, included_benchmarks)
+    log("studies: domain-aware correlation decomposition and effective dimensionality")
+    domain_enriched_pairs = domain_correlation_decomposition(corr_filtered, corr_pairs_filtered)
+    domain_corr_summary = domain_correlation_summary(domain_enriched_pairs)
+    full_explained = full_pca_explained_variance(benchmark_result.normalized, included_benchmarks)
+    dim_stats = effective_dimensionality(full_explained, n_benchmarks=len(included_benchmarks))
+    dim_stats_df = pd.DataFrame([dim_stats])
+    full_explained_df = pd.DataFrame({"component": np.arange(1, len(full_explained) + 1), "explained_variance_ratio": full_explained})
+    greedy_selection = greedy_benchmark_selection(corr_filtered)
     log("studies: estimating Terminus harness deltas")
     agent_lift_summary, agent_lift_by_benchmark = summarize_agent_lift(
         tables["agent_differential_by_benchmark"], included_benchmarks
@@ -329,13 +356,19 @@ def build_study_tables(
         "benchmark_scores_long": score_long,
         "benchmark_model_adjusted_effects": model_effects,
         "benchmark_agent_adjusted_effects": agent_effects,
-        "benchmark_variance_decomposition_filtered": variance_filtered,
         "benchmark_correlation_filtered": corr_filtered,
         "benchmark_correlation_clustered": benchmark_corr_ordered,
         "benchmark_similarity_clusters": benchmark_clusters,
         "benchmark_redundancy_pairs_filtered": corr_pairs_filtered,
+        "benchmark_domain_enriched_pairs": domain_enriched_pairs,
+        "benchmark_domain_correlation_summary": domain_corr_summary,
+        "benchmark_effective_dimensionality": dim_stats_df,
+        "benchmark_pca_full_explained_variance": full_explained_df,
+        "benchmark_greedy_selection": greedy_selection,
         "benchmark_uniqueness_filtered": uniqueness,
-        "benchmark_model_agent_role_by_benchmark": benchmark_role,
+        "benchmark_within_family_model_vs_agent": family_detail,
+        "benchmark_within_family_summary": family_summary,
+        "benchmark_headroom_by_domain": headroom,
         "benchmark_latent_loadings_filtered": pca_loadings,
         "benchmark_latent_agent_model_scores_filtered": pca_agent_model_scores,
         "benchmark_latent_explained_variance_filtered": pca_explained,
@@ -377,15 +410,17 @@ def write_study_figures(study_tables: dict[str, pd.DataFrame]) -> None:
         "benchmark_model_adjusted_effects.png",
         "Model Effects Adjusted for Agent and Benchmark",
     )
-    save_key_effect_plot(
-        study_tables["benchmark_agent_adjusted_effects"],
-        "agent",
-        "benchmark_agent_adjusted_effects.png",
-        "Agent Effects Adjusted for Model and Benchmark",
-    )
-    save_key_variance_plot(study_tables["benchmark_variance_decomposition_filtered"])
-    save_benchmark_role_plot(study_tables["benchmark_model_agent_role_by_benchmark"])
+    save_within_family_summary_plot(study_tables["benchmark_within_family_summary"])
+    save_within_family_detail_plot(study_tables["benchmark_within_family_model_vs_agent"])
+    save_benchmark_headroom_plot(study_tables["benchmark_headroom_by_domain"])
+    save_benchmark_headroom_summary_plot(study_tables["benchmark_headroom_by_domain"])
     save_benchmark_cluster_heatmap(study_tables["benchmark_correlation_clustered"])
+    save_domain_grouped_heatmap(study_tables["benchmark_correlation_filtered"])
+    save_effective_dimensionality_plot(
+        study_tables["benchmark_pca_full_explained_variance"]["explained_variance_ratio"].to_numpy(),
+        study_tables["benchmark_effective_dimensionality"].iloc[0].to_dict(),
+    )
+    save_greedy_selection_plot(study_tables["benchmark_greedy_selection"])
     save_agent_lift_heatmap(study_tables["benchmark_agent_lift_by_benchmark"])
     save_terminus_delta_by_model_plot(study_tables["terminus_delta_by_model"])
     save_benchmark_uniqueness_plot(study_tables["benchmark_uniqueness_filtered"], study_tables["benchmark_filtering"])
@@ -412,8 +447,12 @@ def run_studies_step() -> None:
     )
     write_study_tables(study_tables)
     write_study_figures(study_tables)
+    save_per_benchmark_task_correlation_heatmaps(task_result, study_tables["task_enriched_item_stats"])
     write_key_analysis_reports(study_tables, benchmark_result, task_result, included_benchmarks, mini_leaderboard_figures)
-    log("studies: wrote key analysis tables, figures, and reports")
+    write_paper_stats(study_tables, included_benchmarks, raw_benchmark)
+    write_appendix_model_agent(study_tables)
+    copy_paper_figures()
+    log("studies: wrote key analysis tables, figures, reports, paper_xiangning.tex stats, appendix, and figs/main/quantitative/")
 
 
 def expand_steps(steps: list[str]) -> list[str]:

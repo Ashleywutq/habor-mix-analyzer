@@ -1,8 +1,8 @@
 {
   "matrix": "task",
-  "method": "row_mean_shrunk",
+  "method": "column_median",
   "best_rank": 0,
-  "missing_fraction": 0.07459361186368173,
-  "columns": 7013,
+  "missing_fraction": 0.05850480109739369,
+  "columns": 7290,
   "agent_model_rows": 16
 }

@@ -26,6 +26,9 @@ def save_key_figure(fig: plt.Figure, filename: str | Path) -> None:
 def set_plot_style() -> None:
     plt.rcParams.update(
         {
+            "font.family": "serif",
+            "font.serif": ["Times New Roman", "Times", "DejaVu Serif"],
+            "mathtext.fontset": "stix",
             "font.size": 14,
             "axes.titlesize": 18,
             "axes.labelsize": 15,

@@ -1,0 +1,333 @@
+% appendix_model_agent.tex — Methodology appendix
+% Uses macros from quantitative_stats.tex
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Benchmark Predictability: BenchPress Methodology}
+\label{app:benchpress}
+
+We adapt the BenchPress methodology~\cite{benchpress2025} to measure which
+benchmarks carry unique evaluative signal versus which are redundant (i.e.,
+fully reconstructable from other benchmarks).  The original BenchPress
+operates on an $83 \times 49$ model--benchmark matrix; we adapt it to our
+$16 \times 50$ agent+model--benchmark matrix by preserving the core algorithmic
+components while adjusting for lower sample count.
+
+\subsubsection{LogitBenchReg}
+\label{app:logit-benchreg}
+
+For percentage-bounded scores $s \in [0,1]$, we first apply the logit
+transform to linearize ceiling/floor effects:
+\begin{equation}
+  z = \operatorname{logit}(s) = \log\!\frac{\,\mathrm{clip}(s,\,\epsilon,\,1{-}\epsilon)\,}
+       {1 - \mathrm{clip}(s,\,\epsilon,\,1{-}\epsilon)},
+  \quad \epsilon = 0.005.
+  \label{eq:logit-transform}
+\end{equation}
+
+For each target benchmark~$b_j$, we identify the $k{=}5$ predictor benchmarks
+$\{b_{j_1}, \ldots, b_{j_5}\}$ that maximize the training-set $R^2$ when
+predicting $b_j$ via univariate linear regression in logit space:
+\begin{equation}
+  R^2(b_{j'} \to b_j)
+  = 1 - \frac{\sum_i (z_{i,j} - \hat{z}_{i,j})^2}{\sum_i (z_{i,j} - \bar{z}_j)^2},
+  \quad
+  \hat{z}_{i,j} = \alpha_{j'} \cdot z_{i,j'} + \beta_{j'}.
+  \label{eq:benchreg-r2}
+\end{equation}
+Only predictors with $R^2 \ge 0.1$ are retained.  For a held-out system~$i$
+with known scores on some subset of these predictors, the final prediction is
+an $R^2$-weighted average:
+\begin{equation}
+  \hat{z}_{i,j}^{\mathrm{BenchReg}}
+  = \frac{\sum_{j' \in \mathcal{K}_i}\, R^2(j' \!\to\! j) \cdot (\alpha_{j'}\, z_{i,j'} + \beta_{j'})}
+         {\sum_{j' \in \mathcal{K}_i}\, R^2(j' \!\to\! j)},
+  \label{eq:benchreg-pred}
+\end{equation}
+where $\mathcal{K}_i \subseteq \{j_1,\ldots,j_5\}$ is the subset of top-$k$
+predictors for which system~$i$ has observed scores.  The prediction is mapped
+back to $[0,1]$ via the inverse logit $\hat{s} = \sigma(\hat{z})$.
+
+\subsubsection{SVD-Logit (Rank-2 Soft-Impute)}
+\label{app:svd-logit}
+
+As a global complement, we perform iterative SVD completion in logit-then-$z$-score
+space.  After logit-transforming all percentage-bounded columns, we column-wise
+standardize to $z$-scores, initialize missing entries to 0, then iterate:
+\begin{enumerate}
+  \item Compute truncated SVD: $\mathbf{M} \approx \mathbf{U}_r\,\mathbf{\Sigma}_r\,\mathbf{V}_r^\top$ with $r{=}2$.
+  \item Replace only the missing entries with the rank-$r$ approximation;
+        observed entries remain unchanged.
+  \item Repeat until relative change $< 10^{-4}$.
+\end{enumerate}
+After convergence, predictions are de-standardized and inverse-logit-transformed
+back to $[0,1]$.
+
+The rank $r{=}2$ is chosen following the original BenchPress finding that rank~2
+is optimal for sparse LLM benchmark matrices---higher ranks overfit.
+
+\subsubsection{BenchPress Blend}
+\label{app:benchpress-blend}
+
+The final predictor combines both methods:
+\begin{equation}
+  \hat{s}_{i,j}^{\mathrm{BenchPress}}
+  = \alpha \cdot \hat{s}_{i,j}^{\mathrm{BenchReg}}
+  + (1{-}\alpha) \cdot \hat{s}_{i,j}^{\mathrm{SVD}},
+  \quad \alpha = 0.6.
+  \label{eq:benchpress-blend}
+\end{equation}
+When LogitBenchReg has no prediction for a cell (insufficient predictor
+coverage), the method falls back to SVD-Logit alone.
+
+\subsubsection{Evaluation Protocol}
+\label{app:benchpress-eval}
+
+We measure per-benchmark predictability using a per-system holdout protocol:
+\begin{enumerate}
+  \item For each of 3 random folds: for every system~$i$, randomly hide 50\%
+        of its observed scores.
+  \item Train BenchPress on the remaining observed matrix.
+  \item Predict hidden cells and record absolute errors per benchmark.
+\end{enumerate}
+The primary metric is the \textbf{median absolute error (MedAE)} on held-out
+cells, aggregated per benchmark.  Benchmarks with higher MedAE carry more
+unique signal---their scores cannot be reconstructed from other benchmarks.
+
+\paragraph{Adaptation note.}
+The original BenchPress uses 83 models as training rows; our matrix has 16
+agent+model combinations.  With $k{=}5$ predictors per target, each univariate
+regression is fit on $\sim$14--16 data points, which is statistically marginal
+but stabilized by the $R^2$ weighting and the SVD-Logit fallback.  We report
+MedAE rather than percentage error because our scores are on $[0,1]$ rather
+than $[0,100]$.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{Model vs.\ Agent Effect: Methodology Details}
+\label{app:model-vs-agent}
+
+This appendix formalizes the within-family and adjusted-effect analyses
+summarized in Section~\ref{sec:agent-harness}.  Let $s(m, a, b)$ denote the
+benchmark score for model~$m$, agent scaffold~$a$, and benchmark~$b$.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsubsection{Within-Family Comparison}
+\label{app:within-family}
+
+For each model provider family $f$ (e.g., Anthropic, OpenAI, Google), let
+$M_f$ be the set of models belonging to $f$ and $A_f$ the set of non-baseline
+agents evaluated on that family.  The baseline agent is Terminus~2.
+
+\paragraph{Model effect (fixing agent).}
+For each benchmark~$b$, we fix the agent to Terminus~2 and measure the score
+range across models within the family:
+\begin{equation}
+  \Delta_{\mathrm{model}}^{(f,b)}
+  \;=\;
+  \max_{m \in M_f}\, s(m,\,\text{terminus-2},\,b)
+  \;-\;
+  \min_{m \in M_f}\, s(m,\,\text{terminus-2},\,b).
+  \label{eq:model-effect}
+\end{equation}
+This requires at least two models in~$f$ with observed Terminus~2 scores on~$b$.
+
+\paragraph{Agent effect (fixing model).}
+For each model $m \in M_f$ evaluated under both Terminus~2 and another agent
+$a \in A_f$ on benchmark~$b$, we compute the absolute score change:
+\begin{equation}
+  \delta_{\mathrm{agent}}^{(m,a,b)}
+  \;=\;
+  \bigl|\, s(m,\,a,\,b) - s(m,\,\text{terminus-2},\,b) \,\bigr|.
+  \label{eq:agent-delta}
+\end{equation}
+The family-level agent effect on~$b$ averages over all available model--agent pairs:
+\begin{equation}
+  \Delta_{\mathrm{agent}}^{(f,b)}
+  \;=\;
+  \frac{1}{|\mathcal{P}_{f,b}|}
+  \sum_{(m,a)\in \mathcal{P}_{f,b}}
+  \delta_{\mathrm{agent}}^{(m,a,b)},
+  \label{eq:agent-effect}
+\end{equation}
+where $\mathcal{P}_{f,b} = \{(m,a) : m \in M_f,\; a \in A_f,\; \text{both }
+s(m,a,b) \text{ and } s(m,\text{terminus-2},b) \text{ are observed}\}$.
+
+\paragraph{Dominance classification.}
+For a given $(f, b)$ pair, the benchmark is classified as
+\emph{model-dominant} if $\Delta_{\mathrm{model}}^{(f,b)} >
+\Delta_{\mathrm{agent}}^{(f,b)}$, and \emph{agent-dominant} otherwise.
+
+\paragraph{Family-level summary.}
+We aggregate across benchmarks within each family using the mean:
+\begin{align}
+  \overline{\Delta}_{\mathrm{model}}^{(f)}
+  &= \frac{1}{|B_f|}\sum_{b \in B_f} \Delta_{\mathrm{model}}^{(f,b)}, &
+  \overline{\Delta}_{\mathrm{agent}}^{(f)}
+  &= \frac{1}{|B_f|}\sum_{b \in B_f} \Delta_{\mathrm{agent}}^{(f,b)},
+  \label{eq:family-summary}
+\end{align}
+where $B_f$ is the set of benchmarks with both model-effect and agent-effect
+estimates for family~$f$.  The model-to-agent ratio is
+$\overline{\Delta}_{\mathrm{model}}^{(f)} / \overline{\Delta}_{\mathrm{agent}}^{(f)}$,
+and the model-dominant percentage is the fraction of benchmarks in~$B_f$
+classified as model-dominant.
+
+Table~\ref{tab:within-family-summary} reports these statistics for the three
+multi-model families.
+
+\begin{table}[t]
+  \centering
+  \caption{Within-family model vs.\ agent effect comparison.  The model effect
+    is the score range across models within the family on Terminus~2; the agent
+    effect is the mean absolute score change from switching the agent while
+    holding the model fixed.  Ratio and model-dominant percentage are computed
+    per benchmark, then averaged.}
+  \label{tab:within-family-summary}
+  \begin{tabular}{lcccccc}
+    \toprule
+    Family
+      & Models
+      & Agents
+      & $\overline{\Delta}_{\mathrm{model}}$
+      & $\overline{\Delta}_{\mathrm{agent}}$
+      & Ratio
+      & Model-dom.\ \% \\
+    \midrule
+    Anthropic
+      & 3
+      & claude-code
+      & \AnthropicModelEffectMean{}
+      & \AnthropicAgentEffectMean{}
+      & \AnthropicModelAgentRatio{}$\times$
+      & \AnthropicModelWinPct\% \\
+    OpenAI
+      & 3
+      & codex
+      & \OpenAIModelEffectMean{}
+      & \OpenAIAgentEffectMean{}
+      & \OpenAIModelAgentRatio{}$\times$
+      & \OpenAIModelWinPct\% \\
+    Google
+      & 2
+      & gemini-cli
+      & \GoogleModelEffectMean{}
+      & \GoogleAgentEffectMean{}
+      & \GoogleModelAgentRatio{}$\times$
+      & \GoogleModelWinPct\% \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+Table~\ref{tab:within-family-example} illustrates the per-benchmark comparison
+for one representative family.
+
+\begin{table}[t]
+  \centering
+  \caption{Example within-family comparison for the Anthropic family
+    (claude-opus-4-6, claude-sonnet-4-6, claude-haiku-4-5).
+    \emph{Model effect}: score range across the three models on Terminus~2.
+    \emph{Agent effect}: mean $|\Delta|$ from switching to Claude~Code while
+    holding each model fixed.  Only a representative subset of benchmarks is
+    shown.}
+  \label{tab:within-family-example}
+  \small
+  \begin{tabular}{lcccc}
+    \toprule
+    & \multicolumn{2}{c}{Model effect (Terminus-2)}
+    & \multicolumn{2}{c}{Agent effect (fix model)} \\
+    \cmidrule(lr){2-3}\cmidrule(lr){4-5}
+    Benchmark & Score range & Rank & Mean $|\Delta|$ & Rank \\
+    \midrule
+    \multicolumn{5}{c}{\emph{Auto-populated from pipeline output ---
+      see \texttt{benchmark\_within\_family\_model\_vs\_agent.csv}}} \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsubsection{Adjusted Group Effects}
+\label{app:adjusted-effects}
+
+The within-family analysis is restricted to families with multiple models.  To
+obtain a single ranking across all \NumModels{} models and \NumAgents{} agents,
+we use an adjusted group effect that controls for confounders.
+
+Let $\mathbf{y}$ be the vector of benchmark-relative (robustly normalized)
+scores, one entry per observed (model,\,agent,\,benchmark) triple.  We fit a
+linear model using the confounding factors as one-hot-encoded predictors:
+\begin{equation}
+  \hat{\mathbf{y}} = \mathbf{X}_{\text{controls}}\,\boldsymbol{\beta},
+  \label{eq:confound-fit}
+\end{equation}
+where $\mathbf{X}_{\text{controls}}$ contains dummy variables for the
+confounding dimensions (with one level dropped per factor).
+
+\paragraph{Model effects.}
+To estimate adjusted model effects, the controls are \emph{agent} and
+\emph{benchmark}:
+\begin{equation}
+  y^{\mathrm{adj}}_i
+  = y_i - \hat{y}_i + \bar{y},
+  \qquad
+  \hat{y}_i = [\mathbf{X}_{\text{agent, benchmark}}\,\hat{\boldsymbol{\beta}}]_i.
+  \label{eq:adjusted-model}
+\end{equation}
+The adjusted model effect for model~$m$ is then
+$\bar{y}^{\mathrm{adj}}_m = \frac{1}{n_m}\sum_{i:\,\text{model}_i = m}
+y^{\mathrm{adj}}_i$, where $n_m$ is the number of observations for model~$m$.
+This removes the influence of which agents and benchmarks each model was paired
+with, isolating the model's contribution.
+
+\paragraph{Agent effects.}
+Symmetrically, to estimate adjusted agent effects, the controls are
+\emph{model} and \emph{benchmark}:
+\begin{equation}
+  y^{\mathrm{adj}}_i
+  = y_i - \hat{y}_i + \bar{y},
+  \qquad
+  \hat{y}_i = [\mathbf{X}_{\text{model, benchmark}}\,\hat{\boldsymbol{\beta}}]_i.
+  \label{eq:adjusted-agent}
+\end{equation}
+
+\paragraph{Interpretation.}
+The adjusted model effect span is \ModelEffectSpan{} robust-scaled units (from
+\TopModel{} at $+$\TopModelEffect{} to \BottomModel{} at
+\BottomModelEffect{}), compared to \AgentEffectSpan{} for agents.  The
+$>$10$\times$ ratio confirms that model selection is the dominant lever even
+after controlling for the unbalanced agent--benchmark evaluation matrix.
+
+\begin{table}[t]
+  \centering
+  \caption{Adjusted model effects.  Each model's mean benchmark-relative score
+    is adjusted by removing the confounding effect of which agents and
+    benchmarks it was paired with.  Units are robust-scaled benchmark-relative
+    scores (0~=~benchmark median).}
+  \label{tab:adjusted-model-effects}
+  \small
+  \begin{tabular}{lcc}
+    \toprule
+    Model & Adjusted mean & Observations \\
+    \midrule
+    \multicolumn{3}{c}{\emph{Auto-populated from pipeline output ---
+      see \texttt{benchmark\_model\_adjusted\_effects.csv}}} \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+\begin{table}[t]
+  \centering
+  \caption{Adjusted agent effects.  Same methodology as
+    Table~\ref{tab:adjusted-model-effects}, controlling for model and
+    benchmark.}
+  \label{tab:adjusted-agent-effects}
+  \small
+  \begin{tabular}{lcc}
+    \toprule
+    Agent & Adjusted mean & Observations \\
+    \midrule
+    \multicolumn{3}{c}{\emph{Auto-populated from pipeline output ---
+      see \texttt{benchmark\_agent\_adjusted\_effects.csv}}} \\
+    \bottomrule
+  \end{tabular}
+\end{table}

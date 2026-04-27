@@ -43,7 +43,7 @@ def _plot_grouped_leaderboard(
             )
     ax.set_yticks(list(model_to_y.values()))
     ax.set_yticklabels([wrap_text(model, 30) for model in model_order], fontsize=label_size)
-    ax.set_title(wrap_text(benchmark, 26), fontsize=title_size)
+    ax.set_title(wrap_text(benchmark_display_name(benchmark), 26), fontsize=title_size)
     ax.set_xlabel("Benchmark score", fontsize=axis_size)
     ax.tick_params(axis="x", labelsize=axis_size - 1)
     ax.grid(axis="x", color="#dddddd", linewidth=0.8)

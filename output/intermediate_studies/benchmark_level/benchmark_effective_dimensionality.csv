@@ -1,0 +1,2 @@
+participation_ratio,effective_dim_entropy,n_components_90pct,n_components_95pct,top1_variance,top3_variance,top5_variance,n_benchmarks,total_components
+1.0000000000000189,1.0000000000003193,1,1,0.9999999999999906,0.9999999999999996,1.0,53,15
