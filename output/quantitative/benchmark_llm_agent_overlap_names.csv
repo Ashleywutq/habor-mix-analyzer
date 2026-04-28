@@ -1,0 +1,1697 @@
+kind,source_name,has_overlap,matched_harbor_name,n_benchmarks,benchmarks,n_harbor_mapped_benchmarks,harbor_mapped_benchmarks
+agent_system_description,2.0.0a0,False,,1,swe_bench_multilingual,1,swe_bench_multilingual
+agent_system_description,ab-shetty/mids-officeqa-alpha,False,,1,officeqa,0,
+agent_system_description,ab-shetty/mids-officeqa-beta,False,,1,officeqa,0,
+agent_system_description,Abacus AI Desktop,False,,1,terminalbench_2_0,1,terminalbench_2_0
+agent_system_description,ACoder,False,,1,swe_bench_verified,1,swe_bench_verified
+agent_system_description,Act,False,,1,crmarena,1,crmarena
+agent_system_description,AEGIS,False,,1,swt_bench,1,swt_bench
+agent_system_description,"agent=claude-code@2.1.98, Harbor adapter parity experiment, 3 runs x 200 tasks",True,claude-code,1,widesearch,1,widesearch
+agent_system_description,Agentica custom scaffold,False,,1,browsecomp_plus,0,
+agent_system_description,AgenticData,False,,1,spider_2,1,spider_2
+agent_system_description,AgenticView,False,,1,spider_2,1,spider_2
+agent_system_description,Agentless,False,,4,swe_bench_live; swe_bench_verified; swe_perf; swe_smith,2,swe_bench_verified; swe_smith
+agent_system_description,Agentless Lite,False,,1,swe_bench_verified,1,swe_bench_verified
+agent_system_description,Agentless-1.5,False,,1,swe_bench_verified,1,swe_bench_verified
+agent_system_description,Agentless; train size 11M,False,,1,swe_smith,1,swe_smith
+agent_system_description,AgentScope,False,,1,swe_bench_verified,1,swe_bench_verified
+agent_system_description,AiCheng Agent,False,,1,spider_2,1,spider_2
+agent_system_description,AIDE-PDE,False,,1,codepde,1,codepde
+agent_system_description,aider,False,,2,aider_polyglot; sldbench,2,aider_polyglot; sldbench
+agent_system_description,Aider,False,,4,devopsgym; swe_bench_verified; swt_bench; webgenbench,3,devopsgym; swe_bench_verified; swt_bench
+agent_system_description,Aime-coder v1,False,,1,swe_bench_verified,1,swe_bench_verified
+agent_system_description,AlgoTuner,False,,1,algotune,1,algotune
+agent_system_description,Amazon Nova Premier 1.0 (2025-04-30),False,,1,swe_bench_verified,1,swe_bench_verified
+agent_system_description,Amazon Q Developer Agent,False,,1,swt_bench,1,swt_bench
+agent_system_description,Amazon Q Developer Agent (v20240430-dev),False,,1,swe_bench_verified,1,swe_bench_verified
+agent_system_description,Amazon Q Developer Agent (v20240719-dev),False,,1,swe_bench_verified,1,swe_bench_verified
+agent_system_description,Amazon Q Developer Agent (v20241202-dev),False,,1,swe_bench_verified,1,swe_bench_verified
+agent_system_description,Amazon Q Developer Agent (v20250405-dev),False,,1,swe_bench_verified,1,swe_bench_verified
+agent_system_description,Ante,False,,1,terminalbench_2_0,1,terminalbench_2_0
+agent_system_description,Anthropic Agent,False,,1,cybergym,0,
+agent_system_description,APEX-SQL,False,,1,spider_2,1,spider_2
+agent_system_description,AppMap Navie,False,,1,swe_bench_verified,1,swe_bench_verified
+agent_system_description,AppMap Navie v2,False,,1,swe_bench_verified,1,swe_bench_verified
+agent_system_description,Arctic-FLEX,False,,1,spider_2,1,spider_2
+agent_system_description,Artemis Agent v1 (2024-11-20),False,,1,swe_bench_verified,1,swe_bench_verified
+agent_system_description,Artemis Agent v2 (2025-09-24),False,,1,swe_bench_verified,1,swe_bench_verified
+agent_system_description,Ask Data with Relational Knowledge Graph,False,,1,spider_2,1,spider_2
+agent_system_description,AssertFlip,False,,1,swt_bench,1,swt_bench
+agent_system_description,Atlassian Rovo Dev (2025-09-02),False,,1,swe_bench_verified,1,swe_bench_verified
+agent_system_description,Augment Agent v0,False,,1,swe_bench_verified,1,swe_bench_verified
+agent_system_description,Augment Agent v1,False,,1,swe_bench_verified,1,swe_bench_verified
+agent_system_description,AutoCodeRover,False,,3,swe_bench_verified; swe_smith; swt_bench,3,swe_bench_verified; swe_smith; swt_bench
+agent_system_description,AutoCodeRover (v20240620),False,,1,swe_bench_verified,1,swe_bench_verified
+agent_system_description,AutoCodeRover-v2.0 (Claude-3.5-Sonnet-20241022),False,,1,swe_bench_verified,1,swe_bench_verified
+agent_system_description,AutoCodeRover-v2.1 (Claude-3.5-Sonnet-20241022),False,,1,swe_bench_verified,1,swe_bench_verified
+agent_system_description,AutoEval,False,,1,spider_2,1,spider_2
+agent_system_description,AutoGPT,False,,1,gaia,1,gaia
+agent_system_description,AutoLink,False,,1,spider_2,1,spider_2
+agent_system_description,Aviary (SimpleAgent),False,,1,bix_bench,1,bix_bench
+agent_system_description,Barcelona v0.1,False,,1,gaia,1,gaia
+agent_system_description,BasicAgent,False,,1,paperbench,0,
+agent_system_description,BasicAgent (Code-Dev),False,,1,paperbench,0,
+agent_system_description,"BasicAgent, 3-paper subset",False,,1,paperbench,0,
+agent_system_description,"best@3, 3-paper subset",False,,1,paperbench,0,
+agent_system_description,"best@3, 48 hours, 3-paper subset",False,,1,paperbench,0,
+agent_system_description,Blackbox AI Agent,False,,1,swe_bench_verified,1,swe_bench_verified
+agent_system_description,Bloop,False,,1,swe_bench_verified,1,swe_bench_verified
+agent_system_description,Bolt.diy,False,,1,webgenbench,0,
+agent_system_description,Bolt.diy (Manual),False,,1,webgenbench,0,
+agent_system_description,Bolt.diy (UI Agent),False,,1,webgenbench,0,
+agent_system_description,Bolt.diy; fine-tuned Qwen2.5-Coder-32B on 150 trajectories,False,,1,webgenbench,0,
+agent_system_description,Bolt.diy; fine-tuned Qwen2.5-Coder-32B on 300 trajectories,False,,1,webgenbench,0,
+agent_system_description,Bolt.diy; fine-tuned Qwen2.5-Coder-32B on 600 trajectories,False,,1,webgenbench,0,
+agent_system_description,Bracket.sh,False,,1,swe_bench_verified,1,swe_bench_verified
+agent_system_description,BrowseComp-Plus standard search scaffold,False,,1,browsecomp_plus,0,
+agent_system_description,ByteBrain-Agent,False,,1,spider_2,1,spider_2
+agent_system_description,Bytedance MarsCode Agent,False,,1,swe_bench_verified,1,swe_bench_verified
+agent_system_description,CAMEL-AI,False,,1,terminalbench_2_0,1,terminalbench_2_0
+agent_system_description,Capy,False,,1,terminalbench_2_0,1,terminalbench_2_0
+agent_system_description,cchuter,False,,1,terminalbench_2_0,1,terminalbench_2_0
+agent_system_description,Chat2DB-Agent,False,,1,spider_2,1,spider_2
+agent_system_description,CHESS,False,,1,spider_2,1,spider_2
+agent_system_description,Chicory AI Agent,False,,1,spider_2,1,spider_2
+agent_system_description,"Claude Agent SDK (Full corpus, DBX Parsed)",True,claude-code,1,officeqa,0,
+agent_system_description,"Claude Agent SDK (Full corpus, PDF)",True,claude-code,1,officeqa,0,
+agent_system_description,"Claude Agent SDK (Oracle corpus, DBX Parsed)",True,claude-code,1,officeqa,0,
+agent_system_description,"Claude Agent SDK (Oracle corpus, PDF)",True,claude-code,1,officeqa,0,
+agent_system_description,Claude Code,True,claude-code,7,abcbench; cybergym; devopsgym; featurebench; skillsbench; swe_bench_live; terminalbench_2_0,4,devopsgym; featurebench; skillsbench; terminalbench_2_0
+agent_system_description,Claude Code (routing),True,claude-code,1,featurebench,1,featurebench
+agent_system_description,Claude Mythos Preview,False,,1,swe_bench_verified,1,swe_bench_verified
+agent_system_description,claude-code,True,claude-code,1,sldbench,1,sldbench
+agent_system_description,claude-code@2.1.104,True,claude-code,1,aa_lcr,0,
+agent_system_description,Co-Sight_v2.0.0,False,,1,gaia,1,gaia
+agent_system_description,Co-Sight_v2.0.1,False,,1,gaia,1,gaia
+agent_system_description,Co-Sight_v2.1.0,False,,1,gaia,1,gaia
+agent_system_description,CodeBrain-1,False,,1,terminalbench_2_0,1,terminalbench_2_0
+agent_system_description,"CodePDE (Reasoning + Debugging + Refinement, best-of-12)",False,,1,codepde,1,codepde
+agent_system_description,CodeR,False,,1,spider_2,1,spider_2
+agent_system_description,CodeShellAgent,False,,1,swe_bench_verified,1,swe_bench_verified
+agent_system_description,CodeStory Midwit Agent,False,,1,swe_bench_verified,1,swe_bench_verified
+agent_system_description,CodeSweep - SWE-agent - Kimi K2 Instruct,False,,1,swe_bench_verified,1,swe_bench_verified
+agent_system_description,Codex,True,codex,3,featurebench; skillsbench; terminalbench_2_0,3,featurebench; skillsbench; terminalbench_2_0
+agent_system_description,codex,True,codex,1,sldbench,1,sldbench
+agent_system_description,Codex 2.0.0,True,codex,1,swe_bench_multilingual,1,swe_bench_multilingual
+agent_system_description,Codex CLI,True,codex,2,cybergym; terminalbench_2_0,1,terminalbench_2_0
+agent_system_description,codex@0.117.0,True,codex,1,aa_lcr,0,
+agent_system_description,CoFD-SQL,False,,1,spider_2,1,spider_2
+agent_system_description,CollideNL2SQL,False,,1,spider_2,1,spider_2
+agent_system_description,Composio SWE-Kit (2024-10-25),False,,1,swe_bench_verified,1,swe_bench_verified
+agent_system_description,Composio SWEkit,False,,1,swe_bench_verified,1,swe_bench_verified
+agent_system_description,Crux,False,,1,terminalbench_2_0,1,terminalbench_2_0
+agent_system_description,CT-ChatBI,False,,1,spider_2,1,spider_2
+agent_system_description,Cursor CLI,False,,1,swe_fficiency,0,
+agent_system_description,Cybench,False,,1,cybergym,0,
+agent_system_description,DA-Agent,False,,1,da_code,1,da_code
+agent_system_description,DAIL-SQL,False,,1,spider_2,1,spider_2
+agent_system_description,Dail-SQL,False,,1,spider_2,1,spider_2
+agent_system_description,DailSQL,False,,1,spider_2,1,spider_2
+agent_system_description,Dakou Agent,False,,1,terminalbench_2_0,1,terminalbench_2_0
+agent_system_description,DAQUV_QUVI_Agent,False,,1,spider_2,1,spider_2
+agent_system_description,Databao Agent,False,,1,spider_2,1,spider_2
+agent_system_description,Decide Agent,False,,1,spreadsheetbench,1,spreadsheetbench
+agent_system_description,Deep Agents,False,,1,terminalbench_2_0,1,terminalbench_2_0
+agent_system_description,DeepSWE-Preview,False,,1,swe_bench_verified,1,swe_bench_verified
+agent_system_description,devlo,False,,1,swe_bench_verified,1,swe_bench_verified
+agent_system_description,DevstralTestGen,False,,1,swt_bench,1,swt_bench
+agent_system_description,DIN-SQL,False,,1,spider_2,1,spider_2
+agent_system_description,Droid,False,,1,terminalbench_2_0,1,terminalbench_2_0
+agent_system_description,DSR-SQL,False,,1,spider_2,1,spider_2
+agent_system_description,DSR-SQL (w/o voting),False,,1,spider_2,1,spider_2
+agent_system_description,Duo,False,,1,spider_2,1,spider_2
+agent_system_description,e-Otter++,False,,1,swt_bench,1,swt_bench
+agent_system_description,"E2E System, Avg@4",False,,1,widesearch,1,widesearch
+agent_system_description,Emergent E1 (v2024-10-12),False,,1,swe_bench_verified,1,swe_bench_verified
+agent_system_description,Emergent E1 (v2024-12-23),False,,1,swe_bench_verified,1,swe_bench_verified
+agent_system_description,Engine Labs (2024-11-25),False,,1,swe_bench_verified,1,swe_bench_verified
+agent_system_description,ENiGMA,False,,1,cybergym,0,
+agent_system_description,EntroPO,False,,1,swe_bench_verified,1,swe_bench_verified
+agent_system_description,EPAM AI/Run Developer Agent,False,,1,swe_bench_verified,1,swe_bench_verified
+agent_system_description,EPAM AI/Run Developer Agent v20241029,False,,1,swe_bench_verified,1,swe_bench_verified
+agent_system_description,EPAM AI/Run Developer Agent v20241212,False,,1,swe_bench_verified,1,swe_bench_verified
+agent_system_description,EPAM AI/Run Developer Agent v20250219,False,,1,swe_bench_verified,1,swe_bench_verified
+agent_system_description,EPAM AI/Run Developer Agent v20250719,False,,1,swe_bench_verified,1,swe_bench_verified
+agent_system_description,Episodic + Reflexion,False,,1,usaco,1,usaco
+agent_system_description,Episodic + Semantic,False,,1,usaco,1,usaco
+agent_system_description,Episodic Retrieval,False,,1,usaco,1,usaco
+agent_system_description,EXA-SQL,False,,1,spider_2,1,spider_2
+agent_system_description,Factory Code Droid,False,,1,swe_bench_verified,1,swe_bench_verified
+agent_system_description,ForgeCode,False,,1,terminalbench_2_0,1,terminalbench_2_0
+agent_system_description,FRIDAY,False,,1,gaia,1,gaia
+agent_system_description,FrogBoss-32B-2510,False,,1,swe_bench_verified,1,swe_bench_verified
+agent_system_description,FrogMini-14B-2510,False,,1,swe_bench_verified,1,swe_bench_verified
+agent_system_description,FunSearch-PDE,False,,1,codepde,1,codepde
+agent_system_description,Gemini CLI,True,gemini-cli,3,cybergym; skillsbench; terminalbench_2_0,2,skillsbench; terminalbench_2_0
+agent_system_description,"Gemini CLI (Full corpus, DBX Parsed)",True,gemini-cli,1,officeqa,0,
+agent_system_description,"Gemini CLI (Full corpus, PDF)",True,gemini-cli,1,officeqa,0,
+agent_system_description,"Gemini CLI (Oracle corpus, DBX Parsed)",True,gemini-cli,1,officeqa,0,
+agent_system_description,"Gemini CLI (Oracle corpus, PDF)",True,gemini-cli,1,officeqa,0,
+agent_system_description,Gemini-CLI,True,gemini-cli,1,featurebench,1,featurebench
+agent_system_description,gemini-cli,True,gemini-cli,1,sldbench,1,sldbench
+agent_system_description,Genloop's Sentinel Agent v1.5,False,,1,spider_2,1,spider_2
+agent_system_description,Genloop's Sentinel Agent v2,False,,1,spider_2,1,spider_2
+agent_system_description,Genloop's Sentinel Agent v2 Pro,False,,1,spider_2,1,spider_2
+agent_system_description,GLM-4.5,False,,1,swe_bench_verified,1,swe_bench_verified
+agent_system_description,GLM-4.6,False,,1,swe_bench_verified,1,swe_bench_verified
+agent_system_description,Google Jules,False,,1,swe_bench_verified,1,swe_bench_verified
+agent_system_description,goose,False,,1,sldbench,1,sldbench
+agent_system_description,Goose,False,,1,terminalbench_2_0,1,terminalbench_2_0
+agent_system_description,GPT-4 + plugins (human-selected),False,,1,gaia,1,gaia
+agent_system_description,gpt-oss native toolset,False,,1,browsecomp_plus,0,
+agent_system_description,GRASP + Reforce,False,,1,spider_2,1,spider_2
+agent_system_description,grok-cli,False,,1,terminalbench_2_0,1,terminalbench_2_0
+agent_system_description,Gru(2024-08-24),False,,1,swe_bench_verified,1,swe_bench_verified
+agent_system_description,Gru(2024-12-08),False,,1,swe_bench_verified,1,swe_bench_verified
+agent_system_description,h2oGPTe Agent v1.6.27 | March 17 original date,False,,1,gaia,1,gaia
+agent_system_description,h2oGPTe Agent v1.6.33,False,,1,gaia,1,gaia
+agent_system_description,h2oGPTe Agent v1.6.44,False,,1,gaia,1,gaia
+agent_system_description,h2oGPTe Agent v1.6.8,False,,1,gaia,1,gaia
+agent_system_description,HAL Generalist Agent,False,,2,scienceagentbench; usaco,1,usaco
+agent_system_description,HALO V1217-1,False,,1,gaia,1,gaia
+agent_system_description,Harness AI,False,,1,swe_bench_verified,1,swe_bench_verified
+agent_system_description,Honeycomb,False,,1,swe_bench_verified,1,swe_bench_verified
+agent_system_description,Hugging Face Agents + GPT-4o,False,,1,gaia,1,gaia
+agent_system_description,human,False,,1,sldbench,1,sldbench
+agent_system_description,II-Agent,False,,1,terminalbench_2_0,1,terminalbench_2_0
+agent_system_description,IndusAGI Coding Agent,False,,1,terminalbench_2_0,1,terminalbench_2_0
+agent_system_description,IterativeAgent,False,,1,paperbench,0,
+agent_system_description,"IterativeAgent, 36-hour limit",False,,1,paperbench,0,
+agent_system_description,JoinAI_V2.2,False,,1,gaia,1,gaia
+agent_system_description,JoyCode,False,,1,swe_bench_verified,1,swe_bench_verified
+agent_system_description,Junie CLI,False,,1,terminalbench_2_0,1,terminalbench_2_0
+agent_system_description,KDGCCloud-KCILab,False,,1,spider_2,1,spider_2
+agent_system_description,Kimi Agent,False,,1,cybergym,0,
+agent_system_description,Kyra,False,,1,spreadsheetbench,1,spreadsheetbench
+agent_system_description,LeAgent_v1.0,False,,1,gaia,1,gaia
+agent_system_description,Learn-by-interact,False,,1,swe_bench_verified,1,swe_bench_verified
+agent_system_description,Lemon,False,,1,gaia,1,gaia
+agent_system_description,Letta Code,False,,1,terminalbench_2_0,1,terminalbench_2_0
+agent_system_description,LIBRO,False,,1,swt_bench,1,swt_bench
+agent_system_description,Lingma Agent,False,,1,swe_bench_verified,1,swe_bench_verified
+agent_system_description,LingXi Agent,False,,1,spider_2,1,spider_2
+agent_system_description,Lingxi v1.5 x Kimi K2,False,,1,swe_bench_verified,1,swe_bench_verified
+agent_system_description,Lingxi-v1.5_claude-4-sonnet-20250514,False,,1,swe_bench_verified,1,swe_bench_verified
+agent_system_description,LinkAlign,False,,1,spider_2,1,spider_2
+agent_system_description,live-SWE-agent,False,,1,swe_bench_verified,1,swe_bench_verified
+agent_system_description,LogicStar AI,False,,1,swt_bench,1,swt_bench
+agent_system_description,Magentic-1,False,,1,gaia,1,gaia
+agent_system_description,Magentic-1 (o1),False,,1,gaia,1,gaia
+agent_system_description,Magentic-UI,False,,1,gaia,1,gaia
+agent_system_description,MagentLess,False,,1,multi_swe_bench,1,multi_swe_bench
+agent_system_description,MASAI,False,,1,swe_bench_verified,1,swe_bench_verified
+agent_system_description,MAYA-V2,False,,1,terminalbench_2_0,1,terminalbench_2_0
+agent_system_description,MCTS-Refine-7B,False,,1,swe_bench_verified,1,swe_bench_verified
+agent_system_description,MedAgentBench agent orchestrator,False,,1,medagentbench,1,medagentbench
+agent_system_description,Meituan-agent,False,,1,spider_2,1,spider_2
+agent_system_description,Meta Agent,False,,1,cybergym,0,
+agent_system_description,Mini-SWE,False,,1,cooperbench,0,
+agent_system_description,mini-SWE-agent,False,,2,abcbench; swe_bench_verified,1,swe_bench_verified
+agent_system_description,mini-SWE-Agent,False,,1,devopsgym,1,devopsgym
+agent_system_description,mini-swe-agent,False,,2,sldbench; swe_bench_pro,2,sldbench; swe_bench_pro
+agent_system_description,Mini-SWE-Agent,False,,1,terminalbench_2_0,1,terminalbench_2_0
+agent_system_description,Moatless Tools,False,,1,swe_bench_verified,1,swe_bench_verified
+agent_system_description,MopenHands,False,,1,multi_swe_bench,1,multi_swe_bench
+agent_system_description,MSWE-agent,False,,1,multi_swe_bench,1,multi_swe_bench
+agent_system_description,Multi-Agent Experiment v0.1 (powered by AutoGen),False,,1,gaia,1,gaia
+agent_system_description,"Multi-Agent pipeline, Avg@4",False,,1,widesearch,1,widesearch
+agent_system_description,Mux,False,,1,terminalbench_2_0,1,terminalbench_2_0
+agent_system_description,Native mini,False,,1,spider_2,1,spider_2
+agent_system_description,Nebius AI Qwen 2.5 72B Generator,False,,1,swe_bench_verified,1,swe_bench_verified
+agent_system_description,Nemotron-CORTEXA,False,,1,swe_bench_verified,1,swe_bench_verified
+agent_system_description,Nemotron-ToolOrchestra-0106,False,,1,gaia,1,gaia
+agent_system_description,nFactorial (2024-10-01),False,,1,swe_bench_verified,1,swe_bench_verified
+agent_system_description,nFactorial (2024-10-07),False,,1,swe_bench_verified,1,swe_bench_verified
+agent_system_description,nFactorial (2024-10-30),False,,1,swe_bench_verified,1,swe_bench_verified
+agent_system_description,nFactorial (2024-11-05),False,,1,swe_bench_verified,1,swe_bench_verified
+agent_system_description,Nobie Agent,False,,1,spreadsheetbench,1,spreadsheetbench
+agent_system_description,o3-deep-research,False,,1,deepsynth,1,deepsynth
+agent_system_description,omne v0.1,False,,1,gaia,1,gaia
+agent_system_description,open Deep Research | pass@1,False,,1,gaia,1,gaia
+agent_system_description,"OpenAI Codex CLI (Full corpus, DBX Parsed)",True,codex,1,officeqa,0,
+agent_system_description,"OpenAI Codex CLI (Full corpus, PDF)",True,codex,1,officeqa,0,
+agent_system_description,"OpenAI Codex CLI (Oracle corpus, DBX Parsed)",True,codex,1,officeqa,0,
+agent_system_description,"OpenAI Codex CLI (Oracle corpus, PDF)",True,codex,1,officeqa,0,
+agent_system_description,OpenAI Deep Research (cons@64),False,,1,gaia,1,gaia
+agent_system_description,OpenAI Deep Research (pass@1),False,,1,gaia,1,gaia
+agent_system_description,OpenClaw 2026.4.1,False,,1,gaia2,1,gaia2
+agent_system_description,opencode,False,,1,sldbench,1,sldbench
+agent_system_description,OpenCode,False,,1,terminalbench_2_0,1,terminalbench_2_0
+agent_system_description,OpenHands,False,,13,cooperbench; cybergym; devopsgym; featurebench; gso; swe_bench_live; swe_bench_verified; swe_fficiency; swe_perf; swe_smith; swt_bench; terminalbench_2_0; webgenbench,7,devopsgym; featurebench; gso; swe_bench_verified; swe_smith; swt_bench; terminalbench_2_0
+agent_system_description,openhands,False,,1,sldbench,1,sldbench
+agent_system_description,OpenHands (mock),False,,1,featurebench,1,featurebench
+agent_system_description,OpenHands (thinking: no),False,,1,abcbench,0,
+agent_system_description,OpenHands (thinking: yes),False,,1,abcbench,0,
+agent_system_description,OpenHands (w/ SFT),False,,1,abcbench,0,
+agent_system_description,OpenHands (w/o SFT),False,,1,abcbench,0,
+agent_system_description,OpenHands CodeAct (with knowledge),False,,1,scienceagentbench,0,
+agent_system_description,OpenHands CodeAct (without knowledge),False,,1,scienceagentbench,0,
+agent_system_description,OpenHands SDK,False,,1,cooperbench,0,
+agent_system_description,OpenHands; train size 3.3k,False,,1,swe_smith,1,swe_smith
+agent_system_description,OpenHands; train size 491,False,,1,swe_smith,1,swe_smith
+agent_system_description,openJiuwen custom setup,False,,1,browsecomp_plus,0,
+agent_system_description,openJiuwen-deepagent,False,,1,gaia,1,gaia
+agent_system_description,OpenResearcher toolset,False,,1,browsecomp_plus,0,
+agent_system_description,OPS-Agentic-Search,False,,1,gaia,1,gaia
+agent_system_description,Otter,False,,1,swt_bench,1,swt_bench
+agent_system_description,Otter++,False,,1,swt_bench,1,swt_bench
+agent_system_description,OWL,False,,1,deepsynth,1,deepsynth
+agent_system_description,OWL++,False,,1,gaia,1,gaia
+agent_system_description,PAI-DataSurfer Agent,False,,1,spider_2,1,spider_2
+agent_system_description,Pass@5 (oracle),False,,1,swt_bench,1,swt_bench
+agent_system_description,PatchPilot,False,,1,swe_bench_verified,1,swe_bench_verified
+agent_system_description,PatchPilot-v1.1,False,,1,swe_bench_verified,1,swe_bench_verified
+agent_system_description,PExA,False,,1,spider_2,1,spider_2
+agent_system_description,PGV-Agent,False,,1,spider_2,1,spider_2
+agent_system_description,Pipelined SWE-agent,False,,1,crust_bench,1,crust_bench
+agent_system_description,Previous SOTA (opens in a new window),False,,1,gaia,1,gaia
+agent_system_description,Prism Swarm,False,,1,spider_2,1,spider_2
+agent_system_description,Prism Swarm with Deepthink,False,,1,spider_2,1,spider_2
+agent_system_description,Prometheus-v1.2,False,,1,swe_bench_verified,1,swe_bench_verified
+agent_system_description,Prometheus-v1.2.1,False,,1,swe_bench_verified,1,swe_bench_verified
+agent_system_description,ProSPy: Profiling-driven SQL-Python Analysis Framework,False,,1,spider_2,1,spider_2
+agent_system_description,Qingqiu Agent,False,,1,spreadsheetbench,1,spreadsheetbench
+agent_system_description,QiSi-SQL,False,,1,spider_2,1,spider_2
+agent_system_description,Qodo Command,False,,1,swe_bench_verified,1,swe_bench_verified
+agent_system_description,QUVI-2.3,False,,1,spider_2,1,spider_2
+agent_system_description,QUVI-3,False,,1,spider_2,1,spider_2
+agent_system_description,RAG,False,,1,swe_bench_verified,1,swe_bench_verified
+agent_system_description,Random baseline (JudgeEval),False,,1,paperbench,0,
+agent_system_description,ReAct,False,,1,crmarena,1,crmarena
+agent_system_description,"ReAct (temperature=0.5, 3 runs/scenario, 200-step cap)",False,,1,gaia2,1,gaia2
+agent_system_description,Refact.ai Agent,False,,1,swe_bench_verified,1,swe_bench_verified
+agent_system_description,Reflexion,False,,2,spider_2; usaco,2,spider_2; usaco
+agent_system_description,ReFoRCE,False,,1,spider_2,1,spider_2
+agent_system_description,RSL-SQL,False,,1,spider_2,1,spider_2
+agent_system_description,SAB Self-Debug,False,,1,scienceagentbench,0,
+agent_system_description,SageAgent,False,,3,cybergym; devopsgym; terminalbench_2_0,2,devopsgym; terminalbench_2_0
+agent_system_description,Salesforce AI Research SAGE (bash-only),False,,1,swe_bench_verified,1,swe_bench_verified
+agent_system_description,Salesforce AI Research SAGE (OpenHands),False,,1,swe_bench_verified,1,swe_bench_verified
+agent_system_description,Search with get_doc,False,,1,browsecomp_plus,0,
+agent_system_description,SearchR1 search-augmented generation,False,,1,browsecomp_plus,0,
+agent_system_description,Self-Debug (with knowledge),False,,1,scienceagentbench,0,
+agent_system_description,Self-Debug (without knowledge),False,,1,scienceagentbench,0,
+agent_system_description,Semantic + Episodic,False,,1,usaco,1,usaco
+agent_system_description,Semantic + Episodic + Reflexion,False,,1,usaco,1,usaco
+agent_system_description,Semantic + Reflexion,False,,1,usaco,1,usaco
+agent_system_description,Semantic Retrieval,False,,1,usaco,1,usaco
+agent_system_description,Shadowfax-DBT-Agent,False,,1,spider_2,1,spider_2
+agent_system_description,ShawnAgent_v3.1,False,,1,gaia,1,gaia
+agent_system_description,Shortcut.ai,False,,1,spreadsheetbench,1,spreadsheetbench
+agent_system_description,Sibyl System v0.2 (gpt-4o-2024-08-06),False,,1,gaia,1,gaia
+agent_system_description,SignalPilot Agent,False,,1,spider_2,1,spider_2
+agent_system_description,Simple Codex,True,codex,1,terminalbench_2_0,1,terminalbench_2_0
+agent_system_description,SimpleJudge (JudgeEval),False,,1,paperbench,0,
+agent_system_description,"SimpleJudge (JudgeEval), reasoning_effort=high",False,,1,paperbench,0,
+agent_system_description,"Single Agent pipeline, Avg@4",False,,1,widesearch,1,widesearch
+agent_system_description,Skywork Deep Research Agent v2,False,,1,gaia,1,gaia
+agent_system_description,Skywork-SWE-32B,False,,1,swe_bench_verified,1,swe_bench_verified
+agent_system_description,SLDAgent,False,,1,sldbench,1,sldbench
+agent_system_description,Smolagent,False,,1,deepsynth,1,deepsynth
+agent_system_description,Solver (2024-09-12),False,,1,swe_bench_verified,1,swe_bench_verified
+agent_system_description,Solver (2024-10-28),False,,1,swe_bench_verified,1,swe_bench_verified
+agent_system_description,SOMA-SQL,False,,1,spider_2,1,spider_2
+agent_system_description,Sonar Foundation Agent,False,,1,swe_bench_verified,1,swe_bench_verified
+agent_system_description,Sophon-Agent,False,,1,spider_2,1,spider_2
+agent_system_description,soumya-batra/agentswe-officeqa,False,,1,officeqa,0,
+agent_system_description,Spider-Agent,False,,1,spider_2,1,spider_2
+agent_system_description,Spider-Agent-Extended,False,,1,spider_2,1,spider_2
+agent_system_description,spoox-m,False,,1,terminalbench_2_0,1,terminalbench_2_0
+agent_system_description,SSDAT,False,,1,spider_2,1,spider_2
+agent_system_description,SU AI Zero,False,,1,gaia,1,gaia
+agent_system_description,SU Zero - Shuqian Series Pro MAX,False,,1,gaia,1,gaia
+agent_system_description,Su Zero Ultra,False,,1,gaia,1,gaia
+agent_system_description,SWE-Agent,False,,4,mlgym_bench; swe_bench_pro; swe_bench_verified; swt_bench,4,mlgym_bench; swe_bench_pro; swe_bench_verified; swt_bench
+agent_system_description,SWE-agent,False,,4,swe_bench_live; swe_bench_verified; swe_fficiency; swe_smith,2,swe_bench_verified; swe_smith
+agent_system_description,SWE-Agent+,False,,1,swt_bench,1,swt_bench
+agent_system_description,SWE-agent; train size 2k,False,,1,swe_smith,1,swe_smith
+agent_system_description,SWE-agent; train size 5k,False,,1,swe_smith,1,swe_smith
+agent_system_description,SWE-Exp,False,,1,swe_bench_verified,1,swe_bench_verified
+agent_system_description,SWE-Fixer (Qwen2.5-7b retriever,False,,1,swe_bench_verified,1,swe_bench_verified
+agent_system_description,SWE-Fixer; train size 110k,False,,1,swe_smith,1,swe_smith
+agent_system_description,SWE-Rizzo,False,,1,swe_bench_verified,1,swe_bench_verified
+agent_system_description,SWE-RL (Llama3-SWE-RL-70B,False,,1,swe_bench_verified,1,swe_bench_verified
+agent_system_description,SWE-SynInfer,False,,1,swe_smith,1,swe_smith
+agent_system_description,Symbiote Agent,False,,1,spider_2,1,spider_2
+agent_system_description,TapeAgent v0.2,False,,1,gaia,1,gaia
+agent_system_description,TapeAgents & BrowserGym,False,,1,gaia,1,gaia
+agent_system_description,TCDataAgent-SQL with Contextual Scaling Engine,False,,1,spider_2,1,spider_2
+agent_system_description,Terminus 2,True,terminus-2,1,terminalbench_2_0,1,terminalbench_2_0
+agent_system_description,terminus-2,True,terminus-2,1,sldbench,1,sldbench
+agent_system_description,terminus-2@2.0.0,True,terminus-2,1,aa_lcr,0,
+agent_system_description,Terminus-KIRA,False,,1,terminalbench_2_0,1,terminalbench_2_0
+agent_system_description,Tetra-Beta-2,False,,1,spreadsheetbench,1,spreadsheetbench
+agent_system_description,TEX-T,False,,1,swt_bench,1,swt_bench
+agent_system_description,TongAgents,False,,1,terminalbench_2_0,1,terminalbench_2_0
+agent_system_description,Tongyi-DeepResearch native toolset,False,,1,browsecomp_plus,0,
+agent_system_description,tool-use scaffold,False,,1,replicationbench,1,replicationbench
+agent_system_description,Tools,False,,1,swe_bench_verified,1,swe_bench_verified
+agent_system_description,TRAE,False,,1,swe_bench_verified,1,swe_bench_verified
+agent_system_description,Trase Agent v0.1,False,,1,gaia,1,gaia
+agent_system_description,Trase Agent v0.3,False,,1,gaia,1,gaia
+agent_system_description,ugaiforge,False,,1,swe_bench_verified,1,swe_bench_verified
+agent_system_description,UK AI Safety Institute Internal,False,,1,gaia,1,gaia
+agent_system_description,W&amp;B Programmer O1 crosscheck5,False,,1,swe_bench_verified,1,swe_bench_verified
+agent_system_description,Warp,False,,2,swe_bench_verified; terminalbench_2_0,2,swe_bench_verified; terminalbench_2_0
+agent_system_description,Win-agent,False,,1,swe_bench_live,0,
+agent_system_description,WindAgent,False,,1,spider_2,1,spider_2
+agent_system_description,with browsing,False,,1,browsecomp,0,
+agent_system_description,zaidishahbaz1/officeqa,False,,1,officeqa,0,
+agent_system_description,Zencoder (2025-04-30),False,,1,swe_bench_verified,1,swe_bench_verified
+agent_system_description,Zero-Shot Base,False,,1,swt_bench,1,swt_bench
+agent_system_description,Zero-Shot Plus,False,,1,swt_bench,1,swt_bench
+agent_system_description,ZeroShot,False,,1,swt_bench,1,swt_bench
+agent_system_description,ZeroShotPlus,False,,1,swt_bench,1,swt_bench
+agent_system_description,🐟 AWorld (Run Instantly),False,,1,gaia,1,gaia
+agent_system_description,🐦‍🔥 AWorld (Run Instantly),False,,1,gaia,1,gaia
+bare_llm_model,ai21labs/jamba-large-1.6,False,,2,aime; gpqa_diamond,2,aime; gpqa_diamond
+bare_llm_model,ai21labs/jamba-mini-1.6,False,,2,aime; gpqa_diamond,2,aime; gpqa_diamond
+bare_llm_model,alibaba/qwen3-max,False,,2,aime; gpqa_diamond,2,aime; gpqa_diamond
+bare_llm_model,alibaba/qwen3-max-2026-01-23,False,,1,gpqa_diamond,1,gpqa_diamond
+bare_llm_model,alibaba/qwen3-max-preview,False,,2,aime; gpqa_diamond,2,aime; gpqa_diamond
+bare_llm_model,alibaba/qwen3.5-flash,False,,2,aime; gpqa_diamond,2,aime; gpqa_diamond
+bare_llm_model,alibaba/qwen3.5-plus-thinking,False,,2,aime; gpqa_diamond,2,aime; gpqa_diamond
+bare_llm_model,alibaba/qwen3.6-plus,False,,2,aime; gpqa_diamond,2,aime; gpqa_diamond
+bare_llm_model,Amazon-Nova-2-Lite-v1:0,False,,1,bfcl,1,bfcl
+bare_llm_model,Amazon-Nova-Micro-v1:0,False,,1,bfcl,1,bfcl
+bare_llm_model,Amazon-Nova-Pro-v1:0,False,,1,bfcl,1,bfcl
+bare_llm_model,anthropic/claude-3-5-haiku-20241022,False,,2,aime; gpqa_diamond,2,aime; gpqa_diamond
+bare_llm_model,anthropic/claude-3-5-sonnet-20241022,False,,2,aime; gpqa_diamond,2,aime; gpqa_diamond
+bare_llm_model,anthropic/claude-3-7-sonnet-20250219,False,,2,aime; gpqa_diamond,2,aime; gpqa_diamond
+bare_llm_model,anthropic/claude-3-7-sonnet-20250219-thinking,False,,2,aime; gpqa_diamond,2,aime; gpqa_diamond
+bare_llm_model,anthropic/claude-3.5-sonnet,False,,1,reasoning_gym,1,reasoning_gym
+bare_llm_model,anthropic/claude-haiku-4-5-20251001-thinking,False,,2,aime; gpqa_diamond,2,aime; gpqa_diamond
+bare_llm_model,anthropic/claude-opus-4-1-20250805,False,,2,aime; gpqa_diamond,2,aime; gpqa_diamond
+bare_llm_model,anthropic/claude-opus-4-1-20250805-thinking,False,,2,aime; gpqa_diamond,2,aime; gpqa_diamond
+bare_llm_model,anthropic/claude-opus-4-20250514,False,,2,aime; gpqa_diamond,2,aime; gpqa_diamond
+bare_llm_model,anthropic/claude-opus-4-5-20251101,False,,2,aime; gpqa_diamond,2,aime; gpqa_diamond
+bare_llm_model,anthropic/claude-opus-4-5-20251101-thinking,False,,2,aime; gpqa_diamond,2,aime; gpqa_diamond
+bare_llm_model,anthropic/claude-opus-4-6-thinking,False,,2,aime; gpqa_diamond,2,aime; gpqa_diamond
+bare_llm_model,anthropic/claude-opus-4-7,False,,2,aime; gpqa_diamond,2,aime; gpqa_diamond
+bare_llm_model,anthropic/claude-sonnet-4-20250514,False,,2,aime; gpqa_diamond,2,aime; gpqa_diamond
+bare_llm_model,anthropic/claude-sonnet-4-20250514-thinking,False,,2,aime; gpqa_diamond,2,aime; gpqa_diamond
+bare_llm_model,anthropic/claude-sonnet-4-5-20250929-thinking,False,,2,aime; gpqa_diamond,2,aime; gpqa_diamond
+bare_llm_model,anthropic/claude-sonnet-4-6,False,,2,aime; gpqa_diamond,2,aime; gpqa_diamond
+bare_llm_model,Apriel-v1.5-15B-Thinker,False,,2,livecodebench; scicode,2,livecodebench; scicode
+bare_llm_model,Apriel-v1.6-15B-Thinker,False,,3,aa_lcr; livecodebench; scicode,2,livecodebench; scicode
+bare_llm_model,Arch-Agent-1.5B,False,,1,bfcl,1,bfcl
+bare_llm_model,Arch-Agent-32B,False,,1,bfcl,1,bfcl
+bare_llm_model,Arch-Agent-3B,False,,1,bfcl,1,bfcl
+bare_llm_model,ARChitects,False,,1,arc_agi_2,1,arc_agi_2
+bare_llm_model,Arja,False,,1,quixbugs,1,quixbugs
+bare_llm_model,Artigenz-Coder-DS-6.7B,False,,1,bigcodebench,1,bigcodebench
+bare_llm_model,Athene-70B,False,,1,bigcodebench,1,bigcodebench
+bare_llm_model,Athene-V2-Agent,False,,1,bigcodebench,1,bigcodebench
+bare_llm_model,Athene-V2-Chat,False,,1,bigcodebench,1,bigcodebench
+bare_llm_model,Audio Flamingo 2,False,,1,mmau,1,mmau
+bare_llm_model,Audio Flamingo 2 Reasoning (FT on AF2),False,,1,mmau,1,mmau
+bare_llm_model,Audio Flamingo 3,False,,1,mmau,1,mmau
+bare_llm_model,Audio Flamingo Chat,False,,1,mmau,1,mmau
+bare_llm_model,Audio Reasoner,False,,1,mmau,1,mmau
+bare_llm_model,Audio-Thinker,False,,1,mmau,1,mmau
+bare_llm_model,AutoCoder,False,,1,bigcodebench,1,bigcodebench
+bare_llm_model,AutoCoder-QW-7B,False,,1,bigcodebench,1,bigcodebench
+bare_llm_model,AutoCoder-S-6.7B,False,,1,bigcodebench,1,bigcodebench
+bare_llm_model,Bielik-11B-v2.3-Instruct,False,,1,bfcl,1,bfcl
+bare_llm_model,BitAgent-Bounty-8B,False,,1,bfcl,1,bfcl
+bare_llm_model,BloombergGPT,False,,1,pixiu,1,pixiu
+bare_llm_model,BLOOMZ (176B),False,,1,humanevalfix,1,humanevalfix
+bare_llm_model,C4AI-Command-R-08-2024,False,,1,bigcodebench,1,bigcodebench
+bare_llm_model,C4AI-Command-R-Plus-08-2024,False,,1,bigcodebench,1,bigcodebench
+bare_llm_model,Cardumen,False,,1,quixbugs,1,quixbugs
+bare_llm_model,CFGPT-sft-7B-Full,False,,1,finben,0,
+bare_llm_model,ChatGPT,False,,2,finben; pixiu,1,pixiu
+bare_llm_model,ChatGPT (GPT-3.5-turbo),False,,1,lawbench,1,lawbench
+bare_llm_model,ChatGPT-4o-latest-20250129,False,,1,bigcodebench,1,bigcodebench
+bare_llm_model,Claude 2,False,,1,gpqa_diamond,1,gpqa_diamond
+bare_llm_model,Claude 2.0,False,,2,livecodebench; scicode,2,livecodebench; scicode
+bare_llm_model,Claude 2.1,False,,3,gpqa_diamond; livecodebench; scicode,3,gpqa_diamond; livecodebench; scicode
+bare_llm_model,Claude 3 Haiku,False,,3,gpqa_diamond; livecodebench; scicode,3,gpqa_diamond; livecodebench; scicode
+bare_llm_model,Claude 3 Opus,False,,3,gpqa_diamond; livecodebench; simpleqa,3,gpqa_diamond; livecodebench; simpleqa
+bare_llm_model,Claude 3 Sonnet,False,,2,gpqa_diamond; livecodebench,2,gpqa_diamond; livecodebench
+bare_llm_model,Claude 3.5 Haiku,False,,2,livecodebench; scicode,2,livecodebench; scicode
+bare_llm_model,Claude 3.5 Haiku (Oct 2024),False,,1,gpqa_diamond,1,gpqa_diamond
+bare_llm_model,Claude 3.5 Haiku Latest,False,,1,financeagent,1,financeagent
+bare_llm_model,Claude 3.5 Sonnet,False,,2,hle; simpleqa,2,hle; simpleqa
+bare_llm_model,Claude 3.5 Sonnet (Jun 2024),False,,1,gpqa_diamond,1,gpqa_diamond
+bare_llm_model,Claude 3.5 Sonnet (Oct '24),False,,1,livecodebench,1,livecodebench
+bare_llm_model,Claude 3.5 Sonnet (Oct 2024),False,,1,gpqa_diamond,1,gpqa_diamond
+bare_llm_model,Claude 3.5 Sonnet (October 2024),False,,1,hle,1,hle
+bare_llm_model,Claude 3.7,False,,1,arc_agi_2,1,arc_agi_2
+bare_llm_model,Claude 3.7 Sonnet,False,,5,financeagent; gpqa_diamond; ineqmath; livecodebench; scicode,5,financeagent; gpqa_diamond; ineqmath; livecodebench; scicode
+bare_llm_model,Claude 3.7 Sonnet (10K),False,,1,ineqmath,1,ineqmath
+bare_llm_model,Claude 3.7 Sonnet (16k thinking),False,,1,gpqa_diamond,1,gpqa_diamond
+bare_llm_model,Claude 3.7 Sonnet (32k thinking),False,,1,gpqa_diamond,1,gpqa_diamond
+bare_llm_model,Claude 3.7 Sonnet (64k thinking),False,,1,gpqa_diamond,1,gpqa_diamond
+bare_llm_model,Claude 3.7 Sonnet (8K),False,,1,ineqmath,1,ineqmath
+bare_llm_model,Claude 3.7 Sonnet (Thinking),False,,2,financeagent; hle,2,financeagent; hle
+bare_llm_model,Claude 4 Opus,False,,2,livecodebench; scicode,2,livecodebench; scicode
+bare_llm_model,Claude 4 Sonnet,False,,3,aa_lcr; livecodebench; scicode,2,livecodebench; scicode
+bare_llm_model,Claude 4.1 Opus,False,,3,aa_lcr; livecodebench; scicode,2,livecodebench; scicode
+bare_llm_model,Claude 4.5 Haiku,False,,3,aa_lcr; livecodebench; scicode,2,livecodebench; scicode
+bare_llm_model,Claude 4.5 Sonnet,False,,3,aa_lcr; livecodebench; scicode,2,livecodebench; scicode
+bare_llm_model,Claude 4.7,False,,1,arc_agi_2,1,arc_agi_2
+bare_llm_model,Claude Haiku 4.5,True,claude-haiku-4-5-20251001,1,gpqa_diamond,1,gpqa_diamond
+bare_llm_model,Claude Haiku 4.5 (32k thinking),True,claude-haiku-4-5-20251001,1,gpqa_diamond,1,gpqa_diamond
+bare_llm_model,Claude Haiku 4.5 (Thinki...),True,claude-haiku-4-5-20251001,1,financeagent,1,financeagent
+bare_llm_model,Claude Instant,False,,1,livecodebench,1,livecodebench
+bare_llm_model,Claude Mythos Preview,False,,1,browsecomp,0,
+bare_llm_model,Claude Opus 4,False,,3,crust_bench; gpqa_diamond; hle,3,crust_bench; gpqa_diamond; hle
+bare_llm_model,Claude Opus 4 (10K),False,,1,ineqmath,1,ineqmath
+bare_llm_model,Claude Opus 4 (16k thinking),False,,1,gpqa_diamond,1,gpqa_diamond
+bare_llm_model,Claude Opus 4 (Thinking),False,,1,hle,1,hle
+bare_llm_model,Claude Opus 4.1,False,,1,gpqa_diamond,1,gpqa_diamond
+bare_llm_model,Claude Opus 4.1 (16k thinking),False,,1,gpqa_diamond,1,gpqa_diamond
+bare_llm_model,Claude Opus 4.1 (27k thinking),False,,1,gpqa_diamond,1,gpqa_diamond
+bare_llm_model,Claude Opus 4.5,False,,4,aa_lcr; clbench; livecodebench; scicode,2,livecodebench; scicode
+bare_llm_model,Claude Opus 4.5 (16k thinking),False,,1,gpqa_diamond,1,gpqa_diamond
+bare_llm_model,Claude Opus 4.5 (32k thinking),False,,1,gpqa_diamond,1,gpqa_diamond
+bare_llm_model,Claude Opus 4.5 (no thinking),False,,1,gpqa_diamond,1,gpqa_diamond
+bare_llm_model,Claude Opus 4.5 (Thinking),False,,1,financeagent,1,financeagent
+bare_llm_model,Claude Opus 4.6,True,claude-opus-4-6,6,aa_lcr; arc_agi_2; browsecomp; officeqa; scicode; simpleqa,3,arc_agi_2; scicode; simpleqa
+bare_llm_model,Claude Opus 4.6 (32k thinking),True,claude-opus-4-6,1,gpqa_diamond,1,gpqa_diamond
+bare_llm_model,Claude Opus 4.6 (64k thinking),True,claude-opus-4-6,1,gpqa_diamond,1,gpqa_diamond
+bare_llm_model,Claude Opus 4.6 (Thinking),True,claude-opus-4-6,1,financeagent,1,financeagent
+bare_llm_model,Claude Opus 4.7,False,,3,aa_lcr; financeagent; scicode,2,financeagent; scicode
+bare_llm_model,Claude Opus 4.7 (xhigh),False,,1,gpqa_diamond,1,gpqa_diamond
+bare_llm_model,Claude Sonnet 4,False,,2,gpqa_diamond; hle,2,gpqa_diamond; hle
+bare_llm_model,Claude Sonnet 4 (10K),False,,1,ineqmath,1,ineqmath
+bare_llm_model,Claude Sonnet 4 (16k thinking),False,,1,gpqa_diamond,1,gpqa_diamond
+bare_llm_model,Claude Sonnet 4 (32k thinking),False,,1,gpqa_diamond,1,gpqa_diamond
+bare_llm_model,Claude Sonnet 4 (59k thinking),False,,1,gpqa_diamond,1,gpqa_diamond
+bare_llm_model,Claude Sonnet 4 (Thinking),False,,1,hle,1,hle
+bare_llm_model,Claude Sonnet 4.5 (16k thinking),False,,1,gpqa_diamond,1,gpqa_diamond
+bare_llm_model,Claude Sonnet 4.5 (32k thinking),False,,1,gpqa_diamond,1,gpqa_diamond
+bare_llm_model,Claude Sonnet 4.5 (59k thinking),False,,1,gpqa_diamond,1,gpqa_diamond
+bare_llm_model,Claude Sonnet 4.5 (no thinking),False,,1,gpqa_diamond,1,gpqa_diamond
+bare_llm_model,Claude Sonnet 4.5 (Thin...),False,,1,financeagent,1,financeagent
+bare_llm_model,Claude Sonnet 4.6,True,claude-sonnet-4-6,5,aa_lcr; arc_agi_2; financeagent; scicode; simpleqa,4,arc_agi_2; financeagent; scicode; simpleqa
+bare_llm_model,Claude Sonnet 4.6 (32k thinking),True,claude-sonnet-4-6,1,gpqa_diamond,1,gpqa_diamond
+bare_llm_model,Claude-3-5-Sonnet,False,,1,acebench,0,
+bare_llm_model,claude-3-5-sonnet-20240620,False,,1,lab_bench,1,lab_bench
+bare_llm_model,Claude-3-haiku (2024-03-07),False,,1,simpleqa,1,simpleqa
+bare_llm_model,Claude-3-Haiku-20240307,False,,1,bigcodebench,1,bigcodebench
+bare_llm_model,claude-3-haiku-20240307,False,,1,lab_bench,1,lab_bench
+bare_llm_model,Claude-3-opus (2024-02-29),False,,1,simpleqa,1,simpleqa
+bare_llm_model,Claude-3-Opus-20240229,False,,1,bigcodebench,1,bigcodebench
+bare_llm_model,claude-3-opus-20240229,False,,1,lab_bench,1,lab_bench
+bare_llm_model,claude-3-sonnet,False,,1,crmarena,1,crmarena
+bare_llm_model,Claude-3-Sonnet,False,,1,usaco,1,usaco
+bare_llm_model,Claude-3-sonnet (2024-02-29),False,,1,simpleqa,1,simpleqa
+bare_llm_model,Claude-3-Sonnet-20240229,False,,1,bigcodebench,1,bigcodebench
+bare_llm_model,claude-3.5-haiku,False,,1,kumo,1,kumo
+bare_llm_model,Claude-3.5-Haiku,False,,1,researchcodebench,1,researchcodebench
+bare_llm_model,Claude-3.5-Haiku-20241022,False,,1,bigcodebench,1,bigcodebench
+bare_llm_model,Claude-3.5-Sonnet,False,,4,acebench; crust_bench; researchcodebench; swe_lancer,3,crust_bench; researchcodebench; swe_lancer
+bare_llm_model,claude-3.5-sonnet,False,,2,crmarena; kumo,2,crmarena; kumo
+bare_llm_model,Claude-3.5-SONNET,False,,1,omni_math,1,omni_math
+bare_llm_model,Claude-3.5-Sonnet (2024-06-20),False,,1,scienceagentbench,0,
+bare_llm_model,Claude-3.5-sonnet (2024-06-20),False,,1,simpleqa,1,simpleqa
+bare_llm_model,Claude-3.5-Sonnet-20240620,False,,1,bigcodebench,1,bigcodebench
+bare_llm_model,Claude-3.5-Sonnet-20241022,False,,1,bigcodebench,1,bigcodebench
+bare_llm_model,Claude-3.7-Sonnet,False,,2,crust_bench; researchcodebench,2,crust_bench; researchcodebench
+bare_llm_model,Claude-3.7-sonnet,False,,1,swe_perf,0,
+bare_llm_model,Claude-3.7-Sonnet-20250219,False,,1,bigcodebench,1,bigcodebench
+bare_llm_model,"Claude-3.7-Sonnet-20250219 (temperature=1, length=12800, reasoning=3200)",False,,1,bigcodebench,1,bigcodebench
+bare_llm_model,Claude-4-opus,False,,1,swe_perf,0,
+bare_llm_model,Claude-4-sonnet,False,,1,swe_perf,0,
+bare_llm_model,Claude-Haiku-4-5-20251001,True,claude-haiku-4-5-20251001,1,bfcl,1,bfcl
+bare_llm_model,claude-haiku-4.5,False,,1,compilebench,1,compilebench
+bare_llm_model,claude-haiku-4.5-thinking-16k,False,,1,compilebench,1,compilebench
+bare_llm_model,claude-opus-4-1-20250805,False,,1,hle,1,hle
+bare_llm_model,claude-opus-4-1-20250805-thinking,False,,1,hle,1,hle
+bare_llm_model,Claude-Opus-4-5-20251101,False,,1,bfcl,1,bfcl
+bare_llm_model,claude-opus-4-5-20251101,False,,1,hle,1,hle
+bare_llm_model,claude-opus-4-5-20251101-thinking,False,,1,hle,1,hle
+bare_llm_model,claude-opus-4-6 (Non-Thinking),True,claude-opus-4-6,1,hle,1,hle
+bare_llm_model,claude-opus-4-6-thinking-max,False,,1,hle,1,hle
+bare_llm_model,claude-opus-4.1-thinking-16k,False,,1,compilebench,1,compilebench
+bare_llm_model,claude-sonnet-4,False,,1,compilebench,1,compilebench
+bare_llm_model,Claude-Sonnet-4-5-20250929,False,,1,bfcl,1,bfcl
+bare_llm_model,claude-sonnet-4-5-20250929,False,,1,hle,1,hle
+bare_llm_model,claude-sonnet-4-5-20250929-thinking,False,,1,hle,1,hle
+bare_llm_model,claude-sonnet-4-thinking-16k,False,,1,compilebench,1,compilebench
+bare_llm_model,claude-sonnet-4.5,False,,1,compilebench,1,compilebench
+bare_llm_model,claude-sonnet-4.5-thinking-16k,False,,1,compilebench,1,compilebench
+bare_llm_model,Claude3-Opus,False,,1,scicode,1,scicode
+bare_llm_model,Claude3-Sonnet,False,,1,scicode,1,scicode
+bare_llm_model,Claude3.5-Sonnet,False,,1,scicode,1,scicode
+bare_llm_model,Claude3.5-Sonnet (new),False,,1,scicode,1,scicode
+bare_llm_model,CoALM-70B,False,,1,bfcl,1,bfcl
+bare_llm_model,CoALM-8B,False,,1,bfcl,1,bfcl
+bare_llm_model,CodeGeeX2 (6B),False,,1,humanevalfix,1,humanevalfix
+bare_llm_model,CodeGeex4-All-9B,False,,1,bigcodebench,1,bigcodebench
+bare_llm_model,CodeGemma-2B,False,,1,bigcodebench,1,bigcodebench
+bare_llm_model,CodeGemma-7B,False,,1,bigcodebench,1,bigcodebench
+bare_llm_model,CodeGemma-7B-Instruct,False,,1,bigcodebench,1,bigcodebench
+bare_llm_model,CodeLlama (7B),False,,1,usaco,1,usaco
+bare_llm_model,CodeLlama-13B-Base,False,,1,bigcodebench,1,bigcodebench
+bare_llm_model,CodeLlama-13B-Instruct,False,,1,bigcodebench,1,bigcodebench
+bare_llm_model,CodeLlama-34B-Base,False,,1,bigcodebench,1,bigcodebench
+bare_llm_model,CodeLlama-34B-Instruct,False,,1,bigcodebench,1,bigcodebench
+bare_llm_model,CodeLlama-70B-Base,False,,1,bigcodebench,1,bigcodebench
+bare_llm_model,CodeLlama-70B-Instruct,False,,1,bigcodebench,1,bigcodebench
+bare_llm_model,CodeLlama-7B-Base,False,,1,bigcodebench,1,bigcodebench
+bare_llm_model,CodeLlama-7B-Instruct,False,,1,bigcodebench,1,bigcodebench
+bare_llm_model,CodeQwen1.5-7B,False,,1,bigcodebench,1,bigcodebench
+bare_llm_model,CodeQwen1.5-7B-Chat,False,,1,bigcodebench,1,bigcodebench
+bare_llm_model,CodeS-15B,False,,1,spider_2,1,spider_2
+bare_llm_model,Codestral,False,,1,simpleqa,1,simpleqa
+bare_llm_model,Codestral-22B-v0.1,False,,1,bigcodebench,1,bigcodebench
+bare_llm_model,Codestral-Mamba,False,,1,bigcodebench,1,bigcodebench
+bare_llm_model,Cogito v2.1,False,,2,livecodebench; scicode,2,livecodebench; scicode
+bare_llm_model,cohere/command-a-03-2025,False,,2,aime; gpqa_diamond,2,aime; gpqa_diamond
+bare_llm_model,cohere/command-r-plus,False,,1,gpqa_diamond,1,gpqa_diamond
+bare_llm_model,Command A,False,,4,bfcl; financeagent; livecodebench; scicode,4,bfcl; financeagent; livecodebench; scicode
+bare_llm_model,Command A Reasoning,False,,1,bfcl,1,bfcl
+bare_llm_model,Command R+,False,,1,bigcodebench,1,bigcodebench
+bare_llm_model,Command R7B,False,,1,bfcl,1,bfcl
+bare_llm_model,Command-A,False,,1,researchcodebench,1,researchcodebench
+bare_llm_model,Command-R+ (Apr '24),False,,2,livecodebench; scicode,2,livecodebench; scicode
+bare_llm_model,cyberagent/DeepSeek-R1-Distill-Qwen-32B-Japanese,False,,1,finben,0,
+bare_llm_model,DBRX (instruct),False,,1,gpqa_diamond,1,gpqa_diamond
+bare_llm_model,DBRX Instruct,False,,2,livecodebench; scicode,2,livecodebench; scicode
+bare_llm_model,Deep Research,False,,1,browsecomp,0,
+bare_llm_model,DeepCoder-14B-Preview,False,,1,bigcodebench,1,bigcodebench
+bare_llm_model,"DeepCoder-14B-Preview (w/ Reasoning, 64k tokens, temperature=0.6)",False,,1,bigcodebench,1,bigcodebench
+bare_llm_model,DeepHermes 3 - Llama-3.1 8B Preview,False,,1,scicode,1,scicode
+bare_llm_model,DeepHermes 3 - Mistral 24B Preview,False,,2,livecodebench; scicode,2,livecodebench; scicode
+bare_llm_model,DeepSeek Coder (7B),False,,1,usaco,1,usaco
+bare_llm_model,DeepSeek Coder V2 Lite Instruct,False,,2,livecodebench; scicode,2,livecodebench; scicode
+bare_llm_model,DeepSeek LLM 67B (chat),False,,1,gpqa_diamond,1,gpqa_diamond
+bare_llm_model,DeepSeek R1 (Jan '25),False,,2,livecodebench; scicode,2,livecodebench; scicode
+bare_llm_model,DeepSeek R1 0528,False,,1,aa_lcr,0,
+bare_llm_model,DeepSeek R1 0528 (May '25),False,,2,livecodebench; scicode,2,livecodebench; scicode
+bare_llm_model,DeepSeek R1 0528 Qwen3 8B,False,,2,livecodebench; scicode,2,livecodebench; scicode
+bare_llm_model,DeepSeek R1 Distill Llama 70B,False,,2,livecodebench; scicode,2,livecodebench; scicode
+bare_llm_model,DeepSeek R1 Distill Llama 8B,False,,2,livecodebench; scicode,2,livecodebench; scicode
+bare_llm_model,DeepSeek R1 Distill Qwen 14B,False,,2,livecodebench; scicode,2,livecodebench; scicode
+bare_llm_model,DeepSeek R1 Distill Qwen 32B,False,,2,livecodebench; scicode,2,livecodebench; scicode
+bare_llm_model,DeepSeek V3 (Dec '24),False,,1,livecodebench,1,livecodebench
+bare_llm_model,DeepSeek V3 0324,False,,2,livecodebench; scicode,2,livecodebench; scicode
+bare_llm_model,DeepSeek V3.1,False,,3,aa_lcr; livecodebench; scicode,2,livecodebench; scicode
+bare_llm_model,Deepseek V3.1,False,,1,simpleqa,1,simpleqa
+bare_llm_model,DeepSeek V3.1 Terminus,False,,2,livecodebench; scicode,2,livecodebench; scicode
+bare_llm_model,Deepseek V3.2,False,,1,arc_agi_2,1,arc_agi_2
+bare_llm_model,DeepSeek V3.2,False,,3,clbench; livecodebench; scicode,2,livecodebench; scicode
+bare_llm_model,DeepSeek V3.2 (Nonthi...),False,,1,financeagent,1,financeagent
+bare_llm_model,DeepSeek V3.2 (Thinkin...),False,,1,financeagent,1,financeagent
+bare_llm_model,DeepSeek V3.2 Exp,False,,3,aa_lcr; livecodebench; scicode,2,livecodebench; scicode
+bare_llm_model,DeepSeek V3.2 Speciale,False,,3,aa_lcr; livecodebench; scicode,2,livecodebench; scicode
+bare_llm_model,DeepSeek V3.2 Thinking,False,,1,clbench,0,
+bare_llm_model,DeepSeek V4 Flash,False,,1,scicode,1,scicode
+bare_llm_model,DeepSeek V4 Pro,False,,1,scicode,1,scicode
+bare_llm_model,DeepSeek-Chat,False,,1,deepsynth,1,deepsynth
+bare_llm_model,DeepSeek-Chat-V3-0324,False,,1,researchcodebench,1,researchcodebench
+bare_llm_model,DeepSeek-Coder-1.3B-Base,False,,1,bigcodebench,1,bigcodebench
+bare_llm_model,DeepSeek-Coder-1.3B-Instruct,False,,1,bigcodebench,1,bigcodebench
+bare_llm_model,DeepSeek-Coder-32B,False,,1,crust_bench,1,crust_bench
+bare_llm_model,DeepSeek-Coder-33B-Base,False,,1,bigcodebench,1,bigcodebench
+bare_llm_model,DeepSeek-Coder-33B-Instruct,False,,1,bigcodebench,1,bigcodebench
+bare_llm_model,DeepSeek-Coder-6.7B-Base,False,,1,bigcodebench,1,bigcodebench
+bare_llm_model,DeepSeek-Coder-6.7B-Instruct,False,,1,bigcodebench,1,bigcodebench
+bare_llm_model,DeepSeek-Coder-V2,False,,1,omni_math,1,omni_math
+bare_llm_model,Deepseek-Coder-v2,False,,1,scicode,1,scicode
+bare_llm_model,DeepSeek-Coder-V2-Instruct,False,,1,bigcodebench,1,bigcodebench
+bare_llm_model,DeepSeek-Coder-V2-Instruct (2024-07-24),False,,1,bigcodebench,1,bigcodebench
+bare_llm_model,DeepSeek-Coder-V2-Lite-Base,False,,1,bigcodebench,1,bigcodebench
+bare_llm_model,DeepSeek-Coder-V2-lite-Instruc,False,,1,acebench,0,
+bare_llm_model,DeepSeek-Coder-V2-Lite-Instruct,False,,3,acebench; bigcodebench; omni_math,2,bigcodebench; omni_math
+bare_llm_model,DeepSeek-R1,False,,9,aime; bigcodebench; gpqa_diamond; hle; ineqmath; qcircuitbench; researchcodebench; simpleqa; swe_perf,8,aime; bigcodebench; gpqa_diamond; hle; ineqmath; qcircuitbench; researchcodebench; simpleqa
+bare_llm_model,deepseek-r1,False,,2,crmarena; kumo,2,crmarena; kumo
+bare_llm_model,Deepseek-R1,False,,1,scicode,1,scicode
+bare_llm_model,DeepSeek-R1 (10K),False,,1,ineqmath,1,ineqmath
+bare_llm_model,DeepSeek-R1 (Llama-70B) (10K),False,,1,ineqmath,1,ineqmath
+bare_llm_model,DeepSeek-R1 (May 2025),False,,1,gpqa_diamond,1,gpqa_diamond
+bare_llm_model,DeepSeek-R1 (Qwen-1.5B) (10K),False,,1,ineqmath,1,ineqmath
+bare_llm_model,DeepSeek-R1 (Qwen-14B) (10K),False,,1,ineqmath,1,ineqmath
+bare_llm_model,DeepSeek-R1-0528 (10K),False,,1,ineqmath,1,ineqmath
+bare_llm_model,DeepSeek-R1-0528 (40K),False,,1,ineqmath,1,ineqmath
+bare_llm_model,DeepSeek-R1-0528-671B,False,,1,seal0,1,seal0
+bare_llm_model,DeepSeek-R1-671B,False,,1,seal0,1,seal0
+bare_llm_model,DeepSeek-R1-Distill-Llama-70B,False,,4,aime; bigcodebench; gpqa_diamond; ineqmath,4,aime; bigcodebench; gpqa_diamond; ineqmath
+bare_llm_model,DeepSeek-R1-Distill-Llama-8B,False,,2,aime; bigcodebench,2,aime; bigcodebench
+bare_llm_model,DeepSeek-R1-Distill-Qwen-1.5B,False,,3,aime; bigcodebench; seal0,3,aime; bigcodebench; seal0
+bare_llm_model,DeepSeek-R1-Distill-Qwen-14B,False,,5,aime; bigcodebench; gpqa_diamond; ineqmath; seal0,5,aime; bigcodebench; gpqa_diamond; ineqmath; seal0
+bare_llm_model,DeepSeek-R1-Distill-Qwen-32B,False,,2,aime; bigcodebench,2,aime; bigcodebench
+bare_llm_model,DeepSeek-R1-Distill-Qwen-7B,False,,2,aime; bigcodebench,2,aime; bigcodebench
+bare_llm_model,DeepSeek-Reasoner,False,,1,deepsynth,1,deepsynth
+bare_llm_model,DeepSeek-V2-Chat,False,,1,bigcodebench,1,bigcodebench
+bare_llm_model,DeepSeek-V2-Chat (2024-06-28),False,,1,bigcodebench,1,bigcodebench
+bare_llm_model,DeepSeek-V2.5,False,,1,bigcodebench,1,bigcodebench
+bare_llm_model,DeepSeek-V2.5-1210,False,,1,bigcodebench,1,bigcodebench
+bare_llm_model,DeepSeek-V3,False,,5,acebench; bigcodebench; gpqa_diamond; simpleqa; swe_perf,3,bigcodebench; gpqa_diamond; simpleqa
+bare_llm_model,Deepseek-V3,False,,1,finben,0,
+bare_llm_model,deepseek-v3,False,,1,kumo,1,kumo
+bare_llm_model,Deepseek-v3,False,,1,scicode,1,scicode
+bare_llm_model,DeepSeek-V3 (Mar 2025),False,,1,gpqa_diamond,1,gpqa_diamond
+bare_llm_model,DeepSeek-V3-0324,False,,2,bigcodebench; ineqmath,2,bigcodebench; ineqmath
+bare_llm_model,deepseek-v3.1,False,,1,compilebench,1,compilebench
+bare_llm_model,DeepSeek-V3.1 (Thinking Mode) (10K),False,,1,ineqmath,1,ineqmath
+bare_llm_model,DeepSeek-V3.1 (Thinking Mode) (30K),False,,1,ineqmath,1,ineqmath
+bare_llm_model,deepseek-v3.1-terminus,False,,1,compilebench,1,compilebench
+bare_llm_model,DeepSeek-V3.2 (Thinking),False,,1,gpqa_diamond,1,gpqa_diamond
+bare_llm_model,DeepSeek-V3.2-Exp,False,,1,bfcl,1,bfcl
+bare_llm_model,Deepseek-VL-7B-Chat,False,,1,finben,0,
+bare_llm_model,deepseek/deepseek-r1,False,,1,reasoning_gym,1,reasoning_gym
+bare_llm_model,DeepSeekMATH-7b-RL,False,,1,omni_math,1,omni_math
+bare_llm_model,DeepseekMATH-7b-RL,False,,1,omni_math,1,omni_math
+bare_llm_model,DeepSeekV3,False,,1,acebench,0,
+bare_llm_model,DeSTA2.5-Audio,False,,1,mmau,1,mmau
+bare_llm_model,Devstral 2,False,,2,livecodebench; scicode,2,livecodebench; scicode
+bare_llm_model,Devstral Medium,False,,2,livecodebench; scicode,2,livecodebench; scicode
+bare_llm_model,Devstral Small (Jul '25),False,,2,livecodebench; scicode,2,livecodebench; scicode
+bare_llm_model,Devstral Small (May '25),False,,2,livecodebench; scicode,2,livecodebench; scicode
+bare_llm_model,Devstral Small 2,False,,2,livecodebench; scicode,2,livecodebench; scicode
+bare_llm_model,Doubao 1.6,False,,1,clbench,0,
+bare_llm_model,Doubao 1.6 Thinking,False,,1,clbench,0,
+bare_llm_model,Doubao 1.8,False,,1,clbench,0,
+bare_llm_model,Doubao Seed Code,False,,3,aa_lcr; livecodebench; scicode,2,livecodebench; scicode
+bare_llm_model,Doubao-Pro-32K,False,,1,acebench,0,
+bare_llm_model,Doubao-Pro-32k,False,,1,acebench,0,
+bare_llm_model,DoubaoPro-32K,False,,1,acebench,0,
+bare_llm_model,Dracarys-72B-Instruct,False,,1,bigcodebench,1,bigcodebench
+bare_llm_model,Dracarys-Llama-3.1-70B-Instruct,False,,1,bigcodebench,1,bigcodebench
+bare_llm_model,Duxiaoman-DI/Llama3.1-XuanYuan-FinX1-Preview,False,,1,finben,0,
+bare_llm_model,Dynamoth,False,,1,quixbugs,1,quixbugs
+bare_llm_model,ERNIE 4.5 300B A47B,False,,2,livecodebench; scicode,2,livecodebench; scicode
+bare_llm_model,ERNIE 5.0 Thinking Preview,False,,2,livecodebench; scicode,2,livecodebench; scicode
+bare_llm_model,Eurus-2-7B-PRIME,False,,1,gpqa_diamond,1,gpqa_diamond
+bare_llm_model,Exaone 4.0 1.2B,False,,2,livecodebench; scicode,2,livecodebench; scicode
+bare_llm_model,EXAONE 4.0 32B,False,,3,aa_lcr; livecodebench; scicode,2,livecodebench; scicode
+bare_llm_model,Expert,False,,1,swe_perf,0,
+bare_llm_model,Falcon-7B,False,,1,finben,0,
+bare_llm_model,Falcon-H1R-7B,False,,2,livecodebench; scicode,2,livecodebench; scicode
+bare_llm_model,Falcon3-10B-Instruct,False,,1,bfcl,1,bfcl
+bare_llm_model,Falcon3-1B-Instruct,False,,1,bfcl,1,bfcl
+bare_llm_model,Falcon3-3B-Instruct,False,,1,bfcl,1,bfcl
+bare_llm_model,Falcon3-7B-Instruct,False,,1,bfcl,1,bfcl
+bare_llm_model,FinGPT-7b-lora,False,,1,finben,0,
+bare_llm_model,FinMA-30B,False,,1,pixiu,1,pixiu
+bare_llm_model,FinMA-7B,False,,2,finben; pixiu,1,pixiu
+bare_llm_model,FinMA-7B-full,False,,1,pixiu,1,pixiu
+bare_llm_model,FinMA-7B-trade,False,,1,pixiu,1,pixiu
+bare_llm_model,fireworks/deepseek-r1,False,,1,aime,1,aime
+bare_llm_model,fireworks/deepseek-v3,False,,2,aime; gpqa_diamond,2,aime; gpqa_diamond
+bare_llm_model,fireworks/deepseek-v3-0324,False,,2,aime; gpqa_diamond,2,aime; gpqa_diamond
+bare_llm_model,fireworks/deepseek-v3p2,False,,2,aime; gpqa_diamond,2,aime; gpqa_diamond
+bare_llm_model,fireworks/deepseek-v3p2-thinking,False,,2,aime; gpqa_diamond,2,aime; gpqa_diamond
+bare_llm_model,fireworks/gpt-oss-120b,False,,2,aime; gpqa_diamond,2,aime; gpqa_diamond
+bare_llm_model,fireworks/gpt-oss-20b,False,,2,aime; gpqa_diamond,2,aime; gpqa_diamond
+bare_llm_model,fireworks/llama4-maverick-instruct-basic,False,,2,aime; gpqa_diamond,2,aime; gpqa_diamond
+bare_llm_model,fireworks/qwen3-235b-a22b,False,,2,aime; gpqa_diamond,2,aime; gpqa_diamond
+bare_llm_model,GAMA,False,,1,mmau,1,mmau
+bare_llm_model,GAMA-IT,False,,1,mmau,1,mmau
+bare_llm_model,Gemi-1.5-Pro,False,,1,acebench,0,
+bare_llm_model,Gemi-2.5-Pro-05-06,False,,1,acebench,0,
+bare_llm_model,Gemini,False,,1,finben,0,
+bare_llm_model,Gemini 1.0 Pro,False,,3,gpqa_diamond; livecodebench; scicode,3,gpqa_diamond; livecodebench; scicode
+bare_llm_model,Gemini 1.5 Flash,False,,1,gpqa_diamond,1,gpqa_diamond
+bare_llm_model,Gemini 1.5 Flash (May '24),False,,2,livecodebench; scicode,2,livecodebench; scicode
+bare_llm_model,Gemini 1.5 Flash (May 2024),False,,1,gpqa_diamond,1,gpqa_diamond
+bare_llm_model,Gemini 1.5 Flash (Sep '24),False,,2,livecodebench; scicode,2,livecodebench; scicode
+bare_llm_model,Gemini 1.5 Flash 8B,False,,1,gpqa_diamond,1,gpqa_diamond
+bare_llm_model,Gemini 1.5 Flash-8B,False,,2,livecodebench; scicode,2,livecodebench; scicode
+bare_llm_model,Gemini 1.5 Pro,False,,3,gpqa_diamond; hle; scicode,3,gpqa_diamond; hle; scicode
+bare_llm_model,Gemini 1.5 Pro (May '24),False,,1,livecodebench,1,livecodebench
+bare_llm_model,Gemini 1.5 Pro (Sep '24),False,,1,livecodebench,1,livecodebench
+bare_llm_model,Gemini 2.0 Flash,False,,2,ineqmath; mmau,2,ineqmath; mmau
+bare_llm_model,Gemini 2.0 Flash (001),False,,1,financeagent,1,financeagent
+bare_llm_model,Gemini 2.0 Flash (experimental),False,,2,livecodebench; scicode,2,livecodebench; scicode
+bare_llm_model,Gemini 2.0 Flash (Feb '25),False,,2,livecodebench; scicode,2,livecodebench; scicode
+bare_llm_model,Gemini 2.0 Flash (Feb 2025),False,,1,gpqa_diamond,1,gpqa_diamond
+bare_llm_model,Gemini 2.0 Flash Thinking,False,,1,hle,1,hle
+bare_llm_model,Gemini 2.0 Flash Thinking (January 2025),False,,1,hle,1,hle
+bare_llm_model,Gemini 2.0 Flash Thinking Exp,False,,1,gpqa_diamond,1,gpqa_diamond
+bare_llm_model,Gemini 2.0 Flash Thinking Experimental (Jan '25),False,,2,livecodebench; scicode,2,livecodebench; scicode
+bare_llm_model,Gemini 2.0 Flash-Lite,False,,1,ineqmath,1,ineqmath
+bare_llm_model,Gemini 2.0 Flash-Lite (Feb '25),False,,2,livecodebench; scicode,2,livecodebench; scicode
+bare_llm_model,Gemini 2.0 Flash-Lite (Preview),False,,2,livecodebench; scicode,2,livecodebench; scicode
+bare_llm_model,Gemini 2.0 Pro Exp (Feb 2025),False,,1,gpqa_diamond,1,gpqa_diamond
+bare_llm_model,Gemini 2.0 Pro Experimental (Feb '25),False,,2,livecodebench; scicode,2,livecodebench; scicode
+bare_llm_model,Gemini 2.5 Flash,False,,6,aa_lcr; ineqmath; livecodebench; mmau; scicode; simpleqa,5,ineqmath; livecodebench; mmau; scicode; simpleqa
+bare_llm_model,Gemini 2.5 Flash (10K),False,,1,ineqmath,1,ineqmath
+bare_llm_model,Gemini 2.5 Flash (40K),False,,1,ineqmath,1,ineqmath
+bare_llm_model,Gemini 2.5 Flash (April 2025),False,,1,hle,1,hle
+bare_llm_model,Gemini 2.5 Flash (Sep),False,,1,aa_lcr,0,
+bare_llm_model,Gemini 2.5 Flash Lite,False,,1,mmau,1,mmau
+bare_llm_model,Gemini 2.5 Flash Preview,False,,2,livecodebench; scicode,2,livecodebench; scicode
+bare_llm_model,Gemini 2.5 Flash Preview (May 2025),False,,1,hle,1,hle
+bare_llm_model,Gemini 2.5 Flash Preview (Sep '25),False,,2,livecodebench; scicode,2,livecodebench; scicode
+bare_llm_model,Gemini 2.5 Flash Preview 05-20 (10K),False,,1,ineqmath,1,ineqmath
+bare_llm_model,Gemini 2.5 Flash Preview 05-20 (40K),False,,1,ineqmath,1,ineqmath
+bare_llm_model,Gemini 2.5 Flash-Lite,False,,2,livecodebench; scicode,2,livecodebench; scicode
+bare_llm_model,Gemini 2.5 Flash-Lite Preview (Sep '25),False,,2,livecodebench; scicode,2,livecodebench; scicode
+bare_llm_model,Gemini 2.5 Pro,False,,7,aa_lcr; financeagent; gpqa_diamond; ineqmath; livecodebench; mmau; scicode,6,financeagent; gpqa_diamond; ineqmath; livecodebench; mmau; scicode
+bare_llm_model,Gemini 2.5 Pro (10K),False,,1,ineqmath,1,ineqmath
+bare_llm_model,Gemini 2.5 Pro (30K),False,,1,ineqmath,1,ineqmath
+bare_llm_model,Gemini 2.5 Pro Exp (Mar 2025),False,,1,gpqa_diamond,1,gpqa_diamond
+bare_llm_model,Gemini 2.5 Pro Experimental (March 2025),False,,1,hle,1,hle
+bare_llm_model,Gemini 2.5 Pro Preview,False,,1,financeagent,1,financeagent
+bare_llm_model,Gemini 2.5 Pro Preview (10K),False,,1,ineqmath,1,ineqmath
+bare_llm_model,Gemini 2.5 Pro Preview (40K),False,,1,ineqmath,1,ineqmath
+bare_llm_model,Gemini 2.5 Pro Preview (Jun 2025),False,,1,gpqa_diamond,1,gpqa_diamond
+bare_llm_model,Gemini 2.5 Pro Preview (Mar' 25),False,,2,livecodebench; scicode,2,livecodebench; scicode
+bare_llm_model,Gemini 2.5 Pro Preview (May 06 2025),False,,1,hle,1,hle
+bare_llm_model,Gemini 2.5 Pro Preview (May' 25),False,,2,livecodebench; scicode,2,livecodebench; scicode
+bare_llm_model,Gemini 3 Deep Think (2/26),False,,1,arc_agi_2,1,arc_agi_2
+bare_llm_model,Gemini 3 Deep Think (preview),False,,1,arc_agi_2,1,arc_agi_2
+bare_llm_model,Gemini 3 Flash,True,gemini-3-flash-preview,2,aa_lcr; gpqa_diamond,1,gpqa_diamond
+bare_llm_model,Gemini 3 Flash (12/25),True,gemini-3-flash-preview,1,financeagent,1,financeagent
+bare_llm_model,Gemini 3 Flash Preview,True,gemini-3-flash-preview,3,arc_agi_2; livecodebench; scicode,3,arc_agi_2; livecodebench; scicode
+bare_llm_model,Gemini 3 Pro,False,,2,arc_agi_2; clbench,1,arc_agi_2
+bare_llm_model,Gemini 3 Pro (11/25),False,,1,financeagent,1,financeagent
+bare_llm_model,Gemini 3 Pro Preview,False,,5,aa_lcr; gpqa_diamond; livecodebench; scicode; simpleqa,4,gpqa_diamond; livecodebench; scicode; simpleqa
+bare_llm_model,Gemini 3.1 Flash Lite Pr...,False,,1,financeagent,1,financeagent
+bare_llm_model,Gemini 3.1 Flash-Lite Preview,False,,2,aa_lcr; scicode,1,scicode
+bare_llm_model,Gemini 3.1 Pro,True,gemini-3.1-pro-preview,1,browsecomp,0,
+bare_llm_model,Gemini 3.1 Pro (Preview),True,gemini-3.1-pro-preview,1,arc_agi_2,1,arc_agi_2
+bare_llm_model,Gemini 3.1 Pro Preview,True,gemini-3.1-pro-preview,5,aa_lcr; gpqa_diamond; officeqa; scicode; simpleqa,3,gpqa_diamond; scicode; simpleqa
+bare_llm_model,Gemini 3.1 Pro Preview...,False,,1,financeagent,1,financeagent
+bare_llm_model,Gemini Pro v1.5,False,,1,mmau,1,mmau
+bare_llm_model,Gemini-1.5-Flash-API-0514,False,,1,bigcodebench,1,bigcodebench
+bare_llm_model,Gemini-1.5-Flash-Exp-0827,False,,1,bigcodebench,1,bigcodebench
+bare_llm_model,Gemini-1.5-Pro,False,,2,acebench; crust_bench,1,crust_bench
+bare_llm_model,gemini-1.5-pro,False,,1,kumo,1,kumo
+bare_llm_model,gemini-1.5-pro-001,False,,1,lab_bench,1,lab_bench
+bare_llm_model,Gemini-1.5-Pro-002,False,,2,bigcodebench; hle,2,bigcodebench; hle
+bare_llm_model,Gemini-1.5-Pro-API-0514,False,,1,bigcodebench,1,bigcodebench
+bare_llm_model,Gemini-1.5-Pro-Exp-0801,False,,1,bigcodebench,1,bigcodebench
+bare_llm_model,Gemini-1.5-Pro-Exp-0827,False,,1,bigcodebench,1,bigcodebench
+bare_llm_model,Gemini-2.0-Flash,False,,1,researchcodebench,1,researchcodebench
+bare_llm_model,Gemini-2.0-Flash-001,False,,1,bigcodebench,1,bigcodebench
+bare_llm_model,Gemini-2.0-Flash-Exp,False,,1,bigcodebench,1,bigcodebench
+bare_llm_model,Gemini-2.0-Flash-Lite,False,,1,researchcodebench,1,researchcodebench
+bare_llm_model,Gemini-2.0-Flash-Lite-Preview-02-05,False,,1,bigcodebench,1,bigcodebench
+bare_llm_model,gemini-2.0-flash-thinking,False,,1,aime,1,aime
+bare_llm_model,Gemini-2.0-Flash-Thinking-Exp-01-21,False,,1,bigcodebench,1,bigcodebench
+bare_llm_model,Gemini-2.0-Flash-Thinking-Exp-1219,False,,1,bigcodebench,1,bigcodebench
+bare_llm_model,Gemini-2.0-Pro-Exp-02-05,False,,1,bigcodebench,1,bigcodebench
+bare_llm_model,Gemini-2.5-Flash,False,,1,bfcl,1,bfcl
+bare_llm_model,gemini-2.5-flash,False,,1,compilebench,1,compilebench
+bare_llm_model,Gemini-2.5-Flash-Lite,False,,1,bfcl,1,bfcl
+bare_llm_model,Gemini-2.5-Flash-Preview-04-17,False,,1,researchcodebench,1,researchcodebench
+bare_llm_model,gemini-2.5-flash-thinking,False,,1,compilebench,1,compilebench
+bare_llm_model,gemini-2.5-pro,False,,1,compilebench,1,compilebench
+bare_llm_model,Gemini-2.5-Pro,False,,1,swe_perf,0,
+bare_llm_model,Gemini-2.5-Pro-Exp-03-25,False,,1,bigcodebench,1,bigcodebench
+bare_llm_model,Gemini-2.5-Pro-Preview-03-25,False,,1,researchcodebench,1,researchcodebench
+bare_llm_model,Gemini-2.5-Pro-Preview-05-06,False,,1,researchcodebench,1,researchcodebench
+bare_llm_model,gemini-2.5-pro-preview-06-05,False,,1,hle,1,hle
+bare_llm_model,Gemini-3-Pro-Preview,False,,1,bfcl,1,bfcl
+bare_llm_model,gemini-3-pro-preview,False,,1,hle,1,hle
+bare_llm_model,gemini-3.1-flash-lite-preview,False,,1,hle,1,hle
+bare_llm_model,gemini-3.1-pro-preview (thinking high),True,gemini-3.1-pro-preview,1,hle,1,hle
+bare_llm_model,Gemini-Exp-1114,False,,1,bigcodebench,1,bigcodebench
+bare_llm_model,Gemini-Exp-1121,False,,1,bigcodebench,1,bigcodebench
+bare_llm_model,Gemini-Exp-1206,False,,1,bigcodebench,1,bigcodebench
+bare_llm_model,Gemini-Pro-2.5,False,,1,deepsynth,1,deepsynth
+bare_llm_model,Gemini-Pro-3,False,,1,deepsynth,1,deepsynth
+bare_llm_model,Gemma 2 27B,False,,1,gpqa_diamond,1,gpqa_diamond
+bare_llm_model,Gemma 2 9B,False,,1,gpqa_diamond,1,gpqa_diamond
+bare_llm_model,Gemma 3 12B,False,,1,simpleqa,1,simpleqa
+bare_llm_model,Gemma 3 12B Instruct,False,,2,livecodebench; scicode,2,livecodebench; scicode
+bare_llm_model,Gemma 3 27B,False,,2,gpqa_diamond; simpleqa,2,gpqa_diamond; simpleqa
+bare_llm_model,Gemma 3 27B Instruct,False,,2,livecodebench; scicode,2,livecodebench; scicode
+bare_llm_model,Gemma 3 4B,False,,1,simpleqa,1,simpleqa
+bare_llm_model,Gemma 3 4B Instruct,False,,1,livecodebench,1,livecodebench
+bare_llm_model,Gemma 3n (2B),False,,1,mmau,1,mmau
+bare_llm_model,Gemma 3n (4B),False,,1,mmau,1,mmau
+bare_llm_model,Gemma 3n E2B Instruct,False,,1,livecodebench,1,livecodebench
+bare_llm_model,Gemma 3n E4B Instruct,False,,1,livecodebench,1,livecodebench
+bare_llm_model,Gemma 3n E4B Instruct Preview (May '25),False,,1,livecodebench,1,livecodebench
+bare_llm_model,Gemma 4 26B A4B,False,,1,scicode,1,scicode
+bare_llm_model,Gemma 4 31B,False,,1,scicode,1,scicode
+bare_llm_model,Gemma 4 31B IT,False,,1,financeagent,1,financeagent
+bare_llm_model,Gemma 4 E2B,False,,1,scicode,1,scicode
+bare_llm_model,Gemma 4 E4B,False,,1,scicode,1,scicode
+bare_llm_model,Gemma-2-27B-Instruct,False,,1,bigcodebench,1,bigcodebench
+bare_llm_model,gemma-2-27b-it,False,,1,kumo,1,kumo
+bare_llm_model,Gemma-2-9B (6K),False,,1,ineqmath,1,ineqmath
+bare_llm_model,Gemma-2-9B-Instruct,False,,1,bigcodebench,1,bigcodebench
+bare_llm_model,gemma-2-9b-it,False,,1,kumo,1,kumo
+bare_llm_model,Gemma-2B (6K),False,,1,ineqmath,1,ineqmath
+bare_llm_model,Gemma-3-12b-it,False,,1,bfcl,1,bfcl
+bare_llm_model,Gemma-3-1b-it,False,,1,bfcl,1,bfcl
+bare_llm_model,Gemma-3-27B-Instruct,False,,1,bigcodebench,1,bigcodebench
+bare_llm_model,Gemma-3-27b-it,False,,1,bfcl,1,bfcl
+bare_llm_model,Gemma-3-4b-it,False,,1,bfcl,1,bfcl
+bare_llm_model,GLM 4.6,False,,1,financeagent,1,financeagent
+bare_llm_model,GLM 4.7,False,,1,financeagent,1,financeagent
+bare_llm_model,GLM 5,False,,1,financeagent,1,financeagent
+bare_llm_model,GLM 5.1,False,,1,financeagent,1,financeagent
+bare_llm_model,GLM 5V Turbo,False,,1,scicode,1,scicode
+bare_llm_model,GLM-4.5,False,,3,aa_lcr; livecodebench; scicode,2,livecodebench; scicode
+bare_llm_model,glm-4.5,False,,1,compilebench,1,compilebench
+bare_llm_model,GLM-4.5-Air,False,,2,livecodebench; scicode,2,livecodebench; scicode
+bare_llm_model,GLM-4.5V,False,,2,livecodebench; scicode,2,livecodebench; scicode
+bare_llm_model,GLM-4.6,False,,4,aa_lcr; bfcl; livecodebench; scicode,3,bfcl; livecodebench; scicode
+bare_llm_model,GLM-4.6V,False,,2,livecodebench; scicode,2,livecodebench; scicode
+bare_llm_model,GLM-4.7,False,,4,aa_lcr; gpqa_diamond; livecodebench; scicode,3,gpqa_diamond; livecodebench; scicode
+bare_llm_model,GLM-4.7-Flash,False,,1,scicode,1,scicode
+bare_llm_model,glm-4p5,False,,1,hle,1,hle
+bare_llm_model,glm-4p5-air,False,,1,hle,1,hle
+bare_llm_model,GLM-5,False,,3,arc_agi_2; gpqa_diamond; scicode,3,arc_agi_2; gpqa_diamond; scicode
+bare_llm_model,GLM-5-Turbo,False,,1,scicode,1,scicode
+bare_llm_model,GLM-5.1,False,,2,aa_lcr; scicode,1,scicode
+bare_llm_model,google/gemini-1.5-flash-002,False,,2,aime; gpqa_diamond,2,aime; gpqa_diamond
+bare_llm_model,google/gemini-1.5-pro-002,False,,2,aime; gpqa_diamond,2,aime; gpqa_diamond
+bare_llm_model,google/gemini-2.0-flash-001,False,,2,aime; gpqa_diamond,2,aime; gpqa_diamond
+bare_llm_model,google/gemini-2.5-flash-lite-preview-09-2025,False,,2,aime; gpqa_diamond,2,aime; gpqa_diamond
+bare_llm_model,google/gemini-2.5-flash-lite-preview-09-2025-thinking,False,,2,aime; gpqa_diamond,2,aime; gpqa_diamond
+bare_llm_model,google/gemini-2.5-flash-preview-04-17,False,,1,gpqa_diamond,1,gpqa_diamond
+bare_llm_model,google/gemini-2.5-flash-preview-09-2025,False,,2,aime; gpqa_diamond,2,aime; gpqa_diamond
+bare_llm_model,google/gemini-2.5-flash-preview-09-2025-thinking,False,,2,aime; gpqa_diamond,2,aime; gpqa_diamond
+bare_llm_model,google/gemini-2.5-pro-exp-03-25,False,,2,aime; gpqa_diamond,2,aime; gpqa_diamond
+bare_llm_model,google/gemini-3-flash-preview,False,,2,aime; gpqa_diamond,2,aime; gpqa_diamond
+bare_llm_model,google/gemini-3-pro-preview,False,,2,aime; gpqa_diamond,2,aime; gpqa_diamond
+bare_llm_model,google/gemini-3.1-flash-lite-preview,False,,2,aime; gpqa_diamond,2,aime; gpqa_diamond
+bare_llm_model,google/gemini-3.1-pro-preview,False,,2,aime; gpqa_diamond,2,aime; gpqa_diamond
+bare_llm_model,google/gemma-3-27b-it,False,,2,finben; reasoning_gym,1,reasoning_gym
+bare_llm_model,google/gemma-3-4b-it,False,,1,finben,0,
+bare_llm_model,GPT 4.1,False,,1,financeagent,1,financeagent
+bare_llm_model,GPT 4.1 mini,False,,1,financeagent,1,financeagent
+bare_llm_model,GPT 4.1 nano,False,,1,financeagent,1,financeagent
+bare_llm_model,GPT 4.5 Preview,False,,1,hle,1,hle
+bare_llm_model,GPT 4o (2024-08-06),False,,1,financeagent,1,financeagent
+bare_llm_model,GPT 4o Mini,False,,1,financeagent,1,financeagent
+bare_llm_model,GPT 5,False,,1,financeagent,1,financeagent
+bare_llm_model,GPT 5 Mini,True,gpt-5-mini,1,financeagent,1,financeagent
+bare_llm_model,GPT 5.1,False,,2,clbench; financeagent,1,financeagent
+bare_llm_model,GPT 5.2,False,,2,clbench; financeagent,1,financeagent
+bare_llm_model,GPT 5.4,True,gpt-5.4,1,financeagent,1,financeagent
+bare_llm_model,GPT 5.4 Mini,False,,1,financeagent,1,financeagent
+bare_llm_model,GPT 5.4 Nano,False,,1,financeagent,1,financeagent
+bare_llm_model,GPT OSS 120B,False,,1,financeagent,1,financeagent
+bare_llm_model,GPT-3.5,False,,1,usaco,1,usaco
+bare_llm_model,GPT-3.5 Turbo (Jan 2024),False,,1,gpqa_diamond,1,gpqa_diamond
+bare_llm_model,GPT-3.5 Turbo (Nov 2023),False,,1,gpqa_diamond,1,gpqa_diamond
+bare_llm_model,gpt-3.5-turbo,False,,2,kumo; strongreject,2,kumo; strongreject
+bare_llm_model,GPT-3.5-Turbo-0125,False,,1,bigcodebench,1,bigcodebench
+bare_llm_model,GPT-3.5-turbo-16k,False,,1,gpqa_diamond,1,gpqa_diamond
+bare_llm_model,GPT-4,False,,7,finben; gaia; gpqa_diamond; humanevalfix; lawbench; pixiu; usaco,6,gaia; gpqa_diamond; humanevalfix; lawbench; pixiu; usaco
+bare_llm_model,GPT-4 (Jun 2023),False,,1,gpqa_diamond,1,gpqa_diamond
+bare_llm_model,GPT-4 (Mar 2023),False,,1,gpqa_diamond,1,gpqa_diamond
+bare_llm_model,GPT-4 Turbo,False,,2,gaia; livecodebench,2,gaia; livecodebench
+bare_llm_model,GPT-4 Turbo (Apr 2024),False,,1,gpqa_diamond,1,gpqa_diamond
+bare_llm_model,GPT-4 Turbo Preview (January 2024),False,,1,gpqa_diamond,1,gpqa_diamond
+bare_llm_model,GPT-4 Turbo Preview (Nov 2023),False,,1,gpqa_diamond,1,gpqa_diamond
+bare_llm_model,GPT-4-0613,False,,1,bigcodebench,1,bigcodebench
+bare_llm_model,GPT-4-Mini,False,,1,acebench,0,
+bare_llm_model,GPT-4-Turbo,False,,1,acebench,0,
+bare_llm_model,gpt-4-turbo,False,,1,lab_bench,1,lab_bench
+bare_llm_model,GPT-4-Turbo-2024-04-09,False,,2,bigcodebench; scicode,2,bigcodebench; scicode
+bare_llm_model,gpt-4-turbo-2024-04-09,False,,1,simpleqa,1,simpleqa
+bare_llm_model,GPT-4.1,False,,9,aa_lcr; deepsynth; gpqa_diamond; hle; ineqmath; livecodebench; researchcodebench; scicode; seal0,8,deepsynth; gpqa_diamond; hle; ineqmath; livecodebench; researchcodebench; scicode; seal0
+bare_llm_model,gpt-4.1,False,,1,compilebench,1,compilebench
+bare_llm_model,GPT-4.1 mini,False,,3,gpqa_diamond; livecodebench; scicode,3,gpqa_diamond; livecodebench; scicode
+bare_llm_model,GPT-4.1 nano,False,,3,gpqa_diamond; livecodebench; scicode,3,gpqa_diamond; livecodebench; scicode
+bare_llm_model,GPT-4.1-2025-04-14,False,,2,bfcl; bigcodebench,2,bfcl; bigcodebench
+bare_llm_model,gpt-4.1-2025-04-14,False,,1,simpleqa,1,simpleqa
+bare_llm_model,gpt-4.1-mini,False,,1,compilebench,1,compilebench
+bare_llm_model,GPT-4.1-Mini,False,,1,researchcodebench,1,researchcodebench
+bare_llm_model,GPT-4.1-mini,False,,1,seal0,1,seal0
+bare_llm_model,GPT-4.1-mini-2025-04-14,False,,1,bfcl,1,bfcl
+bare_llm_model,GPT-4.1-Mini-2025-04-14,False,,1,bigcodebench,1,bigcodebench
+bare_llm_model,gpt-4.1-mini-2025-04-14,False,,1,simpleqa,1,simpleqa
+bare_llm_model,GPT-4.1-Nano,False,,1,researchcodebench,1,researchcodebench
+bare_llm_model,GPT-4.1-nano-2025-04-14,False,,1,bfcl,1,bfcl
+bare_llm_model,GPT-4.1-Nano-2025-04-14,False,,1,bigcodebench,1,bigcodebench
+bare_llm_model,gpt-4.1-nano-2025-04-14,False,,1,simpleqa,1,simpleqa
+bare_llm_model,GPT-4.5 (2025-02-27),False,,1,browsecomp,0,
+bare_llm_model,GPT-4.5 Preview (Feb 2025),False,,1,gpqa_diamond,1,gpqa_diamond
+bare_llm_model,gpt-4.5-preview-2025-02-27,False,,1,simpleqa,1,simpleqa
+bare_llm_model,GPT-4o,False,,13,acebench; crust_bench; finben; hle; ineqmath; omni_math; qcircuitbench; researchcodebench; scicode; seal0; simpleqa; swe_lancer; swe_perf,10,crust_bench; hle; ineqmath; omni_math; qcircuitbench; researchcodebench; scicode; seal0; simpleqa; swe_lancer
+bare_llm_model,gpt-4o,False,,3,crmarena; kumo; lab_bench,3,crmarena; kumo; lab_bench
+bare_llm_model,GPT-4o (2024-05-13),False,,1,scienceagentbench,0,
+bare_llm_model,GPT-4o (2024-08-06),False,,1,browsecomp,0,
+bare_llm_model,GPT-4o (Aug '24),False,,2,livecodebench; scicode,2,livecodebench; scicode
+bare_llm_model,GPT-4o (Aug 2024),False,,1,gpqa_diamond,1,gpqa_diamond
+bare_llm_model,GPT-4o (ChatGPT),False,,1,scicode,1,scicode
+bare_llm_model,"GPT-4o (March 2025, chatgpt-4o-latest)",False,,2,livecodebench; scicode,2,livecodebench; scicode
+bare_llm_model,GPT-4o (May '24),False,,2,livecodebench; scicode,2,livecodebench; scicode
+bare_llm_model,GPT-4o (May 2024),False,,1,gpqa_diamond,1,gpqa_diamond
+bare_llm_model,GPT-4o (Nov '24),False,,2,livecodebench; scicode,2,livecodebench; scicode
+bare_llm_model,GPT-4o (Nov 2024),False,,1,gpqa_diamond,1,gpqa_diamond
+bare_llm_model,GPT-4o (November 2024),False,,1,hle,1,hle
+bare_llm_model,GPT-4o Audio,False,,1,mmau,1,mmau
+bare_llm_model,GPT-4o mini,False,,4,gpqa_diamond; ineqmath; livecodebench; scicode,4,gpqa_diamond; ineqmath; livecodebench; scicode
+bare_llm_model,GPT-4o mini Audio,False,,1,mmau,1,mmau
+bare_llm_model,GPT-4o-2024-05-13,False,,1,bigcodebench,1,bigcodebench
+bare_llm_model,gpt-4o-2024-05-13,False,,1,simpleqa,1,simpleqa
+bare_llm_model,GPT-4o-2024-08-06,False,,1,bigcodebench,1,bigcodebench
+bare_llm_model,gpt-4o-2024-08-06,False,,1,simpleqa,1,simpleqa
+bare_llm_model,GPT-4o-2024-11-20,False,,1,bigcodebench,1,bigcodebench
+bare_llm_model,gpt-4o-2024-11-20,False,,1,simpleqa,1,simpleqa
+bare_llm_model,GPT-4o-Mini,False,,2,acebench; researchcodebench,1,researchcodebench
+bare_llm_model,gpt-4o-mini,False,,3,crmarena; kumo; strongreject,3,crmarena; kumo; strongreject
+bare_llm_model,GPT-4o-mini,False,,2,seal0; simpleqa,2,seal0; simpleqa
+bare_llm_model,GPT-4o-mini-2024-07-18,False,,1,bigcodebench,1,bigcodebench
+bare_llm_model,gpt-4o-mini-2024-07-18,False,,1,simpleqa,1,simpleqa
+bare_llm_model,GPT-5,False,,3,aa_lcr; livecodebench; scicode,2,livecodebench; scicode
+bare_llm_model,GPT-5 (ChatGPT),False,,3,aa_lcr; livecodebench; scicode,2,livecodebench; scicode
+bare_llm_model,GPT-5 (high),False,,1,gpqa_diamond,1,gpqa_diamond
+bare_llm_model,GPT-5 (medium),False,,1,gpqa_diamond,1,gpqa_diamond
+bare_llm_model,"GPT-5 (medium, 10K)",False,,1,ineqmath,1,ineqmath
+bare_llm_model,"GPT-5 (medium, 30K)",False,,1,ineqmath,1,ineqmath
+bare_llm_model,GPT-5 Codex,False,,3,aa_lcr; livecodebench; scicode,2,livecodebench; scicode
+bare_llm_model,GPT-5 mini,False,,3,aa_lcr; livecodebench; scicode,2,livecodebench; scicode
+bare_llm_model,GPT-5 mini (high),False,,1,gpqa_diamond,1,gpqa_diamond
+bare_llm_model,GPT-5 mini (medium),False,,1,gpqa_diamond,1,gpqa_diamond
+bare_llm_model,"GPT-5 mini (medium, 10K)",False,,1,ineqmath,1,ineqmath
+bare_llm_model,GPT-5 nano,False,,2,livecodebench; scicode,2,livecodebench; scicode
+bare_llm_model,GPT-5 nano (high),False,,1,gpqa_diamond,1,gpqa_diamond
+bare_llm_model,GPT-5 nano (medium),False,,1,gpqa_diamond,1,gpqa_diamond
+bare_llm_model,gpt-5-2025-08-07,False,,1,hle,1,hle
+bare_llm_model,gpt-5-codex-high,False,,1,compilebench,1,compilebench
+bare_llm_model,gpt-5-high,False,,1,compilebench,1,compilebench
+bare_llm_model,gpt-5-main,False,,1,simpleqa,1,simpleqa
+bare_llm_model,GPT-5-mini-2025-08-07,True,gpt-5-mini,1,bfcl,1,bfcl
+bare_llm_model,gpt-5-mini-2025-08-07,True,gpt-5-mini,1,hle,1,hle
+bare_llm_model,gpt-5-mini-high,False,,1,compilebench,1,compilebench
+bare_llm_model,gpt-5-mini-minimal,False,,1,compilebench,1,compilebench
+bare_llm_model,gpt-5-minimal,False,,1,compilebench,1,compilebench
+bare_llm_model,GPT-5-nano-2025-08-07,True,gpt-5-nano,1,bfcl,1,bfcl
+bare_llm_model,gpt-5-pro-2025-10-06,False,,1,hle,1,hle
+bare_llm_model,gpt-5-thinking,False,,1,simpleqa,1,simpleqa
+bare_llm_model,gpt-5-thinking-mini,False,,1,simpleqa,1,simpleqa
+bare_llm_model,gpt-5-thinking-nano,False,,1,simpleqa,1,simpleqa
+bare_llm_model,GPT-5.1,False,,5,aa_lcr; clbench; deepsynth; livecodebench; scicode,3,deepsynth; livecodebench; scicode
+bare_llm_model,GPT-5.1 (high),False,,1,gpqa_diamond,1,gpqa_diamond
+bare_llm_model,GPT-5.1 (medium),False,,1,gpqa_diamond,1,gpqa_diamond
+bare_llm_model,GPT-5.1 Codex,False,,3,aa_lcr; livecodebench; scicode,2,livecodebench; scicode
+bare_llm_model,GPT-5.1 Codex mini,False,,3,aa_lcr; livecodebench; scicode,2,livecodebench; scicode
+bare_llm_model,gpt-5.1-instant,False,,1,hle,1,hle
+bare_llm_model,gpt-5.1-thinking,False,,1,hle,1,hle
+bare_llm_model,GPT-5.2,False,,6,aa_lcr; arc_agi_2; clbench; deepsynth; livecodebench; scicode,4,arc_agi_2; deepsynth; livecodebench; scicode
+bare_llm_model,GPT-5.2 (high),False,,1,gpqa_diamond,1,gpqa_diamond
+bare_llm_model,GPT-5.2 (low),False,,1,gpqa_diamond,1,gpqa_diamond
+bare_llm_model,GPT-5.2 (medium),False,,1,gpqa_diamond,1,gpqa_diamond
+bare_llm_model,GPT-5.2 (xhigh),False,,1,gpqa_diamond,1,gpqa_diamond
+bare_llm_model,GPT-5.2 Codex,False,,2,aa_lcr; scicode,1,scicode
+bare_llm_model,GPT-5.2 Pro,False,,2,arc_agi_2; browsecomp,1,arc_agi_2
+bare_llm_model,GPT-5.2-2025-12-11,False,,1,bfcl,1,bfcl
+bare_llm_model,gpt-5.2-2025-12-11,False,,1,hle,1,hle
+bare_llm_model,GPT-5.3 Codex,False,,2,aa_lcr; scicode,1,scicode
+bare_llm_model,GPT-5.4,True,gpt-5.4,5,aa_lcr; arc_agi_2; officeqa; scicode; simpleqa,3,arc_agi_2; scicode; simpleqa
+bare_llm_model,GPT-5.4 (xhigh),True,gpt-5.4,1,gpqa_diamond,1,gpqa_diamond
+bare_llm_model,GPT-5.4 mini,False,,2,aa_lcr; scicode,1,scicode
+bare_llm_model,GPT-5.4 Mini,False,,1,arc_agi_2,1,arc_agi_2
+bare_llm_model,GPT-5.4 mini (high),False,,1,gpqa_diamond,1,gpqa_diamond
+bare_llm_model,GPT-5.4 Nano,False,,1,arc_agi_2,1,arc_agi_2
+bare_llm_model,GPT-5.4 nano,False,,1,scicode,1,scicode
+bare_llm_model,GPT-5.4 nano (high),False,,1,gpqa_diamond,1,gpqa_diamond
+bare_llm_model,GPT-5.4 Pro,False,,1,arc_agi_2,1,arc_agi_2
+bare_llm_model,GPT-5.4 Pro (xhigh),False,,1,gpqa_diamond,1,gpqa_diamond
+bare_llm_model,gpt-5.4-2026-03-05 (xhigh thinking),True,gpt-5.4,1,hle,1,hle
+bare_llm_model,gpt-5.4-pro-2026-03-05,False,,1,hle,1,hle
+bare_llm_model,GPT-5.5,False,,1,scicode,1,scicode
+bare_llm_model,gpt-oss-120B,False,,2,livecodebench; scicode,2,livecodebench; scicode
+bare_llm_model,gpt-oss-120b,False,,2,mmmlu; simpleqa,2,mmmlu; simpleqa
+bare_llm_model,gpt-oss-120b (10K),False,,1,ineqmath,1,ineqmath
+bare_llm_model,gpt-oss-120b (high),False,,1,gpqa_diamond,1,gpqa_diamond
+bare_llm_model,gpt-oss-120b-high,False,,1,compilebench,1,compilebench
+bare_llm_model,gpt-oss-20B,False,,2,livecodebench; scicode,2,livecodebench; scicode
+bare_llm_model,gpt-oss-20b,False,,2,mmmlu; simpleqa,2,mmmlu; simpleqa
+bare_llm_model,GPT3.5-Turbo,False,,1,finben,0,
+bare_llm_model,Granite 3.3 8B,False,,2,livecodebench; scicode,2,livecodebench; scicode
+bare_llm_model,Granite 4.0 1B,False,,1,scicode,1,scicode
+bare_llm_model,Granite 4.0 H 1B,False,,1,livecodebench,1,livecodebench
+bare_llm_model,Granite 4.0 H Small,False,,2,livecodebench; scicode,2,livecodebench; scicode
+bare_llm_model,Granite 4.0 Micro,False,,2,livecodebench; scicode,2,livecodebench; scicode
+bare_llm_model,Granite 4.0 Small,False,,1,simpleqa,1,simpleqa
+bare_llm_model,Granite-20b-FunctionCalling,False,,1,bfcl,1,bfcl
+bare_llm_model,Granite-3.0-2B-Instruct,False,,1,bigcodebench,1,bigcodebench
+bare_llm_model,Granite-3.0-8B-Instruct,False,,1,bigcodebench,1,bigcodebench
+bare_llm_model,Granite-3.1-8B-Instruct,False,,1,bfcl,1,bfcl
+bare_llm_model,Granite-3.2-8B-Instruct,False,,1,bfcl,1,bfcl
+bare_llm_model,Granite-4.0-350m,False,,1,bfcl,1,bfcl
+bare_llm_model,Granite-Code-20B-Base,False,,1,bigcodebench,1,bigcodebench
+bare_llm_model,Granite-Code-20B-Instruct,False,,1,bigcodebench,1,bigcodebench
+bare_llm_model,Granite-Code-34B-Base,False,,1,bigcodebench,1,bigcodebench
+bare_llm_model,Granite-Code-34B-Instruct,False,,1,bigcodebench,1,bigcodebench
+bare_llm_model,Granite-Code-3B-Base,False,,1,bigcodebench,1,bigcodebench
+bare_llm_model,Granite-Code-3B-Instruct,False,,1,bigcodebench,1,bigcodebench
+bare_llm_model,Granite-Code-8B-Base,False,,1,bigcodebench,1,bigcodebench
+bare_llm_model,Granite-Code-8B-Instruct,False,,1,bigcodebench,1,bigcodebench
+bare_llm_model,Grok 2,False,,2,hle; simpleqa,2,hle; simpleqa
+bare_llm_model,Grok 2 (Dec '24),False,,2,livecodebench; scicode,2,livecodebench; scicode
+bare_llm_model,Grok 3,False,,5,aa_lcr; ineqmath; livecodebench; scicode; simpleqa,4,ineqmath; livecodebench; scicode; simpleqa
+bare_llm_model,Grok 3 (beta),False,,1,gpqa_diamond,1,gpqa_diamond
+bare_llm_model,Grok 3 Beta,False,,1,financeagent,1,financeagent
+bare_llm_model,Grok 3 mini,False,,1,ineqmath,1,ineqmath
+bare_llm_model,Grok 3 Mini,False,,1,simpleqa,1,simpleqa
+bare_llm_model,"Grok 3 mini (medium, 10K)",False,,1,ineqmath,1,ineqmath
+bare_llm_model,Grok 3 Mini Fast High Reasoning,False,,1,financeagent,1,financeagent
+bare_llm_model,Grok 3 Mini Fast Low Reasoning,False,,1,financeagent,1,financeagent
+bare_llm_model,Grok 3 mini Reasoning,False,,2,livecodebench; scicode,2,livecodebench; scicode
+bare_llm_model,Grok 4,False,,6,aa_lcr; financeagent; gpqa_diamond; livecodebench; scicode; simpleqa,5,financeagent; gpqa_diamond; livecodebench; scicode; simpleqa
+bare_llm_model,Grok 4 (40K),False,,1,ineqmath,1,ineqmath
+bare_llm_model,Grok 4 Fast,False,,2,livecodebench; scicode,2,livecodebench; scicode
+bare_llm_model,Grok 4 Fast (Reasoning),False,,1,financeagent,1,financeagent
+bare_llm_model,Grok 4.1 Fast,False,,3,aa_lcr; livecodebench; scicode,2,livecodebench; scicode
+bare_llm_model,Grok 4.1 Fast (Reasonin...),False,,1,financeagent,1,financeagent
+bare_llm_model,Grok 4.1 Fast Non-Reas...,False,,1,financeagent,1,financeagent
+bare_llm_model,Grok 4.20,False,,1,arc_agi_2,1,arc_agi_2
+bare_llm_model,Grok 4.20 (Reasoning),False,,1,financeagent,1,financeagent
+bare_llm_model,Grok 4.20 0309,False,,1,scicode,1,scicode
+bare_llm_model,Grok 4.20 0309 v2,False,,1,scicode,1,scicode
+bare_llm_model,Grok 4.20 Beta 0309,False,,1,aa_lcr,0,
+bare_llm_model,Grok Beta,False,,2,livecodebench; scicode,2,livecodebench; scicode
+bare_llm_model,Grok Code Fast 1,False,,2,livecodebench; scicode,2,livecodebench; scicode
+bare_llm_model,Grok-2,False,,1,gpqa_diamond,1,gpqa_diamond
+bare_llm_model,Grok-2-1212,False,,1,researchcodebench,1,researchcodebench
+bare_llm_model,Grok-3 mini,False,,1,gpqa_diamond,1,gpqa_diamond
+bare_llm_model,Grok-3-Beta,False,,2,bigcodebench; researchcodebench,2,bigcodebench; researchcodebench
+bare_llm_model,Grok-3-Mini-Beta (High),False,,1,researchcodebench,1,researchcodebench
+bare_llm_model,"Grok-3-Mini-Beta (temperature=1, reasoning=high)",False,,1,bigcodebench,1,bigcodebench
+bare_llm_model,"Grok-3-Mini-Beta (temperature=1, reasoning=low)",False,,1,bigcodebench,1,bigcodebench
+bare_llm_model,grok-4,False,,1,compilebench,1,compilebench
+bare_llm_model,Grok-4-0709,False,,1,bfcl,1,bfcl
+bare_llm_model,Grok-4-1-fast-non-reasoning,False,,1,bfcl,1,bfcl
+bare_llm_model,Grok-4-1-fast-reasoning,False,,1,bfcl,1,bfcl
+bare_llm_model,grok-4-fast,False,,1,compilebench,1,compilebench
+bare_llm_model,Grok-Beta,False,,1,bigcodebench,1,bigcodebench
+bare_llm_model,grok-code-fast-1,False,,1,compilebench,1,compilebench
+bare_llm_model,grok/grok-2-1212,False,,2,aime; gpqa_diamond,2,aime; gpqa_diamond
+bare_llm_model,grok/grok-3,False,,2,aime; gpqa_diamond,2,aime; gpqa_diamond
+bare_llm_model,grok/grok-3-mini-fast-high-reasoning,False,,2,aime; gpqa_diamond,2,aime; gpqa_diamond
+bare_llm_model,grok/grok-3-mini-fast-low-reasoning,False,,2,aime; gpqa_diamond,2,aime; gpqa_diamond
+bare_llm_model,grok/grok-4-0709,False,,2,aime; gpqa_diamond,2,aime; gpqa_diamond
+bare_llm_model,grok/grok-4-1-fast-non-reasoning,False,,2,aime; gpqa_diamond,2,aime; gpqa_diamond
+bare_llm_model,grok/grok-4-1-fast-reasoning,False,,2,aime; gpqa_diamond,2,aime; gpqa_diamond
+bare_llm_model,grok/grok-4-fast-non-reasoning,False,,2,aime; gpqa_diamond,2,aime; gpqa_diamond
+bare_llm_model,grok/grok-4-fast-reasoning,False,,2,aime; gpqa_diamond,2,aime; gpqa_diamond
+bare_llm_model,grok/grok-4.20-0309-reasoning,False,,2,aime; gpqa_diamond,2,aime; gpqa_diamond
+bare_llm_model,Hammer2.1-0.5b,False,,1,bfcl,1,bfcl
+bare_llm_model,Hammer2.1-1.5b,False,,1,bfcl,1,bfcl
+bare_llm_model,Hammer2.1-3B,False,,1,acebench,0,
+bare_llm_model,Hammer2.1-3b,False,,1,bfcl,1,bfcl
+bare_llm_model,Hammer2.1-7B,False,,1,acebench,0,
+bare_llm_model,Hammer2.1-7b,False,,1,bfcl,1,bfcl
+bare_llm_model,Hermes 2 Theta Llama-3 70B,False,,1,gpqa_diamond,1,gpqa_diamond
+bare_llm_model,Hermes 3 - Llama-3.1 70B,False,,2,livecodebench; scicode,2,livecodebench; scicode
+bare_llm_model,Hermes 4 - Llama-3.1 405B,False,,2,livecodebench; scicode,2,livecodebench; scicode
+bare_llm_model,Hermes 4 - Llama-3.1 70B,False,,2,livecodebench; scicode,2,livecodebench; scicode
+bare_llm_model,Hermes-2-Pro-Llama-3-70B,False,,1,bigcodebench,1,bigcodebench
+bare_llm_model,Hermes-2-Theta-Llama-3-70B,False,,1,bigcodebench,1,bigcodebench
+bare_llm_model,Human annotators,False,,1,gaia,1,gaia
+bare_llm_model,HY 2.0,False,,1,clbench,0,
+bare_llm_model,HY 2.0 Thinking,False,,1,clbench,0,
+bare_llm_model,HyperCLOVA X SEED Think (32B),False,,2,livecodebench; scicode,2,livecodebench; scicode
+bare_llm_model,Icecuber,False,,1,arc_agi_2,1,arc_agi_2
+bare_llm_model,InstructCodeT5+ (16B),False,,1,humanevalfix,1,humanevalfix
+bare_llm_model,INTELLECT-3,False,,2,livecodebench; scicode,2,livecodebench; scicode
+bare_llm_model,InternLM-7B,False,,1,finben,0,
+bare_llm_model,InternLM2-math-plus-mixtral8*22B,False,,1,omni_math,1,omni_math
+bare_llm_model,InternLM2.5-7B-Chat,False,,1,bigcodebench,1,bigcodebench
+bare_llm_model,InverseCoder-CL-13B,False,,1,bigcodebench,1,bigcodebench
+bare_llm_model,InverseCoder-CL-7B,False,,1,bigcodebench,1,bigcodebench
+bare_llm_model,InverseCoder-DS-6.7B,False,,1,bigcodebench,1,bigcodebench
+bare_llm_model,Jamba 1.5 Large,False,,2,livecodebench; scicode,2,livecodebench; scicode
+bare_llm_model,Jamba 1.6 Large,False,,2,livecodebench; scicode,2,livecodebench; scicode
+bare_llm_model,Jamba 1.6 Mini,False,,1,scicode,1,scicode
+bare_llm_model,Jamba 1.7 Large,False,,3,financeagent; livecodebench; scicode,3,financeagent; livecodebench; scicode
+bare_llm_model,Jamba 1.7 Mini,False,,1,scicode,1,scicode
+bare_llm_model,Jamba Reasoning 3B,False,,1,livecodebench,1,livecodebench
+bare_llm_model,JGenProg,False,,1,quixbugs,1,quixbugs
+bare_llm_model,JKali,False,,1,quixbugs,1,quixbugs
+bare_llm_model,JMutRepair,False,,1,quixbugs,1,quixbugs
+bare_llm_model,K-EXAONE,False,,2,livecodebench; scicode,2,livecodebench; scicode
+bare_llm_model,K2 Think V2,False,,1,scicode,1,scicode
+bare_llm_model,K2-V2,False,,2,livecodebench; scicode,2,livecodebench; scicode
+bare_llm_model,KAT Coder Pro V2,False,,1,scicode,1,scicode
+bare_llm_model,KAT-Coder-Pro V1,False,,3,aa_lcr; livecodebench; scicode,2,livecodebench; scicode
+bare_llm_model,Kimi K2,False,,4,aa_lcr; clbench; livecodebench; scicode,2,livecodebench; scicode
+bare_llm_model,Kimi K2 0905,False,,2,livecodebench; scicode,2,livecodebench; scicode
+bare_llm_model,Kimi K2 Instruct,False,,1,ineqmath,1,ineqmath
+bare_llm_model,Kimi K2 Thinking,False,,4,clbench; financeagent; livecodebench; scicode,3,financeagent; livecodebench; scicode
+bare_llm_model,Kimi K2 Thinking Turbo,False,,1,gpqa_diamond,1,gpqa_diamond
+bare_llm_model,Kimi K2-Thinking-0905,False,,2,browsecomp; seal0,1,seal0
+bare_llm_model,Kimi K2.5,False,,6,aa_lcr; arc_agi_2; clbench; financeagent; scicode; seal0,4,arc_agi_2; financeagent; scicode; seal0
+bare_llm_model,Kimi K2.5 (Fireworks),False,,1,gpqa_diamond,1,gpqa_diamond
+bare_llm_model,Kimi K2.5 Thinking,False,,1,clbench,0,
+bare_llm_model,Kimi K2.6,False,,3,aa_lcr; browsecomp; scicode,1,scicode
+bare_llm_model,Kimi Linear 48B A3B Instruct,False,,2,livecodebench; scicode,2,livecodebench; scicode
+bare_llm_model,Kimi-Audio,False,,1,mmau,1,mmau
+bare_llm_model,Kimi-k2-0711,False,,1,acebench,0,
+bare_llm_model,kimi-k2-0905,False,,1,compilebench,1,compilebench
+bare_llm_model,kimi-k2.5,False,,1,hle,1,hle
+bare_llm_model,kimi/kimi-k2-thinking,False,,2,aime; gpqa_diamond,2,aime; gpqa_diamond
+bare_llm_model,kimi/kimi-k2.5-thinking,False,,2,aime; gpqa_diamond,2,aime; gpqa_diamond
+bare_llm_model,KwaiCoder-23B-A4B-v1,False,,1,bigcodebench,1,bigcodebench
+bare_llm_model,LFM 40B,False,,1,livecodebench,1,livecodebench
+bare_llm_model,LFM2 24B A2B,False,,1,scicode,1,scicode
+bare_llm_model,LFM2 8B A1B,False,,1,livecodebench,1,livecodebench
+bare_llm_model,limo,False,,1,aime,1,aime
+bare_llm_model,Ling-1T,False,,2,livecodebench; scicode,2,livecodebench; scicode
+bare_llm_model,Ling-flash-2.0,False,,2,livecodebench; scicode,2,livecodebench; scicode
+bare_llm_model,Ling-mini-2.0,False,,2,livecodebench; scicode,2,livecodebench; scicode
+bare_llm_model,Llama 2 Chat 13B,False,,2,livecodebench; scicode,2,livecodebench; scicode
+bare_llm_model,Llama 2 Chat 70B,False,,1,livecodebench,1,livecodebench
+bare_llm_model,Llama 2-70B,False,,1,gpqa_diamond,1,gpqa_diamond
+bare_llm_model,Llama 3 Instruct 70B,False,,1,livecodebench,1,livecodebench
+bare_llm_model,Llama 3 Instruct 8B,False,,2,livecodebench; scicode,2,livecodebench; scicode
+bare_llm_model,Llama 3-70B,False,,1,gpqa_diamond,1,gpqa_diamond
+bare_llm_model,Llama 3-8B,False,,1,gpqa_diamond,1,gpqa_diamond
+bare_llm_model,Llama 3.1 Instruct 405B,False,,1,livecodebench,1,livecodebench
+bare_llm_model,Llama 3.1 Instruct 70B,False,,1,livecodebench,1,livecodebench
+bare_llm_model,Llama 3.1 Instruct 8B,False,,2,livecodebench; scicode,2,livecodebench; scicode
+bare_llm_model,Llama 3.1 Nemotron Instruct 70B,False,,2,livecodebench; scicode,2,livecodebench; scicode
+bare_llm_model,Llama 3.1 Nemotron Nano 4B v1.1,False,,2,livecodebench; scicode,2,livecodebench; scicode
+bare_llm_model,Llama 3.1 Nemotron Ultra 253B v1,False,,2,livecodebench; scicode,2,livecodebench; scicode
+bare_llm_model,Llama 3.1 Tulu3 405B,False,,2,livecodebench; scicode,2,livecodebench; scicode
+bare_llm_model,Llama 3.1-405B,False,,1,gpqa_diamond,1,gpqa_diamond
+bare_llm_model,Llama 3.1-70B,False,,1,gpqa_diamond,1,gpqa_diamond
+bare_llm_model,Llama 3.1-8B,False,,1,gpqa_diamond,1,gpqa_diamond
+bare_llm_model,Llama 3.2 90B,False,,1,gpqa_diamond,1,gpqa_diamond
+bare_llm_model,Llama 3.2 Instruct 11B (Vision),False,,2,livecodebench; scicode,2,livecodebench; scicode
+bare_llm_model,Llama 3.2 Instruct 90B (Vision),False,,2,livecodebench; scicode,2,livecodebench; scicode
+bare_llm_model,Llama 3.3 70B,False,,1,gpqa_diamond,1,gpqa_diamond
+bare_llm_model,Llama 3.3 Instruct 70B,False,,2,livecodebench; scicode,2,livecodebench; scicode
+bare_llm_model,LLaMA 3.3 Instruct Turbo (70B),False,,1,financeagent,1,financeagent
+bare_llm_model,Llama 3.3 Nemotron Super 49B v1,False,,2,livecodebench; scicode,2,livecodebench; scicode
+bare_llm_model,Llama 4 Maverick,False,,4,aa_lcr; hle; livecodebench; scicode,3,hle; livecodebench; scicode
+bare_llm_model,LLaMA 4 Maverick,False,,1,financeagent,1,financeagent
+bare_llm_model,Llama 4 Maverick (FP8),False,,1,gpqa_diamond,1,gpqa_diamond
+bare_llm_model,LLaMA 4 Scout,False,,1,financeagent,1,financeagent
+bare_llm_model,Llama 4 Scout,False,,3,gpqa_diamond; livecodebench; scicode,3,gpqa_diamond; livecodebench; scicode
+bare_llm_model,Llama Nemotron Super 49B v1.5,False,,2,livecodebench; scicode,2,livecodebench; scicode
+bare_llm_model,Llama-2-70B-chat,False,,1,gpqa_diamond,1,gpqa_diamond
+bare_llm_model,Llama-3-70B-Base,False,,1,bigcodebench,1,bigcodebench
+bare_llm_model,Llama-3-70B-Instruct,False,,2,bigcodebench; scicode,2,bigcodebench; scicode
+bare_llm_model,Llama-3-70B-Synthia-v3.5,False,,1,bigcodebench,1,bigcodebench
+bare_llm_model,Llama-3-8B-Base,False,,1,bigcodebench,1,bigcodebench
+bare_llm_model,Llama-3-8B-Instruct,False,,1,bigcodebench,1,bigcodebench
+bare_llm_model,Llama-3.1-405B-Instruct,False,,2,bigcodebench; scicode,2,bigcodebench; scicode
+bare_llm_model,Llama-3.1-70B,False,,1,seal0,1,seal0
+bare_llm_model,Llama-3.1-70B-Instruct,False,,3,acebench; bigcodebench; scicode,2,bigcodebench; scicode
+bare_llm_model,llama-3.1-70b-instruct,False,,2,kumo; strongreject,2,kumo; strongreject
+bare_llm_model,Llama-3.1-8B,False,,1,ineqmath,1,ineqmath
+bare_llm_model,Llama-3.1-8B-Instruct,False,,3,acebench; bfcl; bigcodebench,2,bfcl; bigcodebench
+bare_llm_model,llama-3.1-8b-instruct,False,,1,kumo,1,kumo
+bare_llm_model,Llama-3.1-Instruct-405B,False,,1,scienceagentbench,0,
+bare_llm_model,Llama-3.1-Instruct-70B,False,,1,scienceagentbench,0,
+bare_llm_model,Llama-3.1-Nemotron-70B-Instruct,False,,1,bigcodebench,1,bigcodebench
+bare_llm_model,Llama-3.1-Nemotron-Ultra-253B-v1,False,,1,bfcl,1,bfcl
+bare_llm_model,Llama-3.2-1B-Instruct,False,,2,bfcl; bigcodebench,2,bfcl; bigcodebench
+bare_llm_model,Llama-3.2-3B,False,,2,ineqmath; seal0,2,ineqmath; seal0
+bare_llm_model,Llama-3.2-3B-Instruct,False,,3,acebench; bfcl; bigcodebench,2,bfcl; bigcodebench
+bare_llm_model,llama-3.2-3b-instruct,False,,1,kumo,1,kumo
+bare_llm_model,Llama-3.3-70B,False,,1,researchcodebench,1,researchcodebench
+bare_llm_model,Llama-3.3-70B-Instruct,False,,2,bfcl; bigcodebench,2,bfcl; bigcodebench
+bare_llm_model,llama-3.3-70b-instruct,False,,1,kumo,1,kumo
+bare_llm_model,Llama-4-Maverick,False,,3,bigcodebench; ineqmath; researchcodebench,3,bigcodebench; ineqmath; researchcodebench
+bare_llm_model,Llama-4-Maverick-17B-128E-Instruct-FP8,False,,1,bfcl,1,bfcl
+bare_llm_model,Llama-4-Scout,False,,3,bigcodebench; ineqmath; researchcodebench,3,bigcodebench; ineqmath; researchcodebench
+bare_llm_model,Llama-4-Scout-17B-16E (109B),False,,1,seal0,1,seal0
+bare_llm_model,Llama-4-Scout-17B-16E-Instruct,False,,1,bfcl,1,bfcl
+bare_llm_model,LLaMA2-70B,False,,1,finben,0,
+bare_llm_model,LLaMA2-7B-chat,False,,1,finben,0,
+bare_llm_model,Llama3,False,,1,qcircuitbench,1,qcircuitbench
+bare_llm_model,LLaMA3-70B,False,,1,finben,0,
+bare_llm_model,LLaMA3-8B,False,,1,finben,0,
+bare_llm_model,llama3.1-405b,False,,1,crmarena,1,crmarena
+bare_llm_model,llama3.1-70b,False,,1,crmarena,1,crmarena
+bare_llm_model,llama3.1-8b,False,,1,crmarena,1,crmarena
+bare_llm_model,LLaVA-1.6 Vicuna-13B,False,,1,finben,0,
+bare_llm_model,LongCat Flash Lite,False,,1,scicode,1,scicode
+bare_llm_model,LTU,False,,1,mmau,1,mmau
+bare_llm_model,LTU AS,False,,1,mmau,1,mmau
+bare_llm_model,M2UGen,False,,1,mmau,1,mmau
+bare_llm_model,Magicoder-S-DS-6.7B,False,,1,bigcodebench,1,bigcodebench
+bare_llm_model,Magistral Medium 1,False,,2,livecodebench; scicode,2,livecodebench; scicode
+bare_llm_model,Magistral Medium 1.2,False,,3,aa_lcr; livecodebench; scicode,2,livecodebench; scicode
+bare_llm_model,Magistral Small 1,False,,2,livecodebench; scicode,2,livecodebench; scicode
+bare_llm_model,Magistral Small 1.1,False,,1,gpqa_diamond,1,gpqa_diamond
+bare_llm_model,Magistral Small 1.2,False,,2,livecodebench; scicode,2,livecodebench; scicode
+bare_llm_model,Mathstral-7B-v0.1,False,,1,omni_math,1,omni_math
+bare_llm_model,Mean,False,,1,skillsbench,1,skillsbench
+bare_llm_model,Medium-3,False,,1,researchcodebench,1,researchcodebench
+bare_llm_model,Mercury 2,False,,1,scicode,1,scicode
+bare_llm_model,Meta-Llama-3-70B-Instruct,False,,1,lab_bench,1,lab_bench
+bare_llm_model,meta-llama/Llama-3.1-70B-Instruct,False,,1,finben,0,
+bare_llm_model,meta-llama/llama-3.3-70b-instruct,False,,1,reasoning_gym,1,reasoning_gym
+bare_llm_model,meta-llama/llama-4-maverick,False,,1,reasoning_gym,1,reasoning_gym
+bare_llm_model,meta-llama/llama-4-scout,False,,1,reasoning_gym,1,reasoning_gym
+bare_llm_model,meta-llama/Llama-4-Scout-17B-16E-Instruct,False,,1,finben,0,
+bare_llm_model,meta/muse_spark,False,,2,aime; gpqa_diamond,2,aime; gpqa_diamond
+bare_llm_model,MetaLlama-3.1-70B-instruct,False,,1,omni_math,1,omni_math
+bare_llm_model,Mi:dm K 2.5 Pro,False,,2,livecodebench; scicode,2,livecodebench; scicode
+bare_llm_model,Mi:dm K 2.5 Pro Preview,False,,2,livecodebench; scicode,2,livecodebench; scicode
+bare_llm_model,MiMo-Audio,False,,1,mmau,1,mmau
+bare_llm_model,MiMo-V2-Flash,False,,2,livecodebench; scicode,2,livecodebench; scicode
+bare_llm_model,MiMo-V2-Flash (Feb 2026),False,,1,scicode,1,scicode
+bare_llm_model,MiMo-V2-Omni,False,,1,scicode,1,scicode
+bare_llm_model,MiMo-V2-Omni-0327,False,,1,scicode,1,scicode
+bare_llm_model,MiMo-V2-Pro,False,,1,scicode,1,scicode
+bare_llm_model,MiMo-V2.5-Pro,False,,1,scicode,1,scicode
+bare_llm_model,MiniCPM3-4B,False,,1,bfcl,1,bfcl
+bare_llm_model,MiniCPM3-4B-FC,False,,1,bfcl,1,bfcl
+bare_llm_model,MiniMax M1 40k,False,,2,livecodebench; scicode,2,livecodebench; scicode
+bare_llm_model,MiniMax M1 80k,False,,3,aa_lcr; livecodebench; scicode,2,livecodebench; scicode
+bare_llm_model,Minimax M2.5,False,,1,arc_agi_2,1,arc_agi_2
+bare_llm_model,MiniMax-M2,False,,3,aa_lcr; livecodebench; scicode,2,livecodebench; scicode
+bare_llm_model,MiniMax-M2.1,False,,3,financeagent; livecodebench; scicode,3,financeagent; livecodebench; scicode
+bare_llm_model,MiniMax-M2.5,False,,3,aa_lcr; financeagent; scicode,2,financeagent; scicode
+bare_llm_model,MiniMax-M2.7,False,,3,aa_lcr; financeagent; scicode,2,financeagent; scicode
+bare_llm_model,minimax/MiniMax-M2.1,False,,2,aime; gpqa_diamond,2,aime; gpqa_diamond
+bare_llm_model,minimax/MiniMax-M2.5-Lightning,False,,2,aime; gpqa_diamond,2,aime; gpqa_diamond
+bare_llm_model,minimax/MiniMax-M2.7,False,,2,aime; gpqa_diamond,2,aime; gpqa_diamond
+bare_llm_model,Ministral 3 14B,False,,2,livecodebench; scicode,2,livecodebench; scicode
+bare_llm_model,Ministral 3 3B,False,,2,livecodebench; scicode,2,livecodebench; scicode
+bare_llm_model,Ministral 3 8B,False,,2,livecodebench; scicode,2,livecodebench; scicode
+bare_llm_model,Ministral 3B,False,,2,gpqa_diamond; simpleqa,2,gpqa_diamond; simpleqa
+bare_llm_model,Ministral 8B,False,,2,gpqa_diamond; simpleqa,2,gpqa_diamond; simpleqa
+bare_llm_model,Ministral-8B-Instruct-2410,False,,1,bfcl,1,bfcl
+bare_llm_model,Mistral 7B,False,,1,gpqa_diamond,1,gpqa_diamond
+bare_llm_model,Mistral Large,False,,1,gpqa_diamond,1,gpqa_diamond
+bare_llm_model,Mistral Large (Feb '24),False,,2,livecodebench; scicode,2,livecodebench; scicode
+bare_llm_model,Mistral Large 2,False,,2,gpqa_diamond; simpleqa,2,gpqa_diamond; simpleqa
+bare_llm_model,Mistral Large 2 (Jul '24),False,,2,livecodebench; scicode,2,livecodebench; scicode
+bare_llm_model,Mistral Large 2 (Nov '24),False,,2,livecodebench; scicode,2,livecodebench; scicode
+bare_llm_model,Mistral Large 3,False,,4,aa_lcr; financeagent; livecodebench; scicode,3,financeagent; livecodebench; scicode
+bare_llm_model,Mistral Medium,False,,2,livecodebench; scicode,2,livecodebench; scicode
+bare_llm_model,Mistral Medium 3,False,,4,gpqa_diamond; hle; livecodebench; scicode,4,gpqa_diamond; hle; livecodebench; scicode
+bare_llm_model,Mistral Medium 3.1,False,,2,livecodebench; scicode,2,livecodebench; scicode
+bare_llm_model,Mistral NeMo,False,,1,gpqa_diamond,1,gpqa_diamond
+bare_llm_model,Mistral Saba,False,,1,scicode,1,scicode
+bare_llm_model,Mistral Small (Feb '24),False,,2,livecodebench; scicode,2,livecodebench; scicode
+bare_llm_model,Mistral Small (Sep '24),False,,2,livecodebench; scicode,2,livecodebench; scicode
+bare_llm_model,Mistral Small 3,False,,3,gpqa_diamond; livecodebench; scicode,3,gpqa_diamond; livecodebench; scicode
+bare_llm_model,Mistral Small 3.1,False,,3,gpqa_diamond; livecodebench; scicode,3,gpqa_diamond; livecodebench; scicode
+bare_llm_model,Mistral Small 3.1 (03/2025),False,,1,financeagent,1,financeagent
+bare_llm_model,Mistral Small 3.2,False,,2,livecodebench; scicode,2,livecodebench; scicode
+bare_llm_model,Mistral Small 4,False,,2,aa_lcr; scicode,1,scicode
+bare_llm_model,Mistral-7B-Instruct-v0.3,False,,1,bigcodebench,1,bigcodebench
+bare_llm_model,Mistral-7B-v0.3,False,,1,bigcodebench,1,bigcodebench
+bare_llm_model,Mistral-Codestral-2501,False,,1,researchcodebench,1,researchcodebench
+bare_llm_model,Mistral-Codestral-Mamba,False,,1,researchcodebench,1,researchcodebench
+bare_llm_model,Mistral-Large-2 (2407),False,,1,scienceagentbench,0,
+bare_llm_model,Mistral-Large-2402,False,,1,bigcodebench,1,bigcodebench
+bare_llm_model,mistral-large-2411,False,,1,bfcl,1,bfcl
+bare_llm_model,Mistral-Large-Instruct-2407,False,,1,bigcodebench,1,bigcodebench
+bare_llm_model,mistral-large-instruct-2411,False,,1,kumo,1,kumo
+bare_llm_model,Mistral-Medium-2505,False,,1,bfcl,1,bfcl
+bare_llm_model,Mistral-Nemo-12B-Instruct,False,,1,bigcodebench,1,bigcodebench
+bare_llm_model,Mistral-Small-2402,False,,1,bigcodebench,1,bigcodebench
+bare_llm_model,Mistral-Small-24B-Instruct-2501,False,,1,bigcodebench,1,bigcodebench
+bare_llm_model,Mistral-small-2506,False,,1,bfcl,1,bfcl
+bare_llm_model,Mistral-Small-2506,False,,1,bfcl,1,bfcl
+bare_llm_model,Mistral-Small-Instruct-2409,False,,1,bigcodebench,1,bigcodebench
+bare_llm_model,mistralai/magistral-medium-2509,False,,2,aime; gpqa_diamond,2,aime; gpqa_diamond
+bare_llm_model,mistralai/magistral-small-2509,False,,2,aime; gpqa_diamond,2,aime; gpqa_diamond
+bare_llm_model,mistralai/mistral-large-2411,False,,2,aime; gpqa_diamond,2,aime; gpqa_diamond
+bare_llm_model,mistralai/mistral-large-2512,False,,2,aime; gpqa_diamond,2,aime; gpqa_diamond
+bare_llm_model,mistralai/mistral-medium-2505,False,,1,aime,1,aime
+bare_llm_model,mistralai/mistral-small-2402,False,,2,aime; gpqa_diamond,2,aime; gpqa_diamond
+bare_llm_model,mistralai/mistral-small-2503,False,,2,aime; gpqa_diamond,2,aime; gpqa_diamond
+bare_llm_model,mistralai/mistral-small-3.1-24b-instruct,False,,1,reasoning_gym,1,reasoning_gym
+bare_llm_model,Mixtral 8x22B,False,,2,gpqa_diamond; simpleqa,2,gpqa_diamond; simpleqa
+bare_llm_model,Mixtral 8x22B Instruct,False,,1,livecodebench,1,livecodebench
+bare_llm_model,Mixtral 8x7B,False,,1,gpqa_diamond,1,gpqa_diamond
+bare_llm_model,Mixtral-7B,False,,1,finben,0,
+bare_llm_model,Mixtral-8x22B-Base,False,,1,bigcodebench,1,bigcodebench
+bare_llm_model,Mixtral-8x22B-Instruct,False,,2,bigcodebench; scicode,2,bigcodebench; scicode
+bare_llm_model,mLlama-3.1-8B-Instruct,False,,1,acebench,0,
+bare_llm_model,Molmo2-8B,False,,1,scicode,1,scicode
+bare_llm_model,Moonshotai-Kimi-K2-Instruct,False,,1,bfcl,1,bfcl
+bare_llm_model,Motif-2-12.7B-Reasoning,False,,2,livecodebench; scicode,2,livecodebench; scicode
+bare_llm_model,MuLLaMa,False,,1,mmau,1,mmau
+bare_llm_model,Muse Spark,False,,5,aa_lcr; financeagent; gpqa_diamond; hle; scicode,4,financeagent; gpqa_diamond; hle; scicode
+bare_llm_model,MusiLingo,False,,1,mmau,1,mmau
+bare_llm_model,Nanbeige3.5-Pro-Thinking,False,,1,bfcl,1,bfcl
+bare_llm_model,Nanbeige4-3B-Thinking-2511,False,,1,bfcl,1,bfcl
+bare_llm_model,Nanbeige4.1-3B,False,,1,scicode,1,scicode
+bare_llm_model,Nemotron Cascade 2 30B A3B,False,,1,scicode,1,scicode
+bare_llm_model,Nopol,False,,1,quixbugs,1,quixbugs
+bare_llm_model,Nova 2 Omni,False,,1,mmau,1,mmau
+bare_llm_model,Nova 2.0 Lite,False,,3,aa_lcr; livecodebench; scicode,2,livecodebench; scicode
+bare_llm_model,Nova 2.0 Omni,False,,2,livecodebench; scicode,2,livecodebench; scicode
+bare_llm_model,Nova 2.0 Pro Preview,False,,3,aa_lcr; livecodebench; scicode,2,livecodebench; scicode
+bare_llm_model,Nova Lite,False,,3,hle; livecodebench; scicode,3,hle; livecodebench; scicode
+bare_llm_model,Nova Micro,False,,2,livecodebench; scicode,2,livecodebench; scicode
+bare_llm_model,Nova Premier,False,,2,livecodebench; scicode,2,livecodebench; scicode
+bare_llm_model,Nova Pro,False,,3,hle; livecodebench; scicode,3,hle; livecodebench; scicode
+bare_llm_model,Nova-Pro-V1,False,,1,researchcodebench,1,researchcodebench
+bare_llm_model,NPEFix,False,,1,quixbugs,1,quixbugs
+bare_llm_model,NuminaMATH-72b-cot,False,,1,omni_math,1,omni_math
+bare_llm_model,NuminaMATH-72B-COT,False,,1,omni_math,1,omni_math
+bare_llm_model,NVIDIA Nemotron 3 Nano,False,,1,aa_lcr,0,
+bare_llm_model,NVIDIA Nemotron 3 Nano 30B A3B,False,,2,livecodebench; scicode,2,livecodebench; scicode
+bare_llm_model,NVIDIA Nemotron 3 Nano 4B,False,,1,scicode,1,scicode
+bare_llm_model,NVIDIA Nemotron 3 Super,False,,1,aa_lcr,0,
+bare_llm_model,NVIDIA Nemotron 3 Super 120B A12B,False,,1,scicode,1,scicode
+bare_llm_model,NVIDIA Nemotron Nano 12B v2 VL,False,,2,livecodebench; scicode,2,livecodebench; scicode
+bare_llm_model,NVIDIA Nemotron Nano 9B V2,False,,2,livecodebench; scicode,2,livecodebench; scicode
+bare_llm_model,Nxcode-CQ-7B-Orpo,False,,1,bigcodebench,1,bigcodebench
+bare_llm_model,o1,False,,9,crmarena; crust_bench; financeagent; hle; ineqmath; livecodebench; scicode; simpleqa; swe_lancer,9,crmarena; crust_bench; financeagent; hle; ineqmath; livecodebench; scicode; simpleqa; swe_lancer
+bare_llm_model,o1 (December 2024),False,,1,hle,1,hle
+bare_llm_model,o1 (high),False,,1,gpqa_diamond,1,gpqa_diamond
+bare_llm_model,O1 (High),False,,1,researchcodebench,1,researchcodebench
+bare_llm_model,o1 (medium),False,,1,gpqa_diamond,1,gpqa_diamond
+bare_llm_model,"o1 (medium, 10K)",False,,1,ineqmath,1,ineqmath
+bare_llm_model,"o1 (medium, 40K)",False,,1,ineqmath,1,ineqmath
+bare_llm_model,o1 Pro,False,,1,hle,1,hle
+bare_llm_model,"o1-2024-12-17 (temperature=1, reasoning=high)",False,,1,bigcodebench,1,bigcodebench
+bare_llm_model,"o1-2024-12-17 (temperature=1, reasoning=low)",False,,1,bigcodebench,1,bigcodebench
+bare_llm_model,"o1-2024-12-17 (temperature=1, reasoning=medium)",False,,1,bigcodebench,1,bigcodebench
+bare_llm_model,o1-mini,False,,6,aime; crust_bench; kumo; livecodebench; omni_math; simpleqa,6,aime; crust_bench; kumo; livecodebench; omni_math; simpleqa
+bare_llm_model,o1-mini (high),False,,1,gpqa_diamond,1,gpqa_diamond
+bare_llm_model,o1-mini (medium),False,,1,gpqa_diamond,1,gpqa_diamond
+bare_llm_model,o1-Mini-2024-09-12 (temperature=1),False,,1,bigcodebench,1,bigcodebench
+bare_llm_model,o1-preview,False,,4,aime; gpqa_diamond; omni_math; simpleqa,4,aime; gpqa_diamond; omni_math; simpleqa
+bare_llm_model,o1-Preview-2024-09-12 (temperature=1),False,,1,bigcodebench,1,bigcodebench
+bare_llm_model,o1-pro,False,,1,arc_agi_2,1,arc_agi_2
+bare_llm_model,o3,False,,11,aa_lcr; arc_agi_2; clbench; crust_bench; deepsynth; financeagent; ineqmath; livecodebench; scicode; seal0; simpleqa,9,arc_agi_2; crust_bench; deepsynth; financeagent; ineqmath; livecodebench; scicode; seal0; simpleqa
+bare_llm_model,o3 (high),False,,1,gpqa_diamond,1,gpqa_diamond
+bare_llm_model,O3 (High),False,,1,researchcodebench,1,researchcodebench
+bare_llm_model,o3 (high) (April 2025),False,,1,hle,1,hle
+bare_llm_model,o3 (medium) (April 2025),False,,1,hle,1,hle
+bare_llm_model,"o3 (medium, 10K)",False,,1,ineqmath,1,ineqmath
+bare_llm_model,"o3 (medium, 40K)",False,,1,ineqmath,1,ineqmath
+bare_llm_model,o3 Mini,False,,1,financeagent,1,financeagent
+bare_llm_model,o3-2025-04-16,False,,1,bfcl,1,bfcl
+bare_llm_model,o3-high,False,,1,simpleqa,1,simpleqa
+bare_llm_model,o3-low,False,,1,simpleqa,1,simpleqa
+bare_llm_model,o3-mini,False,,5,arc_agi_2; ineqmath; livecodebench; seal0; simpleqa,5,arc_agi_2; ineqmath; livecodebench; seal0; simpleqa
+bare_llm_model,o3-Mini,False,,1,finben,0,
+bare_llm_model,o3-mini (high),False,,1,gpqa_diamond,1,gpqa_diamond
+bare_llm_model,O3-Mini (High),False,,1,researchcodebench,1,researchcodebench
+bare_llm_model,o3-mini (medium),False,,1,gpqa_diamond,1,gpqa_diamond
+bare_llm_model,"o3-mini (medium, 10K)",False,,1,ineqmath,1,ineqmath
+bare_llm_model,"o3-mini-2025-01-31 (temperature=1, reasoning=high)",False,,1,bigcodebench,1,bigcodebench
+bare_llm_model,"o3-mini-2025-01-31 (temperature=1, reasoning=low)",False,,1,bigcodebench,1,bigcodebench
+bare_llm_model,"o3-mini-2025-01-31 (temperature=1, reasoning=medium)",False,,1,bigcodebench,1,bigcodebench
+bare_llm_model,o3-mini-high,False,,2,aime; simpleqa,2,aime; simpleqa
+bare_llm_model,o3-mini-low,False,,2,aime; simpleqa,2,aime; simpleqa
+bare_llm_model,o3-mini-medium,False,,1,aime,1,aime
+bare_llm_model,"o3-pro (medium, 10K)",False,,1,ineqmath,1,ineqmath
+bare_llm_model,"o3-pro (medium, 40K)",False,,1,ineqmath,1,ineqmath
+bare_llm_model,o4 Mini,False,,1,financeagent,1,financeagent
+bare_llm_model,o4 mini,False,,1,simpleqa,1,simpleqa
+bare_llm_model,o4-mini,False,,8,aa_lcr; arc_agi_2; deepsynth; ineqmath; livecodebench; scicode; seal0; simpleqa,7,arc_agi_2; deepsynth; ineqmath; livecodebench; scicode; seal0; simpleqa
+bare_llm_model,o4-mini (high),False,,1,gpqa_diamond,1,gpqa_diamond
+bare_llm_model,O4-Mini (High),False,,1,researchcodebench,1,researchcodebench
+bare_llm_model,o4-mini (high) (April 2025),False,,1,hle,1,hle
+bare_llm_model,o4-mini (medium) (April 2025),False,,1,hle,1,hle
+bare_llm_model,"o4-mini (medium, 10K)",False,,1,ineqmath,1,ineqmath
+bare_llm_model,o4-mini-2025-04-16,False,,1,bfcl,1,bfcl
+bare_llm_model,o4-mini-high,False,,1,simpleqa,1,simpleqa
+bare_llm_model,o4-mini-low,False,,1,simpleqa,1,simpleqa
+bare_llm_model,OctoCoder (16B),False,,1,humanevalfix,1,humanevalfix
+bare_llm_model,OctoGeeX (6B),False,,1,humanevalfix,1,humanevalfix
+bare_llm_model,Olmo 3 32B Think,False,,2,livecodebench; scicode,2,livecodebench; scicode
+bare_llm_model,Olmo 3 7B Instruct,False,,2,livecodebench; scicode,2,livecodebench; scicode
+bare_llm_model,Olmo 3 7B Think,False,,2,livecodebench; scicode,2,livecodebench; scicode
+bare_llm_model,Olmo 3.1 32B Instruct,False,,1,scicode,1,scicode
+bare_llm_model,Olmo 3.1 32B Think,False,,2,livecodebench; scicode,2,livecodebench; scicode
+bare_llm_model,Omni-R1 (FT on Qwen2.5-Omni),False,,1,mmau,1,mmau
+bare_llm_model,Open-Mistral-Nemo-2407,False,,1,bfcl,1,bfcl
+bare_llm_model,OpenAI o1 (2024-12-17),False,,1,browsecomp,0,
+bare_llm_model,OpenAI o1-mini,False,,3,omni_math; scicode; simpleqa,3,omni_math; scicode; simpleqa
+bare_llm_model,OpenAI o1-preview,False,,4,omni_math; scicode; scienceagentbench; simpleqa,3,omni_math; scicode; simpleqa
+bare_llm_model,OpenAI o3,False,,2,mmmlu; simpleqa,2,mmmlu; simpleqa
+bare_llm_model,OpenAI o3-mini,False,,2,mmmlu; scicode,2,mmmlu; scicode
+bare_llm_model,OpenAI o4-mini,False,,2,mmmlu; simpleqa,2,mmmlu; simpleqa
+bare_llm_model,OpenAI-o1,False,,1,swe_perf,0,
+bare_llm_model,OpenAI-o3,False,,1,swe_perf,0,
+bare_llm_model,openai/gpt-3.5-turbo,False,,1,gpqa_diamond,1,gpqa_diamond
+bare_llm_model,openai/gpt-4.1-2025-04-14,False,,2,aime; gpqa_diamond,2,aime; gpqa_diamond
+bare_llm_model,openai/gpt-4.1-mini-2025-04-14,False,,2,aime; gpqa_diamond,2,aime; gpqa_diamond
+bare_llm_model,openai/gpt-4.1-nano-2025-04-14,False,,2,aime; gpqa_diamond,2,aime; gpqa_diamond
+bare_llm_model,openai/gpt-4o-2024-05-13,False,,1,gpqa_diamond,1,gpqa_diamond
+bare_llm_model,openai/gpt-4o-2024-08-06,False,,1,aime,1,aime
+bare_llm_model,openai/gpt-4o-2024-11-20,False,,2,aime; gpqa_diamond,2,aime; gpqa_diamond
+bare_llm_model,openai/gpt-4o-mini-2024-07-18,False,,2,aime; gpqa_diamond,2,aime; gpqa_diamond
+bare_llm_model,openai/gpt-5-2025-08-07,False,,2,aime; gpqa_diamond,2,aime; gpqa_diamond
+bare_llm_model,openai/gpt-5-mini-2025-08-07,False,,2,aime; gpqa_diamond,2,aime; gpqa_diamond
+bare_llm_model,openai/gpt-5-nano-2025-08-07,False,,2,aime; gpqa_diamond,2,aime; gpqa_diamond
+bare_llm_model,openai/gpt-5.1-2025-11-13,False,,2,aime; gpqa_diamond,2,aime; gpqa_diamond
+bare_llm_model,openai/gpt-5.2-2025-12-11,False,,2,aime; gpqa_diamond,2,aime; gpqa_diamond
+bare_llm_model,openai/gpt-5.4-2026-03-05,False,,2,aime; gpqa_diamond,2,aime; gpqa_diamond
+bare_llm_model,openai/gpt-5.4-mini-2026-03-17,False,,2,aime; gpqa_diamond,2,aime; gpqa_diamond
+bare_llm_model,openai/gpt-5.4-nano-2026-03-17,False,,2,aime; gpqa_diamond,2,aime; gpqa_diamond
+bare_llm_model,openai/o1-2024-12-17,False,,2,aime; gpqa_diamond,2,aime; gpqa_diamond
+bare_llm_model,openai/o3-2025-04-16,False,,2,aime; gpqa_diamond,2,aime; gpqa_diamond
+bare_llm_model,openai/o3-mini,False,,1,reasoning_gym,1,reasoning_gym
+bare_llm_model,openai/o3-mini-2025-01-31,False,,2,aime; gpqa_diamond,2,aime; gpqa_diamond
+bare_llm_model,openai/o4-mini-2025-04-16,False,,2,aime; gpqa_diamond,2,aime; gpqa_diamond
+bare_llm_model,OpenChat 3.5 (1210),False,,1,livecodebench,1,livecodebench
+bare_llm_model,OpenChat-3.6-8B-20240522,False,,1,bigcodebench,1,bigcodebench
+bare_llm_model,OpenCodeInterpreter-DS-1.3B,False,,1,bigcodebench,1,bigcodebench
+bare_llm_model,OpenCodeInterpreter-DS-33B,False,,1,bigcodebench,1,bigcodebench
+bare_llm_model,OpenCodeInterpreter-DS-6.7B,False,,1,bigcodebench,1,bigcodebench
+bare_llm_model,OpenCoder-1.5B-Instruct,False,,1,bigcodebench,1,bigcodebench
+bare_llm_model,OpenCoder-8B-Instruct,False,,1,bigcodebench,1,bigcodebench
+bare_llm_model,Optimus-Alpha,False,,1,bigcodebench,1,bigcodebench
+bare_llm_model,palmyra-x-004,False,,1,bfcl,1,bfcl
+bare_llm_model,Pengi,False,,1,mmau,1,mmau
+bare_llm_model,Phi-3 Mini Instruct 3.8B,False,,2,livecodebench; scicode,2,livecodebench; scicode
+bare_llm_model,phi-3-medium 14B,False,,1,gpqa_diamond,1,gpqa_diamond
+bare_llm_model,Phi-3-Medium-128K-Instruct,False,,1,bigcodebench,1,bigcodebench
+bare_llm_model,Phi-3-Mini-128K-Instruct,False,,2,acebench; bigcodebench,1,bigcodebench
+bare_llm_model,Phi-3-mini-128K-Instruct,False,,1,acebench,0,
+bare_llm_model,Phi-3-Mini-128k-Instruct,False,,1,acebench,0,
+bare_llm_model,Phi-3-Small-128K-Instruct,False,,1,bigcodebench,1,bigcodebench
+bare_llm_model,Phi-3.1-Mini-128K-Instruct,False,,1,bigcodebench,1,bigcodebench
+bare_llm_model,Phi-3.5-Mini-Instruct,False,,1,bigcodebench,1,bigcodebench
+bare_llm_model,Phi-4,False,,5,bfcl; bigcodebench; gpqa_diamond; livecodebench; scicode,5,bfcl; bigcodebench; gpqa_diamond; livecodebench; scicode
+bare_llm_model,Phi-4 Mini Instruct,False,,2,livecodebench; scicode,2,livecodebench; scicode
+bare_llm_model,Phi-4 Multimodal Instruct,False,,2,livecodebench; scicode,2,livecodebench; scicode
+bare_llm_model,Phi-4-multimodal,False,,1,mmau,1,mmau
+bare_llm_model,Phind-CodeLlama-34B-v2,False,,1,bigcodebench,1,bigcodebench
+bare_llm_model,Pixtral Large,False,,2,livecodebench; scicode,2,livecodebench; scicode
+bare_llm_model,Quasar-Alpha,False,,1,bigcodebench,1,bigcodebench
+bare_llm_model,Qwen 2.5,False,,1,qcircuitbench,1,qcircuitbench
+bare_llm_model,Qwen 3 235B A22B Thinking,False,,1,simpleqa,1,simpleqa
+bare_llm_model,Qwen 3 Max,False,,2,clbench; financeagent,1,financeagent
+bare_llm_model,Qwen 3 Max Thinking,False,,1,clbench,0,
+bare_llm_model,Qwen 3.5 Flash,False,,1,financeagent,1,financeagent
+bare_llm_model,Qwen 3.5 Plus,False,,1,financeagent,1,financeagent
+bare_llm_model,Qwen 3.6 Plus,False,,1,financeagent,1,financeagent
+bare_llm_model,Qwen Plus (Jan 2025),False,,1,gpqa_diamond,1,gpqa_diamond
+bare_llm_model,Qwen Turbo,False,,1,gpqa_diamond,1,gpqa_diamond
+bare_llm_model,Qwen-2.5-Coder-32B,False,,2,crust_bench; researchcodebench,2,crust_bench; researchcodebench
+bare_llm_model,Qwen-2.5-Turbo,False,,1,researchcodebench,1,researchcodebench
+bare_llm_model,Qwen-Audio-Chat,False,,1,mmau,1,mmau
+bare_llm_model,Qwen-Max,False,,1,acebench,0,
+bare_llm_model,Qwen-QwQ,False,,1,omni_math,1,omni_math
+bare_llm_model,Qwen/Qwen2.5-32B-Instruct,False,,1,finben,0,
+bare_llm_model,Qwen/Qwen2.5-Omni-7B,False,,1,finben,0,
+bare_llm_model,qwen/qwq-32b,False,,1,reasoning_gym,1,reasoning_gym
+bare_llm_model,Qwen1.5-110B-Chat,False,,1,bigcodebench,1,bigcodebench
+bare_llm_model,Qwen1.5-32B (chat),False,,1,gpqa_diamond,1,gpqa_diamond
+bare_llm_model,Qwen1.5-32B-Chat,False,,1,bigcodebench,1,bigcodebench
+bare_llm_model,Qwen1.5-72B,False,,1,gpqa_diamond,1,gpqa_diamond
+bare_llm_model,Qwen1.5-72B-Chat,False,,2,bigcodebench; lawbench,2,bigcodebench; lawbench
+bare_llm_model,Qwen2 Instruct 72B,False,,1,livecodebench,1,livecodebench
+bare_llm_model,Qwen2-57B-A14B,False,,1,bigcodebench,1,bigcodebench
+bare_llm_model,Qwen2-72B,False,,1,gpqa_diamond,1,gpqa_diamond
+bare_llm_model,Qwen2-72B-Chat,False,,1,bigcodebench,1,bigcodebench
+bare_llm_model,Qwen2-72B-Instruct,False,,2,bigcodebench; scicode,2,bigcodebench; scicode
+bare_llm_model,Qwen2-7B-Instruct,False,,1,bigcodebench,1,bigcodebench
+bare_llm_model,Qwen2-Audio,False,,1,mmau,1,mmau
+bare_llm_model,Qwen2-Audio-7B,False,,1,finben,0,
+bare_llm_model,Qwen2-Audio-7B-Instruct,False,,1,finben,0,
+bare_llm_model,Qwen2-Audio-Instruct,False,,1,mmau,1,mmau
+bare_llm_model,Qwen2-MATH-72b-Instruct,False,,1,omni_math,1,omni_math
+bare_llm_model,Qwen2-MATH-7b-Instruct,False,,1,omni_math,1,omni_math
+bare_llm_model,Qwen2.5 Coder Instruct 32B,False,,2,livecodebench; scicode,2,livecodebench; scicode
+bare_llm_model,Qwen2.5 Coder Instruct 7B,False,,2,livecodebench; scicode,2,livecodebench; scicode
+bare_llm_model,Qwen2.5 Instruct 32B,False,,2,livecodebench; scicode,2,livecodebench; scicode
+bare_llm_model,Qwen2.5 Instruct 72B,False,,2,livecodebench; scicode,2,livecodebench; scicode
+bare_llm_model,Qwen2.5 Max,False,,2,livecodebench; scicode,2,livecodebench; scicode
+bare_llm_model,Qwen2.5 Turbo,False,,2,livecodebench; scicode,2,livecodebench; scicode
+bare_llm_model,Qwen2.5-0.5B-Instruct,False,,1,bigcodebench,1,bigcodebench
+bare_llm_model,Qwen2.5-1.5B-Instruct,False,,1,bigcodebench,1,bigcodebench
+bare_llm_model,Qwen2.5-14B-Instruct,False,,1,bigcodebench,1,bigcodebench
+bare_llm_model,qwen2.5-14b-instruct,False,,1,kumo,1,kumo
+bare_llm_model,Qwen2.5-32B (instruct),False,,1,gpqa_diamond,1,gpqa_diamond
+bare_llm_model,Qwen2.5-32B-Instruct,False,,1,bigcodebench,1,bigcodebench
+bare_llm_model,qwen2.5-32b-instruct,False,,1,kumo,1,kumo
+bare_llm_model,qwen2.5-3b-instruct,False,,1,kumo,1,kumo
+bare_llm_model,Qwen2.5-72B,False,,2,gpqa_diamond; ineqmath,2,gpqa_diamond; ineqmath
+bare_llm_model,Qwen2.5-72B-Instruct,False,,2,acebench; bigcodebench,1,bigcodebench
+bare_llm_model,qwen2.5-72b-instruct,False,,1,kumo,1,kumo
+bare_llm_model,Qwen2.5-7B,False,,1,ineqmath,1,ineqmath
+bare_llm_model,Qwen2.5-7B-Instruct,False,,2,acebench; bigcodebench,1,bigcodebench
+bare_llm_model,qwen2.5-7b-instruct,False,,1,kumo,1,kumo
+bare_llm_model,Qwen2.5-Coder-1.5B-Instruct,False,,1,bigcodebench,1,bigcodebench
+bare_llm_model,Qwen2.5-Coder-14B-Instruct,False,,1,bigcodebench,1,bigcodebench
+bare_llm_model,Qwen2.5-Coder-32B,False,,1,ineqmath,1,ineqmath
+bare_llm_model,Qwen2.5-Coder-32B-Instruct,False,,2,acebench; bigcodebench,1,bigcodebench
+bare_llm_model,Qwen2.5-Coder-7B-Instruct,False,,2,acebench; bigcodebench,1,bigcodebench
+bare_llm_model,qwen2.5-MATH-72b-Instruct,False,,1,omni_math,1,omni_math
+bare_llm_model,Qwen2.5-MATH-72b-Instruct,False,,1,omni_math,1,omni_math
+bare_llm_model,Qwen2.5-MATH-7b-Instruct,False,,1,omni_math,1,omni_math
+bare_llm_model,qwen2.5-MATH-7b-Instruct,False,,1,omni_math,1,omni_math
+bare_llm_model,Qwen2.5-Max,False,,2,bigcodebench; gpqa_diamond,2,bigcodebench; gpqa_diamond
+bare_llm_model,Qwen2.5-Omni,False,,1,mmau,1,mmau
+bare_llm_model,Qwen3 (Apr 2025),False,,1,gpqa_diamond,1,gpqa_diamond
+bare_llm_model,Qwen3 0.6B,False,,1,livecodebench,1,livecodebench
+bare_llm_model,Qwen3 1.7B,False,,1,livecodebench,1,livecodebench
+bare_llm_model,Qwen3 14B,False,,2,livecodebench; scicode,2,livecodebench; scicode
+bare_llm_model,Qwen3 235B 2507,False,,1,aa_lcr,0,
+bare_llm_model,Qwen3 235B A22B,False,,2,livecodebench; scicode,2,livecodebench; scicode
+bare_llm_model,Qwen3 235B A22B 2507,False,,3,aa_lcr; livecodebench; scicode,2,livecodebench; scicode
+bare_llm_model,Qwen3 235B A22B 2507 Instruct,False,,2,livecodebench; scicode,2,livecodebench; scicode
+bare_llm_model,Qwen3 30B A3B,False,,2,livecodebench; scicode,2,livecodebench; scicode
+bare_llm_model,Qwen3 30B A3B 2507,False,,3,aa_lcr; livecodebench; scicode,2,livecodebench; scicode
+bare_llm_model,Qwen3 30B A3B 2507 Instruct,False,,2,livecodebench; scicode,2,livecodebench; scicode
+bare_llm_model,Qwen3 32B,False,,2,livecodebench; scicode,2,livecodebench; scicode
+bare_llm_model,Qwen3 4B,False,,2,livecodebench; scicode,2,livecodebench; scicode
+bare_llm_model,Qwen3 4B 2507,False,,2,livecodebench; scicode,2,livecodebench; scicode
+bare_llm_model,Qwen3 4B 2507 Instruct,False,,2,livecodebench; scicode,2,livecodebench; scicode
+bare_llm_model,Qwen3 8B,False,,2,livecodebench; scicode,2,livecodebench; scicode
+bare_llm_model,Qwen3 Coder 30B A3B Instruct,False,,2,livecodebench; scicode,2,livecodebench; scicode
+bare_llm_model,Qwen3 Coder 480B,False,,1,aa_lcr,0,
+bare_llm_model,Qwen3 Coder 480B A35B Instruct,False,,2,livecodebench; scicode,2,livecodebench; scicode
+bare_llm_model,Qwen3 Coder Next,False,,1,scicode,1,scicode
+bare_llm_model,Qwen3 Max,False,,4,aa_lcr; gpqa_diamond; livecodebench; scicode,3,gpqa_diamond; livecodebench; scicode
+bare_llm_model,Qwen3 Max (Preview),False,,2,livecodebench; scicode,2,livecodebench; scicode
+bare_llm_model,Qwen3 Max Thinking,False,,1,scicode,1,scicode
+bare_llm_model,Qwen3 Max Thinking (Preview),False,,2,livecodebench; scicode,2,livecodebench; scicode
+bare_llm_model,Qwen3 Next 80B A3B,False,,3,aa_lcr; livecodebench; scicode,2,livecodebench; scicode
+bare_llm_model,Qwen3 Next 80B A3B Instruct,False,,2,livecodebench; scicode,2,livecodebench; scicode
+bare_llm_model,Qwen3 Omni 30B A3B,False,,2,livecodebench; scicode,2,livecodebench; scicode
+bare_llm_model,Qwen3 Omni 30B A3B Instruct,False,,2,livecodebench; scicode,2,livecodebench; scicode
+bare_llm_model,Qwen3 VL 235B A22B,False,,2,livecodebench; scicode,2,livecodebench; scicode
+bare_llm_model,Qwen3 VL 235B A22B Instruct,False,,2,livecodebench; scicode,2,livecodebench; scicode
+bare_llm_model,Qwen3 VL 30B A3B,False,,2,livecodebench; scicode,2,livecodebench; scicode
+bare_llm_model,Qwen3 VL 30B A3B Instruct,False,,2,livecodebench; scicode,2,livecodebench; scicode
+bare_llm_model,Qwen3 VL 32B,False,,2,livecodebench; scicode,2,livecodebench; scicode
+bare_llm_model,Qwen3 VL 32B Instruct,False,,2,livecodebench; scicode,2,livecodebench; scicode
+bare_llm_model,Qwen3 VL 4B,False,,2,livecodebench; scicode,2,livecodebench; scicode
+bare_llm_model,Qwen3 VL 4B Instruct,False,,2,livecodebench; scicode,2,livecodebench; scicode
+bare_llm_model,Qwen3 VL 8B,False,,2,livecodebench; scicode,2,livecodebench; scicode
+bare_llm_model,Qwen3 VL 8B Instruct,False,,2,livecodebench; scicode,2,livecodebench; scicode
+bare_llm_model,Qwen3-0.6B,False,,1,bfcl,1,bfcl
+bare_llm_model,Qwen3-1.7B,False,,1,bfcl,1,bfcl
+bare_llm_model,Qwen3-14B,False,,1,bfcl,1,bfcl
+bare_llm_model,Qwen3-235B-A22B,False,,2,ineqmath; swe_perf,1,ineqmath
+bare_llm_model,Qwen3-235B-A22B (10K),False,,1,ineqmath,1,ineqmath
+bare_llm_model,Qwen3-235B-A22B (Jul 2025),False,,1,gpqa_diamond,1,gpqa_diamond
+bare_llm_model,Qwen3-235B-A22B-Instruct-2507,False,,1,bfcl,1,bfcl
+bare_llm_model,Qwen3-23SB-A22B,False,,1,seal0,1,seal0
+bare_llm_model,Qwen3-30B-A3B-Instruct-2507,False,,1,bfcl,1,bfcl
+bare_llm_model,Qwen3-32B,False,,1,bfcl,1,bfcl
+bare_llm_model,Qwen3-4B,False,,1,ineqmath,1,ineqmath
+bare_llm_model,Qwen3-4B-Instruct-2507,False,,1,bfcl,1,bfcl
+bare_llm_model,Qwen3-8B,False,,1,bfcl,1,bfcl
+bare_llm_model,qwen3-max,False,,1,compilebench,1,compilebench
+bare_llm_model,Qwen3.5 122B A10B,False,,2,aa_lcr; scicode,1,scicode
+bare_llm_model,Qwen3.5 27B,False,,1,scicode,1,scicode
+bare_llm_model,Qwen3.5 35B A3B,False,,2,aa_lcr; scicode,1,scicode
+bare_llm_model,Qwen3.5 397B A17B,False,,2,aa_lcr; scicode,1,scicode
+bare_llm_model,Qwen3.5 4B,False,,1,scicode,1,scicode
+bare_llm_model,Qwen3.5 9B,False,,2,aa_lcr; scicode,1,scicode
+bare_llm_model,Qwen3.5 Omni Flash,False,,1,scicode,1,scicode
+bare_llm_model,Qwen3.5 Omni Plus,False,,2,aa_lcr; scicode,1,scicode
+bare_llm_model,Qwen3.5-122B-A10B,False,,1,seal0,1,seal0
+bare_llm_model,Qwen3.5-27B,False,,1,seal0,1,seal0
+bare_llm_model,Qwen3.5-35B-A3B,False,,1,seal0,1,seal0
+bare_llm_model,Qwen3.5-397B-A17B,False,,1,seal0,1,seal0
+bare_llm_model,Qwen3.6 27B,False,,1,scicode,1,scicode
+bare_llm_model,Qwen3.6 35B A3B,False,,2,aa_lcr; scicode,1,scicode
+bare_llm_model,Qwen3.6 Max Preview,False,,2,aa_lcr; scicode,1,scicode
+bare_llm_model,Qwen3.6 Plus,False,,2,aa_lcr; scicode,1,scicode
+bare_llm_model,QwQ 32B,False,,2,livecodebench; scicode,2,livecodebench; scicode
+bare_llm_model,QwQ 32B-Preview,False,,1,livecodebench,1,livecodebench
+bare_llm_model,QwQ-32B,False,,2,aime; ineqmath,2,aime; ineqmath
+bare_llm_model,qwq-32b,False,,1,kumo,1,kumo
+bare_llm_model,QwQ-32B (10K),False,,1,ineqmath,1,ineqmath
+bare_llm_model,QwQ-32B (w/ Reasoning),False,,1,bigcodebench,1,bigcodebench
+bare_llm_model,QwQ-32B-Preview,False,,3,aime; bigcodebench; crust_bench,3,aime; bigcodebench; crust_bench
+bare_llm_model,QwQ-32B-preview (10K),False,,1,ineqmath,1,ineqmath
+bare_llm_model,QwQ-Plus,False,,1,gpqa_diamond,1,gpqa_diamond
+bare_llm_model,ReflectionCoder-CL-34B,False,,1,bigcodebench,1,bigcodebench
+bare_llm_model,ReflectionCoder-CL-7B,False,,1,bigcodebench,1,bigcodebench
+bare_llm_model,ReflectionCoder-DS-33B,False,,1,bigcodebench,1,bigcodebench
+bare_llm_model,ReflectionCoder-DS-6.7B,False,,1,bigcodebench,1,bigcodebench
+bare_llm_model,Reka Flash 3,False,,2,livecodebench; scicode,2,livecodebench; scicode
+bare_llm_model,Ring-1T,False,,2,livecodebench; scicode,2,livecodebench; scicode
+bare_llm_model,Ring-flash-2.0,False,,2,livecodebench; scicode,2,livecodebench; scicode
+bare_llm_model,RSRepair,False,,1,quixbugs,1,quixbugs
+bare_llm_model,RZN-T,False,,1,bfcl,1,bfcl
+bare_llm_model,s1,False,,1,aime,1,aime
+bare_llm_model,SALAMONN,False,,1,mmau,1,mmau
+bare_llm_model,SALMONN,False,,1,mmau,1,mmau
+bare_llm_model,SALMONN-13B,False,,1,finben,0,
+bare_llm_model,SALMONN-7B,False,,1,finben,0,
+bare_llm_model,Sarvam 105B,False,,1,scicode,1,scicode
+bare_llm_model,Sarvam 30B,False,,1,scicode,1,scicode
+bare_llm_model,Sarvam M,False,,2,livecodebench; scicode,2,livecodebench; scicode
+bare_llm_model,Seed-OSS-36B-Instruct,False,,3,aa_lcr; livecodebench; scicode,2,livecodebench; scicode
+bare_llm_model,SFT CodeS-15B,False,,1,spider_2,1,spider_2
+bare_llm_model,Sky-T1-32B-Flash,False,,1,bigcodebench,1,bigcodebench
+bare_llm_model,Sky-T1-32B-Preview,False,,1,bigcodebench,1,bigcodebench
+bare_llm_model,Solar Open 100B,False,,1,scicode,1,scicode
+bare_llm_model,Solar Pro 2,False,,2,livecodebench; scicode,2,livecodebench; scicode
+bare_llm_model,Solar Pro 2 (Preview),False,,2,livecodebench; scicode,2,livecodebench; scicode
+bare_llm_model,Solar Pro 3,False,,1,scicode,1,scicode
+bare_llm_model,Sonar,False,,2,livecodebench; scicode,2,livecodebench; scicode
+bare_llm_model,Sonar Pro,False,,2,livecodebench; scicode,2,livecodebench; scicode
+bare_llm_model,StarChat-β (16B),False,,1,humanevalfix,1,humanevalfix
+bare_llm_model,StarCoder (16B),False,,1,humanevalfix,1,humanevalfix
+bare_llm_model,StarCoder2-15B,False,,1,bigcodebench,1,bigcodebench
+bare_llm_model,StarCoder2-15B-Instruct-v0.1,False,,1,bigcodebench,1,bigcodebench
+bare_llm_model,StarCoder2-3B,False,,1,bigcodebench,1,bigcodebench
+bare_llm_model,StarCoder2-7B,False,,1,bigcodebench,1,bigcodebench
+bare_llm_model,Step 3.5 Flash,False,,1,scicode,1,scicode
+bare_llm_model,Step 3.5 Flash 2603,False,,1,scicode,1,scicode
+bare_llm_model,Step-Audio-2,False,,1,mmau,1,mmau
+bare_llm_model,Step-Audio-2-mini,False,,1,mmau,1,mmau
+bare_llm_model,Step3 VL 10B,False,,1,scicode,1,scicode
+bare_llm_model,Tess-v2.5.2-Qwen2-72B,False,,1,bigcodebench,1,bigcodebench
+bare_llm_model,TheFinAI/finma-7b-full,False,,1,finben,0,
+bare_llm_model,TheFinAI/FinMA-ES-Bilingual,False,,1,finben,0,
+bare_llm_model,TheFinAI/plutus-8B-instruct,False,,1,finben,0,
+bare_llm_model,Tibra,False,,1,quixbugs,1,quixbugs
+bare_llm_model,together/langston/nim/nvidia/llama-3.3-nemotron-super-49b-v1-42e84561,False,,2,aime; gpqa_diamond,2,aime; gpqa_diamond
+bare_llm_model,together/langston/nim/nvidia/llama-3.3-nemotron-super-49b-v1-42e84561-thinking,False,,2,aime; gpqa_diamond,2,aime; gpqa_diamond
+bare_llm_model,together/meta-llama/Llama-3.3-70B-Instruct-Turbo,False,,2,aime; gpqa_diamond,2,aime; gpqa_diamond
+bare_llm_model,together/meta-llama/Llama-4-Scout-17B-16E-Instruct,False,,2,aime; gpqa_diamond,2,aime; gpqa_diamond
+bare_llm_model,together/moonshotai/Kimi-K2-Instruct,False,,2,aime; gpqa_diamond,2,aime; gpqa_diamond
+bare_llm_model,ToolACE-2-8B,False,,1,bfcl,1,bfcl
+bare_llm_model,ToolACE-2.5-Llama-3.1-8B,False,,1,acebench,0,
+bare_llm_model,Tri-21B-Think,False,,1,scicode,1,scicode
+bare_llm_model,Tri-21B-think Preview,False,,1,scicode,1,scicode
+bare_llm_model,Trinity Large Thinking,False,,1,scicode,1,scicode
+bare_llm_model,Tülu 3 70B,False,,1,gpqa_diamond,1,gpqa_diamond
+bare_llm_model,Vicuna-7B,False,,1,pixiu,1,pixiu
+bare_llm_model,Virtuoso (Distilled DeepSeek-V3),False,,1,crust_bench,1,crust_bench
+bare_llm_model,WarriorCoder-6.7B (Reproduced),False,,1,bigcodebench,1,bigcodebench
+bare_llm_model,Watt-Tool-8B,False,,1,acebench,0,
+bare_llm_model,Watt-Toolx8,False,,1,acebench,0,
+bare_llm_model,Watt-Toolx8B,False,,1,acebench,0,
+bare_llm_model,WaveCoder-Ultra-6.7B,False,,1,bigcodebench,1,bigcodebench
+bare_llm_model,Whisper-V3,False,,1,finben,0,
+bare_llm_model,WhiteRabbitNeo-33B-v1.5,False,,1,bigcodebench,1,bigcodebench
+bare_llm_model,WizardCoder (16B),False,,1,humanevalfix,1,humanevalfix
+bare_llm_model,WizardLM-2 8x22B,False,,1,gpqa_diamond,1,gpqa_diamond
+bare_llm_model,x-ai/grok-3-mini-beta,False,,1,reasoning_gym,1,reasoning_gym
+bare_llm_model,xiaomi/mimo-v2-flash,False,,1,gpqa_diamond,1,gpqa_diamond
+bare_llm_model,xLAM-2-1b-fc-r,False,,1,bfcl,1,bfcl
+bare_llm_model,xLAM-2-32b-fc-r,False,,1,bfcl,1,bfcl
+bare_llm_model,xLAM-2-3b-fc-r,False,,1,bfcl,1,bfcl
+bare_llm_model,xLAM-2-70b-fc-r,False,,1,bfcl,1,bfcl
+bare_llm_model,xLAM-2-8b-fc-r,False,,1,bfcl,1,bfcl
+bare_llm_model,xLAM-7b-,False,,1,acebench,0,
+bare_llm_model,xLAM-7B-r,False,,1,acebench,0,
+bare_llm_model,Yi-1.5-34B,False,,1,bigcodebench,1,bigcodebench
+bare_llm_model,Yi-1.5-34B (chat),False,,1,gpqa_diamond,1,gpqa_diamond
+bare_llm_model,Yi-1.5-34B-Chat,False,,1,bigcodebench,1,bigcodebench
+bare_llm_model,Yi-1.5-6B,False,,1,bigcodebench,1,bigcodebench
+bare_llm_model,Yi-1.5-6B-Chat,False,,1,bigcodebench,1,bigcodebench
+bare_llm_model,Yi-1.5-9B,False,,1,bigcodebench,1,bigcodebench
+bare_llm_model,Yi-1.5-9B-Chat,False,,1,bigcodebench,1,bigcodebench
+bare_llm_model,Yi-34B (chat),False,,1,gpqa_diamond,1,gpqa_diamond
+bare_llm_model,Yi-Coder-9B-Chat,False,,1,bigcodebench,1,bigcodebench
+bare_llm_model,Yi-Large,False,,1,bigcodebench,1,bigcodebench
+bare_llm_model,yi-lightning,False,,1,kumo,1,kumo
+bare_llm_model,zai/glm-4.5,False,,2,aime; gpqa_diamond,2,aime; gpqa_diamond
+bare_llm_model,zai/glm-4.6,False,,2,aime; gpqa_diamond,2,aime; gpqa_diamond
+bare_llm_model,zai/glm-4.7,False,,2,aime; gpqa_diamond,2,aime; gpqa_diamond
+bare_llm_model,zai/glm-5-thinking,False,,2,aime; gpqa_diamond,2,aime; gpqa_diamond
+bare_llm_model,zai/glm-5.1-thinking,False,,2,aime; gpqa_diamond,2,aime; gpqa_diamond
