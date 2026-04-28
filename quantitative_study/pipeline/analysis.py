@@ -14,7 +14,7 @@ import pandas as pd
 from scipy import stats as sp_stats
 
 from .alignment import find_doc_match, resolve_stem
-from .loading import DocSlice, harbor_to_long
+from .loading import DocSlice, MetricAlignment, harbor_to_long
 
 
 # ===================================================================
@@ -24,6 +24,7 @@ from .loading import DocSlice, harbor_to_long
 def build_comparison_long(
     harbor_df: pd.DataFrame,
     docs: dict[str, DocSlice],
+    alignments: dict[str, MetricAlignment],
 ) -> pd.DataFrame:
     stems = set(docs.keys())
     long = harbor_to_long(harbor_df)
@@ -32,11 +33,20 @@ def build_comparison_long(
     for _, r in long.iterrows():
         col = str(r["matrix_column"])
         model, agent = str(r["model"]), str(r["agent"])
-        stem = resolve_stem(col, stems)
+        alignment = alignments.get(col)
+        stem = alignment.info_stem if alignment else resolve_stem(col, stems)
         sh = r["score_harbor"]
         harbor_val = None if pd.isna(sh) else float(sh)
 
-        if stem is None:
+        alignment_fields = dict(
+            alignment_status=alignment.alignment_status if alignment else "",
+            alignment_transform=alignment.transform if alignment else "",
+            include_in_comparison=alignment.include_in_comparison if alignment else False,
+            alignment_evidence_level=alignment.evidence_level if alignment else "",
+            alignment_notes=alignment.notes if alignment else "",
+        )
+
+        if stem is None or stem == "":
             rows.append(dict(
                 matrix_column=col, stem="", benchmark_name="",
                 model=model, agent=agent,
@@ -45,6 +55,35 @@ def build_comparison_long(
                 doc_metric_used="", primary_metric_json="",
                 doc_slice_date="", doc_source_url="",
                 match_status="skipped_no_json",
+                **alignment_fields,
+            ))
+            continue
+
+        if alignment is None:
+            rows.append(dict(
+                matrix_column=col, stem=stem, benchmark_name="",
+                model=model, agent=agent,
+                score_harbor=harbor_val, score_doc=None, delta=None,
+                doc_model_matched="", doc_agent_matched="",
+                doc_metric_used="", primary_metric_json="",
+                doc_slice_date="", doc_source_url="",
+                match_status="skipped_no_alignment",
+                **alignment_fields,
+            ))
+            continue
+
+        if not alignment.include_in_comparison:
+            rows.append(dict(
+                matrix_column=col, stem=stem,
+                benchmark_name=alignment.benchmark_name,
+                model=model, agent=agent,
+                score_harbor=harbor_val, score_doc=None, delta=None,
+                doc_model_matched="", doc_agent_matched="",
+                doc_metric_used=alignment.doc_metric,
+                primary_metric_json="",
+                doc_slice_date="", doc_source_url="",
+                match_status="skipped_metric_alignment_excluded",
+                **alignment_fields,
             ))
             continue
 
@@ -60,6 +99,7 @@ def build_comparison_long(
             doc_metric_used=mu, primary_metric_json=doc.primary_metric,
             doc_slice_date=doc.slice_date, doc_source_url=doc.source_url,
             match_status=st,
+            **alignment_fields,
         ))
 
     return pd.DataFrame(rows)
@@ -83,6 +123,9 @@ def build_comparison_summary(long_df: pd.DataFrame) -> pd.DataFrame:
             match_status=r["match_status"],
             doc_metric=r["doc_metric_used"],
             doc_slice_date=r["doc_slice_date"],
+            alignment_status=r.get("alignment_status", ""),
+            alignment_transform=r.get("alignment_transform", ""),
+            alignment_notes=r.get("alignment_notes", ""),
         ))
     return pd.DataFrame(rows).sort_values("abs_delta", ascending=False)
 

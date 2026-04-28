@@ -16,7 +16,7 @@ from pathlib import Path
 import pandas as pd
 
 from .config import FIGURE_DIR, OUTPUT_DIR
-from .loading import load_all_docs, load_harbor_matrix
+from .loading import load_all_docs, load_harbor_matrix, load_metric_alignment
 from .analysis import (
     agent_effect_by_agent,
     agent_effect_by_status,
@@ -30,6 +30,8 @@ from .analysis import (
 )
 from .cross_analysis import (
     benchmark_difficulty_table,
+    benchmark_launch_vs_harbor_improvement,
+    domain_launch_vs_harbor_improvement,
     domain_progress_summary,
     domain_summary,
     per_model_domain_scores,
@@ -59,15 +61,18 @@ def main() -> None:
     print("=" * 70)
     print("Loading data...")
     harbor = load_harbor_matrix(args.harbor_csv)
-    docs = load_all_docs(args.benchmark_info_dir)
+    alignments = load_metric_alignment()
+    docs = load_all_docs(args.benchmark_info_dir, alignments)
     n_filled = sum(1 for d in docs.values() if d.rows)
     print(f"  Harbor matrix: {harbor.shape[0]} rows × {harbor.shape[1]} cols")
+    print(f"  Metric alignments: {len(alignments)} rows, "
+          f"{sum(a.include_in_comparison for a in alignments.values())} included")
     print(f"  Doc JSONs: {len(docs)} total, {n_filled} with results_over_time")
 
     # ---- A. Compare ----
     print("\n" + "=" * 70)
     print("A. Harbor vs Doc comparison...")
-    long_df = build_comparison_long(harbor, docs)
+    long_df = build_comparison_long(harbor, docs, alignments)
     summary = build_comparison_summary(long_df)
     _write(long_df, "harbor_vs_doc_long.csv")
     _write(summary, "harbor_vs_doc_summary.csv")
@@ -127,11 +132,15 @@ def main() -> None:
     prog = progress_over_time(args.benchmark_info_dir)
     prog_sum = progress_summary(prog)
     dom_prog = domain_progress_summary(prog_sum)
+    launch_imp = benchmark_launch_vs_harbor_improvement(harbor, args.benchmark_info_dir)
+    domain_launch_imp = domain_launch_vs_harbor_improvement(launch_imp)
 
     _write(difficulty, "benchmark_difficulty.csv")
     _write(dom_sum, "domain_summary.csv")
     _write(superdom_sum, "superdomain_summary.csv")
     _write(model_dom, "model_domain_scores.csv")
+    _write(launch_imp, "benchmark_launch_vs_harbor_improvement.csv")
+    _write(domain_launch_imp, "domain_launch_vs_harbor_improvement.csv")
     if not prog.empty:
         _write(prog, "progress_over_time.csv")
         _write(prog_sum, "progress_summary.csv")
@@ -161,6 +170,21 @@ def main() -> None:
             print(f"    {row['domain']:28s}  n={int(row['n_benchmarks']):2d}  "
                   f"mean_progress={row['mean_absolute_progress']:+.3f}")
 
+    if not launch_imp.empty:
+        ok_launch_imp = launch_imp[launch_imp["status"] == "ok"]
+        print("  Launch baseline vs Harbor max (top relative improvements):")
+        for _, row in ok_launch_imp.head(10).iterrows():
+            print(f"    {row['benchmark']:25s}  "
+                  f"{row['launch_best_score']:.3f} → {row['harbor_best_score']:.3f}  "
+                  f"rel={row['relative_improvement_pct']:+.1f}%")
+
+    if not domain_launch_imp.empty:
+        print("  Launch baseline vs Harbor max by domain:")
+        for _, row in domain_launch_imp.iterrows():
+            print(f"    {row['domain']:28s}  n={int(row['n_benchmarks']):2d}  "
+                  f"median_rel={row['median_relative_improvement_pct']:+.1f}%  "
+                  f"mean_rel={row['mean_relative_improvement_pct']:+.1f}%")
+
     # ---- E. Figures ----
     if not args.no_figures:
         print("\n" + "=" * 70)
@@ -176,6 +200,8 @@ def main() -> None:
             superdomain_df=superdom_sum,
             progress_df=prog,
             domain_prog_df=dom_prog,
+            benchmark_launch_imp_df=launch_imp,
+            domain_launch_imp_df=domain_launch_imp,
             harbor_df=harbor,
         )
 

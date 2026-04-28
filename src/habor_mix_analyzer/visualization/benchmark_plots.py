@@ -1,6 +1,16 @@
 from __future__ import annotations
 
 from ..core import *
+from matplotlib.colors import to_rgb, to_hex
+
+
+def darken_color(color: str, factor: float = 0.72) -> str:
+    """
+    factor < 1 会变深；越小越深
+    比如 0.72 / 0.65 都比较合适
+    """
+    r, g, b = to_rgb(color)
+    return to_hex((r * factor, g * factor, b * factor))
 
 
 def save_key_effect_plot(effects: pd.DataFrame, group_col: str, filename: str, title: str) -> None:
@@ -282,6 +292,209 @@ def save_benchmark_headroom_plot(headroom: pd.DataFrame) -> None:
 
         fig.tight_layout(rect=[0, 0.05, 1, 1] if suffix == "by_domain" else [0, 0, 1, 1])
         save_key_figure(fig, f"benchmark_level/benchmark_headroom_{suffix}.png")
+        plt.close(fig)
+
+
+def save_benchmark_progress_and_headroom_plot(headroom: pd.DataFrame, launch_progress: pd.DataFrame) -> None:
+    if headroom.empty or launch_progress.empty:
+        return
+
+    required = {"benchmark", "matrix_column", "launch_best_score", "status"}
+    if not required.issubset(launch_progress.columns):
+        return
+
+    launch = launch_progress.loc[
+        (launch_progress["status"] == "ok")
+        & launch_progress["launch_best_score"].notna(),
+        ["matrix_column", "launch_best_score"],
+    ].copy()
+    if launch.empty:
+        return
+
+    plot_df = headroom.merge(
+        launch.rename(columns={"matrix_column": "benchmark", "launch_best_score": "past_sota"}),
+        on="benchmark",
+        how="inner",
+    )
+    if plot_df.empty:
+        return
+
+    domain_order = [
+        "Software Engineering",
+        "Mathematics & Reasoning",
+        "Knowledge & Long Context",
+        "Scientific Research",
+        "Agents, Tools & Systems",
+        "Data & Analytics",
+        "Professional Domains",
+        "Safety & Security",
+        "Multimodal",
+        "Other",
+    ]
+    domain_colors = {
+        "Software Engineering": "#4292c6",
+        "Mathematics & Reasoning": "#e6550d",
+        "Knowledge & Long Context": "#756bb1",
+        "Scientific Research": "#31a354",
+        "Agents, Tools & Systems": "#d6616b",
+        "Data & Analytics": "#8ca252",
+        "Professional Domains": "#de9ed6",
+        "Safety & Security": "#636363",
+        "Multimodal": "#e7969c",
+        "Other": "#aaaaaa",
+    }
+    plot_df = plot_df.copy()
+    plot_df["domain"] = pd.Categorical(plot_df["domain"], categories=domain_order, ordered=True)
+    plot_df["past_sota"] = pd.to_numeric(plot_df["past_sota"], errors="coerce").clip(lower=0, upper=1)
+    plot_df["current_sota"] = pd.to_numeric(plot_df["best_score"], errors="coerce").clip(lower=0, upper=1)
+    plot_df = plot_df.dropna(subset=["past_sota", "current_sota"])
+    if plot_df.empty:
+        return
+
+    plot_df["headroom_width"] = (1.0 - plot_df["current_sota"]).clip(lower=0)
+    plot_df = plot_df.sort_values(["domain", "current_sota"], ascending=[True, True])
+
+    labels = [wrap_text(benchmark_display_name(value), 24) for value in plot_df["benchmark"]]
+    colors = [domain_colors.get(str(value), "#aaaaaa") for value in plot_df["domain"]]
+    n = len(plot_df)
+
+    # Lighter past-SOTA styling
+    past_edge = "#969696"
+    past_hatch = "///"
+    past_alpha = 0.60
+
+    domain_boundaries = [0]
+    for i in range(1, n):
+        if plot_df.iloc[i]["domain"] != plot_df.iloc[i - 1]["domain"]:
+            domain_boundaries.append(i)
+    domain_boundaries.append(n)
+
+    mid = min(domain_boundaries, key=lambda b: abs(b - n / 2))
+    if mid == 0:
+        mid = domain_boundaries[1]
+    elif mid == n:
+        mid = domain_boundaries[-2]
+
+    n_left = mid
+    n_right = n - mid
+
+    with plt.rc_context():
+        plt.rcdefaults()
+        plt.rcParams["hatch.linewidth"] = 0.35
+
+        fig, (ax_left, ax_right) = plt.subplots(
+            1,
+            2,
+            figsize=(12, max(6, 0.32 * max(n_left, n_right))),
+            gridspec_kw={"wspace": 0.42},
+        )
+
+        for ax, start, end in [(ax_left, 0, mid), (ax_right, mid, n)]:
+            chunk_n = end - start
+            chunk_labels = labels[start:end]
+            chunk_colors = colors[start:end]
+            chunk_df = plot_df.iloc[start:end]
+            y = np.arange(chunk_n)
+            bar_h = 0.65
+
+            ax.barh(
+                y,
+                chunk_df["current_sota"].values,
+                height=bar_h,
+                color=chunk_colors,
+                edgecolor="white",
+                alpha=0.35,
+                linewidth=0.45,
+            )
+
+            ax.barh(
+                y,
+                chunk_df["headroom_width"].values,
+                left=chunk_df["current_sota"].values,
+                height=bar_h,
+                color=chunk_colors,
+                edgecolor="white",
+                linewidth=0.45,
+                alpha=0.1,
+            )
+
+            # Past SOTA at launch: same category color, but darker outline only
+            for i, (_, row) in enumerate(chunk_df.iterrows()):
+                outline_color = darken_color(chunk_colors[i], factor=0.72)
+                ax.barh(
+                    i,
+                    row["past_sota"],
+                    height=bar_h,
+                    facecolor="none",
+                    edgecolor=outline_color,
+                    linewidth=0.8,
+                )
+
+            for i, (_, row) in enumerate(chunk_df.iterrows()):
+                ax.text(
+                    row["current_sota"] + 0.01,
+                    i,
+                    f'{row["current_sota"]:.0%}',
+                    va="center",
+                    color="#333333",
+                )
+
+            ax.set_yticks(y)
+            ax.set_yticklabels(chunk_labels)
+            ax.set_xlim(0, 1.12)
+            ax.set_xlabel("Score")
+            ax.axvline(0.5, color="#999999", linewidth=0.8, linestyle="--", alpha=0.6)
+            ax.grid(axis="x", color="#dddddd", linewidth=0.8, linestyle="--", alpha=0.8)
+            for spine in ax.spines.values():
+                spine.set_visible(True)
+
+            prev_domain = None
+            for i, (_, row) in enumerate(chunk_df.iterrows()):
+                if prev_domain is not None and row["domain"] != prev_domain:
+                    ax.axhline(i - 0.5, color="#cccccc", linewidth=0.6, linestyle="-")
+                prev_domain = row["domain"]
+
+        domains_present = [d for d in domain_order if d in plot_df["domain"].astype(str).values]
+
+        domain_handles = [
+            plt.Rectangle(
+                (0, 0),
+                1,
+                1,
+                color=domain_colors.get(d, "#aaa"),
+                alpha=0.35,
+            )
+            for d in domains_present
+        ]
+
+        past_handle = plt.Rectangle(
+            (0, 0),
+            1,
+            1,
+            facecolor="none",
+            edgecolor="#666666",
+            linewidth=1.4,
+        )
+
+        if domain_handles:
+            fig.legend(
+                [past_handle, *domain_handles],
+                ["Past SOTA at launch", *domains_present],
+                loc="lower center",
+                ncol=min(len(domains_present) + 1, 5),
+                framealpha=0.9,
+                bbox_to_anchor=(0.5, 0.03),
+            )
+
+        # fig.suptitle(
+        #     "Benchmark Headroom: Best System Score by Domain\n(shaded area = room for improvement)",
+        # )
+
+        fig.subplots_adjust(left=0.12, right=0.965, bottom=0.185, top=0.90, wspace=0.42)
+
+        path = OUTPUT_DIR / "quantitative" / "figures" / "bench_progress_and_headroom.pdf"
+        path.parent.mkdir(parents=True, exist_ok=True)
+        fig.savefig(path, dpi=200, bbox_inches="tight", pad_inches=0.02)
         plt.close(fig)
 
 

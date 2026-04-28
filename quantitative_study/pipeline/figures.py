@@ -18,6 +18,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
 
+from .loading import load_metric_alignment
 from .config import (
     COLOR_BLUE, COLOR_GRAY, COLOR_GREEN, COLOR_GRID, COLOR_AXIS,
     COLOR_PURPLE, COLOR_RED,
@@ -297,7 +298,29 @@ def fig_coding_vs_noncoding(superdomain_df: pd.DataFrame) -> None:
 # Fig 8: Progress over time (best score trajectory)
 # ===================================================================
 
-def fig_progress_over_time(progress_df: pd.DataFrame) -> None:
+def _harbor_best_by_benchmark(harbor_df: pd.DataFrame | None) -> dict[str, tuple[float, str]]:
+    if harbor_df is None or harbor_df.empty:
+        return {}
+
+    best_by_benchmark: dict[str, tuple[float, str]] = {}
+    for alignment in load_metric_alignment().values():
+        if not alignment.include_in_comparison or not alignment.info_stem:
+            continue
+        if alignment.matrix_column not in harbor_df.columns:
+            continue
+        scores = pd.to_numeric(harbor_df[alignment.matrix_column], errors="coerce").dropna()
+        if scores.empty:
+            continue
+        best = float(scores.max())
+        if -0.01 <= best <= 1.01:
+            best_by_benchmark[alignment.info_stem] = (best, alignment.alignment_status)
+    return best_by_benchmark
+
+
+def fig_progress_over_time(
+    progress_df: pd.DataFrame,
+    harbor_df: pd.DataFrame | None = None,
+) -> None:
     if progress_df.empty:
         return
     _apply_style()
@@ -310,28 +333,68 @@ def fig_progress_over_time(progress_df: pd.DataFrame) -> None:
     date_to_x = {d: i for i, d in enumerate(all_dates)}
     plot_df["_x"] = plot_df["date_ym"].map(date_to_x)
 
-    fig, ax = plt.subplots(figsize=FIGSIZE_WIDE)
+    fig, ax = plt.subplots(figsize=(14, 3.5))
     palette = list(DOMAIN_COLORS.values()) + [COLOR_RED, COLOR_GRAY, COLOR_PURPLE]
+    bench_colors: dict[str, str] = {}
+    bench_last_points: dict[str, tuple[int, float]] = {}
     for i, (bench, g) in enumerate(plot_df.groupby("benchmark")):
         g = g.sort_values("_x")
         color = palette[i % len(palette)]
+        bench_colors[bench] = color
+        bench_last_points[bench] = (int(g["_x"].iloc[-1]), float(g["best_score"].iloc[-1]))
         ax.plot(g["_x"], g["best_score"], "o-", label=_wrap(bench, 18),
                 color=color, markersize=5, linewidth=1.5, alpha=0.85)
 
-    ax.set_xlabel("Date (YYYY-MM)")
+    harbor_best = _harbor_best_by_benchmark(harbor_df)
+    harbor_x = len(all_dates) + 2
+    for bench, (score, align_status) in harbor_best.items():
+        if bench not in bench_colors:
+            continue
+        last_x, last_score = bench_last_points[bench]
+        ax.plot(
+            [last_x, harbor_x], [last_score, score],
+            color=bench_colors[bench], linestyle="--", linewidth=1.4,
+            alpha=0.65, zorder=3,
+        )
+        if align_status == "subset_or_variant":
+            ax.scatter(
+                harbor_x, score,
+                marker="D", s=65, facecolors="none", edgecolors=bench_colors[bench],
+                linewidths=1.5, zorder=4,
+            )
+        else:
+            ax.scatter(
+                harbor_x, score,
+                marker="D", s=82, color=bench_colors[bench],
+                edgecolors="white", linewidths=0.8, zorder=4,
+            )
+
+    ax.set_xlabel("Result Date")
     ax.set_ylabel("Best score at that snapshot")
-    ax.set_title("Score Progress Over Time (Doc Snapshots)")
+    ax.set_title("Score Progress Over Time")
     ax.grid(color=COLOR_GRID, linewidth=0.8)
-    ax.legend(loc="upper left", bbox_to_anchor=(1.01, 1.0),
+    handles, labels = ax.get_legend_handles_labels()
+    if harbor_best:
+        handles.append(plt.Line2D(
+            [0], [0], marker="D", color="none", markerfacecolor=COLOR_AXIS,
+            markeredgecolor="white", markersize=8, label="Harbor result",
+        ))
+        labels.append("Harbor result")
+    ax.legend(handles, labels, loc="upper left", bbox_to_anchor=(1.01, 1.0),
               frameon=False, fontsize=9)
 
     step = max(1, len(all_dates) // 12)
     tick_positions = list(range(0, len(all_dates), step))
+    tick_labels = [all_dates[i] for i in tick_positions]
+    if harbor_best:
+        tick_positions.append(harbor_x)
+        tick_labels.append("Harbor")
+        ax.set_xlim(-0.5, harbor_x + 0.5)
     ax.set_xticks(tick_positions)
-    ax.set_xticklabels([all_dates[i] for i in tick_positions], rotation=45, ha="right")
+    ax.set_xticklabels(tick_labels, rotation=45, ha="right")
     ax.set_ylim(0, 1.05)
     fig.tight_layout(rect=(0, 0, 0.78, 1))
-    _save(fig, "progress_over_time.png")
+    _save(fig, "progress_over_time_v2.pdf")
 
 
 # ===================================================================
@@ -361,6 +424,99 @@ def fig_domain_progress(domain_prog_df: pd.DataFrame) -> None:
 
     fig.tight_layout()
     _save(fig, "domain_progress.png")
+
+
+def _format_pct(value: float) -> str:
+    return f"{value:+.0f}%" if abs(value) >= 10 else f"{value:+.1f}%"
+
+
+def fig_benchmark_launch_improvement(
+    launch_imp_df: pd.DataFrame,
+    log_scale: bool = False,
+) -> None:
+    if launch_imp_df.empty or "relative_improvement_pct" not in launch_imp_df.columns:
+        return
+    df = launch_imp_df[
+        (launch_imp_df["status"] == "ok")
+        & launch_imp_df["relative_improvement_pct"].notna()
+    ].copy()
+    if df.empty:
+        return
+
+    _apply_style()
+    df = df.sort_values("relative_improvement_pct")
+    labels = [_wrap(b, 28) for b in df["benchmark"]]
+    values = df["relative_improvement_pct"].astype(float)
+    colors = [COLOR_GREEN if v >= 0 else COLOR_RED for v in values]
+
+    fig, ax = plt.subplots(figsize=(12.5, max(6.5, 0.34 * len(df))))
+    ax.barh(labels, values, color=colors, edgecolor="white", linewidth=0.5)
+    ax.axvline(0, color=COLOR_AXIS, linewidth=1)
+    ax.set_xlabel("Relative improvement vs launch best (%)")
+    title = "Harbor Max vs Benchmark Launch Best by Benchmark"
+    ax.set_title(f"{title} (Log Scale)" if log_scale else title)
+    if log_scale:
+        ax.set_xscale("symlog", linthresh=10)
+    ax.grid(axis="x", color=COLOR_GRID, linewidth=0.8)
+
+    span = max(abs(values.min()), abs(values.max()))
+    pad = max(6, span * 0.015)
+    for i, value in enumerate(values):
+        ax.text(
+            value + (pad if value >= 0 else -pad),
+            i,
+            _format_pct(float(value)),
+            va="center",
+            ha="left" if value >= 0 else "right",
+            fontsize=8,
+            color="dimgray",
+        )
+    left = min(values.min() - pad * 7, -25) if log_scale else values.min() - pad * 7
+    ax.set_xlim(left, values.max() + pad * 9)
+    fig.tight_layout()
+    _save(fig, "benchmark_launch_vs_harbor_improvement.png")
+
+
+def fig_domain_launch_improvement(
+    domain_launch_imp_df: pd.DataFrame,
+    log_scale: bool = False,
+) -> None:
+    if domain_launch_imp_df.empty or "median_relative_improvement_pct" not in domain_launch_imp_df.columns:
+        return
+
+    _apply_style()
+    df = domain_launch_imp_df.sort_values("median_relative_improvement_pct")
+    labels = [_wrap(d, 26) for d in df["domain"]]
+    values = df["median_relative_improvement_pct"].astype(float)
+    colors = [COLOR_GREEN if v >= 0 else COLOR_RED for v in values]
+
+    fig, ax = plt.subplots(figsize=(10.5, max(4.8, 0.48 * len(df))))
+    ax.barh(labels, values, color=colors, edgecolor="white", linewidth=0.6)
+    ax.axvline(0, color=COLOR_AXIS, linewidth=1)
+    ax.set_xlabel("Median relative improvement vs launch best (%)")
+    title = "Harbor Max vs Benchmark Launch Best by Domain"
+    ax.set_title(f"{title} (Log Scale)" if log_scale else title)
+    if log_scale:
+        ax.set_xscale("symlog", linthresh=10)
+    ax.grid(axis="x", color=COLOR_GRID, linewidth=0.8)
+
+    span = max(abs(values.min()), abs(values.max()))
+    pad = max(4, span * 0.015)
+    for i, (_, row) in enumerate(df.iterrows()):
+        value = float(row["median_relative_improvement_pct"])
+        ax.text(
+            value + (pad if value >= 0 else -pad),
+            i,
+            f"{_format_pct(value)}  n={int(row['n_benchmarks'])}",
+            va="center",
+            ha="left" if value >= 0 else "right",
+            fontsize=9,
+            color="dimgray",
+        )
+    left = min(values.min() - pad * 7, -span * 0.18) if log_scale else values.min() - pad * 7
+    ax.set_xlim(left, values.max() + pad * 12)
+    fig.tight_layout()
+    _save(fig, "domain_launch_vs_harbor_improvement.png")
 
 
 # ===================================================================
@@ -507,14 +663,20 @@ def generate_cross_figures(
     superdomain_df: pd.DataFrame,
     progress_df: pd.DataFrame,
     domain_prog_df: pd.DataFrame,
+    benchmark_launch_imp_df: pd.DataFrame | None = None,
+    domain_launch_imp_df: pd.DataFrame | None = None,
     harbor_df: pd.DataFrame | None = None,
 ) -> None:
     print("\nGenerating cross-analysis figures...")
     fig_hardest_benchmarks(difficulty)
     fig_domain_scores(domain_df)
     fig_coding_vs_noncoding(superdomain_df)
-    fig_progress_over_time(progress_df)
+    fig_progress_over_time(progress_df, harbor_df)
     fig_domain_progress(domain_prog_df)
+    if benchmark_launch_imp_df is not None:
+        fig_benchmark_launch_improvement(benchmark_launch_imp_df)
+    if domain_launch_imp_df is not None:
+        fig_domain_launch_improvement(domain_launch_imp_df)
     if harbor_df is not None:
         fig_model_ranking(harbor_df)
         fig_agent_domain_effect(harbor_df)

@@ -64,6 +64,7 @@ from ..visualization.benchmark_plots import (
     save_benchmark_cluster_heatmap,
     save_benchmark_headroom_plot,
     save_benchmark_headroom_summary_plot,
+    save_benchmark_progress_and_headroom_plot,
     save_benchmark_uniqueness_plot,
     save_domain_grouped_heatmap,
     save_effective_dimensionality_plot,
@@ -413,6 +414,12 @@ def write_study_figures(study_tables: dict[str, pd.DataFrame]) -> None:
     save_within_family_summary_plot(study_tables["benchmark_within_family_summary"])
     save_within_family_detail_plot(study_tables["benchmark_within_family_model_vs_agent"])
     save_benchmark_headroom_plot(study_tables["benchmark_headroom_by_domain"])
+    launch_progress_path = OUTPUT_DIR / "quantitative" / "benchmark_launch_vs_harbor_improvement.csv"
+    if launch_progress_path.is_file():
+        save_benchmark_progress_and_headroom_plot(
+            study_tables["benchmark_headroom_by_domain"],
+            pd.read_csv(launch_progress_path),
+        )
     save_benchmark_headroom_summary_plot(study_tables["benchmark_headroom_by_domain"])
     save_benchmark_cluster_heatmap(study_tables["benchmark_correlation_clustered"])
     save_domain_grouped_heatmap(study_tables["benchmark_correlation_filtered"])

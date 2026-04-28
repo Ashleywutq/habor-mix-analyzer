@@ -5,6 +5,7 @@ Data loading: Harbor CSV matrix and benchmark_info_jobs/*.json files.
 from __future__ import annotations
 
 import json
+import math
 import re
 from dataclasses import dataclass, field
 from pathlib import Path
@@ -15,8 +16,7 @@ import pandas as pd
 from .config import (
     BENCHMARK_INFO_DIR,
     HARBOR_CSV_CANDIDATES,
-    SKIP_METRICS,
-    transform_doc_score,
+    METRIC_ALIGNMENT_PATH,
 )
 
 
@@ -55,6 +55,23 @@ def harbor_to_long(df: pd.DataFrame) -> pd.DataFrame:
 # ---------------------------------------------------------------------------
 
 @dataclass
+class MetricAlignment:
+    matrix_column: str
+    info_stem: str
+    benchmark_name: str
+    harbor_metric: str
+    doc_score_field: str
+    doc_metric: str
+    alignment_status: str
+    transform: str
+    include_in_comparison: bool
+    evidence_level: str
+    reviewer: str
+    review_date: str
+    notes: str
+
+
+@dataclass
 class DocRow:
     model_raw: str
     effort_raw: str | None
@@ -74,10 +91,70 @@ class DocSlice:
     stem: str
     benchmark_name: str
     primary_metric: str
-    aligned_metric: str | None
+    alignment: MetricAlignment | None
     slice_date: str
     source_url: str
     rows: list[DocRow] = field(default_factory=list)
+
+
+def load_metric_alignment(path: Path | None = None) -> dict[str, MetricAlignment]:
+    path = path or METRIC_ALIGNMENT_PATH
+    if not path.is_file():
+        raise FileNotFoundError(f"Benchmark metric alignment CSV not found: {path}")
+
+    df = pd.read_csv(path, dtype=str).fillna("")
+    required = {
+        "matrix_column", "info_stem", "benchmark_name", "harbor_metric",
+        "doc_score_field", "doc_metric", "alignment_status", "transform",
+        "include_in_comparison", "evidence_level", "reviewer", "review_date",
+        "notes",
+    }
+    missing = sorted(required - set(df.columns))
+    if missing:
+        raise ValueError(f"Alignment CSV is missing columns: {missing}")
+
+    alignments: dict[str, MetricAlignment] = {}
+    for _, row in df.iterrows():
+        matrix_column = str(row["matrix_column"]).strip()
+        if not matrix_column:
+            continue
+        if matrix_column in alignments:
+            raise ValueError(f"Duplicate alignment row for {matrix_column}")
+        include = str(row["include_in_comparison"]).strip().lower() == "true"
+        alignments[matrix_column] = MetricAlignment(
+            matrix_column=matrix_column,
+            info_stem=str(row["info_stem"]).strip(),
+            benchmark_name=str(row["benchmark_name"]).strip(),
+            harbor_metric=str(row["harbor_metric"]).strip(),
+            doc_score_field=str(row["doc_score_field"]).strip(),
+            doc_metric=str(row["doc_metric"]).strip(),
+            alignment_status=str(row["alignment_status"]).strip(),
+            transform=str(row["transform"]).strip() or "identity",
+            include_in_comparison=include,
+            evidence_level=str(row["evidence_level"]).strip(),
+            reviewer=str(row["reviewer"]).strip(),
+            review_date=str(row["review_date"]).strip(),
+            notes=str(row["notes"]).strip(),
+        )
+    return alignments
+
+
+def _apply_alignment_transform(value: float, transform: str) -> float:
+    transform = (transform or "identity").strip()
+    if transform == "identity":
+        return value
+    if not transform.startswith("lambda x:"):
+        raise ValueError(f"Transform must be identity or a lambda expression: {transform}")
+
+    safe_names = {"math": math, "max": max, "min": min, "abs": abs, "float": float}
+    fn = eval(  # noqa: S307 - alignment CSV is repo-local reviewed metadata.
+        transform,
+        {"__builtins__": {}, **safe_names},
+        {},
+    )
+    if not callable(fn):
+        raise ValueError(f"Transform did not evaluate to a callable: {transform}")
+    return float(fn(value))
 
 
 # ---------------------------------------------------------------------------
@@ -105,92 +182,104 @@ def _pick_newest_slice(rot: list[dict]) -> dict | None:
     return rot[best_idx]
 
 
-def _extract_metric_value(
-    scores: list[dict], primary: str, aligned: str | None
-) -> tuple[float | None, str]:
-    if not scores:
+def _row_has_alignment_metric(row: dict, alignment: MetricAlignment) -> bool:
+    if alignment.doc_score_field == "score":
+        return alignment.doc_metric == "legacy_score" and isinstance(row.get("score"), (int, float))
+    if alignment.doc_score_field != "scores[].value" or not alignment.doc_metric:
+        return False
+    return any(
+        str(score.get("metric") or "").strip() == alignment.doc_metric
+        and isinstance(score.get("value"), (int, float))
+        for score in row.get("scores") or []
+    )
+
+
+def _pick_newest_slice_with_metric(
+    rot: list[dict],
+    alignment: MetricAlignment | None,
+) -> dict | None:
+    if not alignment or not alignment.include_in_comparison:
+        return _pick_newest_slice(rot)
+
+    candidates = [
+        block for block in rot
+        if any(_row_has_alignment_metric(row, alignment) for row in block.get("results") or [])
+    ]
+    return _pick_newest_slice(candidates) if candidates else _pick_newest_slice(rot)
+
+
+def _extract_metric_value(row: dict, alignment: MetricAlignment) -> tuple[float | None, str]:
+    if alignment.doc_score_field == "score":
+        value = row.get("score")
+        if isinstance(value, (int, float)) and alignment.doc_metric == "legacy_score":
+            return float(value), "legacy_score"
         return None, ""
 
-    want: list[str] = []
-    if aligned and aligned.strip():
-        want.append(aligned.strip().lower())
-    if primary and primary.strip():
-        want.append(primary.strip().lower())
+    if alignment.doc_score_field != "scores[].value" or not alignment.doc_metric:
+        return None, ""
 
-    for w in want:
-        for s in scores:
-            m = (s.get("metric") or "").strip()
-            if m.lower() == w and isinstance(s.get("value"), (int, float)):
-                return float(s["value"]), m
-
-    for w in want:
-        for s in scores:
-            m = (s.get("metric") or "").strip()
-            if w in m.lower() and isinstance(s.get("value"), (int, float)):
-                return float(s["value"]), m
-
-    for s in scores:
-        m = (s.get("metric") or "").strip().lower()
-        if m in SKIP_METRICS:
-            continue
-        if isinstance(s.get("value"), (int, float)):
-            return float(s["value"]), str(s.get("metric", ""))
-
-    for s in scores:
-        if isinstance(s.get("value"), (int, float)):
-            return float(s["value"]), str(s.get("metric", ""))
+    for score in row.get("scores") or []:
+        metric = str(score.get("metric") or "").strip()
+        value = score.get("value")
+        if metric == alignment.doc_metric and isinstance(value, (int, float)):
+            return float(value), metric
     return None, ""
 
 
-def load_doc_slice(path: Path) -> DocSlice:
+def load_doc_slice(path: Path, alignment: MetricAlignment | None = None) -> DocSlice:
     data = json.loads(path.read_text())
     stem = path.stem
     ev = data.get("evaluation") or {}
     primary = str(ev.get("primary_metric") or "").strip()
-    aligned = ev.get("harbor_aligned_metric")
-    if aligned:
-        aligned_clean = re.split(r"[.;]", str(aligned))[0].strip()
-        aligned = aligned_clean or None
 
     rot = data.get("results_over_time") or []
-    block = _pick_newest_slice(rot)
+    block = _pick_newest_slice_with_metric(rot, alignment)
     if block is None:
         return DocSlice(stem=stem, benchmark_name=str(data.get("name") or stem),
-                        primary_metric=primary, aligned_metric=aligned,
+                        primary_metric=primary, alignment=alignment,
                         slice_date="", source_url="")
 
     rows: list[DocRow] = []
-    for r in block.get("results") or []:
-        model = str(r.get("model") or "").strip()
-        if not model:
-            continue
-        system = r.get("system_description")
-        if system is not None:
-            system = str(system).strip() or None
-        effort = r.get("effort")
-        if effort is not None:
-            effort = str(effort).strip() or None
-        val, mname = _extract_metric_value(r.get("scores") or [], primary, aligned)
-        if val is None:
-            continue
-        val = transform_doc_score(val, stem)
-        rows.append(DocRow(
-            model_raw=model, effort_raw=effort, system_raw=system,
-            metric_name=mname, score=val,
-        ))
+    if alignment and alignment.include_in_comparison:
+        for r in block.get("results") or []:
+            model = str(r.get("model") or "").strip()
+            if not model:
+                continue
+            system = r.get("system_description")
+            if system is not None:
+                system = str(system).strip() or None
+            effort = r.get("effort")
+            if effort is not None:
+                effort = str(effort).strip() or None
+            val, mname = _extract_metric_value(r, alignment)
+            if val is None:
+                continue
+            val = _apply_alignment_transform(val, alignment.transform)
+            rows.append(DocRow(
+                model_raw=model, effort_raw=effort, system_raw=system,
+                metric_name=mname, score=val,
+            ))
 
     return DocSlice(
         stem=stem, benchmark_name=str(data.get("name") or stem),
-        primary_metric=primary, aligned_metric=aligned,
+        primary_metric=primary, alignment=alignment,
         slice_date=str(block.get("date", "")),
         source_url=str(block.get("source_url", "")),
         rows=rows,
     )
 
 
-def load_all_docs(info_dir: Path | None = None) -> dict[str, DocSlice]:
+def load_all_docs(
+    info_dir: Path | None = None,
+    alignments: dict[str, MetricAlignment] | None = None,
+) -> dict[str, DocSlice]:
     info_dir = info_dir or BENCHMARK_INFO_DIR
+    alignment_by_stem = {
+        alignment.info_stem: alignment
+        for alignment in (alignments or {}).values()
+        if alignment.info_stem
+    }
     docs: dict[str, DocSlice] = {}
     for p in sorted(info_dir.glob("*.json")):
-        docs[p.stem] = load_doc_slice(p)
+        docs[p.stem] = load_doc_slice(p, alignment_by_stem.get(p.stem))
     return docs

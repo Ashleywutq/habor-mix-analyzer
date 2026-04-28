@@ -3,13 +3,11 @@
 Compare Harbor benchmark scores (CSV matrix) to documented original scores
 in benchmark_info_jobs/*.json (results_over_time).
 
-Alignment strategy:
-  1. Map matrix column -> JSON stem (hyphen->underscore + override table).
-  2. Build a (harbor_model, harbor_agent) -> (doc_model_patterns, doc_agent_patterns)
-     alias table so names like "gpt-5.4" match "GPT-5.4" in JSON.
-  3. For each Harbor cell, try to find a doc row matching BOTH model AND agent.
-     If not possible, fall back to model-only match (agent mismatch is flagged).
-  4. Compute delta = score_harbor - score_doc for matched rows.
+Metric alignment strategy:
+  1. Read data/metadata/benchmark_metric_alignment.csv as the source of truth.
+  2. Use only rows where include_in_comparison=true.
+  3. Select scores by exact doc_metric / doc_score_field.
+  4. Apply the reviewed transform, then compute delta = score_harbor - score_doc.
 
 Usage (from habor-mix-analyzer/):
   uv run python quantitative_study/scripts/compare_harbor_vs_doc.py \
@@ -22,6 +20,7 @@ import argparse
 import json
 import math
 import re
+import sys
 from dataclasses import dataclass, field
 from pathlib import Path
 from typing import Any
@@ -424,6 +423,19 @@ def find_doc_match(
 
 def main() -> None:
     root = repo_root()
+    if str(root) not in sys.path:
+        sys.path.insert(0, str(root))
+
+    from quantitative_study.pipeline.analysis import (
+        build_comparison_long,
+        build_comparison_summary,
+    )
+    from quantitative_study.pipeline.loading import (
+        load_all_docs,
+        load_harbor_matrix,
+        load_metric_alignment,
+    )
+
     p = argparse.ArgumentParser(description="Harbor vs original benchmark score comparison.")
     p.add_argument("--harbor-csv", type=Path, default=None)
     p.add_argument("--benchmark-info-dir", type=Path, default=root / "benchmark_info_jobs")
@@ -431,67 +443,11 @@ def main() -> None:
     p.add_argument("--summary-out", type=Path, default=root / "output" / "quantitative" / "harbor_vs_doc_summary.csv")
     args = p.parse_args()
 
-    harbor_path = args.harbor_csv
-    if harbor_path is None:
-        for cand in [root / "data" / "raw" / "benchmark_level_matrix.csv", root / "benchmark_level_matrix.csv"]:
-            if cand.is_file():
-                harbor_path = cand
-                break
-    if harbor_path is None or not harbor_path.is_file():
-        raise SystemExit(f"Harbor CSV not found (tried data/raw/ and root): {harbor_path}")
+    df = load_harbor_matrix(args.harbor_csv)
+    alignments = load_metric_alignment()
+    docs = load_all_docs(args.benchmark_info_dir, alignments)
 
-    stems = {p.stem for p in args.benchmark_info_dir.glob("*.json")}
-    docs: dict[str, DocSlice] = {}
-    for stem in sorted(stems):
-        docs[stem] = load_doc_slice(args.benchmark_info_dir / f"{stem}.json")
-
-    model_idx = make_model_index(MODEL_ALIASES)
-    agent_idx = make_agent_index(AGENT_ALIASES)
-
-    df = pd.read_csv(harbor_path)
-    long = df.melt(id_vars=["model", "agent"], var_name="matrix_column", value_name="score_harbor")
-
-    out_rows: list[dict[str, Any]] = []
-    for _, r in long.iterrows():
-        col = str(r["matrix_column"])
-        model = str(r["model"])
-        agent = str(r["agent"])
-        stem = resolve_stem(col, stems)
-
-        sh = r["score_harbor"]
-        harbor_val = None if pd.isna(sh) else float(sh)
-
-        if stem is None:
-            out_rows.append(dict(
-                matrix_column=col, stem="", benchmark_name="",
-                model=model, agent=agent,
-                score_harbor=harbor_val, score_doc=None, delta=None,
-                doc_model_matched="", doc_agent_matched="",
-                doc_metric_used="", primary_metric_json="",
-                doc_slice_date="", doc_source_url="",
-                match_status="skipped_no_json",
-            ))
-            continue
-
-        doc = docs[stem]
-        sd, dm, da, mu, st = find_doc_match(model, agent, doc, model_idx, agent_idx)
-
-        if sd is not None and harbor_val is not None:
-            delta = harbor_val - sd
-        else:
-            delta = None
-
-        out_rows.append(dict(
-            matrix_column=col, stem=stem, benchmark_name=doc.benchmark_name,
-            model=model, agent=agent,
-            score_harbor=harbor_val, score_doc=sd, delta=delta,
-            doc_model_matched=dm, doc_agent_matched=da,
-            doc_metric_used=mu, primary_metric_json=doc.primary_metric,
-            doc_slice_date=doc.slice_date, doc_source_url=doc.source_url,
-            match_status=st,
-        ))
-
-    out_df = pd.DataFrame(out_rows)
+    out_df = build_comparison_long(df, docs, alignments)
     args.out.parent.mkdir(parents=True, exist_ok=True)
     out_df.to_csv(args.out, index=False)
 
@@ -508,24 +464,7 @@ def main() -> None:
     print(f"\nRows with delta (both scores present): {len(has_delta)}")
 
     if not has_delta.empty:
-        summary_rows = []
-        for (stem, model, agent), g in has_delta.groupby(["stem", "model", "agent"]):
-            row = g.iloc[0]
-            summary_rows.append(dict(
-                benchmark=stem,
-                model=model,
-                harbor_agent=agent,
-                score_harbor=row["score_harbor"],
-                score_doc=row["score_doc"],
-                delta=row["delta"],
-                abs_delta=abs(row["delta"]),
-                doc_model_matched=row["doc_model_matched"],
-                doc_agent_matched=row["doc_agent_matched"],
-                match_status=row["match_status"],
-                doc_metric=row["doc_metric_used"],
-                doc_slice_date=row["doc_slice_date"],
-            ))
-        summary = pd.DataFrame(summary_rows).sort_values("abs_delta", ascending=False)
+        summary = build_comparison_summary(out_df)
         summary.to_csv(args.summary_out, index=False)
         print(f"\nWrote summary: {args.summary_out}  ({len(summary)} rows)")
         print(f"\n{'='*100}")
