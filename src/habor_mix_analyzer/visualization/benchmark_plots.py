@@ -103,25 +103,26 @@ def save_agent_lift_heatmap(agent_by_benchmark: pd.DataFrame) -> None:
 
 
 def save_benchmark_uniqueness_plot(uniqueness: pd.DataFrame, filter_table: pd.DataFrame) -> None:
-    has_medae = "benchpress_medae" in uniqueness.columns
+    has_medape = "benchpress_medape" in uniqueness.columns
     plot_df = uniqueness.merge(
         filter_table[["benchmark", "task_cell_missing_fraction"]],
         on="benchmark",
         how="left",
     )
 
-    if has_medae:
-        plot_df = plot_df.sort_values("benchpress_medae", ascending=True)
+    if has_medape:
+        plot_df = plot_df.sort_values("benchpress_medape", ascending=True)
         labels = [wrap_text(benchmark_display_name(v), 24) for v in plot_df["benchmark"]]
-        values = plot_df["benchpress_medae"].astype(float)
+        values = plot_df["benchpress_medape"].astype(float)
         values = values.replace([np.inf, -np.inf], np.nan).fillna(values[np.isfinite(values)].max() * 1.2 if np.any(np.isfinite(values)) else 1.0)
 
         fig, ax = plt.subplots(figsize=(11.5, max(8.2, 0.30 * len(plot_df))))
         colors = plt.cm.RdYlGn_r(np.linspace(0.15, 0.85, len(values)))
         ax.barh(labels, values, color=colors, edgecolor="white")
         ax.set_title("BenchPress Predictability: Per-Benchmark Holdout Error\n(LogitBenchReg + SVD-Logit blend)", fontsize=14)
-        ax.set_xlabel("Median Absolute Error on held-out scores\n(higher = harder to predict / more unique)")
+        ax.set_xlabel("Median Absolute Percentage Error (MedAPE %)\n(higher = harder to predict / more unique)")
         ax.set_ylabel("")
+        ax.xaxis.set_major_formatter(plt.FuncFormatter(lambda x, _: f"{x:.0f}%"))
         ax.grid(axis="x", color="#dddddd", linewidth=0.8)
         fig.tight_layout()
         save_key_figure(fig, "benchmark_level/benchmark_uniqueness_vs_coverage.png")

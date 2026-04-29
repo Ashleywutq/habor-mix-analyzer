@@ -33,11 +33,9 @@ codex,bixbench,0.6280373831775701,3
 claude-code,simpleqa,0.6152294503277873,3
 claude-code,skillsbench,0.6030574931640779,3
 claude-code,gaia,0.5705028860981175,3
-gemini-cli,featurebench-modal,0.5704697986577183,2
 codex,deepsynth,0.5631284403608685,3
 codex,skillsbench,0.5598303627345885,3
 codex,financeagent_terminal,0.5342960288808666,3
-codex,featurebench-modal,0.5249813571961224,3
 codex,aime,0.5065502183406122,3
 claude-code,gpqa-diamond,0.503213957759412,3
 claude-code,aime,0.5012129839883547,3
@@ -53,7 +51,6 @@ gemini-cli,swe-lancer,0.3944530046224954,2
 gemini-cli,spider2,0.3786982248520708,2
 codex,terminal-bench,0.3732534930139717,3
 claude-code,gaia2,0.37112989987733846,3
-codex,featbench,0.37103651359625417,3
 gemini-cli,gso,0.370257966616085,2
 codex,aider-polyglot,0.3388651809704437,3
 codex,swe-lancer,0.326656394453005,3
@@ -72,7 +69,6 @@ gemini-cli,livecodebench,0.24242424242424304,2
 codex,quixbugs,0.23400691919192082,3
 gemini-cli,arc-agi-2,0.22597402597402555,2
 gemini-cli,compilebench,0.222222222222222,2
-codex,devopsgym,0.21968260215875512,3
 gemini-cli,algotune,0.21179871930699204,2
 claude-code,hle,0.20894750452547187,3
 claude-code,replicationbench,0.20877817319098443,3
@@ -83,7 +79,6 @@ claude-code,usaco,0.19523532829750193,3
 codex,sldbench,0.19496429638573323,3
 gemini-cli,aider-polyglot,0.17638691322901864,2
 codex,algotune,0.15722894885130842,3
-gemini-cli,mlgym,0.1507579576159811,2
 gemini-cli,bixbench,0.1420560747663543,2
 gemini-cli,quixbugs,0.14015151515151344,2
 claude-code,gso,0.13859382903388992,3
@@ -98,8 +93,6 @@ codex,strongreject,0.09142404846037455,3
 gemini-cli,humanevalfix,0.09090909090909916,2
 gemini-cli,kumo,0.090909090909091,2
 claude-code,scicode,0.08148895119198386,3
-claude-code,devopsgym,0.08000003200001277,3
-gemini-cli,devopsgym,0.07619054476193214,2
 gemini-cli,swebench-verified,0.073654390934844,2
 gemini-cli,swesmith,0.07335640138408273,2
 gemini-cli,deepsynth,0.06082355640327545,2
@@ -109,20 +102,16 @@ claude-code,deepsynth,0.053639297671614905,3
 claude-code,algotune,0.05286381966939072,3
 codex,crustbench,0.04941526737630537,3
 claude-code,terminal-bench,0.023952095808382867,3
-claude-code,featurebench-modal,0.011931394481729751,3
 claude-code,pixiu,0.011448438031729598,3
-claude-code,featbench,0.007037573567026667,3
 claude-code,swe-lancer,-0.0010272213662039786,3
 gemini-cli,sldbench,-0.03204098790295295,2
 claude-code,aider-polyglot,-0.046572888678151736,3
 gemini-cli,pixiu,-0.059238933372524755,2
-gemini-cli,featbench,-0.060699072015604996,2
 gemini-cli,bfcl,-0.06557377049180345,2
 gemini-cli,terminal-bench,-0.09580838323353305,2
 gemini-cli,financeagent_terminal,-0.1010830324909748,2
 claude-code,crustbench,-0.11451790553389163,3
 claude-code,strongreject,-0.11845869089685253,3
-codex,mlgym,-0.14804067269925558,3
 claude-code,swebench-verified,-0.15864022662889551,3
 gemini-cli,swtbench,-0.16554362114629373,2
 codex,reasoning-gym,-0.18853491370946354,3
@@ -157,4 +146,3 @@ codex,mmau,-1.5686274509803901,3
 gemini-cli,reasoning-gym,-2.5280021418339524,2
 gemini-cli,ineqmath,-7.193133047210326,2
 codex,humanevalfix,-22.96969696969695,3
-claude-code,mlgym,-283146191.8362394,3

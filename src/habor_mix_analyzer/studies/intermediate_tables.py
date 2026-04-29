@@ -133,21 +133,32 @@ def agent_differential(benchmark_result: ImputationResult) -> pd.DataFrame:
     cols = score_columns(benchmark_result.normalized)
     rows = []
     normalized = benchmark_result.normalized
+    raw = benchmark_result.raw
+    raw_vals = raw[cols].astype(float)
+    pct_cols = {
+        c for c in cols
+        if raw_vals[c].dropna().between(-0.01, 1.01).all()
+    }
     for model, group in normalized.groupby("model"):
         if "terminus-2" not in set(group["agent"]):
             continue
         baseline = group[group["agent"] == "terminus-2"].iloc[0]
+        raw_group = raw[raw["model"] == model]
+        raw_baseline = raw_group[raw_group["agent"] == "terminus-2"].iloc[0]
         for _, candidate in group[group["agent"] != "terminus-2"].iterrows():
+            raw_candidate = raw_group[raw_group["agent"] == candidate["agent"]].iloc[0]
             for benchmark in cols:
-                rows.append(
-                    {
-                        "model": model,
-                        "agent": candidate["agent"],
-                        "baseline_agent": "terminus-2",
-                        "benchmark": benchmark,
-                        "delta_normalized": float(candidate[benchmark] - baseline[benchmark]),
-                    }
-                )
+                row: dict = {
+                    "model": model,
+                    "agent": candidate["agent"],
+                    "baseline_agent": "terminus-2",
+                    "benchmark": benchmark,
+                    "delta_normalized": float(candidate[benchmark] - baseline[benchmark]),
+                }
+                if benchmark in pct_cols:
+                    row["delta_raw"] = float(raw_candidate[benchmark] - raw_baseline[benchmark])
+                    row["base_raw"] = float(raw_baseline[benchmark])
+                rows.append(row)
     return pd.DataFrame(rows)
 
 
@@ -220,6 +231,7 @@ def _permutation_partial_r2(
 
 def variance_decomposition(benchmark_long_df: pd.DataFrame) -> pd.DataFrame:
     df = benchmark_long_df.rename(columns={"normalized_score": "score"}).copy()
+    df = df.dropna(subset=["score"])
     y = df["score"].astype(float)
     n = len(y)
     main_terms = ["model", "agent", "benchmark"]
@@ -293,6 +305,8 @@ def benchmark_correlations(benchmark_result: ImputationResult) -> tuple[pd.DataF
 def benchmark_predictability(benchmark_result: ImputationResult) -> pd.DataFrame:
     cols = score_columns(benchmark_result.normalized)
     matrix = benchmark_result.normalized[cols].astype(float)
+    matrix = matrix.dropna(axis=1, how="any")
+    cols = list(matrix.columns)
     rows = []
     cv = KFold(n_splits=5, shuffle=True, random_state=RANDOM_SEED)
     alphas = np.logspace(-3, 3, 13)
@@ -318,7 +332,9 @@ def latent_loadings(
     benchmark_result: ImputationResult, n_components: int = 5
 ) -> tuple[pd.DataFrame, pd.DataFrame, pd.DataFrame]:
     cols = score_columns(benchmark_result.normalized)
-    x = benchmark_result.normalized[cols].astype(float).to_numpy()
+    matrix = benchmark_result.normalized[cols].astype(float).dropna(axis=1, how="any")
+    cols = list(matrix.columns)
+    x = matrix.to_numpy()
     n_components = min(n_components, x.shape[0] - 1, x.shape[1])
     pca = PCA(n_components=n_components, random_state=RANDOM_SEED)
     scores = pca.fit_transform(x)

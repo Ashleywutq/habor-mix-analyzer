@@ -310,9 +310,7 @@ def aggregate_task_result_to_benchmarks(
         benchmark, _task_id = col.split("/", 1)
         task_groups.setdefault(benchmark, []).append(col)
 
-    missing_groups = [benchmark for benchmark in benchmark_cols if benchmark not in task_groups]
-    if missing_groups:
-        raise ValueError(f"Task matrix has no task columns for benchmarks: {missing_groups}")
+    benchmarks_without_tasks = [b for b in benchmark_cols if b not in task_groups]
 
     aggregate_raw = raw_benchmark[KEY_COLUMNS].copy()
     aggregate_observed = raw_benchmark[KEY_COLUMNS].copy()
@@ -320,21 +318,36 @@ def aggregate_task_result_to_benchmarks(
     task_result_values = task_result.raw[task_cols].astype(float)
     stats_rows = []
     for benchmark in benchmark_cols:
-        cols = task_groups[benchmark]
-        aggregate_raw[benchmark] = task_result_values[cols].mean(axis=1)
-        aggregate_observed[benchmark] = raw_task_values[cols].mean(axis=1, skipna=True)
-        observed_task_counts = raw_task_values[cols].notna().sum(axis=1)
-        stats_rows.append(
-            {
-                "column": benchmark,
-                "task_count": len(cols),
-                "observed_task_cells": int(raw_task_values[cols].notna().sum().sum()),
-                "total_task_cells": int(raw_task_values[cols].size),
-                "task_cell_missing_fraction": float(raw_task_values[cols].isna().mean().mean()),
-                "mean_observed_task_cells_per_agent_model": float(observed_task_counts.mean()),
-                "agent_model_rows_with_any_task_observed": int((observed_task_counts > 0).sum()),
-            }
-        )
+        if benchmark in task_groups:
+            cols = task_groups[benchmark]
+            aggregate_raw[benchmark] = task_result_values[cols].mean(axis=1)
+            aggregate_observed[benchmark] = raw_task_values[cols].mean(axis=1, skipna=True)
+            observed_task_counts = raw_task_values[cols].notna().sum(axis=1)
+            stats_rows.append(
+                {
+                    "column": benchmark,
+                    "task_count": len(cols),
+                    "observed_task_cells": int(raw_task_values[cols].notna().sum().sum()),
+                    "total_task_cells": int(raw_task_values[cols].size),
+                    "task_cell_missing_fraction": float(raw_task_values[cols].isna().mean().mean()),
+                    "mean_observed_task_cells_per_agent_model": float(observed_task_counts.mean()),
+                    "agent_model_rows_with_any_task_observed": int((observed_task_counts > 0).sum()),
+                }
+            )
+        else:
+            aggregate_raw[benchmark] = raw_benchmark[benchmark].astype(float)
+            aggregate_observed[benchmark] = raw_benchmark[benchmark].astype(float)
+            stats_rows.append(
+                {
+                    "column": benchmark,
+                    "task_count": 0,
+                    "observed_task_cells": 0,
+                    "total_task_cells": 0,
+                    "task_cell_missing_fraction": 1.0,
+                    "mean_observed_task_cells_per_agent_model": 0.0,
+                    "agent_model_rows_with_any_task_observed": 0,
+                }
+            )
 
     stats = robust_column_stats(aggregate_observed[benchmark_cols].astype(float))
     stats = stats.merge(pd.DataFrame(stats_rows), on="column", how="left")
@@ -401,7 +414,8 @@ def write_benchmark_aggregate_outputs(result: ImputationResult, task_result: Imp
 
 def singular_value_report(prefix: str, result: ImputationResult) -> pd.DataFrame:
     cols = score_columns(result.normalized)
-    matrix = result.normalized[cols].to_numpy(dtype=float)
+    df = result.normalized[cols].astype(float).dropna(axis=1, how="any")
+    matrix = df.to_numpy(dtype=float)
     singular_values = np.linalg.svd(matrix, compute_uv=False)
     variance = singular_values**2
     return pd.DataFrame(

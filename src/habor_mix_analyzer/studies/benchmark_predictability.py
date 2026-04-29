@@ -213,16 +213,15 @@ def predictability_for_cols(normalized: pd.DataFrame, cols: list[str]) -> pd.Dat
     """BenchPress-style per-benchmark predictability.
 
     For each model, hides 50% of its known scores, trains BenchPress on the rest,
-    predicts the hidden cells, and measures per-benchmark median absolute error.
-    Benchmarks with lower error are more predictable (redundant); higher error
-    means more unique signal.
+    predicts the hidden cells, and measures per-benchmark error using both
+    MedAPE (BenchPress's primary metric) and MedAE.
 
     Returns a DataFrame with columns:
       - benchmark
-      - cv_r2_from_other_included_benchmarks (kept for downstream compat, now
-        derived from normalized MAE: R² = 1 - (MAE/baseline_MAE)²)
-      - cv_rmse (now actually median absolute error in original score units)
-      - benchpress_medae (primary BenchPress metric)
+      - cv_r2_from_other_included_benchmarks (pseudo-R² for downstream compat)
+      - cv_rmse (median absolute error in original score units)
+      - benchpress_medae (median absolute error)
+      - benchpress_medape (median absolute percentage error — BenchPress primary)
       - benchpress_coverage (fraction of holdout cells that got predictions)
     """
     matrix_df = normalized[cols].astype(float)
@@ -234,7 +233,8 @@ def predictability_for_cols(normalized: pd.DataFrame, cols: list[str]) -> pd.Dat
     n_folds = 3
     rng = np.random.RandomState(RANDOM_SEED)
 
-    per_bench_errors: dict[str, list[float]] = {col: [] for col in cols}
+    per_bench_abs_errors: dict[str, list[float]] = {col: [] for col in cols}
+    per_bench_pct_errors: dict[str, list[float]] = {col: [] for col in cols}
     per_bench_coverage: dict[str, int] = {col: 0 for col in cols}
     per_bench_total: dict[str, int] = {col: 0 for col in cols}
 
@@ -258,9 +258,14 @@ def predictability_for_cols(normalized: pd.DataFrame, cols: list[str]) -> pd.Dat
             held_cells = np.where(holdout_mask[:, j_idx])[0]
             for i in held_cells:
                 per_bench_total[col] += 1
-                if np.isfinite(M_pred[i, j_idx]):
-                    error = abs(M_pred[i, j_idx] - matrix[i, j_idx])
-                    per_bench_errors[col].append(error)
+                actual = matrix[i, j_idx]
+                pred = M_pred[i, j_idx]
+                if np.isfinite(pred):
+                    per_bench_abs_errors[col].append(abs(pred - actual))
+                    if abs(actual) > 1e-6:
+                        per_bench_pct_errors[col].append(
+                            abs(pred - actual) / abs(actual) * 100
+                        )
                     per_bench_coverage[col] += 1
 
     rows = []
@@ -277,17 +282,15 @@ def predictability_for_cols(normalized: pd.DataFrame, cols: list[str]) -> pd.Dat
     global_baseline = np.median(baseline_errors) if baseline_errors else 1.0
 
     for col_idx, col in enumerate(cols):
-        errors = per_bench_errors[col]
+        abs_errors = per_bench_abs_errors[col]
+        pct_errors = per_bench_pct_errors[col]
         total = per_bench_total[col]
         covered = per_bench_coverage[col]
         coverage = covered / total if total > 0 else 0.0
 
-        if errors:
-            medae = float(np.median(errors))
-            mae = float(np.mean(errors))
-        else:
-            medae = float("inf")
-            mae = float("inf")
+        medae = float(np.median(abs_errors)) if abs_errors else float("inf")
+        mae = float(np.mean(abs_errors)) if abs_errors else float("inf")
+        medape = float(np.median(pct_errors)) if pct_errors else float("inf")
 
         baseline = baseline_errors[col_idx] if baseline_errors[col_idx] > 1e-8 else global_baseline
         pseudo_r2 = 1.0 - (mae / baseline) ** 2 if baseline > 1e-8 and np.isfinite(mae) else -10.0
@@ -298,10 +301,11 @@ def predictability_for_cols(normalized: pd.DataFrame, cols: list[str]) -> pd.Dat
             "cv_r2_from_other_included_benchmarks": pseudo_r2,
             "cv_rmse": medae,
             "benchpress_medae": medae,
+            "benchpress_medape": medape,
             "benchpress_coverage": coverage,
         })
 
-    return pd.DataFrame(rows).sort_values("cv_r2_from_other_included_benchmarks")
+    return pd.DataFrame(rows).sort_values("benchpress_medape")
 
 
 # ─── PCA (unchanged) ─────────────────────────────────────────────────────────

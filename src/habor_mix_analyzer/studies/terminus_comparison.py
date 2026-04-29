@@ -31,14 +31,19 @@ def summarize_agent_lift(agent_diff: pd.DataFrame, cols: list[str]) -> tuple[pd.
 
 def terminus_delta_by_model(agent_diff: pd.DataFrame, cols: list[str]) -> pd.DataFrame:
     filtered = agent_diff[agent_diff["benchmark"].isin(cols)].copy()
+    agg_dict: dict = {
+        "mean_delta_vs_terminus": ("delta_normalized", "mean"),
+        "median_delta_vs_terminus": ("delta_normalized", "median"),
+        "win_rate_vs_terminus": ("delta_normalized", lambda s: float((s > 0).mean())),
+        "compared_benchmarks": ("benchmark", "nunique"),
+    }
+    if "delta_raw" in filtered.columns:
+        agg_dict["mean_base_raw"] = ("base_raw", "mean")
+        agg_dict["mean_delta_raw"] = ("delta_raw", "mean")
+        agg_dict["positive_lift_raw"] = ("delta_raw", lambda s: float((s.dropna() > 0).mean()) if s.notna().any() else float("nan"))
     return (
         filtered.groupby(["model", "agent"])
-        .agg(
-            mean_delta_vs_terminus=("delta_normalized", "mean"),
-            median_delta_vs_terminus=("delta_normalized", "median"),
-            win_rate_vs_terminus=("delta_normalized", lambda s: float((s > 0).mean())),
-            compared_benchmarks=("benchmark", "nunique"),
-        )
+        .agg(**agg_dict)
         .reset_index()
         .sort_values("mean_delta_vs_terminus", ascending=False)
     )
