@@ -3,208 +3,194 @@
 % Re-generate: uv run habor-analyze studies
 
 % ── General ──
-\newcommand{\NumIncludedBenchmarks}{50}
-\newcommand{\NumHaborMixTasks}{160}
-\newcommand{\NumModels}{8}
-\newcommand{\NumAgents}{4}
+\providecommand{\NumIncludedBenchmarks}{49}
+\providecommand{\NumHaborMixTasks}{160}
+\providecommand{\NumModels}{8}
+\providecommand{\NumAgents}{4}
 
 % ── Within-family: model vs agent effect ──
-\newcommand{\AnthropicModelEffectMean}{0.253}
-\newcommand{\AnthropicAgentEffectMean}{0.094}
-\newcommand{\AnthropicModelAgentRatio}{2.7}
-\newcommand{\AnthropicModelWins}{45}
-\newcommand{\AnthropicTotalBenchmarks}{49}
-\newcommand{\AnthropicModelWinPct}{92}
-\newcommand{\GoogleModelEffectMean}{0.082}
-\newcommand{\GoogleAgentEffectMean}{0.108}
-\newcommand{\GoogleModelAgentRatio}{0.8}
-\newcommand{\GoogleModelWins}{27}
-\newcommand{\GoogleTotalBenchmarks}{50}
-\newcommand{\GoogleModelWinPct}{54}
-\newcommand{\OpenAIModelEffectMean}{0.261}
-\newcommand{\OpenAIAgentEffectMean}{0.163}
-\newcommand{\OpenAIModelAgentRatio}{1.6}
-\newcommand{\OpenAIModelWins}{40}
-\newcommand{\OpenAITotalBenchmarks}{50}
-\newcommand{\OpenAIModelWinPct}{80}
+\providecommand{\AnthropicModelEffectMean}{0.237}
+\providecommand{\AnthropicAgentEffectMean}{0.094}
+\providecommand{\AnthropicModelAgentRatio}{2.5}
+\providecommand{\AnthropicModelWins}{44}
+\providecommand{\AnthropicTotalBenchmarks}{48}
+\providecommand{\AnthropicModelWinPct}{92}
+\providecommand{\GoogleModelEffectMean}{0.082}
+\providecommand{\GoogleAgentEffectMean}{0.109}
+\providecommand{\GoogleModelAgentRatio}{0.8}
+\providecommand{\GoogleModelWins}{27}
+\providecommand{\GoogleTotalBenchmarks}{49}
+\providecommand{\GoogleModelWinPct}{55}
+\providecommand{\OpenAIModelEffectMean}{0.257}
+\providecommand{\OpenAIAgentEffectMean}{0.163}
+\providecommand{\OpenAIModelAgentRatio}{1.6}
+\providecommand{\OpenAIModelWins}{39}
+\providecommand{\OpenAITotalBenchmarks}{49}
+\providecommand{\OpenAIModelWinPct}{80}
 
 % ── Adjusted effects ──
-\newcommand{\ModelEffectSpan}{2.77}
-\newcommand{\AgentEffectSpan}{0.21}
-\newcommand{\TopModel}{gpt-5.4}
-\newcommand{\TopModelEffect}{0.49}
-\newcommand{\BottomModel}{gpt-5-nano}
-\newcommand{\BottomModelEffect}{-2.28}
-\newcommand{\TopAgent}{claude-code}
-\newcommand{\TopAgentEffect}{-0.23}
-\newcommand{\BottomAgent}{codex}
-\newcommand{\BottomAgentEffect}{-0.43}
+\providecommand{\ModelEffectSpan}{2.80}
+\providecommand{\AgentEffectSpan}{0.22}
+\providecommand{\TopModel}{gpt-5.4}
+\providecommand{\TopModelEffect}{0.50}
+\providecommand{\BottomModel}{gpt-5-nano}
+\providecommand{\BottomModelEffect}{-2.30}
+\providecommand{\TopAgent}{claude-code}
+\providecommand{\TopAgentEffect}{-0.22}
+\providecommand{\BottomAgent}{codex}
+\providecommand{\BottomAgentEffect}{-0.44}
 
 % ── Agent lift vs terminus-2 ──
-\newcommand{\claudecodeMeanDelta}{0.294}
-\newcommand{\claudecodeWinRate}{63}
-\newcommand{\geminicliMeanDelta}{-0.106}
-\newcommand{\geminicliWinRate}{59}
-\newcommand{\codexMeanDelta}{-0.121}
-\newcommand{\codexWinRate}{71}
+\providecommand{\claudecodeMeanDelta}{0.300}
+\providecommand{\claudecodeWinRate}{64}
+\providecommand{\geminicliMeanDelta}{-0.107}
+\providecommand{\geminicliWinRate}{60}
+\providecommand{\codexMeanDelta}{-0.131}
+\providecommand{\codexWinRate}{71}
 
 % ── Terminus delta by model×agent (top pairs) ──
-\newcommand{\TerminusgptFiveFourcodexDelta}{0.811}
-\newcommand{\TerminusgptFiveFourcodexWinRate}{94}
-\newcommand{\TerminusclaudehaikuFourFiveTwoZeroTwoFiveOneZeroZeroOneclaudecodeDelta}{0.749}
-\newcommand{\TerminusclaudehaikuFourFiveTwoZeroTwoFiveOneZeroZeroOneclaudecodeWinRate}{82}
-\newcommand{\TerminusgptFiveminicodexDelta}{0.514}
-\newcommand{\TerminusgptFiveminicodexWinRate}{82}
-\newcommand{\TerminusclaudesonnetFourSixclaudecodeDelta}{0.111}
-\newcommand{\TerminusclaudesonnetFourSixclaudecodeWinRate}{66}
-\newcommand{\TerminusgeminiThreeOnepropreviewgeminicliDelta}{0.082}
-\newcommand{\TerminusgeminiThreeOnepropreviewgeminicliWinRate}{62}
-\newcommand{\TerminusclaudeopusFourSixclaudecodeDelta}{0.021}
-\newcommand{\TerminusclaudeopusFourSixclaudecodeWinRate}{42}
-\newcommand{\TerminusgeminiThreeflashpreviewgeminicliDelta}{-0.293}
-\newcommand{\TerminusgeminiThreeflashpreviewgeminicliWinRate}{56}
-\newcommand{\TerminusgptFivenanocodexDelta}{-1.688}
-\newcommand{\TerminusgptFivenanocodexWinRate}{38}
+\providecommand{\TerminusgptFiveFourcodexDelta}{0.825}
+\providecommand{\TerminusgptFiveFourcodexWinRate}{94}
+\providecommand{\TerminusclaudehaikuFourFiveTwoZeroTwoFiveOneZeroZeroOneclaudecodeDelta}{0.764}
+\providecommand{\TerminusclaudehaikuFourFiveTwoZeroTwoFiveOneZeroZeroOneclaudecodeWinRate}{82}
+\providecommand{\TerminusgptFiveminicodexDelta}{0.506}
+\providecommand{\TerminusgptFiveminicodexWinRate}{82}
+\providecommand{\TerminusclaudesonnetFourSixclaudecodeDelta}{0.113}
+\providecommand{\TerminusclaudesonnetFourSixclaudecodeWinRate}{67}
+\providecommand{\TerminusgeminiThreeOnepropreviewgeminicliDelta}{0.085}
+\providecommand{\TerminusgeminiThreeOnepropreviewgeminicliWinRate}{63}
+\providecommand{\TerminusclaudeopusFourSixclaudecodeDelta}{0.022}
+\providecommand{\TerminusclaudeopusFourSixclaudecodeWinRate}{43}
+\providecommand{\TerminusgeminiThreeflashpreviewgeminicliDelta}{-0.298}
+\providecommand{\TerminusgeminiThreeflashpreviewgeminicliWinRate}{57}
+\providecommand{\TerminusgptFivenanocodexDelta}{-1.723}
+\providecommand{\TerminusgptFivenanocodexWinRate}{37}
 
 % ── Agent lift table (paper, short names) ──
-\newcommand{\GPTFiveFourBase}{.513}
-\newcommand{\GPTFiveFourDelta}{$+$.180}
-\newcommand{\GPTFiveFourLift}{94}
-\newcommand{\ClaudeHaikuBase}{.392}
-\newcommand{\ClaudeHaikuDelta}{$+$.108}
-\newcommand{\ClaudeHaikuLift}{82}
-\newcommand{\GPTMiniBase}{.415}
-\newcommand{\GPTMiniDelta}{$+$.121}
-\newcommand{\GPTMiniLift}{82}
-\newcommand{\ClaudeSonnetBase}{.561}
-\newcommand{\ClaudeSonnetDelta}{$+$.044}
-\newcommand{\ClaudeSonnetLift}{66}
-\newcommand{\GeminiProBase}{.639}
-\newcommand{\GeminiProDelta}{$+$.040}
-\newcommand{\GeminiProLift}{62}
-\newcommand{\ClaudeOpusBase}{.607}
-\newcommand{\ClaudeOpusDelta}{$+$.029}
-\newcommand{\ClaudeOpusLift}{42}
-\newcommand{\GeminiFlashBase}{.569}
-\newcommand{\GeminiFlashDelta}{$-$.003}
-\newcommand{\GeminiFlashLift}{56}
-\newcommand{\GPTNanoBase}{.281}
-\newcommand{\GPTNanoDelta}{$-$.027}
-\newcommand{\GPTNanoLift}{38}
+\providecommand{\GPTFiveFourBase}{.513}
+\providecommand{\GPTFiveFourDelta}{$+$.182}
+\providecommand{\GPTFiveFourLift}{94}
+\providecommand{\ClaudeHaikuBase}{.392}
+\providecommand{\ClaudeHaikuDelta}{$+$.110}
+\providecommand{\ClaudeHaikuLift}{82}
+\providecommand{\GPTMiniBase}{.421}
+\providecommand{\GPTMiniDelta}{$+$.117}
+\providecommand{\GPTMiniLift}{82}
+\providecommand{\ClaudeSonnetBase}{.564}
+\providecommand{\ClaudeSonnetDelta}{$+$.044}
+\providecommand{\ClaudeSonnetLift}{67}
+\providecommand{\GeminiProBase}{.641}
+\providecommand{\GeminiProDelta}{$+$.041}
+\providecommand{\GeminiProLift}{63}
+\providecommand{\ClaudeOpusBase}{.611}
+\providecommand{\ClaudeOpusDelta}{$+$.029}
+\providecommand{\ClaudeOpusLift}{43}
+\providecommand{\GeminiFlashBase}{.572}
+\providecommand{\GeminiFlashDelta}{$-$.003}
+\providecommand{\GeminiFlashLift}{57}
+\providecommand{\GPTNanoBase}{.286}
+\providecommand{\GPTNanoDelta}{$-$.028}
+\providecommand{\GPTNanoLift}{37}
 
 % ── Benchmark headroom ──
-\newcommand{\NumSaturatedBenchmarks}{12}
-\newcommand{\NumHardBenchmarks}{6}
-\newcommand{\MeanBestScore}{0.750}
+\providecommand{\NumSaturatedBenchmarks}{11}
+\providecommand{\NumHardBenchmarks}{6}
+\providecommand{\MeanBestScore}{0.745}
 
 % ── Per-domain headroom stats ──
-\newcommand{\NumAgentsToolsAndSystemsSaturated}{0}
-\newcommand{\NumAgentsToolsAndSystemsHard}{1}
-\newcommand{\NumAgentsToolsAndSystemsBenchmarks}{8}
-\newcommand{\MeanAgentsToolsAndSystemsBestScore}{65}
-\newcommand{\NumDataAndAnalyticsSaturated}{0}
-\newcommand{\NumDataAndAnalyticsHard}{1}
-\newcommand{\NumDataAndAnalyticsBenchmarks}{1}
-\newcommand{\MeanDataAndAnalyticsBestScore}{40}
-\newcommand{\NumKnowledgeAndLongContextSaturated}{2}
-\newcommand{\NumKnowledgeAndLongContextHard}{0}
-\newcommand{\NumKnowledgeAndLongContextBenchmarks}{4}
-\newcommand{\MeanKnowledgeAndLongContextBestScore}{83}
-\newcommand{\NumMathematicsAndReasoningSaturated}{3}
-\newcommand{\NumMathematicsAndReasoningHard}{0}
-\newcommand{\NumMathematicsAndReasoningBenchmarks}{6}
-\newcommand{\MeanMathematicsAndReasoningBestScore}{92}
-\newcommand{\NumMultimodalSaturated}{0}
-\newcommand{\NumMultimodalHard}{0}
-\newcommand{\NumMultimodalBenchmarks}{1}
-\newcommand{\MeanMultimodalBestScore}{70}
-\newcommand{\NumProfessionalDomainsSaturated}{0}
-\newcommand{\NumProfessionalDomainsHard}{0}
-\newcommand{\NumProfessionalDomainsBenchmarks}{5}
-\newcommand{\MeanProfessionalDomainsBestScore}{75}
-\newcommand{\NumSafetyAndSecuritySaturated}{1}
-\newcommand{\NumSafetyAndSecurityHard}{0}
-\newcommand{\NumSafetyAndSecurityBenchmarks}{1}
-\newcommand{\MeanSafetyAndSecurityBestScore}{97}
-\newcommand{\NumScientificResearchSaturated}{0}
-\newcommand{\NumScientificResearchHard}{1}
-\newcommand{\NumScientificResearchBenchmarks}{8}
-\newcommand{\MeanScientificResearchBestScore}{67}
-\newcommand{\NumSoftwareEngineeringSaturated}{6}
-\newcommand{\NumSoftwareEngineeringHard}{3}
-\newcommand{\NumSoftwareEngineeringBenchmarks}{16}
-\newcommand{\MeanSoftwareEngineeringBestScore}{77}
-\newcommand{\MostHeadroomDomainOne}{Data \& Analytics}
-\newcommand{\MostHeadroomDomainOneScore}{40}
-\newcommand{\MostHeadroomDomainTwo}{Agents, Tools \& Systems}
-\newcommand{\MostHeadroomDomainTwoScore}{65}
-\newcommand{\MostHeadroomDomainThree}{Scientific Research}
-\newcommand{\MostHeadroomDomainThreeScore}{67}
+\providecommand{\NumAgentsToolsAndSystemsSaturated}{0}
+\providecommand{\NumAgentsToolsAndSystemsHard}{1}
+\providecommand{\NumAgentsToolsAndSystemsBenchmarks}{8}
+\providecommand{\MeanAgentsToolsAndSystemsBestScore}{65}
+\providecommand{\NumDataAndAnalyticsSaturated}{0}
+\providecommand{\NumDataAndAnalyticsHard}{1}
+\providecommand{\NumDataAndAnalyticsBenchmarks}{1}
+\providecommand{\MeanDataAndAnalyticsBestScore}{40}
+\providecommand{\NumKnowledgeAndLongContextSaturated}{2}
+\providecommand{\NumKnowledgeAndLongContextHard}{0}
+\providecommand{\NumKnowledgeAndLongContextBenchmarks}{4}
+\providecommand{\MeanKnowledgeAndLongContextBestScore}{83}
+\providecommand{\NumMathematicsAndReasoningSaturated}{3}
+\providecommand{\NumMathematicsAndReasoningHard}{0}
+\providecommand{\NumMathematicsAndReasoningBenchmarks}{6}
+\providecommand{\MeanMathematicsAndReasoningBestScore}{92}
+\providecommand{\NumMultimodalSaturated}{0}
+\providecommand{\NumMultimodalHard}{0}
+\providecommand{\NumMultimodalBenchmarks}{1}
+\providecommand{\MeanMultimodalBestScore}{70}
+\providecommand{\NumProfessionalDomainsSaturated}{0}
+\providecommand{\NumProfessionalDomainsHard}{0}
+\providecommand{\NumProfessionalDomainsBenchmarks}{5}
+\providecommand{\MeanProfessionalDomainsBestScore}{75}
+\providecommand{\NumSafetyAndSecuritySaturated}{1}
+\providecommand{\NumSafetyAndSecurityHard}{0}
+\providecommand{\NumSafetyAndSecurityBenchmarks}{1}
+\providecommand{\MeanSafetyAndSecurityBestScore}{97}
+\providecommand{\NumScientificResearchSaturated}{0}
+\providecommand{\NumScientificResearchHard}{1}
+\providecommand{\NumScientificResearchBenchmarks}{8}
+\providecommand{\MeanScientificResearchBestScore}{67}
+\providecommand{\NumSoftwareEngineeringSaturated}{5}
+\providecommand{\NumSoftwareEngineeringHard}{3}
+\providecommand{\NumSoftwareEngineeringBenchmarks}{15}
+\providecommand{\MeanSoftwareEngineeringBestScore}{75}
+\providecommand{\MostHeadroomDomainOne}{Data \& Analytics}
+\providecommand{\MostHeadroomDomainOneScore}{40}
+\providecommand{\MostHeadroomDomainTwo}{Agents, Tools \& Systems}
+\providecommand{\MostHeadroomDomainTwoScore}{65}
+\providecommand{\MostHeadroomDomainThree}{Scientific Research}
+\providecommand{\MostHeadroomDomainThreeScore}{67}
 % ── SE hardest benchmarks (sorted by score) ──
-\newcommand{\SEHardBenchmarkOne}{AlgoTune}
-\newcommand{\SEHardBenchmarkOneScore}{37}
-\newcommand{\SEHardBenchmarkTwo}{BigCodeBench}
-\newcommand{\SEHardBenchmarkTwoScore}{45}
-\newcommand{\SEHardBenchmarkThree}{GSO}
-\newcommand{\SEHardBenchmarkThreeScore}{45}
+\providecommand{\SEHardBenchmarkOne}{AlgoTune}
+\providecommand{\SEHardBenchmarkOneScore}{37}
+\providecommand{\SEHardBenchmarkTwo}{BigCodeBench}
+\providecommand{\SEHardBenchmarkTwoScore}{45}
+\providecommand{\SEHardBenchmarkThree}{GSO}
+\providecommand{\SEHardBenchmarkThreeScore}{45}
 
 % ── Effective dimensionality ──
-\newcommand{\ParticipationRatio}{1.2}
-\newcommand{\ComponentsForNinety}{1}
-\newcommand{\ComponentsForNinetyFive}{3}
-\newcommand{\TopOneVariance}{90}
-\newcommand{\TopThreeVariance}{97}
+\providecommand{\ParticipationRatio}{1.2}
+\providecommand{\ComponentsForNinety}{1}
+\providecommand{\ComponentsForNinetyFive}{3}
+\providecommand{\TopOneVariance}{90}
+\providecommand{\TopThreeVariance}{97}
 
 % ── Domain correlation ──
-\newcommand{\WithinDomainMedianCorr}{0.69}
-\newcommand{\CrossDomainMedianCorr}{0.64}
-\newcommand{\WithinDomainFracAboveSeven}{47}
-\newcommand{\CrossDomainFracAboveSeven}{39}
-\newcommand{\WithinAgentsToolsAndSystemsMedianCorr}{0.75}
-\newcommand{\WithinKnowledgeAndLongContextMedianCorr}{0.62}
-\newcommand{\WithinMathematicsAndReasoningMedianCorr}{0.59}
-\newcommand{\WithinProfessionalDomainsMedianCorr}{0.72}
-\newcommand{\WithinScientificResearchMedianCorr}{0.51}
-\newcommand{\WithinSoftwareEngineeringMedianCorr}{0.73}
+\providecommand{\WithinDomainMedianCorr}{0.69}
+\providecommand{\CrossDomainMedianCorr}{0.64}
+\providecommand{\WithinDomainFracAboveSeven}{48}
+\providecommand{\CrossDomainFracAboveSeven}{39}
+\providecommand{\WithinAgentsToolsAndSystemsMedianCorr}{0.75}
+\providecommand{\WithinKnowledgeAndLongContextMedianCorr}{0.62}
+\providecommand{\WithinMathematicsAndReasoningMedianCorr}{0.59}
+\providecommand{\WithinProfessionalDomainsMedianCorr}{0.72}
+\providecommand{\WithinScientificResearchMedianCorr}{0.51}
+\providecommand{\WithinSoftwareEngineeringMedianCorr}{0.73}
 
 % ── Greedy benchmark selection ──
-\newcommand{\GreedyBenchmarksBelowSeven}{10}
-\newcommand{\GreedyFirstAboveSeven}{bigcodebench}
-\newcommand{\GreedyFirstAboveSevenStep}{11}
+\providecommand{\GreedyBenchmarksBelowSeven}{10}
+\providecommand{\GreedyFirstAboveSeven}{bigcodebench}
+\providecommand{\GreedyFirstAboveSevenStep}{11}
 
 % ── HaborMix difficulty composition ──
-\newcommand{\HaborMixMediumTasks}{108}
-\newcommand{\HaborMixEasyTasks}{38}
-\newcommand{\HaborMixHardTasks}{13}
-\newcommand{\HaborMixFrontierTasks}{1}
-
-% ── BenchPress Predictability ──
-\newcommand{\BenchPressRedundantOne}{Pixiu}
-\newcommand{\BenchPressRedundantOneScore}{43.3}
-\newcommand{\BenchPressRedundantTwo}{Aider-Polyglot}
-\newcommand{\BenchPressRedundantTwoScore}{45.6}
-\newcommand{\BenchPressRedundantThree}{Qcircuitbench}
-\newcommand{\BenchPressRedundantThreeScore}{51.8}
-\newcommand{\BenchPressUniqueOne}{HumanEvalFix}
-\newcommand{\BenchPressUniqueOneScore}{267.2}
-\newcommand{\BenchPressUniqueTwo}{Codepde}
-\newcommand{\BenchPressUniqueTwoScore}{229.1}
-\newcommand{\BenchPressUniqueThree}{Ineqmath}
-\newcommand{\BenchPressUniqueThreeScore}{217.1}
+\providecommand{\HaborMixMediumTasks}{108}
+\providecommand{\HaborMixEasyTasks}{38}
+\providecommand{\HaborMixHardTasks}{13}
+\providecommand{\HaborMixFrontierTasks}{1}
 
 % ── AIME case study ──
-\newcommand{\AimeGptFourCodexBase}{0.711}
-\newcommand{\AimeGptFourCodexAgent}{0.989}
-\newcommand{\AimeGptFourCodexDeltaPP}{27.8}
-\newcommand{\AimeGptMiniCodexBase}{0.889}
-\newcommand{\AimeGptMiniCodexAgent}{0.967}
-\newcommand{\AimeGptMiniCodexDeltaPP}{7.8}
-\newcommand{\AimeGptNanoCodexBase}{0.756}
-\newcommand{\AimeGptNanoCodexAgent}{0.739}
-\newcommand{\AimeGptNanoCodexDeltaPP}{-1.7}
+\providecommand{\AimeGptFourCodexBase}{0.711}
+\providecommand{\AimeGptFourCodexAgent}{0.989}
+\providecommand{\AimeGptFourCodexDeltaPP}{27.8}
+\providecommand{\AimeGptMiniCodexBase}{0.889}
+\providecommand{\AimeGptMiniCodexAgent}{0.967}
+\providecommand{\AimeGptMiniCodexDeltaPP}{7.8}
+\providecommand{\AimeGptNanoCodexBase}{0.756}
+\providecommand{\AimeGptNanoCodexAgent}{0.739}
+\providecommand{\AimeGptNanoCodexDeltaPP}{-1.7}
 
 % ── Figure paths (all under figs/main/quantitative/) ──
-\newcommand{\FigHeadroomByDomain}{figs/main/quantitative/bench\_progress\_and\_headroom}
+\providecommand{\FigHeadroomByDomain}{figs/main/quantitative/bench\_progress\_and\_headroom}
 
 % @@STATS_END@@
 
@@ -261,31 +247,36 @@ Recent work shows model-only benchmark scores are highly
 redundant and predictable via low-rank matrix
 completion~\cite{papailiopoulos2026benchpress}. We find this
 structure fundamentally changes when introducing agent
-scaffolds. While a single principal component explains 72.2\%
-of variance for bare models (corroborating prior work), a
-second orthogonal component emerges (20.3\% variance) that
-perfectly separates agent-assisted systems from bare models.
+scaffolds. While a single principal component explains
+\AppSVDModelOnlyPCOne{}\% of variance for baseline systems
+(corroborating prior work), a second orthogonal component
+emerges (\AppSVDFullPCTwo{}\% variance) that perfectly
+separates advanced-scaffold systems from baseline systems.
 This indicates agent scaffolding is not a uniform score
 multiplier, but introduces a structurally distinct capability
 dimension (Appendix~\ref{app:benchpress} details SVD
 methodology and task-level predictability limitations).
 
-Despite this added complexity, the combined model-agent matrix remains
-highly predictable. Using a matrix-completion approach
-(Appendix~\ref{app:benchpress}), we find that many established benchmarks
-are largely redundant: scores on \BenchPressRedundantOne{}
-(\BenchPressRedundantOneScore{}\% median absolute percentage error),
-\BenchPressRedundantTwo{} (\BenchPressRedundantTwoScore{}\%), and even
-notoriously difficult tasks like AIME (7.2\%) can be reliably reconstructed
-from a sparse subset of other evaluations. Conversely, benchmarks that
-resist prediction---such as \BenchPressUniqueOne{}
+Despite this added complexity, the combined model-agent matrix
+remains highly predictable. Using a matrix-completion approach
+(Appendix~\ref{app:benchpress}), we find that many established
+benchmarks are largely redundant: scores on
+\BenchPressRedundantOne{}
+(\BenchPressRedundantOneScore{}\% median absolute percentage
+error), \BenchPressRedundantTwo{}
+(\BenchPressRedundantTwoScore{}\%), and
+\BenchPressRedundantThree{} (\BenchPressRedundantThreeScore{}\%)
+can be reliably reconstructed from a sparse subset of other
+evaluations. Conversely, benchmarks that resist
+prediction---such as \BenchPressUniqueOne{}
 (\BenchPressUniqueOneScore{}\% error), \BenchPressUniqueTwo{}
-(\BenchPressUniqueTwoScore{}\%), and \BenchPressUniqueThree{}
-(\BenchPressUniqueThreeScore{}\%)---measure capabilities orthogonal to the
-dominant axes. Crucially, this reveals a decoupling between difficulty and
-uniqueness: to meaningfully differentiate future agentic systems, evaluation
-design must pivot from creating harder static questions toward tasks that
-demand open-ended exploration and long-horizon planning.
+(\BenchPressUniqueTwoScore{}\%), and AIME
+(\AimeMedAPE{}\%)---measure capabilities orthogonal to the
+dominant axes. Crucially, this reveals a decoupling between
+difficulty and uniqueness: to meaningfully differentiate future
+agentic systems, evaluation design must pivot from creating
+harder static questions toward tasks that demand open-ended
+exploration and long-horizon planning.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsubsection{Agent Harness}
@@ -368,8 +359,3 @@ through retry and decomposition strategies.
 Gemini~CLI falls between the two, providing a modest,
 roughly uniform lift across tiers.
 
-These two regimes have a concrete implication for
-benchmarking: a leaderboard that evaluates models under a
-single scaffold conflates model capability with scaffold
-affinity. Cross-scaffold evaluation, as adopted in our
-design, is necessary to disentangle the two.

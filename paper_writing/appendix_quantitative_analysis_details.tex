@@ -3,36 +3,36 @@
 % Re-generate: uv run habor-analyze studies
 
 % ── Appendix: BenchPress general ──
-\newcommand{\AppNumSystems}{16}
-\newcommand{\AppNumBenchmarks}{49}
-\newcommand{\AppNumModelsOnly}{8}
+\providecommand{\AppNumSystems}{16}
+\providecommand{\AppNumBenchmarks}{49}
+\providecommand{\AppNumModelsOnly}{8}
 
 % ── Finding 1: SVD spectrum ──
-\newcommand{\AppSVDModelOnlyPCOne}{70.3}
-\newcommand{\AppSVDModelOnlyPCOneTwo}{80.0}
-\newcommand{\AppSVDFullPCOne}{64.8}
-\newcommand{\AppSVDFullPCTwo}{11.3}
-\newcommand{\AppSVDFullCumTwo}{76.2}
+\providecommand{\AppSVDModelOnlyPCOne}{70.3}
+\providecommand{\AppSVDModelOnlyPCOneTwo}{80.0}
+\providecommand{\AppSVDFullPCOne}{64.8}
+\providecommand{\AppSVDFullPCTwo}{11.3}
+\providecommand{\AppSVDFullCumTwo}{76.2}
 
 % ── Finding 2: PC2 agent separation ──
-\newcommand{\AppNumAgentSystems}{8}
-\newcommand{\AppNumBaseSystems}{8}
-\newcommand{\AppPCTwoAgentMean}{+1.77}
-\newcommand{\AppPCTwoBaseMean}{-1.77}
+\providecommand{\AppNumAgentSystems}{8}
+\providecommand{\AppNumBaseSystems}{8}
+\providecommand{\AppPCTwoAgentMean}{+1.77}
+\providecommand{\AppPCTwoBaseMean}{-1.77}
 
 % ── Finding 3: Method comparison ──
-\newcommand{\AppBaselineMedAPE}{21.3}
-\newcommand{\AppBaselineMedAE}{0.120}
-\newcommand{\AppLogitBenchRegMedAPE}{16.5}
-\newcommand{\AppLogitBenchRegMedAE}{0.071}
-\newcommand{\AppSVDLogitMedAPE}{14.8}
-\newcommand{\AppSVDLogitMedAE}{0.065}
-\newcommand{\AppBlendMedAPE}{14.2}
-\newcommand{\AppBlendMedAE}{0.063}
-\newcommand{\AppBlendImprovement}{33}
+\providecommand{\AppBaselineMedAPE}{21.3}
+\providecommand{\AppBaselineMedAE}{0.120}
+\providecommand{\AppLogitBenchRegMedAPE}{16.5}
+\providecommand{\AppLogitBenchRegMedAE}{0.071}
+\providecommand{\AppSVDLogitMedAPE}{14.8}
+\providecommand{\AppSVDLogitMedAE}{0.065}
+\providecommand{\AppBlendMedAPE}{14.2}
+\providecommand{\AppBlendMedAE}{0.063}
+\providecommand{\AppBlendImprovement}{33}
 
 % ── Finding 4: Per-benchmark predictability table ──
-\newcommand{\AppPerBenchmarkPredictTable}{\begin{table}[h]\small
+\providecommand{\AppPerBenchmarkPredictTable}{\begin{table}[h]\small
 \centering
 \caption{Per-benchmark predictability (50\% holdout, 5~seeds).
   Low MedAPE = redundant; high MedAPE = unique signal.}
@@ -65,18 +65,61 @@ BigCodeBench & 134.8 & unique \\
 \end{table}}
 
 % ── BenchPress top redundant / unique ──
-\newcommand{\BenchPressRedundantOne}{PIXIU}
-\newcommand{\BenchPressRedundantOneScore}{28.0}
-\newcommand{\BenchPressUniqueOne}{HumanEvalFix}
-\newcommand{\BenchPressUniqueOneScore}{382.0}
-\newcommand{\BenchPressRedundantTwo}{Aider Polyglot}
-\newcommand{\BenchPressRedundantTwoScore}{43.0}
-\newcommand{\BenchPressUniqueTwo}{KUMO}
-\newcommand{\BenchPressUniqueTwoScore}{216.1}
-\newcommand{\BenchPressRedundantThree}{GSO}
-\newcommand{\BenchPressRedundantThreeScore}{44.2}
-\newcommand{\BenchPressUniqueThree}{MMAU}
-\newcommand{\BenchPressUniqueThreeScore}{178.9}
+\providecommand{\BenchPressRedundantOne}{PIXIU}
+\providecommand{\BenchPressRedundantOneScore}{28.0}
+\providecommand{\BenchPressUniqueOne}{HumanEvalFix}
+\providecommand{\BenchPressUniqueOneScore}{382.0}
+\providecommand{\BenchPressRedundantTwo}{Aider Polyglot}
+\providecommand{\BenchPressRedundantTwoScore}{43.0}
+\providecommand{\BenchPressUniqueTwo}{KUMO}
+\providecommand{\BenchPressUniqueTwoScore}{216.1}
+\providecommand{\BenchPressRedundantThree}{GSO}
+\providecommand{\BenchPressRedundantThreeScore}{44.2}
+\providecommand{\BenchPressUniqueThree}{MMAU}
+\providecommand{\BenchPressUniqueThreeScore}{178.9}
+
+% ── Task-level SVD ──
+\providecommand{\TaskTotalTasks}{7290}
+\providecommand{\TaskZeroVarTasks}{897}
+\providecommand{\TaskGoodTasks}{6393}
+\providecommand{\TaskFullPCOne}{33.2}
+\providecommand{\TaskFullPCTwo}{14.0}
+\providecommand{\TaskModelPCOne}{43.5}
+\providecommand{\TaskAgentPCTwoMean}{74.4}
+\providecommand{\TaskBasePCTwoMean}{-74.4}
+
+% ── Task redundancy ──
+\providecommand{\TaskRedundNumBenchmarks}{55}
+\providecommand{\TaskRedundMeanPCOne}{55.5}
+\providecommand{\TaskRedundMedianPCsNinety}{7}
+\providecommand{\TaskRedundMeanCompression}{17.5}
+\providecommand{\TaskRedundMeanZeroVarPct}{12.9}
+\providecommand{\TaskRedundRhoKOne}{0.840}
+\providecommand{\TaskRedundRhoKThree}{0.876}
+\providecommand{\TaskRedundRhoKFive}{0.888}
+\providecommand{\TaskRedundRhoKTen}{0.911}
+\providecommand{\TaskRedundAboveNFKOne}{5/55}
+\providecommand{\TaskRedundAboveNFKThree}{11/55}
+\providecommand{\TaskRedundAboveNFKFive}{17/55}
+\providecommand{\TaskRedundAboveNFKTen}{26/55}
+\providecommand{\TaskLowRankExOneName}{ResearchCodeBench}
+\providecommand{\TaskLowRankExOneTasks}{212}
+\providecommand{\TaskLowRankExOnePCOne}{80.2}
+\providecommand{\TaskLowRankExOnePCs}{3}
+\providecommand{\TaskLowRankExTwoName}{HumanEvalFix}
+\providecommand{\TaskLowRankExTwoTasks}{164}
+\providecommand{\TaskLowRankExTwoPCOne}{89.1}
+\providecommand{\TaskLowRankExTwoPCs}{2}
+\providecommand{\TaskLowRankExThreeName}{MMMLU}
+\providecommand{\TaskLowRankExThreeTasks}{150}
+\providecommand{\TaskLowRankExThreePCOne}{82.1}
+\providecommand{\TaskLowRankExThreePCs}{4}
+\providecommand{\TaskZeroVarExOneName}{multi-swe-bench}
+\providecommand{\TaskZeroVarExOnePct}{77}
+\providecommand{\TaskZeroVarExTwoName}{devopsgym}
+\providecommand{\TaskZeroVarExTwoPct}{76}
+\providecommand{\TaskZeroVarExThreeName}{PIXIU}
+\providecommand{\TaskZeroVarExThreePct}{60}
 
 % @@STATS_END@@
 
@@ -141,7 +184,7 @@ comparable to their reported 7\% MedAPE on the larger matrix.
 
 \paragraph{Finding~1: Low-rank structure (SVD spectrum).}
 We compute SVD in logit space on the \AppNumModelsOnly{}~model $\times$ \AppNumBenchmarks{}~benchmark
-terminus-2-only submatrix (pure model capability, no agent scaffolding).
+Terminus-2-only submatrix (baseline scaffold, no advanced agent).
 The first principal component explains \AppSVDModelOnlyPCOne{}\% of the variance, closely matching
 BenchPress's 71\% on their 31$\times$10 block.  The first two components
 capture \AppSVDModelOnlyPCOneTwo{}\%.  This confirms that the benchmark space is dominated by a
@@ -152,14 +195,17 @@ On the full \AppNumSystems{}-system matrix (models with and without agents), the
 shifts: PC1 explains \AppSVDFullPCOne{}\% and PC2 explains \AppSVDFullPCTwo{}\% (cumulative \AppSVDFullCumTwo{}\%).
 The reduction in PC1's share is explained by Finding~2.
 
-\paragraph{Finding~2: PC2 perfectly separates agent-assisted from baseline
-systems.}
-On the \AppNumSystems{}$\times$\AppNumBenchmarks{} matrix, PC2 achieves perfect separation between the \AppNumAgentSystems{}
-agent-scaffolded systems (PC2 $> 0$; mean $= {}\AppPCTwoAgentMean{}$) and the \AppNumBaseSystems{}
-terminus-2 baseline systems (PC2 $< 0$; mean $= {}\AppPCTwoBaseMean{}$) with zero overlap.
-This means the second principal component of the combined score matrix captures
-the ``agent effect''---a dimension orthogonal to general model capability that
-BenchPress could not observe, since its matrix contained only bare models.
+\paragraph{Finding~2: PC2 perfectly separates advanced-scaffold from
+baseline systems.}
+On the \AppNumSystems{}$\times$\AppNumBenchmarks{} matrix, PC2 achieves
+perfect separation between the \AppNumAgentSystems{} advanced-scaffold
+systems (PC2 $> 0$; mean $= {}\AppPCTwoAgentMean{}$) and the
+\AppNumBaseSystems{} Terminus-2 baseline systems (PC2 $< 0$; mean $=
+{}\AppPCTwoBaseMean{}$) with zero overlap. This means the second
+principal component of the combined score matrix captures the ``agent
+effect''---a dimension orthogonal to general model capability that
+BenchPress could not observe, since its matrix contained only baseline
+systems.
 
 \paragraph{Finding~3: BenchPress blend reduces prediction error by \AppBlendImprovement{}\%
 over the column-mean baseline.}
@@ -209,23 +255,24 @@ general-capability component.
 \paragraph{Extension to the Task Level.}
 While BenchPress was designed for continuous benchmark-level scores, we extend its SVD methodology to the task level (predicting individual question outcomes) to verify if the structural separation between models and agents persists at high granularity.
 
-After filtering out 893 zero-variance tasks (where all systems scored 0 or 1), we apply logit-transformed SVD to the remaining 16-system $\times$ 6,397-task matrix. Despite the extreme sparsity and binary nature of the underlying data, the low-rank structure holds:
+After filtering out \TaskZeroVarTasks{} zero-variance tasks (where all systems scored 0 or 1), we apply logit-transformed SVD to the remaining \AppNumSystems{}-system $\times$ \TaskGoodTasks{}-task matrix. Despite the extreme sparsity and binary nature of the underlying data, the low-rank structure holds:
 \begin{itemize}
-    \item \textbf{General Capability (PC1):} Explains 33.2\% of the variance across all 16 systems (and 43.5\% when restricted to the 8 bare models).
-    \item \textbf{Agent Axis (PC2):} Explains 14.0\% of the variance. Remarkably, even at the task level, PC2 perfectly separates agent-assisted systems (mean PC2 = $+74.4$) from bare models (mean PC2 = $-74.4$). Every single agent scaffold projects significantly higher on this axis than its bare-model counterpart.
+    \item \textbf{General Capability (PC1):} Explains \TaskFullPCOne{}\% of the variance across all \AppNumSystems{} systems (and \TaskModelPCOne{}\% when restricted to the \AppNumModelsOnly{} baseline systems).
+    \item \textbf{Agent Axis (PC2):} Explains \TaskFullPCTwo{}\% of the variance. Remarkably, even at the task level, PC2 perfectly separates advanced-scaffold systems (mean PC2 = $+\TaskAgentPCTwoMean{}$) from baseline systems (mean PC2 = $\TaskBasePCTwoMean{}$). Every single advanced scaffold projects significantly higher on this axis than its baseline counterpart.
 \end{itemize}
 
-Figure~\ref{fig:task-svd} visualizes this separation, confirming that agent scaffolding introduces a structurally distinct capability dimension that is robust even at the individual task level.
-
-\begin{figure}[htbp]
-  \centering
-  \includegraphics[width=0.7\linewidth]{figs/appendix/quantitative/task_level_pca.png}
-  \caption{Task-level PCA (6,397 tasks) in logit space. PC1 captures general capability, while PC2 perfectly isolates the effect of agent scaffolding. Dashed lines connect each bare model to its agent-scaffolded counterpart.}
-  \label{fig:task-svd}
-\end{figure}
+% TODO: regenerate task_level_pca.png figure
+% Figure~\ref{fig:task-svd} visualizes this separation, confirming that agent scaffolding introduces a structurally distinct capability dimension that is robust even at the individual task level.
+%
+% \begin{figure}[htbp]
+%   \centering
+%   \includegraphics[width=0.7\linewidth]{figs/appendix/quantitative/task_level_pca.png}
+%   \caption{Task-level PCA (\TaskGoodTasks{} tasks) in logit space. PC1 captures general capability, while PC2 perfectly isolates the effect of agent scaffolding. Dashed lines connect each baseline system to its advanced-scaffold counterpart.}
+%   \label{fig:task-svd}
+% \end{figure}
 
 \paragraph{Limitations of Task-Level Prediction.}
-Although the SVD spectrum is highly informative, applying the full BenchPress predictive pipeline (LogitBenchReg) to the task level fails due to the curse of dimensionality. With 6,397 tasks and only 15 training systems (in a leave-one-out setup), finding the ``top 5 most correlated tasks'' guarantees a spurious training $R^2 = 1.000$ purely by chance, rendering out-of-sample predictions meaningless. Furthermore, task-level outcomes are predominantly binary (pass/fail), making continuous logit-OLS regression mathematically ill-suited. Therefore, for task-level redundancy and predictability, we rely on Item Response Theory principles (item-total correlation) rather than continuous matrix completion.
+Although the SVD spectrum is highly informative, applying the full BenchPress predictive pipeline (LogitBenchReg) to the task level fails due to the curse of dimensionality. With \TaskGoodTasks{} tasks and only $\AppNumSystems{}{-}1$ training systems (in a leave-one-out setup), finding the ``top 5 most correlated tasks'' guarantees a spurious training $R^2 = 1.000$ purely by chance, rendering out-of-sample predictions meaningless. Furthermore, task-level outcomes are predominantly binary (pass/fail), making continuous logit-OLS regression mathematically ill-suited. Therefore, for task-level redundancy and predictability, we rely on Item Response Theory principles (item-total correlation) rather than continuous matrix completion.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -378,25 +425,30 @@ for one representative family.
 
 We extend the redundancy analysis from the benchmark level to the
 individual task level.  Within each benchmark, we ask: how many tasks
-are actually needed to reproduce the full benchmark ranking of 16
-systems?
+are actually needed to reproduce the full benchmark ranking of
+\AppNumSystems{} systems?
 
 \paragraph{Intra-benchmark dimensionality.}
 For each benchmark with $\ge 10$ tasks, we apply PCA to the
-16-system $\times$ $T$ task score matrix (after removing zero-variance
-tasks).  On average, the first principal component alone explains
-\textbf{56.8\%} of the variance across tasks within a benchmark,
-and a median of only \textbf{7 components} suffices for 90\%
-cumulative variance---a \textbf{16.8$\times$} compression ratio.
+\AppNumSystems{}-system $\times$ $T$ task score matrix (after removing
+zero-variance tasks).  On average, the first principal component alone
+explains \textbf{\TaskRedundMeanPCOne{}\%} of the variance across tasks
+within a benchmark, and a median of only
+\textbf{\TaskRedundMedianPCsNinety{} components} suffices for 90\%
+cumulative variance---a
+\textbf{\TaskRedundMeanCompression{}$\times$} compression ratio.
 
 Some benchmarks are particularly low-rank:
 \begin{itemize}
-  \item \textbf{HumanEvalFix} (164 tasks): PC1 = 89.1\%, only
-    2~components for 90\%.
-  \item \textbf{MMMLU} (150 tasks): PC1 = 82.1\%, 4~components
-    for 90\%.
-  \item \textbf{Research-Code-Bench} (212 tasks): PC1 = 80.2\%,
-    3~components for 90\%.
+  \item \textbf{\TaskLowRankExTwoName{}} (\TaskLowRankExTwoTasks{}
+    tasks): PC1 = \TaskLowRankExTwoPCOne{}\%, only
+    \TaskLowRankExTwoPCs{}~components for 90\%.
+  \item \textbf{\TaskLowRankExThreeName{}} (\TaskLowRankExThreeTasks{}
+    tasks): PC1 = \TaskLowRankExThreePCOne{}\%,
+    \TaskLowRankExThreePCs{}~components for 90\%.
+  \item \textbf{\TaskLowRankExOneName{}} (\TaskLowRankExOneTasks{}
+    tasks): PC1 = \TaskLowRankExOnePCOne{}\%,
+    \TaskLowRankExOnePCs{}~components for 90\%.
 \end{itemize}
 These benchmarks contain hundreds of items that essentially measure
 the same underlying capability axis.
@@ -416,28 +468,29 @@ preserves the system ranking (Table~\ref{tab:task-redundancy}).
     \toprule
     $k$ tasks & Mean $\rho$ & Benchmarks $\rho > 0.95$ & Typical reduction \\
     \midrule
-    1  & 0.835 &  5/56 & $>$100$\times$ \\
-    3  & 0.872 & 11/56 & 30--60$\times$ \\
-    5  & 0.883 & 17/56 & 20--40$\times$ \\
-    10 & 0.913 & 27/56 & 10--20$\times$ \\
+    1  & \TaskRedundRhoKOne{}  & \TaskRedundAboveNFKOne{}  & $>$100$\times$ \\
+    3  & \TaskRedundRhoKThree{} & \TaskRedundAboveNFKThree{} & 30--60$\times$ \\
+    5  & \TaskRedundRhoKFive{}  & \TaskRedundAboveNFKFive{}  & 20--40$\times$ \\
+    10 & \TaskRedundRhoKTen{}   & \TaskRedundAboveNFKTen{}   & 10--20$\times$ \\
     \bottomrule
   \end{tabular}
 \end{table}
 
-With just 10 well-chosen tasks, nearly half of all benchmarks achieve
-$\rho > 0.95$---statistically indistinguishable from running the full
-suite.  This complements the benchmark-level BenchPress finding
+With just 10 well-chosen tasks, \TaskRedundAboveNFKTen{} benchmarks
+achieve $\rho > 0.95$---statistically indistinguishable from running
+the full suite.  This complements the benchmark-level BenchPress finding
 (Appendix~\ref{app:benchpress}): not only are many \emph{benchmarks}
 redundant with each other, but within each benchmark most
 \emph{tasks} are redundant as well.
 
 \paragraph{Zero-variance tasks.}
-An average of 12.6\% of tasks per benchmark have zero variance across
-all 16 systems (all systems score 0 or all score 1).  These items
-provide no discriminative signal and can be safely excluded.  Some
-benchmarks exhibit extreme saturation: \texttt{multi-swe-bench}
-(77\% zero-variance), \texttt{pixiu} (60\%), \texttt{strongreject}
-(49\%).
+An average of \TaskRedundMeanZeroVarPct{}\% of tasks per benchmark have
+zero variance across all \AppNumSystems{} systems (all systems score 0
+or all score 1).  These items provide no discriminative signal and can
+be safely excluded.  Some benchmarks exhibit extreme saturation:
+\texttt{\TaskZeroVarExOneName{}} (\TaskZeroVarExOnePct{}\%
+zero-variance), \texttt{\TaskZeroVarExTwoName{}} (\TaskZeroVarExTwoPct{}\%),
+\texttt{\TaskZeroVarExThreeName{}} (\TaskZeroVarExThreePct{}\%).
 
 \paragraph{Implications.}
 The two-level redundancy---across benchmarks

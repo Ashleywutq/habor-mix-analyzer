@@ -27,20 +27,20 @@ def generate_task_svd_plot():
     
     is_model = df['agent'] == 'terminus-2'
     
+    n_tasks = X_filtered.shape[1]
+
     plt.scatter(
-        pc_scores[is_model, 0], pc_scores[is_model, 1], 
-        c='#1f77b4', label='Model Only', s=150, alpha=0.8, marker='o'
+        pc_scores[is_model, 0], pc_scores[is_model, 1],
+        c='#1f77b4', label='Baseline (Terminus-2)', s=150, alpha=0.8, marker='o'
     )
     plt.scatter(
-        pc_scores[~is_model, 0], pc_scores[~is_model, 1], 
-        c='#ff7f0e', label='Agent Scaffolded', s=150, alpha=0.8, marker='s'
+        pc_scores[~is_model, 0], pc_scores[~is_model, 1],
+        c='#ff7f0e', label='Advanced Scaffold', s=150, alpha=0.8, marker='s'
     )
-    
-    # Draw lines connecting model to its agent counterpart
+
     for i in range(len(df)):
-        if is_model[i]:
+        if is_model.iloc[i]:
             model_name = df.iloc[i]['model']
-            # Find agent counterpart
             agent_idx = df[(df['model'] == model_name) & (df['agent'] != 'terminus-2')].index
             if len(agent_idx) > 0:
                 j = agent_idx[0]
@@ -49,10 +49,10 @@ def generate_task_svd_plot():
                     [pc_scores[i, 1], pc_scores[j, 1]],
                     'k--', alpha=0.3
                 )
-    
-    plt.title('Task-Level PCA (6,393 tasks): PC1 vs PC2')
-    plt.xlabel(f'PC1 ({pca.explained_variance_ratio_[0]*100:.1f}% Variance) - General Capability')
-    plt.ylabel(f'PC2 ({pca.explained_variance_ratio_[1]*100:.1f}% Variance) - Agent Effect')
+
+    plt.title(f'Task-Level PCA ({n_tasks:,} tasks): PC1 vs PC2')
+    plt.xlabel(f'PC1 ({pca.explained_variance_ratio_[0]*100:.1f}% Variance) — General Capability')
+    plt.ylabel(f'PC2 ({pca.explained_variance_ratio_[1]*100:.1f}% Variance) — Agent Effect')
     plt.legend()
     plt.grid(True, alpha=0.3)
     

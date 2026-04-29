@@ -44,7 +44,7 @@ def _tex_safe_name(name: str) -> str:
 
 def _tex_cmd(name: str, value: str) -> str:
     safe_value = value.replace("&", r"\&").replace("%", r"\%").replace("_", r"\_")
-    return f"\\newcommand{{\\{_tex_safe_name(name)}}}{{{safe_value}}}"
+    return f"\\providecommand{{\\{_tex_safe_name(name)}}}{{{safe_value}}}"
 
 
 def _fmt(x: float, decimals: int = 1) -> str:
@@ -285,47 +285,8 @@ def write_paper_stats(study_tables: dict[str, pd.DataFrame], included_benchmarks
         lines.append(_tex_cmd(f"HaborMix{tier_tag}Tasks", str(count)))
     lines.append("")
 
-    # ── BenchPress Predictability ──
-    lines.append("% ── BenchPress Predictability ──")
-    uniq = study_tables.get("benchmark_uniqueness_filtered")
-    if uniq is not None and "benchpress_medape" in uniq.columns:
-        uniq = uniq.sort_values("benchpress_medape")
-        
-        def _clean_name(name: str) -> str:
-            # Helper to format benchmark names for LaTeX (e.g. "arc-agi-2" -> "ARC-AGI-2")
-            if name == "humanevalfix": return "HumanEvalFix"
-            if name == "kumo": return "KUMO"
-            if name == "aime": return "AIME"
-            if name == "research-code-bench": return "Research-Code-Bench"
-            if name == "labbench": return "LabBench"
-            if name == "arc-agi-2": return "ARC-AGI-2"
-            if name == "featurebench-modal": return "FeatureBench-Modal"
-            if name == "swesmith": return "SWESmith"
-            if name == "gso": return "GSO"
-            if name == "replicationbench": return "ReplicationBench"
-            if name == "algotune": return "AlgoTune"
-            return name.replace("-", " ").title().replace(" ", "-")
-
-        # Most redundant
-        lines += [
-            _tex_cmd("BenchPressRedundantOne", _clean_name(uniq.iloc[0]["benchmark"])),
-            _tex_cmd("BenchPressRedundantOneScore", _fmt(uniq.iloc[0]["benchpress_medape"], 1)),
-            _tex_cmd("BenchPressRedundantTwo", _clean_name(uniq.iloc[1]["benchmark"])),
-            _tex_cmd("BenchPressRedundantTwoScore", _fmt(uniq.iloc[1]["benchpress_medape"], 1)),
-            _tex_cmd("BenchPressRedundantThree", _clean_name(uniq.iloc[2]["benchmark"])),
-            _tex_cmd("BenchPressRedundantThreeScore", _fmt(uniq.iloc[2]["benchpress_medape"], 1)),
-        ]
-        # Most unique
-        uniq_rev = uniq.sort_values("benchpress_medape", ascending=False)
-        lines += [
-            _tex_cmd("BenchPressUniqueOne", _clean_name(uniq_rev.iloc[0]["benchmark"])),
-            _tex_cmd("BenchPressUniqueOneScore", _fmt(uniq_rev.iloc[0]["benchpress_medape"], 1)),
-            _tex_cmd("BenchPressUniqueTwo", _clean_name(uniq_rev.iloc[1]["benchmark"])),
-            _tex_cmd("BenchPressUniqueTwoScore", _fmt(uniq_rev.iloc[1]["benchpress_medape"], 1)),
-            _tex_cmd("BenchPressUniqueThree", _clean_name(uniq_rev.iloc[2]["benchmark"])),
-            _tex_cmd("BenchPressUniqueThreeScore", _fmt(uniq_rev.iloc[2]["benchpress_medape"], 1)),
-        ]
-        lines.append("")
+    # BenchPress macros are defined in appendix_quantitative_analysis_details.tex
+    # (loaded before paper.tex), so they must not be redefined here.
 
     # ── AIME case study: agent lift by model capability ──
     if raw_benchmark is not None and "aime" in raw_benchmark.columns:
@@ -354,7 +315,7 @@ def write_paper_stats(study_tables: dict[str, pd.DataFrame], included_benchmarks
     fig = "figs/main/quantitative"
     lines.append("% ── Figure paths (all under figs/main/quantitative/) ──")
     lines += [
-        _tex_cmd("FigHeadroomByDomain", f"{fig}/benchmark_headroom_by_domain"),
+        _tex_cmd("FigHeadroomByDomain", f"{fig}/bench_progress_and_headroom"),
     ]
     lines.append("")
 
@@ -620,7 +581,7 @@ def write_appendix_stats(
         "",
         "% ── Finding 4: Per-benchmark predictability table ──",
         # NOTE: table macro is emitted raw (not via _tex_cmd) because it contains LaTeX commands
-        f"\\newcommand{{\\AppPerBenchmarkPredictTable}}{{{per_bench_table_tex}}}",
+        f"\\providecommand{{\\AppPerBenchmarkPredictTable}}{{{per_bench_table_tex}}}",
         "",
     ]
 
