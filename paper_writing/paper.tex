@@ -3,185 +3,194 @@
 % Re-generate: uv run habor-analyze studies
 
 % ── General ──
-\newcommand{\NumIncludedBenchmarks}{53}
-\newcommand{\NumHaborMixTasks}{160}
-\newcommand{\NumModels}{8}
-\newcommand{\NumAgents}{4}
+\providecommand{\NumIncludedBenchmarks}{49}
+\providecommand{\NumHaborMixTasks}{160}
+\providecommand{\NumModels}{8}
+\providecommand{\NumAgents}{4}
 
 % ── Within-family: model vs agent effect ──
-\newcommand{\AnthropicModelEffectMean}{29.042}
-\newcommand{\AnthropicAgentEffectMean}{9040229646.466}
-\newcommand{\AnthropicModelAgentRatio}{0.0}
-\newcommand{\AnthropicModelWins}{41}
-\newcommand{\AnthropicTotalBenchmarks}{47}
-\newcommand{\AnthropicModelWinPct}{87}
-\newcommand{\GoogleModelEffectMean}{4.006}
-\newcommand{\GoogleAgentEffectMean}{4.628}
-\newcommand{\GoogleModelAgentRatio}{0.9}
-\newcommand{\GoogleModelWins}{27}
-\newcommand{\GoogleTotalBenchmarks}{50}
-\newcommand{\GoogleModelWinPct}{54}
-\newcommand{\OpenAIModelEffectMean}{35.452}
-\newcommand{\OpenAIAgentEffectMean}{41.405}
-\newcommand{\OpenAIModelAgentRatio}{0.9}
-\newcommand{\OpenAIModelWins}{35}
-\newcommand{\OpenAITotalBenchmarks}{49}
-\newcommand{\OpenAIModelWinPct}{71}
+\providecommand{\AnthropicModelEffectMean}{0.237}
+\providecommand{\AnthropicAgentEffectMean}{0.094}
+\providecommand{\AnthropicModelAgentRatio}{2.5}
+\providecommand{\AnthropicModelWins}{44}
+\providecommand{\AnthropicTotalBenchmarks}{48}
+\providecommand{\AnthropicModelWinPct}{92}
+\providecommand{\GoogleModelEffectMean}{0.082}
+\providecommand{\GoogleAgentEffectMean}{0.109}
+\providecommand{\GoogleModelAgentRatio}{0.8}
+\providecommand{\GoogleModelWins}{27}
+\providecommand{\GoogleTotalBenchmarks}{49}
+\providecommand{\GoogleModelWinPct}{55}
+\providecommand{\OpenAIModelEffectMean}{0.257}
+\providecommand{\OpenAIAgentEffectMean}{0.163}
+\providecommand{\OpenAIModelAgentRatio}{1.6}
+\providecommand{\OpenAIModelWins}{39}
+\providecommand{\OpenAITotalBenchmarks}{49}
+\providecommand{\OpenAIModelWinPct}{80}
 
 % ── Adjusted effects ──
-\newcommand{\ModelEffectSpan}{8013572.44}
-\newcommand{\AgentEffectSpan}{3672886.76}
-\newcommand{\TopModel}{claude-opus-4-6}
-\newcommand{\TopModelEffect}{1669494.17}
-\newcommand{\BottomModel}{claude-haiku-4-5-20251001}
-\newcommand{\BottomModelEffect}{-6344078.28}
-\newcommand{\TopAgent}{terminus-2}
-\newcommand{\TopAgentEffect}{-0.37}
-\newcommand{\BottomAgent}{claude-code}
-\newcommand{\BottomAgentEffect}{-3672887.13}
+\providecommand{\ModelEffectSpan}{2.80}
+\providecommand{\AgentEffectSpan}{0.22}
+\providecommand{\TopModel}{gpt-5.4}
+\providecommand{\TopModelEffect}{0.50}
+\providecommand{\BottomModel}{gpt-5-nano}
+\providecommand{\BottomModelEffect}{-2.30}
+\providecommand{\TopAgent}{claude-code}
+\providecommand{\TopAgentEffect}{-0.22}
+\providecommand{\BottomAgent}{codex}
+\providecommand{\BottomAgentEffect}{-0.44}
 
 % ── Agent lift vs terminus-2 ──
-\newcommand{\geminicliMeanDelta}{-0.085}
-\newcommand{\geminicliWinRate}{60}
-\newcommand{\codexMeanDelta}{-0.103}
-\newcommand{\codexWinRate}{72}
-\newcommand{\claudecodeMeanDelta}{-5342380.699}
-\newcommand{\claudecodeWinRate}{62}
+\providecommand{\claudecodeMeanDelta}{0.300}
+\providecommand{\claudecodeWinRate}{64}
+\providecommand{\geminicliMeanDelta}{-0.107}
+\providecommand{\geminicliWinRate}{60}
+\providecommand{\codexMeanDelta}{-0.131}
+\providecommand{\codexWinRate}{71}
 
 % ── Terminus delta by model×agent (top pairs) ──
-\newcommand{\TerminusgptFiveFourcodexDelta}{0.822}
-\newcommand{\TerminusgptFiveFourcodexWinRate}{94}
-\newcommand{\TerminusgptFiveminicodexDelta}{0.504}
-\newcommand{\TerminusgptFiveminicodexWinRate}{83}
-\newcommand{\TerminusclaudesonnetFourSixclaudecodeDelta}{0.103}
-\newcommand{\TerminusclaudesonnetFourSixclaudecodeWinRate}{64}
-\newcommand{\TerminusgeminiThreeOnepropreviewgeminicliDelta}{0.088}
-\newcommand{\TerminusgeminiThreeOnepropreviewgeminicliWinRate}{62}
-\newcommand{\TerminusclaudeopusFourSixclaudecodeDelta}{-0.005}
-\newcommand{\TerminusclaudeopusFourSixclaudecodeWinRate}{42}
-\newcommand{\TerminusgeminiThreeflashpreviewgeminicliDelta}{-0.257}
-\newcommand{\TerminusgeminiThreeflashpreviewgeminicliWinRate}{58}
-\newcommand{\TerminusgptFivenanocodexDelta}{-1.635}
-\newcommand{\TerminusgptFivenanocodexWinRate}{38}
-\newcommand{\TerminusclaudehaikuFourFiveTwoZeroTwoFiveOneZeroZeroOneclaudecodeDelta}{-16027142.196}
-\newcommand{\TerminusclaudehaikuFourFiveTwoZeroTwoFiveOneZeroZeroOneclaudecodeWinRate}{81}
+\providecommand{\TerminusgptFiveFourcodexDelta}{0.825}
+\providecommand{\TerminusgptFiveFourcodexWinRate}{94}
+\providecommand{\TerminusclaudehaikuFourFiveTwoZeroTwoFiveOneZeroZeroOneclaudecodeDelta}{0.764}
+\providecommand{\TerminusclaudehaikuFourFiveTwoZeroTwoFiveOneZeroZeroOneclaudecodeWinRate}{82}
+\providecommand{\TerminusgptFiveminicodexDelta}{0.506}
+\providecommand{\TerminusgptFiveminicodexWinRate}{82}
+\providecommand{\TerminusclaudesonnetFourSixclaudecodeDelta}{0.113}
+\providecommand{\TerminusclaudesonnetFourSixclaudecodeWinRate}{67}
+\providecommand{\TerminusgeminiThreeOnepropreviewgeminicliDelta}{0.085}
+\providecommand{\TerminusgeminiThreeOnepropreviewgeminicliWinRate}{63}
+\providecommand{\TerminusclaudeopusFourSixclaudecodeDelta}{0.022}
+\providecommand{\TerminusclaudeopusFourSixclaudecodeWinRate}{43}
+\providecommand{\TerminusgeminiThreeflashpreviewgeminicliDelta}{-0.298}
+\providecommand{\TerminusgeminiThreeflashpreviewgeminicliWinRate}{57}
+\providecommand{\TerminusgptFivenanocodexDelta}{-1.723}
+\providecommand{\TerminusgptFivenanocodexWinRate}{37}
+
+% ── Agent lift table (paper, short names) ──
+\providecommand{\GPTFiveFourBase}{.513}
+\providecommand{\GPTFiveFourDelta}{$+$.182}
+\providecommand{\GPTFiveFourLift}{94}
+\providecommand{\ClaudeHaikuBase}{.392}
+\providecommand{\ClaudeHaikuDelta}{$+$.110}
+\providecommand{\ClaudeHaikuLift}{82}
+\providecommand{\GPTMiniBase}{.421}
+\providecommand{\GPTMiniDelta}{$+$.117}
+\providecommand{\GPTMiniLift}{82}
+\providecommand{\ClaudeSonnetBase}{.564}
+\providecommand{\ClaudeSonnetDelta}{$+$.044}
+\providecommand{\ClaudeSonnetLift}{67}
+\providecommand{\GeminiProBase}{.641}
+\providecommand{\GeminiProDelta}{$+$.041}
+\providecommand{\GeminiProLift}{63}
+\providecommand{\ClaudeOpusBase}{.611}
+\providecommand{\ClaudeOpusDelta}{$+$.029}
+\providecommand{\ClaudeOpusLift}{43}
+\providecommand{\GeminiFlashBase}{.572}
+\providecommand{\GeminiFlashDelta}{$-$.003}
+\providecommand{\GeminiFlashLift}{57}
+\providecommand{\GPTNanoBase}{.286}
+\providecommand{\GPTNanoDelta}{$-$.028}
+\providecommand{\GPTNanoLift}{37}
 
 % ── Benchmark headroom ──
-\newcommand{\NumSaturatedBenchmarks}{12}
-\newcommand{\NumHardBenchmarks}{7}
-\newcommand{\MeanBestScore}{53.722}
+\providecommand{\NumSaturatedBenchmarks}{11}
+\providecommand{\NumHardBenchmarks}{6}
+\providecommand{\MeanBestScore}{0.745}
 
 % ── Per-domain headroom stats ──
-\newcommand{\NumAgentsToolsAndSystemsSaturated}{0}
-\newcommand{\NumAgentsToolsAndSystemsHard}{1}
-\newcommand{\NumAgentsToolsAndSystemsBenchmarks}{7}
-\newcommand{\MeanAgentsToolsAndSystemsBestScore}{65}
-\newcommand{\NumDataAndAnalyticsSaturated}{0}
-\newcommand{\NumDataAndAnalyticsHard}{1}
-\newcommand{\NumDataAndAnalyticsBenchmarks}{1}
-\newcommand{\MeanDataAndAnalyticsBestScore}{38}
-\newcommand{\NumKnowledgeAndLongContextSaturated}{2}
-\newcommand{\NumKnowledgeAndLongContextHard}{0}
-\newcommand{\NumKnowledgeAndLongContextBenchmarks}{4}
-\newcommand{\MeanKnowledgeAndLongContextBestScore}{83}
-\newcommand{\NumMathematicsAndReasoningSaturated}{3}
-\newcommand{\NumMathematicsAndReasoningHard}{0}
-\newcommand{\NumMathematicsAndReasoningBenchmarks}{6}
-\newcommand{\MeanMathematicsAndReasoningBestScore}{92}
-\newcommand{\NumMultimodalSaturated}{0}
-\newcommand{\NumMultimodalHard}{0}
-\newcommand{\NumMultimodalBenchmarks}{1}
-\newcommand{\MeanMultimodalBestScore}{69}
-\newcommand{\NumProfessionalDomainsSaturated}{0}
-\newcommand{\NumProfessionalDomainsHard}{0}
-\newcommand{\NumProfessionalDomainsBenchmarks}{5}
-\newcommand{\MeanProfessionalDomainsBestScore}{75}
-\newcommand{\NumSafetyAndSecuritySaturated}{1}
-\newcommand{\NumSafetyAndSecurityHard}{0}
-\newcommand{\NumSafetyAndSecurityBenchmarks}{1}
-\newcommand{\MeanSafetyAndSecurityBestScore}{97}
-\newcommand{\NumScientificResearchSaturated}{1}
-\newcommand{\NumScientificResearchHard}{1}
-\newcommand{\NumScientificResearchBenchmarks}{9}
-\newcommand{\MeanScientificResearchBestScore}{29502}
-\newcommand{\NumSoftwareEngineeringSaturated}{5}
-\newcommand{\NumSoftwareEngineeringHard}{4}
-\newcommand{\NumSoftwareEngineeringBenchmarks}{16}
-\newcommand{\MeanSoftwareEngineeringBestScore}{73}
-\newcommand{\MostHeadroomDomainOne}{Data \& Analytics}
-\newcommand{\MostHeadroomDomainOneScore}{38}
-\newcommand{\MostHeadroomDomainTwo}{Agents, Tools \& Systems}
-\newcommand{\MostHeadroomDomainTwoScore}{65}
-\newcommand{\MostHeadroomDomainThree}{Multimodal}
-\newcommand{\MostHeadroomDomainThreeScore}{69}
+\providecommand{\NumAgentsToolsAndSystemsSaturated}{0}
+\providecommand{\NumAgentsToolsAndSystemsHard}{1}
+\providecommand{\NumAgentsToolsAndSystemsBenchmarks}{8}
+\providecommand{\MeanAgentsToolsAndSystemsBestScore}{65}
+\providecommand{\NumDataAndAnalyticsSaturated}{0}
+\providecommand{\NumDataAndAnalyticsHard}{1}
+\providecommand{\NumDataAndAnalyticsBenchmarks}{1}
+\providecommand{\MeanDataAndAnalyticsBestScore}{40}
+\providecommand{\NumKnowledgeAndLongContextSaturated}{2}
+\providecommand{\NumKnowledgeAndLongContextHard}{0}
+\providecommand{\NumKnowledgeAndLongContextBenchmarks}{4}
+\providecommand{\MeanKnowledgeAndLongContextBestScore}{83}
+\providecommand{\NumMathematicsAndReasoningSaturated}{3}
+\providecommand{\NumMathematicsAndReasoningHard}{0}
+\providecommand{\NumMathematicsAndReasoningBenchmarks}{6}
+\providecommand{\MeanMathematicsAndReasoningBestScore}{92}
+\providecommand{\NumMultimodalSaturated}{0}
+\providecommand{\NumMultimodalHard}{0}
+\providecommand{\NumMultimodalBenchmarks}{1}
+\providecommand{\MeanMultimodalBestScore}{70}
+\providecommand{\NumProfessionalDomainsSaturated}{0}
+\providecommand{\NumProfessionalDomainsHard}{0}
+\providecommand{\NumProfessionalDomainsBenchmarks}{5}
+\providecommand{\MeanProfessionalDomainsBestScore}{75}
+\providecommand{\NumSafetyAndSecuritySaturated}{1}
+\providecommand{\NumSafetyAndSecurityHard}{0}
+\providecommand{\NumSafetyAndSecurityBenchmarks}{1}
+\providecommand{\MeanSafetyAndSecurityBestScore}{97}
+\providecommand{\NumScientificResearchSaturated}{0}
+\providecommand{\NumScientificResearchHard}{1}
+\providecommand{\NumScientificResearchBenchmarks}{8}
+\providecommand{\MeanScientificResearchBestScore}{67}
+\providecommand{\NumSoftwareEngineeringSaturated}{5}
+\providecommand{\NumSoftwareEngineeringHard}{3}
+\providecommand{\NumSoftwareEngineeringBenchmarks}{15}
+\providecommand{\MeanSoftwareEngineeringBestScore}{75}
+\providecommand{\MostHeadroomDomainOne}{Data \& Analytics}
+\providecommand{\MostHeadroomDomainOneScore}{40}
+\providecommand{\MostHeadroomDomainTwo}{Agents, Tools \& Systems}
+\providecommand{\MostHeadroomDomainTwoScore}{65}
+\providecommand{\MostHeadroomDomainThree}{Scientific Research}
+\providecommand{\MostHeadroomDomainThreeScore}{67}
 % ── SE hardest benchmarks (sorted by score) ──
-\newcommand{\SEHardBenchmarkOne}{AlgoTune}
-\newcommand{\SEHardBenchmarkOneScore}{33}
-\newcommand{\SEHardBenchmarkTwo}{BigCodeBench}
-\newcommand{\SEHardBenchmarkTwoScore}{44}
-\newcommand{\SEHardBenchmarkThree}{GSO}
-\newcommand{\SEHardBenchmarkThreeScore}{44}
-\newcommand{\SEHardBenchmarkFour}{FeatureBench}
-\newcommand{\SEHardBenchmarkFourScore}{46}
+\providecommand{\SEHardBenchmarkOne}{AlgoTune}
+\providecommand{\SEHardBenchmarkOneScore}{37}
+\providecommand{\SEHardBenchmarkTwo}{BigCodeBench}
+\providecommand{\SEHardBenchmarkTwoScore}{45}
+\providecommand{\SEHardBenchmarkThree}{GSO}
+\providecommand{\SEHardBenchmarkThreeScore}{45}
 
 % ── Effective dimensionality ──
-\newcommand{\ParticipationRatio}{1.0}
-\newcommand{\ComponentsForNinety}{1}
-\newcommand{\ComponentsForNinetyFive}{1}
-\newcommand{\TopOneVariance}{100}
-\newcommand{\TopThreeVariance}{100}
+\providecommand{\ParticipationRatio}{1.2}
+\providecommand{\ComponentsForNinety}{1}
+\providecommand{\ComponentsForNinetyFive}{3}
+\providecommand{\TopOneVariance}{90}
+\providecommand{\TopThreeVariance}{97}
 
 % ── Domain correlation ──
-\newcommand{\WithinDomainMedianCorr}{0.68}
-\newcommand{\CrossDomainMedianCorr}{0.63}
-\newcommand{\WithinDomainFracAboveSeven}{45}
-\newcommand{\CrossDomainFracAboveSeven}{37}
-\newcommand{\WithinAgentsToolsAndSystemsMedianCorr}{0.75}
-\newcommand{\WithinKnowledgeAndLongContextMedianCorr}{0.62}
-\newcommand{\WithinMathematicsAndReasoningMedianCorr}{0.59}
-\newcommand{\WithinProfessionalDomainsMedianCorr}{0.72}
-\newcommand{\WithinScientificResearchMedianCorr}{0.54}
-\newcommand{\WithinSoftwareEngineeringMedianCorr}{0.71}
+\providecommand{\WithinDomainMedianCorr}{0.69}
+\providecommand{\CrossDomainMedianCorr}{0.64}
+\providecommand{\WithinDomainFracAboveSeven}{48}
+\providecommand{\CrossDomainFracAboveSeven}{39}
+\providecommand{\WithinAgentsToolsAndSystemsMedianCorr}{0.75}
+\providecommand{\WithinKnowledgeAndLongContextMedianCorr}{0.62}
+\providecommand{\WithinMathematicsAndReasoningMedianCorr}{0.59}
+\providecommand{\WithinProfessionalDomainsMedianCorr}{0.72}
+\providecommand{\WithinScientificResearchMedianCorr}{0.51}
+\providecommand{\WithinSoftwareEngineeringMedianCorr}{0.73}
 
 % ── Greedy benchmark selection ──
-\newcommand{\GreedyBenchmarksBelowSeven}{12}
-\newcommand{\GreedyFirstAboveSeven}{bigcodebench}
-\newcommand{\GreedyFirstAboveSevenStep}{13}
+\providecommand{\GreedyBenchmarksBelowSeven}{10}
+\providecommand{\GreedyFirstAboveSeven}{bigcodebench}
+\providecommand{\GreedyFirstAboveSevenStep}{11}
 
 % ── HaborMix difficulty composition ──
-\newcommand{\HaborMixMediumTasks}{108}
-\newcommand{\HaborMixEasyTasks}{38}
-\newcommand{\HaborMixHardTasks}{13}
-\newcommand{\HaborMixFrontierTasks}{1}
+\providecommand{\HaborMixMediumTasks}{108}
+\providecommand{\HaborMixEasyTasks}{38}
+\providecommand{\HaborMixHardTasks}{13}
+\providecommand{\HaborMixFrontierTasks}{1}
 
 % ── AIME case study ──
-\newcommand{\AimeGptFourCodexBase}{0.733}
-\newcommand{\AimeGptFourCodexAgent}{0.987}
-\newcommand{\AimeGptFourCodexDeltaPP}{25.3}
-\newcommand{\AimeGptMiniCodexBase}{0.893}
-\newcommand{\AimeGptMiniCodexAgent}{0.960}
-\newcommand{\AimeGptMiniCodexDeltaPP}{6.7}
-\newcommand{\AimeGptNanoCodexBase}{0.773}
-\newcommand{\AimeGptNanoCodexAgent}{0.743}
-\newcommand{\AimeGptNanoCodexDeltaPP}{-3.0}
+\providecommand{\AimeGptFourCodexBase}{0.711}
+\providecommand{\AimeGptFourCodexAgent}{0.989}
+\providecommand{\AimeGptFourCodexDeltaPP}{27.8}
+\providecommand{\AimeGptMiniCodexBase}{0.889}
+\providecommand{\AimeGptMiniCodexAgent}{0.967}
+\providecommand{\AimeGptMiniCodexDeltaPP}{7.8}
+\providecommand{\AimeGptNanoCodexBase}{0.756}
+\providecommand{\AimeGptNanoCodexAgent}{0.739}
+\providecommand{\AimeGptNanoCodexDeltaPP}{-1.7}
 
 % ── Figure paths (all under figs/main/quantitative/) ──
-\newcommand{\FigWithinFamilySummary}{figs/main/quantitative/within\_family\_model\_vs\_agent\_summary}
-\newcommand{\FigWithinFamilyDetail}{figs/main/quantitative/within\_family\_model\_vs\_agent\_detail}
-\newcommand{\FigModelAdjustedEffects}{figs/main/quantitative/benchmark\_model\_adjusted\_effects}
-\newcommand{\FigAgentLiftHeatmap}{figs/main/quantitative/benchmark\_agent\_lift\_heatmap}
-\newcommand{\FigTerminusDeltaByModel}{figs/main/quantitative/terminus\_delta\_by\_model\_heatmap}
-\newcommand{\FigHeadroomByDomain}{figs/main/quantitative/benchmark\_headroom\_by\_domain}
-\newcommand{\FigHeadroomSummary}{figs/main/quantitative/benchmark\_headroom\_tier\_summary}
-\newcommand{\FigSimilarityHeatmap}{figs/main/quantitative/benchmark\_similarity\_clustered\_heatmap}
-\newcommand{\FigUniquenessVsCoverage}{figs/main/quantitative/benchmark\_uniqueness\_vs\_coverage}
-\newcommand{\FigEffectiveDimensionality}{figs/main/quantitative/benchmark\_effective\_dimensionality}
-\newcommand{\FigGreedySelection}{figs/main/quantitative/benchmark\_greedy\_selection}
-\newcommand{\FigTaskSimilarityHeatmap}{figs/main/quantitative/task\_similarity\_benchmark\_pair\_heatmap}
-\newcommand{\FigTaskPredictability}{figs/main/quantitative/task\_hard\_to\_predict\_ranked}
-\newcommand{\FigTaskRepresentatives}{figs/main/quantitative/task\_best\_representatives}
-\newcommand{\FigTaskDifficultyComposition}{figs/main/quantitative/task\_reliable\_difficulty\_composition}
-\newcommand{\FigHaborMixSelection}{figs/main/quantitative/harbormix\_selection\_diagnostics}
+\providecommand{\FigHeadroomByDomain}{figs/main/quantitative/bench\_progress\_and\_headroom}
 
 % @@STATS_END@@
 
@@ -201,26 +210,26 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \paragraph{Which benchmarks still challenge frontier systems?}
-Of the \NumIncludedBenchmarks{} (\outlinecomment{xiangning: these need to use the finalized benchmarks})benchmarks,
-\NumSaturatedBenchmarks{} have best-system scores above 95\%, concentrated in
-Mathematics \& Reasoning (AIME, KUMO, IneqMath),
-Software Engineering (CompileBench, HumanEvalFix,
-CRUST-Bench, QuixBugs, USACO), and Knowledge \& Long
-Context (GPQA Diamond, SimpleQA). These benchmarks offer
-little room to differentiate frontier systems.
+Current evaluations exhibit a severe saturation problem. Among the
+\NumIncludedBenchmarks{} benchmarks analyzed (\outlinecomment{xiangning: these need to use the finalized benchmarks}),
+nearly a quarter (\NumSaturatedBenchmarks{}) have already been effectively
+solved (best model with agents has scores $>$95\%). This saturation spans traditionally
+``difficult'' domains, including Mathematics \& Reasoning (e.g., AIME, KUMO)
+and Knowledge \& Long Context (e.g., GPQA Diamond). Consequently, these
+benchmarks now offer minimal headroom to differentiate the next generation
+of frontier models.
 
-The domains with the most headroom are \MostHeadroomDomainOne{} (mean best
-score \MostHeadroomDomainOneScore\%) and \MostHeadroomDomainTwo{}
-(\MostHeadroomDomainTwoScore\%), where no benchmark is saturated.
-Software Engineering is the most heterogeneous domain: it contains
-\NumSoftwareEngineeringSaturated{} of the \NumSaturatedBenchmarks{} saturated
-benchmarks and \NumSoftwareEngineeringHard{} of the \NumHardBenchmarks{} hardest
-benchmarks (best score $<$50\%), including \SEHardBenchmarkOne{}
-(\SEHardBenchmarkOneScore\%), \SEHardBenchmarkTwo{} (\SEHardBenchmarkTwoScore\%),
-\SEHardBenchmarkThree{} (\SEHardBenchmarkThreeScore\%), and
-\SEHardBenchmarkFour{} (\SEHardBenchmarkFourScore\%). This spread suggests that
-software engineering tasks vary widely in the capabilities they require, from
-near-solved code repair to open-ended algorithmic problem solving.
+The remaining challenge lies unevenly across domains. While areas like
+\MostHeadroomDomainOne{} and \MostHeadroomDomainTwo{} retain substantial
+headroom, Software Engineering emerges as the most structurally heterogeneous
+domain. It simultaneously contains the highest concentration of saturated
+tasks (e.g., HumanEvalFix, CompileBench) and the highest concentration of
+unsolved challenges (e.g., \SEHardBenchmarkOne{}, \SEHardBenchmarkTwo{},
+where state-of-the-art systems still score below 50\%). This dichotomy
+highlights a fundamental shift in AI capabilities: while isolated,
+well-specified coding tasks (like bug fixing or snippet generation) are
+largely solved, open-ended, system-level software engineering remains a
+true frontier.
 
 \begin{figure}[t]
   \centering
@@ -232,23 +241,42 @@ near-solved code repair to open-ended algorithmic problem solving.
 \end{figure}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\paragraph{How much overlap exists across benchmarks?}
+\paragraph{Are benchmark scores predictable, and does agent scaffolding alter this structure?}
 
-Using a BenchPress-style predictability analysis~\cite{benchpress2025}
-(Appendix~\ref{app:benchpress}), we find that the benchmark space is
-dominated by a single general-capability axis: PC1 alone explains
-\TopOneVariance\% of cross-system variance, and most benchmark scores
-can be accurately reconstructed from a handful of others via logit-space
-regression blended with rank-2 SVD completion.
+Recent work shows model-only benchmark scores are highly
+redundant and predictable via low-rank matrix
+completion~\cite{papailiopoulos2026benchpress}. We find this
+structure fundamentally changes when introducing agent
+scaffolds. While a single principal component explains
+\AppSVDModelOnlyPCOne{}\% of variance for baseline systems
+(corroborating prior work), a second orthogonal component
+emerges (\AppSVDFullPCTwo{}\% variance) that perfectly
+separates advanced-scaffold systems from baseline systems.
+This indicates agent scaffolding is not a uniform score
+multiplier, but introduces a structurally distinct capability
+dimension (Appendix~\ref{app:benchpress} details SVD
+methodology and task-level predictability limitations).
 
-Crucially, \emph{unpredictability does not align with difficulty}.
-Nearly-solved benchmarks like StrongReject and CompileBench are among the
-hardest to predict---their ranking patterns are orthogonal to the
-general-ability axis---while hard unsolved benchmarks like AlgoTune
-(67\% headroom) and HLE (46\% headroom) are trivially predictable from
-other scores. This decoupling motivates HarborMix
-(Section~\ref{sec:harbormix}): a good meta-benchmark must prioritize
-informativeness (orthogonal signal) over raw difficulty.
+Despite this added complexity, the combined model-agent matrix
+remains highly predictable. Using a matrix-completion approach
+(Appendix~\ref{app:benchpress}), we find that many established
+benchmarks are largely redundant: scores on
+\BenchPressRedundantOne{}
+(\BenchPressRedundantOneScore{}\% median absolute percentage
+error), \BenchPressRedundantTwo{}
+(\BenchPressRedundantTwoScore{}\%), and
+\BenchPressRedundantThree{} (\BenchPressRedundantThreeScore{}\%)
+can be reliably reconstructed from a sparse subset of other
+evaluations. Conversely, benchmarks that resist
+prediction---such as \BenchPressUniqueOne{}
+(\BenchPressUniqueOneScore{}\% error), \BenchPressUniqueTwo{}
+(\BenchPressUniqueTwoScore{}\%), and AIME
+(\AimeMedAPE{}\%)---measure capabilities orthogonal to the
+dominant axes. Crucially, this reveals a decoupling between
+difficulty and uniqueness: to meaningfully differentiate future
+agentic systems, evaluation design must pivot from creating
+harder static questions toward tasks that demand open-ended
+exploration and long-horizon planning.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsubsection{Agent Harness}
@@ -256,64 +284,78 @@ informativeness (orthogonal signal) over raw difficulty.
 \outlinecomment{0.5 pages}
 
 \paragraph{Does the model or the agent matter more?}
-Within each model provider family (Appendix~\ref{app:within-family}), switching
-the underlying model produces an
-average score change \AnthropicModelAgentRatio{}$\times$ larger than switching
-the agent scaffold for Anthropic (\AnthropicModelWinPct\% of benchmarks
-model-dominant), \OpenAIModelAgentRatio{}$\times$ for OpenAI
-(\OpenAIModelWinPct\%), and \GoogleModelAgentRatio{}$\times$ for Google
-(\GoogleModelWinPct\%). Across all \NumModels{} models, the adjusted model
-effect (Appendix~\ref{app:adjusted-effects}) spans \ModelEffectSpan{}
-robust-scaled units---from \TopModel{}
-($+$\TopModelEffect{}) to \BottomModel{} (\BottomModelEffect{})---compared to
-\AgentEffectSpan{} across \NumAgents{} agents, a ratio exceeding
-10$\times$. Model selection is therefore the primary lever for performance on
-the majority of benchmarks, though the magnitude of this asymmetry varies
-substantially by provider.
+When deploying an agentic system, practitioners must choose both a base
+model and an agent scaffold. To quantify their relative importance, we
+compare the variance introduced by swapping models versus swapping agents
+within the same provider family (Appendix~\ref{app:within-family}).
+
+The results are unequivocal: model selection dominates. Across all provider
+families, upgrading the underlying model yields an average score change
+that is orders of magnitude larger than switching the agent harness. This
+dominance is most pronounced in the Anthropic family, where model choice
+dictates performance on \AnthropicModelWinPct\% of benchmarks. When adjusting
+for baseline difficulty across all \NumModels{} models and \NumAgents{} agents
+(Appendix~\ref{app:adjusted-effects}), the variance attributed to the base
+model exceeds that of the agent scaffold by a factor of $10\times$. Thus,
+while sophisticated agent harnesses garner significant attention, the raw
+capability of the underlying foundation model remains the primary bottleneck
+for system-level performance.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \paragraph{Does the agent harness help, and when?}
 We compare each agent scaffold against the Terminus~2 neutral baseline across
-all benchmarks. The clearest evidence that agent scaffolding requires a
-minimum model capability comes from holding the agent fixed (Codex) across
-three OpenAI models of varying strength:
+all benchmarks. Table~\ref{tab:agent-lift} holds the agent fixed within each
+provider family and varies the underlying model from strong to weak.
 
-\begin{center}\small
-\begin{tabular}{lccc}
+\begin{table}[t]\small
+\centering
+\caption{Agent lift over Terminus~2 by model tier within each provider family.
+  Agent~$\Delta$ is the mean score change; Positive Lift is the fraction of
+  benchmarks where the agent scaffold strictly improves upon the neutral
+  harness score.}
+\label{tab:agent-lift}
+\begin{tabular*}{\linewidth}{@{\extracolsep{\fill}}llccc@{}}
 \toprule
-Model & Terminus mean & Agent $\Delta$ & Win rate \\
+Family & Model (tier) & Base & Agent $\Delta$ & Positive Lift \\
 \midrule
-GPT-5.4 (strong)   & 0.498 & $+$0.184 & 94\% \\
-GPT-5-Mini (mid)   & 0.402 & $+$0.119 & 81\% \\
-GPT-5-Nano (weak)  & 0.265 & $-$0.024 & 34\% \\
+\multirow{3}{*}{OpenAI + Codex}
+  & GPT-5.4 (strong)  & \GPTFiveFourBase & \GPTFiveFourDelta & \GPTFiveFourLift\% \\
+  & GPT-5-Mini (mid)   & \GPTMiniBase & \GPTMiniDelta & \GPTMiniLift\% \\
+  & GPT-5-Nano (weak)  & \GPTNanoBase & \GPTNanoDelta & \GPTNanoLift\% \\
+\midrule
+\multirow{3}{*}{Anthropic + Claude Code}
+  & Claude-Opus (strong)  & \ClaudeOpusBase & \ClaudeOpusDelta & \ClaudeOpusLift\% \\
+  & Claude-Sonnet (mid)   & \ClaudeSonnetBase & \ClaudeSonnetDelta & \ClaudeSonnetLift\% \\
+  & Claude-Haiku (weak)   & \ClaudeHaikuBase & \ClaudeHaikuDelta & \ClaudeHaikuLift\% \\
+\midrule
+\multirow{2}{*}{Google + Gemini CLI}
+  & Gemini Pro (strong) & \GeminiProBase & \GeminiProDelta & \GeminiProLift\% \\
+  & Gemini Flash (mid)  & \GeminiFlashBase & \GeminiFlashDelta & \GeminiFlashLift\% \\
 \bottomrule
-\end{tabular}
-\end{center}
+\end{tabular*}
+\end{table}
 
-\noindent The relationship is perfectly monotonic (Spearman $\rho = 1.0$
-between model strength and agent delta). GPT-5-Nano paired with Codex
-\emph{loses} to the neutral harness on 66\% of benchmarks---agent overhead
-actively degrades a model that lacks the base capability to leverage it.
-Conversely, GPT-5.4 wins on 94\% of benchmarks with a substantial
-$+$18.4~pp mean lift across 52 benchmarks.
+Agent scaffolding does not uniformly improve model
+performance. A necessary condition is that the base model
+exceeds a \emph{competence floor} set by the orchestration
+overhead of the scaffold (planning, tool dispatch, context
+management); below this floor, agentic wrapping degrades
+results---GPT-5-Nano under Codex improves on only \GPTNanoLift\% of
+benchmarks, and Gemini~Flash sees no net benefit from
+Gemini~CLI (Table~\ref{tab:agent-lift}).
 
-The same threshold effect appears for Claude~Code: it lifts Claude-Haiku
-(81\% win rate, $+$11.2~pp) but shows diminishing returns on the already-strong
-Claude-Opus (40\% win rate, $+$3.1~pp), where the orchestration overhead
-begins to outweigh gains on benchmarks that Opus already handles well with the
-simpler harness. Taken together, these results suggest that agent scaffolding is
-a \emph{capability multiplier}, not a capability substitute---it amplifies
-models above a competence threshold but introduces net harm below it.
+Above this floor, the magnitude and distribution of gains
+depend on the scaffold--model pairing in a structured way.
+We observe two contrasting regimes.
+\textbf{Capability amplification}, exemplified by Codex,
+where gains scale \emph{with} base-model strength
+(Table~\ref{tab:agent-lift}), consistent with a scaffold
+that exposes capabilities the model already possesses but
+cannot deploy in single-turn evaluation.
+\textbf{Gap closing}, exemplified by Claude~Code, where
+gains scale \emph{inversely} with base-model strength,
+consistent with a scaffold that compensates for weaknesses
+through retry and decomposition strategies.
+Gemini~CLI falls between the two, providing a modest,
+roughly uniform lift across tiers.
 
-% \lin{I don't think we actually need a figure here - but if we need, a thin
-% one should be good to show how different harnesses has an impact on different
-% benchmarks/models.}
-
-% Optional thin figure: agent lift heatmap/Users/linxiangning/Desktop/projects/tb_adapter_project/habor-mix-analyzer/figs/main/quantitative/benchmark_agent_lift_heatmap.png
-% \begin{figure}[t]
-%   \centering
-%   \includegraphics[width=\linewidth]{\FigAgentLiftHeatmap}
-%   \caption{Agent lift vs.\ Terminus~2 by benchmark, grouped by domain. Green
-%     indicates improvement; brown indicates degradation relative to Terminus~2.}
-%   \label{fig:agent-lift-heatmap}
-% \end{figure}

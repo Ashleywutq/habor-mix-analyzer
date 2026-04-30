@@ -44,15 +44,41 @@ def _tex_safe_name(name: str) -> str:
 
 def _tex_cmd(name: str, value: str) -> str:
     safe_value = value.replace("&", r"\&").replace("%", r"\%").replace("_", r"\_")
-    return f"\\newcommand{{\\{_tex_safe_name(name)}}}{{{safe_value}}}"
+    return f"\\providecommand{{\\{_tex_safe_name(name)}}}{{{safe_value}}}"
 
 
 def _fmt(x: float, decimals: int = 1) -> str:
     return f"{x:.{decimals}f}"
 
 
+def _fmt_nolz(x: float, decimals: int = 3) -> str:
+    s = f"{x:.{decimals}f}"
+    if s.startswith("0."):
+        return s[1:]
+    if s.startswith("-0."):
+        return f"-{s[2:]}"
+    return s
+
+
+def _fmt_delta(x: float, decimals: int = 3) -> str:
+    sign = "$+$" if x >= 0 else "$-$"
+    return f"{sign}{_fmt_nolz(abs(x), decimals)}"
+
+
 def _pct(x: float) -> str:
     return f"{100 * x:.0f}"
+
+
+_MODEL_TABLE_TAGS: dict[tuple[str, str], str] = {
+    ("gpt-5.4", "codex"): "GPTFiveFour",
+    ("gpt-5-mini", "codex"): "GPTMini",
+    ("gpt-5-nano", "codex"): "GPTNano",
+    ("claude-opus-4-6", "claude-code"): "ClaudeOpus",
+    ("claude-sonnet-4-6", "claude-code"): "ClaudeSonnet",
+    ("claude-haiku-4-5-20251001", "claude-code"): "ClaudeHaiku",
+    ("gemini-3.1-pro-preview", "gemini-cli"): "GeminiPro",
+    ("gemini-3-flash-preview", "gemini-cli"): "GeminiFlash",
+}
 
 
 def write_paper_stats(study_tables: dict[str, pd.DataFrame], included_benchmarks: list[str], raw_benchmark: pd.DataFrame | None = None) -> None:
@@ -136,6 +162,24 @@ def write_paper_stats(study_tables: dict[str, pd.DataFrame], included_benchmarks
             _tex_cmd(f"Terminus{model_tag}{agent_tag}WinRate", _pct(float(row["win_rate_vs_terminus"]))),
         ]
     lines.append("")
+
+    # ── Agent lift table (raw-score space) ──
+    if "mean_base_raw" in terminus_by_model.columns:
+        lines.append("% ── Agent lift table (paper, short names) ──")
+        for _, row in terminus_by_model.iterrows():
+            key = (str(row["model"]), str(row["agent"]))
+            short = _MODEL_TABLE_TAGS.get(key)
+            if short is None:
+                continue
+            base_val = float(row["mean_base_raw"])
+            delta_val = float(row["mean_delta_raw"])
+            lift_val = float(row["positive_lift_raw"])
+            lines += [
+                _tex_cmd(f"{short}Base", _fmt_nolz(base_val)),
+                _tex_cmd(f"{short}Delta", _fmt_delta(delta_val)),
+                _tex_cmd(f"{short}Lift", _pct(lift_val)),
+            ]
+        lines.append("")
 
     # ── Headroom summary ──
     lines.append("% ── Benchmark headroom ──")
@@ -241,6 +285,9 @@ def write_paper_stats(study_tables: dict[str, pd.DataFrame], included_benchmarks
         lines.append(_tex_cmd(f"HaborMix{tier_tag}Tasks", str(count)))
     lines.append("")
 
+    # BenchPress macros are defined in appendix_quantitative_analysis_details.tex
+    # (loaded before paper.tex), so they must not be redefined here.
+
     # ── AIME case study: agent lift by model capability ──
     if raw_benchmark is not None and "aime" in raw_benchmark.columns:
         lines.append("% ── AIME case study ──")
@@ -264,26 +311,11 @@ def write_paper_stats(study_tables: dict[str, pd.DataFrame], included_benchmarks
                 ]
         lines.append("")
 
-    # ── Figure paths ──
+    # ── Figure paths (only macros actually used in paper.tex) ──
     fig = "figs/main/quantitative"
     lines.append("% ── Figure paths (all under figs/main/quantitative/) ──")
     lines += [
-        _tex_cmd("FigWithinFamilySummary", f"{fig}/within_family_model_vs_agent_summary"),
-        _tex_cmd("FigWithinFamilyDetail", f"{fig}/within_family_model_vs_agent_detail"),
-        _tex_cmd("FigModelAdjustedEffects", f"{fig}/benchmark_model_adjusted_effects"),
-        _tex_cmd("FigAgentLiftHeatmap", f"{fig}/benchmark_agent_lift_heatmap"),
-        _tex_cmd("FigTerminusDeltaByModel", f"{fig}/terminus_delta_by_model_heatmap"),
-        _tex_cmd("FigHeadroomByDomain", f"{fig}/benchmark_headroom_by_domain"),
-        _tex_cmd("FigHeadroomSummary", f"{fig}/benchmark_headroom_tier_summary"),
-        _tex_cmd("FigSimilarityHeatmap", f"{fig}/benchmark_similarity_clustered_heatmap"),
-        _tex_cmd("FigUniquenessVsCoverage", f"{fig}/benchmark_uniqueness_vs_coverage"),
-        _tex_cmd("FigEffectiveDimensionality", f"{fig}/benchmark_effective_dimensionality"),
-        _tex_cmd("FigGreedySelection", f"{fig}/benchmark_greedy_selection"),
-        _tex_cmd("FigTaskSimilarityHeatmap", f"{fig}/task_similarity_benchmark_pair_heatmap"),
-        _tex_cmd("FigTaskPredictability", f"{fig}/task_hard_to_predict_ranked"),
-        _tex_cmd("FigTaskRepresentatives", f"{fig}/task_best_representatives"),
-        _tex_cmd("FigTaskDifficultyComposition", f"{fig}/task_reliable_difficulty_composition"),
-        _tex_cmd("FigHaborMixSelection", f"{fig}/harbormix_selection_diagnostics"),
+        _tex_cmd("FigHeadroomByDomain", f"{fig}/bench_progress_and_headroom"),
     ]
     lines.append("")
 
@@ -298,6 +330,444 @@ def write_paper_stats(study_tables: dict[str, pd.DataFrame], included_benchmarks
         flags=re.DOTALL,
     )
     PAPER_TEX_PATH.write_text(tex)
+
+
+APPENDIX_TEX_PATH = ROOT / "paper_writing" / "appendix_quantitative_analysis_details.tex"
+
+
+def write_appendix_stats(
+    study_tables: dict[str, pd.DataFrame],
+    benchmark_result: ImputationResult,
+    included_benchmarks: list[str],
+) -> None:
+    """Inject auto-generated stats into the BenchPress appendix tex file.
+
+    Computes SVD spectrum stats, PC2 agent separation, BenchPress method
+    comparison, and per-benchmark predictability table, then writes
+    ``\\newcommand`` macros between ``@@STATS_BEGIN@@`` / ``@@STATS_END@@``
+    markers in appendix_quantitative_analysis_details.tex.
+    """
+    import re
+
+    import numpy as np
+
+    from ..studies.benchmark_predictability import _benchpress_predict, _is_pct_col, _to_logit
+
+    # ── Gather inputs ──
+    raw_mat = benchmark_result.raw
+    score_cols = [c for c in raw_mat.columns if c not in KEY_COLUMNS and c in included_benchmarks]
+    n_systems = len(raw_mat)
+    n_benchmarks = len(score_cols)
+
+    matrix_np = raw_mat[score_cols].astype(float).to_numpy()
+    obs = ~np.isnan(matrix_np)
+    is_pct = np.array([_is_pct_col(matrix_np[:, j]) for j in range(n_benchmarks)])
+
+    # ── Build logit-space matrix for SVD spectrum ──
+    eps = 0.005
+    M_logit = matrix_np.copy()
+    for j in range(n_benchmarks):
+        if is_pct[j]:
+            valid = obs[:, j]
+            M_logit[valid, j] = _to_logit(matrix_np[valid, j], eps=eps)
+
+    # Column-wise z-score in logit space
+    col_mean = np.nanmean(M_logit, axis=0)
+    col_std = np.nanstd(M_logit, axis=0)
+    col_std[col_std < 1e-8] = 1.0
+    M_z = (M_logit - col_mean) / col_std
+
+    # ── Finding 1: SVD spectrum ──
+    # Model-only submatrix (terminus-2 rows only)
+    agents = raw_mat["agent"].tolist()
+    terminus_mask = [a == BASELINE_AGENT for a in agents]
+    M_model_only = M_z[terminus_mask, :]
+    # Fill any remaining NaN with 0 for SVD
+    M_model_only_filled = np.where(np.isnan(M_model_only), 0.0, M_model_only)
+    _, s_model, _ = np.linalg.svd(M_model_only_filled, full_matrices=False)
+    var_model = s_model ** 2
+    var_model_frac = var_model / var_model.sum()
+    svd_model_only_pc1 = float(var_model_frac[0]) * 100
+    svd_model_only_pc1_pc2 = float(var_model_frac[0] + var_model_frac[1]) * 100
+
+    n_model_only = int(sum(terminus_mask))
+
+    # Full matrix SVD
+    M_z_filled = np.where(np.isnan(M_z), 0.0, M_z)
+    _, s_full, _ = np.linalg.svd(M_z_filled, full_matrices=False)
+    var_full = s_full ** 2
+    var_full_frac = var_full / var_full.sum()
+    svd_full_pc1 = float(var_full_frac[0]) * 100
+    svd_full_pc2 = float(var_full_frac[1]) * 100
+    svd_full_cum2 = float(var_full_frac[0] + var_full_frac[1]) * 100
+
+    # ── Finding 2: PC2 agent separation ──
+    U_full, _, _ = np.linalg.svd(M_z_filled, full_matrices=False)
+    pc2_scores = U_full[:, 1] * s_full[1]
+    agent_mask = [a != BASELINE_AGENT for a in agents]
+    base_mask = terminus_mask
+    n_agent_systems = int(sum(agent_mask))
+    n_base_systems = int(sum(base_mask))
+    pc2_agent_mean = float(np.mean(pc2_scores[agent_mask]))
+    pc2_base_mean = float(np.mean(pc2_scores[base_mask]))
+
+    # ── Finding 3: BenchPress method comparison ──
+    # Run per-system holdout: 50% hidden, 5 seeds
+    n_seeds = 5
+    all_baseline_ae, all_baseline_ape = [], []
+    all_breg_ae, all_breg_ape = [], []
+    all_svd_ae, all_svd_ape = [], []
+    all_blend_ae, all_blend_ape = [], []
+
+    from ..studies.benchmark_predictability import _logit_benchreg, _svd_logit
+
+    for seed in range(n_seeds):
+        rng_seed = np.random.RandomState(RANDOM_SEED + seed)
+        M_train = matrix_np.copy()
+        holdout_mask = np.zeros_like(obs, dtype=bool)
+
+        for i in range(n_systems):
+            obs_indices = np.where(obs[i])[0]
+            if len(obs_indices) < 4:
+                continue
+            n_hide = max(1, len(obs_indices) // 2)
+            hide_indices = rng_seed.choice(obs_indices, size=n_hide, replace=False)
+            M_train[i, hide_indices] = np.nan
+            holdout_mask[i, hide_indices] = True
+
+        train_obs = ~np.isnan(M_train)
+        col_means = np.nanmean(M_train, axis=0)
+
+        # Column mean baseline predictions
+        M_baseline = M_train.copy()
+        for i in range(n_systems):
+            for j in range(n_benchmarks):
+                if np.isnan(M_baseline[i, j]):
+                    M_baseline[i, j] = col_means[j]
+
+        # LogitBenchReg predictions
+        M_breg = _logit_benchreg(M_train, train_obs, is_pct)
+
+        # SVD-Logit predictions
+        M_svd = _svd_logit(M_train, train_obs, is_pct, rank=2)
+
+        # BenchPress blend predictions
+        M_blend = _benchpress_predict(M_train, train_obs, is_pct, alpha=0.6)
+
+        # Collect per-cell errors
+        for i in range(n_systems):
+            for j in range(n_benchmarks):
+                if not holdout_mask[i, j]:
+                    continue
+                actual = matrix_np[i, j]
+                if not np.isfinite(actual):
+                    continue
+
+                # Baseline
+                pred_bl = M_baseline[i, j]
+                if np.isfinite(pred_bl):
+                    all_baseline_ae.append(abs(pred_bl - actual))
+                    if abs(actual) > 1e-6:
+                        all_baseline_ape.append(abs(pred_bl - actual) / abs(actual) * 100)
+
+                # LogitBenchReg
+                pred_br = M_breg[i, j] if np.isfinite(M_breg[i, j]) else col_means[j]
+                if np.isfinite(pred_br):
+                    all_breg_ae.append(abs(pred_br - actual))
+                    if abs(actual) > 1e-6:
+                        all_breg_ape.append(abs(pred_br - actual) / abs(actual) * 100)
+
+                # SVD-Logit
+                pred_sv = M_svd[i, j] if np.isfinite(M_svd[i, j]) else col_means[j]
+                if np.isfinite(pred_sv):
+                    all_svd_ae.append(abs(pred_sv - actual))
+                    if abs(actual) > 1e-6:
+                        all_svd_ape.append(abs(pred_sv - actual) / abs(actual) * 100)
+
+                # Blend
+                pred_bl2 = M_blend[i, j]
+                if np.isfinite(pred_bl2):
+                    all_blend_ae.append(abs(pred_bl2 - actual))
+                    if abs(actual) > 1e-6:
+                        all_blend_ape.append(abs(pred_bl2 - actual) / abs(actual) * 100)
+
+    baseline_medape = float(np.median(all_baseline_ape)) if all_baseline_ape else 0.0
+    baseline_medae = float(np.median(all_baseline_ae)) if all_baseline_ae else 0.0
+    breg_medape = float(np.median(all_breg_ape)) if all_breg_ape else 0.0
+    breg_medae = float(np.median(all_breg_ae)) if all_breg_ae else 0.0
+    svd_medape = float(np.median(all_svd_ape)) if all_svd_ape else 0.0
+    svd_medae = float(np.median(all_svd_ae)) if all_svd_ae else 0.0
+    blend_medape = float(np.median(all_blend_ape)) if all_blend_ape else 0.0
+    blend_medae = float(np.median(all_blend_ae)) if all_blend_ae else 0.0
+
+    blend_improvement = (1 - blend_medape / baseline_medape) * 100 if baseline_medape > 1e-6 else 0.0
+
+    # ── Finding 4: Per-benchmark predictability table ──
+    uniq = study_tables.get("benchmark_uniqueness_filtered")
+    redundant_rows_tex = []
+    unique_rows_tex = []
+    if uniq is not None and "benchpress_medape" in uniq.columns:
+        uniq_sorted = uniq.sort_values("benchpress_medape")
+        # Top 8 most redundant
+        top_redundant = uniq_sorted.head(8)
+        for _, row in top_redundant.iterrows():
+            bname = benchmark_display_name(str(row["benchmark"]))
+            score = float(row["benchpress_medape"])
+            redundant_rows_tex.append(f"{bname} & {score:.1f} & redundant \\\\")
+
+        # Top 8 most unique
+        top_unique = uniq_sorted.tail(8).sort_values("benchpress_medape", ascending=False)
+        for _, row in top_unique.iterrows():
+            bname = benchmark_display_name(str(row["benchmark"]))
+            score = float(row["benchpress_medape"])
+            unique_rows_tex.append(f"{bname} & {score:.1f} & unique \\\\")
+
+    # ── Build the per-benchmark table as a single macro ──
+    table_lines = []
+    table_lines.append(r"\begin{table}[h]\small")
+    table_lines.append(r"\centering")
+    table_lines.append(r"\caption{Per-benchmark predictability (50\% holdout, " + str(n_seeds) + r"~seeds).")
+    table_lines.append(r"  Low MedAPE = redundant; high MedAPE = unique signal.}")
+    table_lines.append(r"\label{tab:bench-predict}")
+    table_lines.append(r"\begin{tabular}{lrl}")
+    table_lines.append(r"\toprule")
+    table_lines.append(r"Benchmark & MedAPE (\%) & Status \\")
+    table_lines.append(r"\midrule")
+    table_lines.append(r"\multicolumn{3}{l}{\emph{Most redundant (easily predicted from others):}} \\")
+    for row_tex in redundant_rows_tex:
+        table_lines.append(row_tex)
+    table_lines.append(r"\midrule")
+    table_lines.append(r"\multicolumn{3}{l}{\emph{Most unique (hard to predict from others):}} \\")
+    for row_tex in unique_rows_tex:
+        table_lines.append(row_tex)
+    table_lines.append(r"\bottomrule")
+    table_lines.append(r"\end{tabular}")
+    table_lines.append(r"\end{table}")
+    per_bench_table_tex = "\n".join(table_lines)
+
+    # ── Build newcommand lines ──
+    lines = [
+        "% Auto-generated by habor-analyze — do not edit manually.",
+        "% Re-generate: uv run habor-analyze studies",
+        "",
+        "% ── Appendix: BenchPress general ──",
+        _tex_cmd("AppNumSystems", str(n_systems)),
+        _tex_cmd("AppNumBenchmarks", str(n_benchmarks)),
+        _tex_cmd("AppNumModelsOnly", str(n_model_only)),
+        "",
+        "% ── Finding 1: SVD spectrum ──",
+        _tex_cmd("AppSVDModelOnlyPCOne", _fmt(svd_model_only_pc1, 1)),
+        _tex_cmd("AppSVDModelOnlyPCOneTwo", _fmt(svd_model_only_pc1_pc2, 1)),
+        _tex_cmd("AppSVDFullPCOne", _fmt(svd_full_pc1, 1)),
+        _tex_cmd("AppSVDFullPCTwo", _fmt(svd_full_pc2, 1)),
+        _tex_cmd("AppSVDFullCumTwo", _fmt(svd_full_cum2, 1)),
+        "",
+        "% ── Finding 2: PC2 agent separation ──",
+        _tex_cmd("AppNumAgentSystems", str(n_agent_systems)),
+        _tex_cmd("AppNumBaseSystems", str(n_base_systems)),
+        _tex_cmd("AppPCTwoAgentMean", f"{pc2_agent_mean:+.2f}"),
+        _tex_cmd("AppPCTwoBaseMean", f"{pc2_base_mean:+.2f}"),
+        "",
+        "% ── Finding 3: Method comparison ──",
+        _tex_cmd("AppBaselineMedAPE", _fmt(baseline_medape, 1)),
+        _tex_cmd("AppBaselineMedAE", _fmt(baseline_medae, 3)),
+        _tex_cmd("AppLogitBenchRegMedAPE", _fmt(breg_medape, 1)),
+        _tex_cmd("AppLogitBenchRegMedAE", _fmt(breg_medae, 3)),
+        _tex_cmd("AppSVDLogitMedAPE", _fmt(svd_medape, 1)),
+        _tex_cmd("AppSVDLogitMedAE", _fmt(svd_medae, 3)),
+        _tex_cmd("AppBlendMedAPE", _fmt(blend_medape, 1)),
+        _tex_cmd("AppBlendMedAE", _fmt(blend_medae, 3)),
+        _tex_cmd("AppBlendImprovement", f"{blend_improvement:.0f}"),
+        "",
+        "% ── Finding 4: Per-benchmark predictability table ──",
+        # NOTE: table macro is emitted raw (not via _tex_cmd) because it contains LaTeX commands
+        f"\\providecommand{{\\AppPerBenchmarkPredictTable}}{{{per_bench_table_tex}}}",
+        "",
+    ]
+
+    # ── Top-3 redundant/unique benchmarks (shared with paper.tex prose) ──
+    if uniq is not None and "benchpress_medape" in uniq.columns:
+        uniq_sorted2 = uniq.sort_values("benchpress_medape")
+        uniq_rev2 = uniq_sorted2.sort_values("benchpress_medape", ascending=False)
+        lines.append("% ── BenchPress top redundant / unique ──")
+        for i, label in enumerate(["One", "Two", "Three"]):
+            if i < len(uniq_sorted2):
+                r = uniq_sorted2.iloc[i]
+                lines += [
+                    _tex_cmd(f"BenchPressRedundant{label}", benchmark_display_name(str(r["benchmark"]))),
+                    _tex_cmd(f"BenchPressRedundant{label}Score", _fmt(float(r["benchpress_medape"]), 1)),
+                ]
+            if i < len(uniq_rev2):
+                r = uniq_rev2.iloc[i]
+                lines += [
+                    _tex_cmd(f"BenchPressUnique{label}", benchmark_display_name(str(r["benchmark"]))),
+                    _tex_cmd(f"BenchPressUnique{label}Score", _fmt(float(r["benchpress_medape"]), 1)),
+                ]
+        lines.append("")
+
+    # ── Task-level SVD extension ──
+    lines.append("% ── Task-level SVD ──")
+    try:
+        task_df = pd.read_csv(PROCESSED_DIR / "task_imputed_matrix.csv")
+        task_stats_df = pd.read_csv(PROCESSED_DIR / "task_item_stats.csv")
+        task_to_bench = dict(zip(task_stats_df["task_column"], task_stats_df["benchmark"]))
+        task_numeric = task_df.select_dtypes(include=[np.number])
+        bad_task_cols = task_numeric.columns[(task_numeric.max() > 2) | (task_numeric.min() < -1)]
+        good_task_cols = [c for c in task_numeric.columns if c not in bad_task_cols]
+        X_task = task_numeric[good_task_cols].values
+        task_var = X_task.var(axis=0)
+        task_good_mask = task_var > 0
+        n_total_tasks = len(good_task_cols) + len(bad_task_cols)
+        n_zero_var_tasks = int((~task_good_mask).sum()) + len(bad_task_cols)
+        X_task_filtered = X_task[:, task_good_mask]
+        n_good_tasks = X_task_filtered.shape[1]
+
+        eps_t = 0.005
+        X_smooth = np.clip(X_task_filtered, eps_t, 1 - eps_t)
+        X_logit_task = np.log(X_smooth / (1 - X_smooth))
+
+        from sklearn.decomposition import PCA as _PCA
+        task_agents = task_df["agent"].tolist()
+        task_terminus_mask = np.array([a == BASELINE_AGENT for a in task_agents])
+
+        pca_task_full = _PCA()
+        pca_task_full.fit(X_logit_task)
+        task_full_pc1 = pca_task_full.explained_variance_ratio_[0] * 100
+        task_full_pc2 = pca_task_full.explained_variance_ratio_[1] * 100
+
+        pca_task_model = _PCA()
+        pca_task_model.fit(X_logit_task[task_terminus_mask])
+        task_model_pc1 = pca_task_model.explained_variance_ratio_[0] * 100
+
+        pc_scores_task = pca_task_full.transform(X_logit_task)
+        task_agent_pc2 = pc_scores_task[~task_terminus_mask, 1]
+        task_base_pc2 = pc_scores_task[task_terminus_mask, 1]
+
+        lines += [
+            _tex_cmd("TaskTotalTasks", str(n_total_tasks)),
+            _tex_cmd("TaskZeroVarTasks", str(n_zero_var_tasks)),
+            _tex_cmd("TaskGoodTasks", str(n_good_tasks)),
+            _tex_cmd("TaskFullPCOne", _fmt(task_full_pc1, 1)),
+            _tex_cmd("TaskFullPCTwo", _fmt(task_full_pc2, 1)),
+            _tex_cmd("TaskModelPCOne", _fmt(task_model_pc1, 1)),
+            _tex_cmd("TaskAgentPCTwoMean", _fmt(float(task_agent_pc2.mean()), 1)),
+            _tex_cmd("TaskBasePCTwoMean", _fmt(float(task_base_pc2.mean()), 1)),
+        ]
+        lines.append("")
+
+        # ── Task redundancy within benchmarks ──
+        from scipy.stats import spearmanr as _spearmanr
+
+        bench_tasks: dict[str, list[str]] = {}
+        for col in good_task_cols:
+            b = task_to_bench.get(col, "unknown")
+            bench_tasks.setdefault(b, []).append(col)
+
+        pc1_vars, pcs_90_list, compressions, zero_var_pcts = [], [], [], []
+        zero_var_bench_records: list[dict] = []
+        rho_k1, rho_k3, rho_k5, rho_k10 = [], [], [], []
+        n_bench_above_95_k10 = 0
+        n_bench_analyzed = 0
+        low_rank_examples = []
+
+        for bench, tasks in sorted(bench_tasks.items(), key=lambda x: -len(x[1])):
+            if len(tasks) < 10:
+                continue
+            X_b = task_df[tasks].values
+            bvar = X_b.var(axis=0)
+            bgood = bvar > 0
+            X_bg = X_b[:, bgood]
+            if X_bg.shape[1] < 3:
+                continue
+
+            n_bench_analyzed += 1
+            zv_pct = (1 - bgood.mean()) * 100
+            zero_var_pcts.append(zv_pct)
+            zero_var_bench_records.append({"name": benchmark_display_name(bench), "pct": zv_pct})
+
+            n_comp = min(X_bg.shape)
+            pca_b = _PCA(n_components=n_comp)
+            pca_b.fit(X_bg)
+            cumvar = np.cumsum(pca_b.explained_variance_ratio_)
+            pc1_v = pca_b.explained_variance_ratio_[0] * 100
+            n90 = int(np.searchsorted(cumvar, 0.90) + 1)
+            pc1_vars.append(pc1_v)
+            pcs_90_list.append(n90)
+            compressions.append(int(bgood.sum()) / n90 if n90 > 0 else 0)
+
+            if pc1_v > 75 and len(low_rank_examples) < 3:
+                low_rank_examples.append({
+                    "name": benchmark_display_name(bench),
+                    "total": len(tasks),
+                    "pc1": pc1_v,
+                    "pcs90": n90,
+                })
+
+            full_score = X_b.mean(axis=1)
+            corrs_b = []
+            for j in range(X_bg.shape[1]):
+                c = np.corrcoef(X_bg[:, j], full_score)[0, 1]
+                corrs_b.append(c if np.isfinite(c) else 0)
+            corrs_b = np.array(corrs_b)
+            sorted_idx = np.argsort(-corrs_b)
+
+            for k, rho_list in [(1, rho_k1), (3, rho_k3), (5, rho_k5), (10, rho_k10)]:
+                if k > len(sorted_idx):
+                    continue
+                top_k = sorted_idx[:k]
+                approx = X_bg[:, top_k].mean(axis=1)
+                rho, _ = _spearmanr(approx, full_score)
+                rho_list.append(rho)
+                if k == 10 and rho > 0.95:
+                    n_bench_above_95_k10 += 1
+
+        lines.append("% ── Task redundancy ──")
+        lines += [
+            _tex_cmd("TaskRedundNumBenchmarks", str(n_bench_analyzed)),
+            _tex_cmd("TaskRedundMeanPCOne", _fmt(float(np.mean(pc1_vars)), 1)),
+            _tex_cmd("TaskRedundMedianPCsNinety", str(int(np.median(pcs_90_list)))),
+            _tex_cmd("TaskRedundMeanCompression", _fmt(float(np.mean(compressions)), 1)),
+            _tex_cmd("TaskRedundMeanZeroVarPct", _fmt(float(np.mean(zero_var_pcts)), 1)),
+            _tex_cmd("TaskRedundRhoKOne", _fmt(float(np.mean(rho_k1)), 3)),
+            _tex_cmd("TaskRedundRhoKThree", _fmt(float(np.mean(rho_k3)), 3)),
+            _tex_cmd("TaskRedundRhoKFive", _fmt(float(np.mean(rho_k5)), 3)),
+            _tex_cmd("TaskRedundRhoKTen", _fmt(float(np.mean(rho_k10)), 3)),
+            _tex_cmd("TaskRedundAboveNFKOne", f"{sum(1 for r in rho_k1 if r > 0.95)}/{len(rho_k1)}"),
+            _tex_cmd("TaskRedundAboveNFKThree", f"{sum(1 for r in rho_k3 if r > 0.95)}/{len(rho_k3)}"),
+            _tex_cmd("TaskRedundAboveNFKFive", f"{sum(1 for r in rho_k5 if r > 0.95)}/{len(rho_k5)}"),
+            _tex_cmd("TaskRedundAboveNFKTen", f"{n_bench_above_95_k10}/{len(rho_k10)}"),
+        ]
+        for i, ex in enumerate(low_rank_examples[:3], 1):
+            lines += [
+                _tex_cmd(f"TaskLowRankEx{i}Name", ex["name"]),
+                _tex_cmd(f"TaskLowRankEx{i}Tasks", str(ex["total"])),
+                _tex_cmd(f"TaskLowRankEx{i}PCOne", _fmt(ex["pc1"], 1)),
+                _tex_cmd(f"TaskLowRankEx{i}PCs", str(ex["pcs90"])),
+            ]
+        top_zv = sorted(zero_var_bench_records, key=lambda x: -x["pct"])[:3]
+        for i, zv in enumerate(top_zv, 1):
+            lines += [
+                _tex_cmd(f"TaskZeroVarEx{i}Name", zv["name"]),
+                _tex_cmd(f"TaskZeroVarEx{i}Pct", _fmt(zv["pct"], 0)),
+            ]
+        lines.append("")
+    except Exception as e:
+        lines.append(f"% Task-level stats skipped: {e}")
+        lines.append("")
+
+    # ── Inject into appendix tex ──
+    if not APPENDIX_TEX_PATH.exists():
+        return
+    tex = APPENDIX_TEX_PATH.read_text()
+    stats_block = "\n".join(lines)
+    replacement = f"% @@STATS_BEGIN@@ — auto-generated by habor-analyze, do not edit manually\n{stats_block}\n% @@STATS_END@@"
+    tex = re.sub(
+        r"% @@STATS_BEGIN@@.*?% @@STATS_END@@",
+        lambda _: replacement,
+        tex,
+        flags=re.DOTALL,
+    )
+    APPENDIX_TEX_PATH.write_text(tex)
 
 
 APPENDIX_PATH = KEY_REPORT_DIR / "appendix_model_agent.tex"

@@ -19,6 +19,7 @@ from ..core import (
     TASK_INTERMEDIATE_STUDY_DIR,
     clean_dir,
     read_matrix,
+    score_columns,
     set_plot_style,
     write_csv,
 )
@@ -28,7 +29,7 @@ from ..preprocessing.svd_imputation import (
     write_benchmark_aggregate_outputs,
     write_matrix_outputs,
 )
-from ..reporting.key_analysis_report import copy_paper_figures, write_appendix_model_agent, write_key_analysis_reports, write_paper_stats
+from ..reporting.key_analysis_report import copy_paper_figures, write_appendix_model_agent, write_appendix_stats, write_key_analysis_reports, write_paper_stats
 from ..studies.benchmark_predictability import (
     pca_for_cols,
     predictability_for_cols,
@@ -197,8 +198,27 @@ def clean_step_outputs(steps: set[str]) -> None:
     ensure_output_dirs()
 
 
+def _mask_extreme_outliers(df: pd.DataFrame, iqr_factor: float = 10.0) -> pd.DataFrame:
+    """Replace extreme outliers with NaN so they don't corrupt aggregated stats."""
+    cols = score_columns(df)
+    out = df.copy()
+    for col in cols:
+        s = pd.to_numeric(out[col], errors="coerce")
+        q1, q3 = s.quantile(0.25), s.quantile(0.75)
+        iqr = q3 - q1
+        if iqr < 1e-9:
+            iqr = s.std(ddof=0)
+        if not np.isfinite(iqr) or iqr < 1e-9:
+            continue
+        lo, hi = q1 - iqr_factor * iqr, q3 + iqr_factor * iqr
+        mask = (s < lo) | (s > hi)
+        if mask.any():
+            out.loc[mask, col] = np.nan
+    return out
+
+
 def read_raw_matrices() -> tuple[pd.DataFrame, pd.DataFrame]:
-    raw_benchmark = read_matrix(RAW_DIR / "benchmark_level_matrix.csv")
+    raw_benchmark = _mask_extreme_outliers(read_matrix(RAW_DIR / "benchmark_level_matrix.csv"))
     raw_task = read_matrix(RAW_DIR / "task_level_matrix.csv")
     if not raw_benchmark[KEY_COLUMNS].equals(raw_task[KEY_COLUMNS]):
         raise ValueError("Benchmark and task matrices do not have identical agent/model rows.")
@@ -457,9 +477,10 @@ def run_studies_step() -> None:
     save_per_benchmark_task_correlation_heatmaps(task_result, study_tables["task_enriched_item_stats"])
     write_key_analysis_reports(study_tables, benchmark_result, task_result, included_benchmarks, mini_leaderboard_figures)
     write_paper_stats(study_tables, included_benchmarks, raw_benchmark)
+    write_appendix_stats(study_tables, benchmark_result, included_benchmarks)
     write_appendix_model_agent(study_tables)
     copy_paper_figures()
-    log("studies: wrote key analysis tables, figures, reports, paper_xiangning.tex stats, appendix, and figs/main/quantitative/")
+    log("studies: wrote key analysis tables, figures, reports, paper.tex stats, appendix stats, appendix, and figs/main/quantitative/")
 
 
 def expand_steps(steps: list[str]) -> list[str]:
