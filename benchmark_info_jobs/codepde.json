@@ -35,10 +35,6 @@
           {"metric": "nRMSE (geom. mean)", "value": 0.00483, "unit": null},
           {"metric": "pass rate", "value": 0.8, "unit": null}
         ]},
-        {"model": "GPT-4o",            "system_description": "CodePDE (Reasoning + Debugging + Refinement, best-of-12)", "scores": [
-          {"metric": "nRMSE (geom. mean)", "value": 0.00348, "unit": null},
-          {"metric": "pass rate", "value": 1.0, "unit": null}
-        ]},
         {"model": "o3",                "system_description": "CodePDE (Reasoning + Debugging + Refinement, best-of-12)", "scores": [
           {"metric": "nRMSE (geom. mean)", "value": 0.00527, "unit": null},
           {"metric": "pass rate", "value": 0.8, "unit": null}

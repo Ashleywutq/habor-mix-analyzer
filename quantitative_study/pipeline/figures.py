@@ -9,12 +9,15 @@ Visual style aligned with habor-analyze (src/habor_mix_analyzer/core/plotting.py
 
 from __future__ import annotations
 
+import re
 import textwrap
 
 import matplotlib
 matplotlib.use("Agg")
 
 import matplotlib.pyplot as plt
+import matplotlib.colors as mcolors
+from matplotlib.backends.backend_pdf import PdfPages
 import numpy as np
 import pandas as pd
 
@@ -43,6 +46,21 @@ def _save(fig: plt.Figure, name: str) -> None:
     fig.savefig(path, bbox_inches="tight", dpi=DPI, pad_inches=0.08)
     plt.close(fig)
     print(f"  [fig] {path}")
+
+
+def _categorical_colors(n: int) -> list[str]:
+    palettes = ["tab20", "tab20b", "tab20c"]
+    colors: list[str] = []
+    for palette in palettes:
+        colors.extend(mcolors.to_hex(c) for c in plt.get_cmap(palette).colors)
+    if n <= len(colors):
+        return colors[:n]
+    return [colors[i % len(colors)] for i in range(n)]
+
+
+def _slugify(value: object) -> str:
+    slug = re.sub(r"[^a-z0-9]+", "_", str(value).lower()).strip("_")
+    return slug or "other"
 
 
 # ===================================================================
@@ -323,78 +341,126 @@ def fig_progress_over_time(
 ) -> None:
     if progress_df.empty:
         return
+    from .cross_analysis import _domain_for
+
     _apply_style()
-    benchmarks = progress_df["benchmark"].unique()
-    top_n = min(12, len(benchmarks))
-    coverage = progress_df.groupby("benchmark").size().nlargest(top_n).index
-    plot_df = progress_df[progress_df["benchmark"].isin(coverage)].copy()
+    progress_df = progress_df.copy()
+    progress_df["domain"] = progress_df["benchmark"].map(lambda b: _domain_for(str(b))[0])
+    progress_df["n_snapshots"] = progress_df.groupby("benchmark")["benchmark"].transform("size")
+    progress_df["progress_delta"] = (
+        progress_df.groupby("benchmark")["best_score"].transform("max")
+        - progress_df.groupby("benchmark")["best_score"].transform("min")
+    )
+    progress_df["sort_domain"] = progress_df["domain"].map(
+        lambda d: list(DOMAIN_COLORS).index(d) if d in DOMAIN_COLORS else len(DOMAIN_COLORS)
+    )
 
-    all_dates = sorted(plot_df["date_ym"].unique())
-    date_to_x = {d: i for i, d in enumerate(all_dates)}
-    plot_df["_x"] = plot_df["date_ym"].map(date_to_x)
-
-    fig, ax = plt.subplots(figsize=(14, 3.5))
-    palette = list(DOMAIN_COLORS.values()) + [COLOR_RED, COLOR_GRAY, COLOR_PURPLE]
-    bench_colors: dict[str, str] = {}
-    bench_last_points: dict[str, tuple[int, float]] = {}
-    for i, (bench, g) in enumerate(plot_df.groupby("benchmark")):
-        g = g.sort_values("_x")
-        color = palette[i % len(palette)]
-        bench_colors[bench] = color
-        bench_last_points[bench] = (int(g["_x"].iloc[-1]), float(g["best_score"].iloc[-1]))
-        ax.plot(g["_x"], g["best_score"], "o-", label=_wrap(bench, 18),
-                color=color, markersize=5, linewidth=1.5, alpha=0.85)
-
-    harbor_best = _harbor_best_by_benchmark(harbor_df)
-    harbor_x = len(all_dates) + 2
-    for bench, (score, align_status) in harbor_best.items():
-        if bench not in bench_colors:
-            continue
-        last_x, last_score = bench_last_points[bench]
-        ax.plot(
-            [last_x, harbor_x], [last_score, score],
-            color=bench_colors[bench], linestyle="--", linewidth=1.4,
-            alpha=0.65, zorder=3,
+    benchmark_rank = (
+        progress_df[["benchmark", "domain", "n_snapshots", "progress_delta", "sort_domain"]]
+        .drop_duplicates()
+        .sort_values(
+            ["sort_domain", "n_snapshots", "progress_delta", "benchmark"],
+            ascending=[True, False, False, True],
         )
-        if align_status == "subset_or_variant":
-            ax.scatter(
-                harbor_x, score,
-                marker="D", s=65, facecolors="none", edgecolors=bench_colors[bench],
-                linewidths=1.5, zorder=4,
-            )
-        else:
-            ax.scatter(
-                harbor_x, score,
-                marker="D", s=82, color=bench_colors[bench],
-                edgecolors="white", linewidths=0.8, zorder=4,
+    )
+    selected = benchmark_rank.copy()
+    harbor_best = _harbor_best_by_benchmark(harbor_df)
+
+    def _make_domain_fig(domain: str, domain_selected: pd.DataFrame) -> plt.Figure:
+        plot_df = progress_df[progress_df["benchmark"].isin(domain_selected["benchmark"])].copy()
+        all_dates = sorted(plot_df["date_ym"].unique())
+        date_to_x = {d: i for i, d in enumerate(all_dates)}
+        plot_df["_x"] = plot_df["date_ym"].map(date_to_x)
+
+        n_benchmarks = len(domain_selected)
+        fig, ax = plt.subplots(figsize=(12.5, 5.8))
+        bench_colors: dict[str, str] = {}
+        bench_last_points: dict[str, tuple[int, float]] = {}
+        variants = _categorical_colors(n_benchmarks)
+        ordered_benchmarks = [str(b) for b in domain_selected["benchmark"]]
+        for bench, color in zip(ordered_benchmarks, variants, strict=False):
+            bench_colors[bench] = color
+
+        for bench in ordered_benchmarks:
+            g = plot_df[plot_df["benchmark"] == bench].sort_values("_x")
+            if g.empty:
+                continue
+            color = bench_colors[bench]
+            bench_last_points[bench] = (int(g["_x"].iloc[-1]), float(g["best_score"].iloc[-1]))
+            label_name = g["benchmark_name"].iloc[0] if "benchmark_name" in g else bench
+            ax.plot(
+                g["_x"], g["best_score"], "o-",
+                label=_wrap(label_name, 24),
+                color=color, markersize=5, linewidth=1.6, alpha=0.9,
             )
 
-    ax.set_xlabel("Result Date")
-    ax.set_ylabel("Best score at that snapshot")
-    ax.set_title("Score Progress Over Time")
-    ax.grid(color=COLOR_GRID, linewidth=0.8)
-    handles, labels = ax.get_legend_handles_labels()
-    if harbor_best:
-        handles.append(plt.Line2D(
-            [0], [0], marker="D", color="none", markerfacecolor=COLOR_AXIS,
-            markeredgecolor="white", markersize=8, label="Harbor result",
-        ))
-        labels.append("Harbor result")
-    ax.legend(handles, labels, loc="upper left", bbox_to_anchor=(1.01, 1.0),
-              frameon=False, fontsize=9)
+        harbor_x = len(all_dates) + 2
+        for bench, (score, align_status) in harbor_best.items():
+            if bench not in bench_colors:
+                continue
+            last_x, last_score = bench_last_points[bench]
+            if score < last_score:
+                continue
+            ax.plot(
+                [last_x, harbor_x], [last_score, score],
+                color=bench_colors[bench], linestyle="--", linewidth=1.4,
+                alpha=0.65, zorder=3,
+            )
+            if align_status == "subset_or_variant":
+                ax.scatter(
+                    harbor_x, score,
+                    marker="D", s=65, facecolors="none", edgecolors=bench_colors[bench],
+                    linewidths=1.5, zorder=4,
+                )
+            else:
+                ax.scatter(
+                    harbor_x, score,
+                    marker="D", s=82, color=bench_colors[bench],
+                    edgecolors="white", linewidths=0.8, zorder=4,
+                )
 
-    step = max(1, len(all_dates) // 12)
-    tick_positions = list(range(0, len(all_dates), step))
-    tick_labels = [all_dates[i] for i in tick_positions]
-    if harbor_best:
-        tick_positions.append(harbor_x)
-        tick_labels.append("Harbor")
-        ax.set_xlim(-0.5, harbor_x + 0.5)
-    ax.set_xticks(tick_positions)
-    ax.set_xticklabels(tick_labels, rotation=45, ha="right")
-    ax.set_ylim(0, 1.05)
-    fig.tight_layout(rect=(0, 0, 0.78, 1))
-    _save(fig, "progress_over_time_v2.pdf")
+        ax.set_xlabel("Result Date")
+        ax.set_ylabel("Best score")
+        ax.set_title(f"Score Progress Over Time: {domain}")
+        ax.grid(color=COLOR_GRID, linewidth=0.8)
+        handles, labels = ax.get_legend_handles_labels()
+        if harbor_best and any(bench in bench_colors for bench in harbor_best):
+            handles.append(plt.Line2D(
+                [0], [0], marker="D", color="none", markerfacecolor=COLOR_AXIS,
+                markeredgecolor="white", markersize=8, label="Harbor result",
+            ))
+            labels.append("Harbor result")
+        ax.legend(handles, labels, loc="upper left", bbox_to_anchor=(1.01, 1.0),
+                  frameon=False, fontsize=8.6, handlelength=1.9)
+
+        step = max(1, len(all_dates) // 10)
+        tick_positions = list(range(0, len(all_dates), step))
+        tick_labels = [all_dates[i] for i in tick_positions]
+        if any(bench in bench_colors for bench in harbor_best):
+            tick_positions.append(harbor_x)
+            tick_labels.append("Harbor")
+            ax.set_xlim(-0.5, harbor_x + 0.5)
+        ax.set_xticks(tick_positions)
+        ax.set_xticklabels(tick_labels, rotation=45, ha="right")
+        ax.set_ylim(0, 1.05)
+        fig.tight_layout(rect=(0.02, 0, 0.74, 1))
+        return fig
+
+    FIGURE_DIR.mkdir(parents=True, exist_ok=True)
+    combined_path = FIGURE_DIR / "progress_over_time_v2.pdf"
+    with PdfPages(combined_path) as pdf:
+        for domain, domain_selected in selected.groupby("domain", sort=False):
+            fig = _make_domain_fig(str(domain), domain_selected)
+            domain_slug = _slugify(domain)
+            single_path = FIGURE_DIR / f"progress_over_time_v2_{domain_slug}.pdf"
+            png_path = FIGURE_DIR / f"progress_over_time_v2_{domain_slug}.png"
+            fig.savefig(single_path, bbox_inches="tight", dpi=DPI, pad_inches=0.08)
+            fig.savefig(png_path, bbox_inches="tight", dpi=DPI, pad_inches=0.08)
+            pdf.savefig(fig, bbox_inches="tight", dpi=DPI, pad_inches=0.08)
+            plt.close(fig)
+            print(f"  [fig] {single_path}")
+            print(f"  [fig] {png_path}")
+    print(f"  [fig] {combined_path}")
 
 
 # ===================================================================

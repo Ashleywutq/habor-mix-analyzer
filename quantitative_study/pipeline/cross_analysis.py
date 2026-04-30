@@ -213,13 +213,17 @@ def _extract_best_score(
     return best
 
 
-def progress_over_time(info_dir: Path | None = None) -> pd.DataFrame:
-    """For benchmarks with multiple temporal snapshots, extract the best score
-    at each time point to show progress.
+def progress_over_time(
+    info_dir: Path | None = None,
+    *,
+    min_snapshots: int = 2,
+    frontier_only: bool = True,
+) -> pd.DataFrame:
+    """Extract each benchmark's best score at each temporal snapshot.
 
-    Only frontier-improving snapshots are retained: after dates are deduplicated
-    to one best score per month, later rows must strictly exceed the previous
-    best score for the same benchmark.
+    By default, keep the historical pipeline behavior: require at least two
+    snapshots and retain only frontier-improving monthly rows. Figure scripts can
+    opt into single-snapshot benchmarks or all monthly rows.
     """
     info_dir = info_dir or BENCHMARK_INFO_DIR
     alignments = load_metric_alignment()
@@ -233,7 +237,7 @@ def progress_over_time(info_dir: Path | None = None) -> pd.DataFrame:
         with open(fp) as fh:
             doc = json.load(fh)
         rot = doc.get("results_over_time", [])
-        if len(rot) < 2:
+        if len(rot) < min_snapshots:
             continue
         stem = fp.stem
         alignment = alignment_by_stem.get(stem)
@@ -267,6 +271,9 @@ def progress_over_time(info_dir: Path | None = None) -> pd.DataFrame:
         n_models=("n_models", "max"),
     ).reset_index()
     deduped = deduped.sort_values(["benchmark", "date_ym"])
+
+    if not frontier_only:
+        return deduped.sort_values(["benchmark", "date_ym"])
 
     frontier_rows: list[dict[str, Any]] = []
     for _, g in deduped.groupby("benchmark", sort=False):

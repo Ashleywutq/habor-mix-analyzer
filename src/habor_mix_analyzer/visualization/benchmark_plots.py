@@ -415,7 +415,7 @@ def save_benchmark_progress_and_headroom_plot(headroom: pd.DataFrame, launch_pro
                 color=chunk_colors,
                 edgecolor="white",
                 linewidth=0.45,
-                alpha=0.1,
+                alpha=0.0,
             )
 
             # Past SOTA at launch: same category color, but darker outline only
